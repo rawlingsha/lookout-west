@@ -1,0 +1,22 @@
+---
+import Container from "../base/Container.astro";
+import { footerNav } from "../../data/navigation";
+import { site } from "../../data/site";
+---
+
+<footer class="site-footer">
+  <Container class="site-footer__inner">
+    <div>
+      <p class="site-footer__brand">Lookout West</p>
+      <p class="site-footer__copy">{site.copyright}</p>
+    </div>
+
+    <nav aria-label="Footer">
+      <ul class="site-footer__nav">
+        {footerNav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </Container>
+</footer>

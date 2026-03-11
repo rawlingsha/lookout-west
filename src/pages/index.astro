@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/base/Container.astro";
+
+const pageTitle = "Lookout West | Research, data, and decisions in the American West";
+const pageDescription =
+  "Independent research, data, and economic analysis on the American West.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Container>
+    <section class="hero">
+      <div>
+        <p class="hero__eyebrow">Editorial luxury. Institutional clarity.</p>
+        <h1 class="hero__title">A serious regional journal with a consulting spine.</h1>
+        <p class="hero__deck">
+          Lookout West covers land, water, energy, housing, labor, and growth across the American West
+          with publication-grade writing, disciplined visual systems, and room to build real tools over time.
+        </p>
+
+        <div class="hero__actions">
+          <a class="button button--primary" href="/research">Read the research</a>
+          <a class="button" href="/services">View services</a>
+        </div>
+      </div>
+
+      <div class="preview-grid">
+        <article class="preview-card">
+          <p class="preview-card__label">Feature</p>
+          <h2>One featured essay should dominate the page.</h2>
+          <p>
+            The homepage should establish judgment first, then let consulting ride on that trust.
+          </p>
+        </article>
+
+        <article class="preview-card">
+          <p class="preview-card__label">Signals</p>
+          <h2>Indicators will replace the old dashboard table.</h2>
+          <p>
+            Premium signal cards will eventually surface the region’s most important metrics without
+            making the homepage feel like a spreadsheet.
+          </p>
+        </article>
+
+        <article class="preview-card">
+          <p class="preview-card__label">Services</p>
+          <h2>Consulting will be framed as a clear professional offer.</h2>
+          <p>
+            Briefings, custom research, and speaking for institutions making decisions in and around the West.
+          </p>
+        </article>
+      </div>
+    </section>
+  </Container>
+</BaseLayout>

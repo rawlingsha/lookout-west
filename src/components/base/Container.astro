@@ -1,0 +1,13 @@
+---
+interface Props {
+  as?: keyof HTMLElementTagNameMap;
+  class?: string;
+}
+
+const { as = "div", class: className = "" } = Astro.props;
+const Tag = as;
+---
+
+<Tag class={`lw-container ${className}`.trim()}>
+  <slot />
+</Tag>
