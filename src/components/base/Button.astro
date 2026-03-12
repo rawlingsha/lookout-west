@@ -1,0 +1,102 @@
+---
+interface Props {
+  href?: string;
+  variant?: "primary" | "secondary" | "tertiary";
+  size?: "md" | "lg";
+  class?: string;
+  target?: string;
+  rel?: string;
+  type?: "button" | "submit" | "reset";
+}
+
+const {
+  href,
+  variant = "primary",
+  size = "md",
+  class: className = "",
+  target,
+  rel,
+  type = "button",
+} = Astro.props;
+
+const classes = ["lw-button", `lw-button--${variant}`, `lw-button--${size}`, className]
+  .filter(Boolean)
+  .join(" ");
+---
+
+{href ? (
+  <a href={href} class={classes} target={target} rel={rel}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class={classes}>
+    <slot />
+  </button>
+)}
+
+<style>
+  .lw-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    transition:
+      background-color var(--transition-base),
+      color var(--transition-base),
+      border-color var(--transition-base),
+      transform var(--transition-base);
+  }
+
+  .lw-button:hover,
+  .lw-button:focus-visible {
+    transform: translateY(-1px);
+  }
+
+  .lw-button--primary {
+    background: var(--color-text);
+    color: var(--color-inverse);
+  }
+
+  .lw-button--primary:hover,
+  .lw-button--primary:focus-visible {
+    background: #222;
+  }
+
+  .lw-button--secondary {
+    background: transparent;
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+
+  .lw-button--secondary:hover,
+  .lw-button--secondary:focus-visible {
+    border-color: var(--color-text);
+    background: rgba(17, 17, 17, 0.02);
+  }
+
+  .lw-button--tertiary {
+    padding-inline: 0;
+    min-height: auto;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--color-accent-strong);
+  }
+
+  .lw-button--tertiary:hover,
+  .lw-button--tertiary:focus-visible {
+    color: var(--color-text);
+  }
+
+  .lw-button--lg {
+    min-height: 3.25rem;
+    padding: 1rem 1.4rem;
+  }
+</style>

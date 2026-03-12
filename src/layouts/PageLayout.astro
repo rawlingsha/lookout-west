@@ -1,0 +1,75 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Container from "../components/base/Container.astro";
+import SectionHeading from "../components/base/SectionHeading.astro";
+import Prose from "../components/base/Prose.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  eyebrow?: string;
+  intro?: string;
+  prose?: boolean;
+}
+
+const {
+  title,
+  description,
+  eyebrow,
+  intro,
+  prose = true,
+} = Astro.props;
+
+const seoTitle = `${title} | Lookout West`;
+const seoDescription = description ?? intro ?? "Lookout West";
+---
+
+<BaseLayout title={seoTitle} description={seoDescription}>
+  <Container>
+    <section class="page-layout__header">
+      <SectionHeading
+        eyebrow={eyebrow}
+        title={title}
+        description={intro}
+      />
+    </section>
+
+    <section class="page-layout__body">
+      {prose ? (
+        <Prose>
+          <slot />
+        </Prose>
+      ) : (
+        <div class="page-layout__content">
+          <slot />
+        </div>
+      )}
+    </section>
+  </Container>
+</BaseLayout>
+
+<style>
+  .page-layout__header {
+    padding-top: var(--space-9);
+    padding-bottom: var(--space-6);
+  }
+
+  .page-layout__body {
+    padding-bottom: var(--space-9);
+  }
+
+  .page-layout__content {
+    width: min(100%, var(--container-narrow));
+  }
+
+  @media (max-width: 56rem) {
+    .page-layout__header {
+      padding-top: var(--space-8);
+      padding-bottom: var(--space-5);
+    }
+
+    .page-layout__body {
+      padding-bottom: var(--space-8);
+    }
+  }
+</style>
