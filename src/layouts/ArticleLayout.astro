@@ -28,6 +28,7 @@ const formatDate = (date: Date) =>
     month: "long",
     day: "numeric",
     year: "numeric",
+    timeZone: "UTC",
   }).format(date);
 
 const publishedLabel = formatDate(publishDate);
