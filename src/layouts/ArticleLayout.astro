@@ -1,0 +1,183 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Container from "../components/base/Container.astro";
+import Prose from "../components/base/Prose.astro";
+
+interface Props {
+  title: string;
+  deck: string;
+  topic: string;
+  author: string;
+  publishDate: Date;
+  updatedDate?: Date;
+}
+
+const {
+  title,
+  deck,
+  topic,
+  author,
+  publishDate,
+  updatedDate,
+} = Astro.props;
+
+const pageTitle = `${title} | Lookout West`;
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  }).format(date);
+
+const publishedLabel = formatDate(publishDate);
+const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
+---
+
+<BaseLayout title={pageTitle} description={deck}>
+  <article class="article-layout">
+    <Container>
+      <header class="article-layout__header">
+        <p class="article-layout__eyebrow">{topic}</p>
+        <h1 class="article-layout__title">{title}</h1>
+        <p class="article-layout__deck">{deck}</p>
+
+        <div class="article-layout__meta" aria-label="Article metadata">
+          <span>By {author}</span>
+          <span aria-hidden="true">•</span>
+          <time datetime={publishDate.toISOString()}>{publishedLabel}</time>
+
+          {updatedLabel && (
+            <>
+              <span aria-hidden="true">•</span>
+              <span>
+                Updated <time datetime={updatedDate?.toISOString()}>{updatedLabel}</time>
+              </span>
+            </>
+          )}
+        </div>
+      </header>
+    </Container>
+
+    {Astro.slots.has("hero") && (
+      <Container>
+        <div class="article-layout__hero">
+          <slot name="hero" />
+        </div>
+      </Container>
+    )}
+
+    <Container>
+      <section class="article-layout__body">
+        <Prose>
+          <slot />
+        </Prose>
+      </section>
+    </Container>
+
+    {Astro.slots.has("sources") && (
+      <Container>
+        <section class="article-layout__sources">
+          <h2 class="article-layout__sources-title">Sources</h2>
+          <div class="article-layout__sources-body">
+            <slot name="sources" />
+          </div>
+        </section>
+      </Container>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .article-layout__header {
+    width: min(100%, 52rem);
+    padding-top: var(--space-9);
+    padding-bottom: var(--space-7);
+  }
+
+  .article-layout__eyebrow {
+    margin: 0 0 var(--space-3);
+    color: var(--color-accent);
+    font-size: var(--step--1);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .article-layout__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+
+  .article-layout__deck {
+    width: min(100%, 44rem);
+    margin: var(--space-5) 0 0;
+    color: var(--color-muted);
+    font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+    line-height: 1.65;
+  }
+
+  .article-layout__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: var(--space-5);
+    color: var(--color-muted);
+    font-size: var(--step--1);
+  }
+
+  .article-layout__hero {
+    margin-bottom: var(--space-7);
+  }
+
+  .article-layout__body {
+    padding-bottom: var(--space-9);
+  }
+
+  .article-layout__sources {
+    width: min(100%, var(--container-narrow));
+    padding-top: var(--space-7);
+    padding-bottom: var(--space-9);
+    border-top: var(--border-subtle);
+  }
+
+  .article-layout__sources-title {
+    margin: 0 0 var(--space-4);
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  .article-layout__sources-body {
+    color: var(--color-muted);
+  }
+
+  .article-layout__sources-body :global(ul) {
+    padding-left: 1.25rem;
+  }
+
+  .article-layout__sources-body :global(li + li) {
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 56rem) {
+    .article-layout__header {
+      padding-top: var(--space-8);
+      padding-bottom: var(--space-6);
+    }
+
+    .article-layout__body {
+      padding-bottom: var(--space-8);
+    }
+
+    .article-layout__sources {
+      padding-top: var(--space-6);
+      padding-bottom: var(--space-8);
+    }
+  }
+</style>

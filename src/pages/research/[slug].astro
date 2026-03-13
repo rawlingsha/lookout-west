@@ -1,0 +1,34 @@
+---
+import { getCollection, render } from "astro:content";
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("articles");
+
+  return articles.map((article) => ({
+    params: { slug: article.id },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+---
+
+<ArticleLayout
+  title={article.data.title}
+  deck={article.data.deck}
+  topic={article.data.topic}
+  author={article.data.author}
+  publishDate={article.data.publishDate}
+  updatedDate={article.data.updatedDate}
+>
+  <Content />
+
+  <Fragment slot="sources">
+    <ul>
+      <li>Placeholder sources block for the article template.</li>
+      <li>This section will later hold formal citations and data references.</li>
+    </ul>
+  </Fragment>
+</ArticleLayout>
