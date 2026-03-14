@@ -1,20 +1,104 @@
 ---
 import { primaryNav } from "../../data/navigation";
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = "/" } = Astro.props;
+
+const normalizePath = (value: string) => value.replace(/\/+$/, "") || "/";
+const isActive = (href: string) => normalizePath(currentPath) === normalizePath(href);
+
+const panelId = "mobile-menu-panel";
 ---
 
-<details class="mobile-menu">
-  <summary class="mobile-menu__toggle">
-    <span class="visually-hidden">Open navigation menu</span>
+<div class="mobile-menu" data-mobile-menu>
+  <button
+    class="mobile-menu__toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls={panelId}
+    data-mobile-menu-toggle
+  >
+    <span class="visually-hidden">Toggle navigation menu</span>
     <span class="mobile-menu__label">Menu</span>
-  </summary>
+  </button>
 
-  <nav class="mobile-menu__panel" aria-label="Mobile">
+  <nav
+    id={panelId}
+    class="mobile-menu__panel"
+    aria-label="Mobile navigation"
+    hidden
+    data-mobile-menu-panel
+  >
     <ul class="mobile-menu__list">
       {primaryNav.map((item) => (
         <li>
-          <a href={item.href}>{item.label}</a>
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? "page" : undefined}
+          >
+            {item.label}
+          </a>
         </li>
       ))}
     </ul>
   </nav>
-</details>
+</div>
+
+<script>
+  const menus = document.querySelectorAll("[data-mobile-menu]");
+
+  for (const menu of menus) {
+    if (!(menu instanceof HTMLElement)) continue;
+    if (menu.dataset.initialized === "true") continue;
+
+    const button = menu.querySelector("[data-mobile-menu-toggle]");
+    const panel = menu.querySelector("[data-mobile-menu-panel]");
+    const links = menu.querySelectorAll(".mobile-menu__list a");
+
+    if (!(button instanceof HTMLButtonElement)) continue;
+    if (!(panel instanceof HTMLElement)) continue;
+
+    const closeMenu = () => {
+      button.setAttribute("aria-expanded", "false");
+      panel.hidden = true;
+    };
+
+    const openMenu = () => {
+      button.setAttribute("aria-expanded", "true");
+      panel.hidden = false;
+    };
+
+    const toggleMenu = () => {
+      const isOpen = button.getAttribute("aria-expanded") === "true";
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    };
+
+    button.addEventListener("click", toggleMenu);
+
+    links.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (menu.contains(target)) return;
+      closeMenu();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      closeMenu();
+      button.focus();
+    });
+
+    menu.dataset.initialized = "true";
+  }
+</script>
