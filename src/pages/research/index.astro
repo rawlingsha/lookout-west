@@ -1,0 +1,203 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "../../layouts/PageLayout.astro";
+
+const allArticles = await getCollection("articles");
+
+const publishedArticles = allArticles
+  .filter((article) => !article.data.draft)
+  .sort(
+    (a, b) =>
+      b.data.publishDate.getTime() - a.data.publishDate.getTime()
+  );
+
+const featuredArticle =
+  publishedArticles.find((article) => article.data.featured) ??
+  publishedArticles[0] ??
+  null;
+
+const archiveArticles = publishedArticles.filter(
+  (article) => article.id !== featuredArticle?.id
+);
+
+const forthcomingArticles = allArticles
+  .filter((article) => article.data.draft)
+  .sort(
+    (a, b) =>
+      b.data.publishDate.getTime() - a.data.publishDate.getTime()
+  );
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(date);
+---
+
+<PageLayout
+  title="Research"
+  description="Original reporting, essays, and economic analysis on the American West."
+  eyebrow="Research"
+  intro="Original reporting, essays, and economic analysis on land, water, energy, housing, labor, and growth across the American West."
+  prose={false}
+>
+  <div class="research-index">
+    {featuredArticle && (
+      <section class="research-index__section">
+        <p class="research-index__label">Featured</p>
+
+        <article class="research-card research-card--featured">
+          <p class="research-card__topic">{featuredArticle.data.topic}</p>
+          <h2 class="research-card__title">
+            <a href={`/research/${featuredArticle.id}/`}>
+              {featuredArticle.data.title}
+            </a>
+          </h2>
+          <p class="research-card__deck">{featuredArticle.data.deck}</p>
+          <div class="research-card__meta">
+            <span>{featuredArticle.data.author}</span>
+            <span aria-hidden="true">•</span>
+            <time datetime={featuredArticle.data.publishDate.toISOString()}>
+              {formatDate(featuredArticle.data.publishDate)}
+            </time>
+          </div>
+        </article>
+      </section>
+    )}
+
+    {archiveArticles.length > 0 && (
+      <section class="research-index__section">
+        <p class="research-index__label">Archive</p>
+
+        <div class="research-list">
+          {archiveArticles.map((article) => (
+            <article class="research-card">
+              <p class="research-card__topic">{article.data.topic}</p>
+              <h2 class="research-card__title">
+                <a href={`/research/${article.id}/`}>{article.data.title}</a>
+              </h2>
+              <p class="research-card__deck">{article.data.deck}</p>
+              <div class="research-card__meta">
+                <span>{article.data.author}</span>
+                <span aria-hidden="true">•</span>
+                <time datetime={article.data.publishDate.toISOString()}>
+                  {formatDate(article.data.publishDate)}
+                </time>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {forthcomingArticles.length > 0 && (
+      <section class="research-index__section">
+        <p class="research-index__label">Forthcoming</p>
+
+        <div class="research-list">
+          {forthcomingArticles.map((article) => (
+            <article class="research-card research-card--forthcoming">
+              <p class="research-card__topic">{article.data.topic}</p>
+              <h2 class="research-card__title">{article.data.title}</h2>
+              <p class="research-card__deck">{article.data.deck}</p>
+              <p class="research-card__status">In development</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</PageLayout>
+
+<style>
+  .research-index {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .research-index__section {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .research-index__label {
+    margin: 0;
+    color: var(--color-accent);
+    font-size: var(--step--1);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .research-list {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .research-card {
+    padding: var(--space-5);
+    border: var(--border-subtle);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .research-card--featured {
+    padding: var(--space-6);
+  }
+
+  .research-card__topic {
+    margin: 0 0 var(--space-3);
+    color: var(--color-accent);
+    font-size: var(--step--1);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .research-card__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .research-list .research-card__title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .research-card__title a:hover,
+  .research-card__title a:focus-visible {
+    color: var(--color-accent);
+  }
+
+  .research-card__deck {
+    margin: var(--space-4) 0 0;
+    color: var(--color-muted);
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    line-height: 1.7;
+    max-width: 46rem;
+  }
+
+  .research-card__meta,
+  .research-card__status {
+    margin-top: var(--space-4);
+    color: var(--color-muted);
+    font-size: var(--step--1);
+  }
+
+  .research-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  @media (min-width: 56rem) {
+    .research-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

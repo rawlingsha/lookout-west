@@ -1,0 +1,20 @@
+---
+import { primaryNav } from "../../data/navigation";
+---
+
+<details class="mobile-menu">
+  <summary class="mobile-menu__toggle">
+    <span class="visually-hidden">Open navigation menu</span>
+    <span class="mobile-menu__label">Menu</span>
+  </summary>
+
+  <nav class="mobile-menu__panel" aria-label="Mobile">
+    <ul class="mobile-menu__list">
+      {primaryNav.map((item) => (
+        <li>
+          <a href={item.href}>{item.label}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</details>

@@ -9,13 +9,19 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "check": "astro check",
+    "lint": "eslint .",
+    "format": "prettier --write .",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.7",
     "@astrojs/mdx": "^5.0.0",
+    "@astrojs/rss": "^4.0.17",
     "@astrojs/sitemap": "^3.7.1",
     "astro": "^6.0.2",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.57.0",

@@ -1,5 +1,6 @@
 ---
 import Container from "../base/Container.astro";
+import MobileMenu from "./MobileMenu.astro";
 import { primaryNav } from "../../data/navigation";
 ---
 
@@ -7,12 +8,16 @@ import { primaryNav } from "../../data/navigation";
   <Container class="site-header__inner">
     <a href="/" class="site-header__brand">Lookout West</a>
 
-    <nav class="site-header__nav" aria-label="Primary">
+    <nav class="site-header__nav site-header__nav--desktop" aria-label="Primary">
       <ul>
         {primaryNav.map((item) => (
           <li><a href={item.href}>{item.label}</a></li>
         ))}
       </ul>
     </nav>
+
+    <div class="site-header__mobile">
+      <MobileMenu />
+    </div>
   </Container>
 </header>

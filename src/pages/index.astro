@@ -1,55 +1,156 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Container from "../components/base/Container.astro";
 
 const pageTitle = "Lookout West | Research, data, and decisions in the American West";
 const pageDescription =
   "Independent research, data, and economic analysis on the American West.";
+
+const publishedArticles = (await getCollection("articles"))
+  .filter((article) => !article.data.draft)
+  .sort(
+    (a, b) =>
+      b.data.publishDate.getTime() - a.data.publishDate.getTime()
+  );
+
+const featuredArticle =
+  publishedArticles.find((article) => article.data.featured) ??
+  publishedArticles[0] ??
+  null;
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <Container>
     <section class="hero">
       <div>
-        <p class="hero__eyebrow">Editorial luxury. Institutional clarity.</p>
-        <h1 class="hero__title">A serious regional journal with a consulting spine.</h1>
+        <p class="hero__eyebrow">Research, data, and decisions in the American West.</p>
+        <h1 class="hero__title">A publication-first journal for the changing West.</h1>
         <p class="hero__deck">
-          Lookout West covers land, water, energy, housing, labor, and growth across the American West
-          with publication-grade writing, disciplined visual systems, and room to build real tools over time.
+          Lookout West covers land, water, energy, housing, labor, and regional growth
+          with clear writing, disciplined visual systems, and a consulting spine that
+          follows from editorial authority rather than replacing it.
         </p>
 
         <div class="hero__actions">
-          <a class="button button--primary" href="/research">Read the research</a>
+          <a class="button button--primary" href="/research">Browse research</a>
           <a class="button" href="/services">View services</a>
         </div>
       </div>
 
       <div class="preview-grid">
-        <article class="preview-card">
-          <p class="preview-card__label">Feature</p>
-          <h2>One featured essay should dominate the page.</h2>
-          <p>
-            The homepage should establish judgment first, then let consulting ride on that trust.
-          </p>
-        </article>
+        {featuredArticle && (
+          <article class="preview-card">
+            <p class="preview-card__label">Featured research</p>
+            <h2>
+              <a href={`/research/${featuredArticle.id}/`}>
+                {featuredArticle.data.title}
+              </a>
+            </h2>
+            <p>{featuredArticle.data.deck}</p>
+          </article>
+        )}
 
         <article class="preview-card">
-          <p class="preview-card__label">Signals</p>
-          <h2>Indicators will replace the old dashboard table.</h2>
+          <p class="preview-card__label">What this covers</p>
+          <h2>Land, water, energy, housing, labor, and growth.</h2>
           <p>
-            Premium signal cards will eventually surface the region’s most important metrics without
-            making the homepage feel like a spreadsheet.
+            The goal is durable regional judgment, not generic commentary or a rushed
+            dashboard product.
           </p>
         </article>
 
         <article class="preview-card">
           <p class="preview-card__label">Services</p>
-          <h2>Consulting will be framed as a clear professional offer.</h2>
+          <h2>Research-backed advisory work for institutions in the West.</h2>
           <p>
-            Briefings, custom research, and speaking for institutions making decisions in and around the West.
+            Briefings, custom research, and speaking will grow out of the same
+            editorial discipline that drives the publication.
           </p>
         </article>
       </div>
     </section>
   </Container>
 </BaseLayout>
+
+<style>
+  .hero {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .hero__eyebrow {
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: var(--step--1);
+    margin-bottom: var(--space-3);
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    max-width: 12ch;
+    text-wrap: balance;
+  }
+
+  .hero__deck {
+    font-size: var(--step-1);
+    color: var(--color-muted);
+    max-width: 42rem;
+    line-height: 1.7;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+  }
+
+  .preview-grid {
+    display: grid;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  .preview-card {
+    padding: var(--space-5);
+    border: var(--border-subtle);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .preview-card__label {
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    margin-bottom: var(--space-3);
+  }
+
+  .preview-card h2 {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-3);
+  }
+
+  .preview-card p {
+    color: var(--color-muted);
+  }
+
+  .preview-card h2 a:hover,
+  .preview-card h2 a:focus-visible {
+    color: var(--color-accent);
+  }
+
+  @media (min-width: 900px) {
+    .preview-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
