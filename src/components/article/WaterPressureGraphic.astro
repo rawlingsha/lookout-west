@@ -1,0 +1,164 @@
+<div
+  class="water-pressure-graphic"
+  role="img"
+  aria-label="Diagram showing how hydrology, storage, and allocation pressure flow into housing, utility rates, agriculture, and power systems in the American West."
+>
+  <svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="wp-panel" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgba(146, 185, 201, 0.16)" />
+        <stop offset="100%" stop-color="rgba(146, 185, 201, 0.05)" />
+      </linearGradient>
+      <linearGradient id="wp-bottom" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgba(74, 93, 68, 0.10)" />
+        <stop offset="100%" stop-color="rgba(74, 93, 68, 0.03)" />
+      </linearGradient>
+      <marker
+        id="wp-arrow"
+        viewBox="0 0 10 10"
+        refX="8"
+        refY="5"
+        markerWidth="7"
+        markerHeight="7"
+        orient="auto-start-reverse"
+      >
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
+      </marker>
+    </defs>
+
+    <rect class="wp-bg" x="0" y="0" width="1200" height="675" rx="20" />
+
+    <text class="wp-kicker" x="70" y="72">WESTERN WATER SYSTEM</text>
+    <text class="wp-title" x="70" y="118">Pressure moves through physical, institutional, and price layers.</text>
+
+    <g class="wp-panel">
+      <rect x="70" y="165" width="300" height="190" rx="20" fill="url(#wp-panel)" />
+      <text class="wp-panel-title" x="102" y="214">Hydrology</text>
+      <text class="wp-panel-copy" x="102" y="252">• snowpack and snow drought</text>
+      <text class="wp-panel-copy" x="102" y="286">• reservoir inflows</text>
+      <text class="wp-panel-copy" x="102" y="320">• streamflow and groundwater</text>
+    </g>
+
+    <g class="wp-panel">
+      <rect x="450" y="165" width="300" height="190" rx="20" fill="url(#wp-panel)" />
+      <text class="wp-panel-title" x="482" y="214">Storage and delivery</text>
+      <text class="wp-panel-copy" x="482" y="252">• reservoir levels</text>
+      <text class="wp-panel-copy" x="482" y="286">• infrastructure losses</text>
+      <text class="wp-panel-copy" x="482" y="320">• utility and irrigation systems</text>
+    </g>
+
+    <g class="wp-panel">
+      <rect x="830" y="165" width="300" height="190" rx="20" fill="url(#wp-panel)" />
+      <text class="wp-panel-title" x="862" y="214">Rules and allocation</text>
+      <text class="wp-panel-copy" x="862" y="252">• compacts and priority rights</text>
+      <text class="wp-panel-copy" x="862" y="286">• utility governance</text>
+      <text class="wp-panel-copy" x="862" y="320">• post-2026 operating rules</text>
+    </g>
+
+    <g class="wp-flow" color="var(--color-accent)">
+      <path d="M220 370 C220 420, 265 445, 330 470" marker-end="url(#wp-arrow)" />
+      <path d="M600 370 C600 420, 600 445, 600 470" marker-end="url(#wp-arrow)" />
+      <path d="M980 370 C980 420, 935 445, 870 470" marker-end="url(#wp-arrow)" />
+    </g>
+
+    <g class="wp-bottom-band">
+      <rect x="70" y="490" width="1060" height="120" rx="24" fill="url(#wp-bottom)" />
+      <text class="wp-pressure-title" x="102" y="535">Economic pressure points</text>
+    </g>
+
+    <g class="wp-pressure-card">
+      <rect x="102" y="548" width="230" height="40" rx="12" />
+      <text class="wp-pressure-item" x="217" y="573" text-anchor="middle">Housing growth and permitting</text>
+    </g>
+
+    <g class="wp-pressure-card">
+      <rect x="356" y="548" width="230" height="40" rx="12" />
+      <text class="wp-pressure-item" x="471" y="573" text-anchor="middle">Utility pricing and rate design</text>
+    </g>
+
+    <g class="wp-pressure-card">
+      <rect x="610" y="548" width="230" height="40" rx="12" />
+      <text class="wp-pressure-item" x="725" y="573" text-anchor="middle">Agricultural margins and reallocation</text>
+    </g>
+
+    <g class="wp-pressure-card">
+      <rect x="864" y="548" width="234" height="40" rx="12" />
+      <text class="wp-pressure-item" x="981" y="573" text-anchor="middle">Power and industrial siting</text>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .water-pressure-graphic {
+    width: 100%;
+    height: 100%;
+  }
+
+  .water-pressure-graphic svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .wp-bg {
+    fill: #f6f5f1;
+  }
+
+  .wp-kicker {
+    fill: var(--color-accent);
+    font-family: var(--font-sans);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+  }
+
+  .wp-title {
+    fill: var(--color-text);
+    font-family: var(--font-display);
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .wp-panel-title {
+    fill: var(--color-text);
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .wp-panel-copy {
+    fill: #3f3b37;
+    font-family: var(--font-sans);
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  .wp-flow path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 4;
+    opacity: 0.9;
+  }
+
+  .wp-pressure-title {
+    fill: var(--color-text);
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .wp-pressure-card rect {
+    fill: rgba(255, 255, 255, 0.55);
+    stroke: rgba(23, 23, 23, 0.06);
+  }
+
+  .wp-pressure-item {
+    fill: #3f3b37;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 600;
+  }
+</style>
