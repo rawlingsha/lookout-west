@@ -45,6 +45,9 @@ sources:
     note: "Snowpack as natural storage and drought-planning context"
 ---
 
+import FigureBlock from "../../components/article/FigureBlock.astro";
+import PullQuote from "../../components/article/PullQuote.astro";
+
 The American West is not dealing with a single water crisis. It is dealing with a collision between hydrology, population growth, energy demand, land use, and political bargaining. That is what makes water such a central economic variable for the region.
 
 Water determines where housing can expand, where industrial capacity can be added, how costly agriculture becomes, and how much conflict emerges between states, cities, utilities, and irrigation users. In that sense, water is not a side constraint. It is part of the operating system.
@@ -55,7 +58,7 @@ For years, many water conversations were framed as environmental stories first. 
 
 That pressure shows up in multiple places at once. It affects municipal investment, rate structures, development approvals, agricultural margins, and long-run regional competitiveness.
 
-> The core issue is no longer whether water matters. The core issue is which kinds of growth current water systems can actually support.
+<PullQuote quote="The core issue is no longer whether water matters. The core issue is which kinds of growth current water systems can actually support." />
 
 ## The economic lens
 
@@ -65,12 +68,11 @@ First, there is the physical layer: snowpack, reservoir levels, streamflow, grou
 
 Once those layers start interacting, the water story becomes an economic allocation story.
 
-<figure>
-  <div style="aspect-ratio: 16 / 9; border: 1px solid var(--color-border); border-radius: 1rem; background: rgba(17, 17, 17, 0.04);"></div>
-  <figcaption>
-    Figure placeholder. This will later become a real chart, map, or reservoir graphic inside the article template.
-  </figcaption>
-</figure>
+<FigureBlock
+  label="Basin pressure and water allocation"
+  caption="A future chart or map in this space will show how hydrology, reservoir pressure, and institutional allocation collide across the Colorado River system."
+  placeholderText="Reservoir or basin graphic"
+/>
 
 ## What to watch
 

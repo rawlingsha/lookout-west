@@ -1,0 +1,109 @@
+---
+interface Props {
+  caption: string;
+  label?: string;
+  note?: string;
+  aspectRatio?: string;
+  placeholderText?: string;
+}
+
+const {
+  caption,
+  label,
+  note,
+  aspectRatio = "16 / 9",
+  placeholderText = "Chart or graphic",
+} = Astro.props;
+---
+
+<figure class="figure-block">
+  <div class="figure-block__media" style={`--figure-aspect: ${aspectRatio};`}>
+    {Astro.slots.has("default") ? (
+      <slot />
+    ) : (
+      <div class="figure-block__placeholder" aria-hidden="true">
+        <span class="figure-block__placeholder-text">{placeholderText}</span>
+      </div>
+    )}
+  </div>
+
+  <figcaption class="figure-block__caption">
+    {label && <span class="figure-block__label">{label}</span>}
+    <span>{caption}</span>
+    {note && <span class="figure-block__note">{note}</span>}
+  </figcaption>
+</figure>
+
+<style>
+  .figure-block {
+    margin: 0;
+  }
+
+  .figure-block__media {
+    aspect-ratio: var(--figure-aspect);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    background: rgba(17, 17, 17, 0.03);
+  }
+
+  .figure-block__media :global(img),
+  .figure-block__media :global(picture),
+  .figure-block__media :global(video),
+  .figure-block__media :global(canvas),
+  .figure-block__media :global(svg),
+  .figure-block__media :global(iframe) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .figure-block__placeholder {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 1.25rem;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(17, 17, 17, 0.02) 0%,
+        rgba(17, 17, 17, 0.05) 100%
+      );
+  }
+
+  .figure-block__placeholder-text {
+    color: var(--color-muted);
+    font-size: var(--step--1);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .figure-block__caption {
+    max-width: 38rem;
+    margin-top: 0.9rem;
+    color: var(--color-muted);
+    font-size: var(--step--1);
+    line-height: 1.58;
+  }
+
+  .figure-block__label {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .figure-block__note {
+    display: block;
+    margin-top: 0.2rem;
+  }
+
+  @media (max-width: 56rem) {
+    .figure-block__caption {
+      margin-top: 0.75rem;
+    }
+  }
+</style>
