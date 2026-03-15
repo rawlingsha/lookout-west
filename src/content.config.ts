@@ -2,6 +2,14 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
+const articleSourceSchema = z.object({
+  title: z.string(),
+  publisher: z.string().optional(),
+  url: z.url(),
+  published: z.string().optional(),
+  note: z.string().optional(),
+});
+
 const articles = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/articles" }),
   schema: z.object({
@@ -16,6 +24,7 @@ const articles = defineCollection({
     draft: z.boolean().optional().default(false),
     seoTitle: z.string().optional(),
     seoDescription: z.string().optional(),
+    sources: z.array(articleSourceSchema).optional(),
   }),
 });
 

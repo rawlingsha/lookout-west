@@ -176,12 +176,33 @@ const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
     color: var(--color-muted);
   }
 
+  .article-layout__sources-body :global(ol),
   .article-layout__sources-body :global(ul) {
+    margin: 0;
     padding-left: 1.25rem;
   }
 
+  .article-layout__sources-body :global(li) {
+    line-height: 1.55;
+  }
+
   .article-layout__sources-body :global(li + li) {
-    margin-top: 0.5rem;
+    margin-top: 0.85rem;
+  }
+
+  .article-layout__sources-body :global(a) {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-underline-offset: 0.14em;
+    text-decoration-thickness: 0.06em;
+  }
+
+  .article-layout__sources-body :global(.article-source__meta) {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--color-muted);
+    font-size: var(--step--1);
+    line-height: 1.5;
   }
 
   @media (max-width: 56rem) {

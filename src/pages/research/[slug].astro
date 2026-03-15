@@ -14,6 +14,7 @@ export async function getStaticPaths() {
 
 const { article } = Astro.props;
 const { Content } = await render(article);
+const sources = article.data.sources ?? [];
 ---
 
 <ArticleLayout
@@ -25,4 +26,26 @@ const { Content } = await render(article);
   updatedDate={article.data.updatedDate}
 >
   <Content />
+
+  {sources.length > 0 && (
+    <Fragment slot="sources">
+      <ol class="article-sources">
+        {sources.map((source) => (
+          <li>
+            <a href={source.url} target="_blank" rel="noopener noreferrer">
+              {source.title}
+            </a>
+
+            {(source.publisher || source.published || source.note) && (
+              <span class="article-source__meta">
+                {[source.publisher, source.published, source.note]
+                  .filter(Boolean)
+                  .join(" • ")}
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </Fragment>
+  )}
 </ArticleLayout>
