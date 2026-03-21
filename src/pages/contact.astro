@@ -4,15 +4,233 @@ import PageLayout from "../layouts/PageLayout.astro";
 
 <PageLayout
   title="Contact"
-  description="Contact Lookout West."
+  description="Contact Lookout West for research, speaking, and advisory inquiries."
   eyebrow="Contact"
-  intro="For inquiries related to research, speaking, or advisory work, reach out directly."
+  intro="For research, speaking, or advisory inquiries, reach out directly."
+  prose={false}
+  contentWidth="wide"
 >
-  <p>
-    A fuller inquiry flow will come later. For now, contact can remain simple and direct.
-  </p>
+  <div class="contact-page">
+    <section class="contact-hero">
+      <div class="contact-hero__content">
+        <p class="contact-hero__label">Direct contact</p>
+        <h2 class="contact-hero__title">
+          The cleanest path right now is a direct email.
+        </h2>
+        <p class="contact-hero__deck">
+          If you are reaching out about a briefing, custom research project, speaking
+          opportunity, or collaboration, send a note with enough context to frame the ask well.
+        </p>
 
-  <p>
-    Email: <a href="mailto:hello@lookoutwest.us">hello@lookoutwest.us</a>
-  </p>
+        <div class="contact-hero__actions">
+          <a class="button button--primary" href="mailto:hello@lookoutwest.us">hello@lookoutwest.us</a>
+          <a class="button" href="/services">Review services</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-section__header">
+        <p class="contact-section__label">Best inquiries</p>
+        <h2 class="contact-section__title">
+          The strongest outreach is concrete about the institution, question, and outcome.
+        </h2>
+      </div>
+
+      <div class="contact-grid">
+        <article class="contact-card">
+          <h3>Briefings</h3>
+          <p>
+            Include the audience, the decision context, and the regional themes that matter most.
+          </p>
+        </article>
+
+        <article class="contact-card">
+          <h3>Custom research</h3>
+          <p>
+            Include the core question, timeline, and whether the need is strategic, analytical, or editorial.
+          </p>
+        </article>
+
+        <article class="contact-card">
+          <h3>Speaking</h3>
+          <p>
+            Include the event, audience type, timing, and the subject area you want covered.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-section__header">
+        <p class="contact-section__label">Helpful context</p>
+        <h2 class="contact-section__title">
+          A short note is fine, but these details make the conversation sharper.
+        </h2>
+      </div>
+
+      <div class="details-card">
+        <ul class="details-list">
+          <li>Who you are and what organization you represent</li>
+          <li>What question or decision is driving the inquiry</li>
+          <li>What kind of output you need: briefing, research, speaking, or another format</li>
+          <li>Any timing, audience, or scope constraints that matter up front</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-section__header">
+        <p class="contact-section__label">Current scope</p>
+        <h2 class="contact-section__title">
+          Lookout West is focused on serious work tied to the economics of the American West.
+        </h2>
+        <p class="contact-section__description">
+          That includes land, water, energy, housing, labor, growth, and the regional systems
+          that shape long-run economic outcomes.
+        </p>
+      </div>
+    </section>
+  </div>
 </PageLayout>
+
+<style>
+  .contact-page {
+    display: grid;
+    gap: var(--space-7);
+  }
+
+  .contact-section {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .contact-section + .contact-section {
+    padding-top: var(--space-6);
+    border-top: var(--border-subtle);
+  }
+
+  .contact-hero,
+  .contact-card,
+  .details-card {
+    padding: var(--space-5);
+    border: var(--border-subtle);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .contact-hero__content,
+  .contact-section__header {
+    max-width: 44rem;
+  }
+
+  .details-card {
+    max-width: 58rem;
+  }
+
+  .contact-hero__label,
+  .contact-section__label {
+    margin: 0;
+    color: var(--color-accent);
+    font-size: var(--step--1);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .contact-hero__title {
+    margin: var(--space-2) 0 0;
+    max-width: 18ch;
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 2.6vw, 2.35rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .contact-section__title {
+    margin: var(--space-2) 0 0;
+    max-width: 22ch;
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.1vw, 1.95rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .contact-hero__deck,
+  .contact-section__description {
+    margin-top: var(--space-4);
+    max-width: 44rem;
+    color: var(--color-muted);
+    font-size: var(--step-0);
+    line-height: 1.7;
+  }
+
+  .contact-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+  }
+
+  .contact-grid {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .contact-card h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-card p {
+    margin: var(--space-3) 0 0;
+    color: var(--color-muted);
+    line-height: 1.7;
+  }
+
+  .details-list {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: var(--color-text);
+  }
+
+  .details-list li {
+    line-height: 1.7;
+  }
+
+  .details-list li + li {
+    margin-top: 0.75rem;
+  }
+
+  @media (min-width: 68rem) {
+    .contact-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 56rem) {
+    .contact-page {
+      gap: var(--space-6);
+    }
+
+    .contact-section + .contact-section {
+      padding-top: var(--space-5);
+    }
+
+    .contact-hero,
+    .contact-card,
+    .details-card {
+      border-radius: var(--radius-md);
+    }
+
+    .contact-hero__deck,
+    .contact-section__description {
+      font-size: 1.0625rem;
+    }
+  }
+</style>

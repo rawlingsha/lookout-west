@@ -10,6 +10,7 @@ interface Props {
   eyebrow?: string;
   intro?: string;
   prose?: boolean;
+  contentWidth?: "narrow" | "wide";
 }
 
 const {
@@ -18,10 +19,15 @@ const {
   eyebrow,
   intro,
   prose = true,
+  contentWidth = "narrow",
 } = Astro.props;
 
 const seoTitle = `${title} | Lookout West`;
 const seoDescription = description ?? intro ?? "Lookout West";
+const contentClass =
+  contentWidth === "wide"
+    ? "page-layout__content page-layout__content--wide"
+    : "page-layout__content";
 ---
 
 <BaseLayout title={seoTitle} description={seoDescription}>
@@ -40,7 +46,7 @@ const seoDescription = description ?? intro ?? "Lookout West";
           <slot />
         </Prose>
       ) : (
-        <div class="page-layout__content">
+        <div class={contentClass}>
           <slot />
         </div>
       )}
@@ -60,6 +66,10 @@ const seoDescription = description ?? intro ?? "Lookout West";
 
   .page-layout__content {
     width: min(100%, var(--container-narrow));
+  }
+
+  .page-layout__content--wide {
+    width: 100%;
   }
 
   @media (max-width: 56rem) {

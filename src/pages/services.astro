@@ -4,23 +4,287 @@ import PageLayout from "../layouts/PageLayout.astro";
 
 <PageLayout
   title="Services"
-  description="Services offered by Lookout West."
+  description="Briefings, custom research, and speaking for institutions making decisions in and around the American West."
   eyebrow="Services"
   intro="Briefings, custom research, and speaking for institutions making decisions in and around the American West."
+  prose={false}
+  contentWidth="wide"
 >
-  <p>
-    Lookout West will offer a focused set of advisory services rooted in the same
-    judgment, discipline, and regional knowledge that drive the publication.
-  </p>
+  <div class="services-page">
+    <section class="services-section">
+      <div class="services-section__header">
+        <p class="services-section__label">Service lines</p>
+        <h2 class="services-section__title">
+          A small set of advisory offerings, grounded in the same editorial discipline as the publication.
+        </h2>
+        <p class="services-section__description">
+          The goal is not to become a generalist shop. The goal is to provide clear,
+          decision-useful analysis for organizations that need better judgment about the
+          changing economics of the West.
+        </p>
+      </div>
 
-  <p>
-    The initial service lanes are expected to include executive briefings, custom
-    economic research, and public speaking or panel participation.
-  </p>
+      <div class="service-grid">
+        <article class="service-card">
+          <p class="service-card__label">Executive briefings</p>
+          <h3>Fast, high-signal framing for leaders who need the regional picture clearly.</h3>
+          <p>
+            Short, decision-oriented briefings on land, water, energy, housing, labor,
+            growth, and the structural pressures shaping the American West.
+          </p>
+        </article>
 
-  <p>
-    The point is not to be a generalist shop. The point is to provide clear,
-    decision-useful analysis for organizations that need to understand the changing
-    economics of the West.
-  </p>
+        <article class="service-card">
+          <p class="service-card__label">Custom research</p>
+          <h3>Targeted analysis built around a client’s actual operating questions.</h3>
+          <p>
+            Research scoped to the institutional problem at hand, whether the need is
+            market context, long-range regional framing, or a more precise analytical cut.
+          </p>
+        </article>
+
+        <article class="service-card">
+          <p class="service-card__label">Speaking</p>
+          <h3>Clear, data-literate framing for conferences, boards, and stakeholder groups.</h3>
+          <p>
+            Built for audiences that need substance, not generic keynote language or a
+            recycled trend deck.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="services-section">
+      <div class="services-section__header">
+        <p class="services-section__label">Best fit</p>
+        <h2 class="services-section__title">
+          Designed for institutions operating where regional economics actually matter.
+        </h2>
+      </div>
+
+      <div class="fit-grid">
+        <article class="fit-card">
+          <h3>Utilities and infrastructure organizations</h3>
+          <p>
+            Especially where water, energy demand, growth patterns, or long-run regional
+            planning questions are material.
+          </p>
+        </article>
+
+        <article class="fit-card">
+          <h3>Public agencies and regional institutions</h3>
+          <p>
+            For teams that need sharper framing around growth, land use, migration,
+            housing pressure, and the economic logic behind regional change.
+          </p>
+        </article>
+
+        <article class="fit-card">
+          <h3>Investors, operators, and strategy teams</h3>
+          <p>
+            For decision-makers who need a serious Western lens rather than generic
+            national commentary pasted onto local conditions.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="services-section">
+      <div class="services-section__header">
+        <p class="services-section__label">Working style</p>
+        <h2 class="services-section__title">
+          Engagements should feel concise, serious, and analytically honest.
+        </h2>
+      </div>
+
+      <div class="principles-grid">
+        <article class="principle-card">
+          <h3>Specific scope</h3>
+          <p>
+            The work should answer a real question, not drift into broad advisory theater.
+          </p>
+        </article>
+
+        <article class="principle-card">
+          <h3>Publication-grade reasoning</h3>
+          <p>
+            The same discipline applied to essays and visuals should carry into client work.
+          </p>
+        </article>
+
+        <article class="principle-card">
+          <h3>Regional truth over generic narratives</h3>
+          <p>
+            The point is to understand the West on its own terms, not through borrowed framing.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="services-cta">
+      <p class="services-cta__label">Inquiries</p>
+      <h2 class="services-cta__title">
+        If there is a concrete question, decision, or audience in view, start the conversation.
+      </h2>
+      <p class="services-cta__deck">
+        The best inquiries are specific about the institution, the problem, and the kind of
+        output needed.
+      </p>
+
+      <div class="services-cta__actions">
+        <a class="button button--primary" href="/contact">Contact Lookout West</a>
+        <a class="button" href="mailto:hello@lookoutwest.us">Email directly</a>
+      </div>
+    </section>
+  </div>
 </PageLayout>
+
+<style>
+  .services-page {
+    display: grid;
+    gap: var(--space-7);
+  }
+
+  .services-section {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .services-section + .services-section {
+    padding-top: var(--space-6);
+    border-top: var(--border-subtle);
+  }
+
+  .services-section__header {
+    max-width: 44rem;
+  }
+
+  .services-section__label,
+  .service-card__label,
+  .services-cta__label {
+    margin: 0;
+    color: var(--color-accent);
+    font-size: var(--step--1);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .services-section__title {
+    margin: var(--space-2) 0 0;
+    max-width: 24ch;
+    font-family: var(--font-display);
+    font-size: clamp(1.55rem, 2.3vw, 2.05rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .services-section__description,
+  .services-cta__deck {
+    margin-top: var(--space-4);
+    max-width: 44rem;
+    color: var(--color-muted);
+    font-size: var(--step-0);
+    line-height: 1.7;
+  }
+
+  .service-grid,
+  .fit-grid,
+  .principles-grid {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .service-card,
+  .fit-card,
+  .principle-card,
+  .services-cta {
+    padding: var(--space-5);
+    border: var(--border-subtle);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .services-cta {
+    padding: var(--space-6);
+  }
+
+  .service-card__label {
+    margin-bottom: var(--space-3);
+  }
+
+  .service-card h3,
+  .fit-card h3,
+  .principle-card h3 {
+    margin: 0;
+    max-width: 16ch;
+    font-family: var(--font-display);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  .service-card h3 {
+    font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+  }
+
+  .fit-card h3,
+  .principle-card h3 {
+    font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  }
+
+  .service-card p:last-child,
+  .fit-card p,
+  .principle-card p {
+    margin: var(--space-3) 0 0;
+    color: var(--color-muted);
+    line-height: 1.7;
+  }
+
+  .services-cta__title {
+    margin: var(--space-2) 0 0;
+    max-width: 23ch;
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 2.5vw, 2.2rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .services-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+  }
+
+  @media (min-width: 68rem) {
+    .service-grid,
+    .fit-grid,
+    .principles-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 56rem) {
+    .services-page {
+      gap: var(--space-6);
+    }
+
+    .services-section + .services-section {
+      padding-top: var(--space-5);
+    }
+
+    .service-card,
+    .fit-card,
+    .principle-card,
+    .services-cta {
+      border-radius: var(--radius-md);
+    }
+
+    .services-section__description,
+    .services-cta__deck {
+      font-size: 1.0625rem;
+    }
+  }
+</style>

@@ -7,23 +7,40 @@ const pageTitle = "Lookout West | Research, data, and decisions in the American 
 const pageDescription =
   "Independent research, data, and economic analysis on the American West.";
 
-const publishedArticles = (await getCollection("articles"))
+const allArticles = await getCollection("articles");
+
+const publishedArticles = allArticles
   .filter((article) => !article.data.draft)
   .sort(
-    (a, b) =>
-      b.data.publishDate.getTime() - a.data.publishDate.getTime()
+    (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+  );
+
+const forthcomingArticles = allArticles
+  .filter((article) => article.data.draft)
+  .sort(
+    (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
   );
 
 const featuredArticle =
   publishedArticles.find((article) => article.data.featured) ??
   publishedArticles[0] ??
   null;
+
+const nextArticles = forthcomingArticles.slice(0, 2);
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(date);
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <Container>
     <section class="hero">
-      <div>
+      <div class="hero__content">
         <p class="hero__eyebrow">Research, data, and decisions in the American West.</p>
         <h1 class="hero__title">A publication-first journal for the changing West.</h1>
         <p class="hero__deck">
@@ -38,36 +55,94 @@ const featuredArticle =
         </div>
       </div>
 
-      <div class="preview-grid">
-        {featuredArticle && (
-          <article class="preview-card">
-            <p class="preview-card__label">Featured research</p>
-            <h2>
-              <a href={`/research/${featuredArticle.id}/`}>
-                {featuredArticle.data.title}
-              </a>
-            </h2>
-            <p>{featuredArticle.data.deck}</p>
-          </article>
-        )}
+      {featuredArticle && (
+        <article class="hero-feature">
+          <p class="hero-feature__label">Featured research</p>
+          <p class="hero-feature__topic">{featuredArticle.data.topic}</p>
+          <h2 class="hero-feature__title">
+            <a href={`/research/${featuredArticle.id}/`}>
+              {featuredArticle.data.title}
+            </a>
+          </h2>
+          <p class="hero-feature__deck">{featuredArticle.data.deck}</p>
+          <div class="hero-feature__meta">
+            <span>{featuredArticle.data.author}</span>
+            <span aria-hidden="true">•</span>
+            <time datetime={featuredArticle.data.publishDate.toISOString()}>
+              {formatDate(featuredArticle.data.publishDate)}
+            </time>
+          </div>
+        </article>
+      )}
+    </section>
 
-        <article class="preview-card">
-          <p class="preview-card__label">What this covers</p>
-          <h2>Land, water, energy, housing, labor, and growth.</h2>
+    {nextArticles.length > 0 && (
+      <section class="front-section">
+        <div class="front-section__header">
+          <p class="front-section__label">Next in the journal</p>
+          <h2 class="front-section__title">
+            The publication is being built around flagship essays, not filler.
+          </h2>
+          <p class="front-section__description">
+            The next pieces extend the editorial system into housing and energy so the
+            site starts to read like a real institution, not a one-article prototype.
+          </p>
+        </div>
+
+        <div class="story-grid">
+          {nextArticles.map((article) => (
+            <article class="story-card story-card--muted">
+              <p class="story-card__topic">{article.data.topic}</p>
+              <h3 class="story-card__title">{article.data.title}</h3>
+              <p class="story-card__deck">{article.data.deck}</p>
+              <p class="story-card__status">In development</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="front-section">
+      <div class="front-section__header">
+        <p class="front-section__label">Advisory work</p>
+        <h2 class="front-section__title">
+          Consultancy should feel like an extension of the publication.
+        </h2>
+        <p class="front-section__description">
+          The service surface should read as specific, serious, and decision-useful for
+          institutions operating in the West.
+        </p>
+      </div>
+
+      <div class="service-grid">
+        <article class="service-card">
+          <p class="service-card__label">Executive briefings</p>
+          <h3>Concise regional intelligence for leaders who need signal, not noise.</h3>
           <p>
-            The goal is durable regional judgment, not generic commentary or a rushed
-            dashboard product.
+            Structured briefings on land, water, energy, housing, labor, and growth.
           </p>
         </article>
 
-        <article class="preview-card">
-          <p class="preview-card__label">Services</p>
-          <h2>Research-backed advisory work for institutions in the West.</h2>
+        <article class="service-card">
+          <p class="service-card__label">Custom research</p>
+          <h3>Decision-oriented analysis shaped to a client’s operating questions.</h3>
           <p>
-            Briefings, custom research, and speaking will grow out of the same
-            editorial discipline that drives the publication.
+            Built for utilities, public agencies, investors, and regional institutions.
           </p>
         </article>
+
+        <article class="service-card">
+          <p class="service-card__label">Speaking</p>
+          <h3>Clear, data-literate framing for boards, conferences, and stakeholder groups.</h3>
+          <p>
+            The goal is credibility and clarity, not generic keynote language.
+          </p>
+        </article>
+      </div>
+
+      <div class="front-section__actions">
+        <a class="button button--primary" href="/services">Explore services</a>
+        <a class="button" href="/contact">Make contact</a>
       </div>
     </section>
   </Container>
@@ -77,13 +152,24 @@ const featuredArticle =
   .hero {
     display: grid;
     gap: var(--space-6);
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
   }
 
-  .hero__eyebrow {
+  .hero__eyebrow,
+  .front-section__label,
+  .hero-feature__label,
+  .hero-feature__topic,
+  .story-card__topic,
+  .service-card__label {
     color: var(--color-accent);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-size: var(--step--1);
+    font-weight: 600;
+  }
+
+  .hero__eyebrow {
     margin-bottom: var(--space-3);
   }
 
@@ -92,65 +178,185 @@ const featuredArticle =
     font-size: clamp(2.5rem, 6vw, 5rem);
     line-height: 0.98;
     letter-spacing: -0.04em;
-    max-width: 12ch;
+    max-width: 10ch;
     text-wrap: balance;
   }
 
   .hero__deck {
+    max-width: 42rem;
     font-size: var(--step-1);
     color: var(--color-muted);
-    max-width: 42rem;
     line-height: 1.7;
   }
 
-  .hero__actions {
+  .hero__actions,
+  .front-section__actions {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-3);
     margin-top: var(--space-5);
   }
 
-  .preview-grid {
-    display: grid;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
-
-  .preview-card {
-    padding: var(--space-5);
+  .hero-feature,
+  .story-card,
+  .service-card {
     border: var(--border-subtle);
     border-radius: var(--radius-lg);
     background: rgba(255, 255, 255, 0.6);
   }
 
-  .preview-card__label {
-    font-size: var(--step--1);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-accent);
-    margin-bottom: var(--space-3);
+  .hero-feature {
+    padding: var(--space-6);
+    align-self: end;
   }
 
-  .preview-card h2 {
+  .hero-feature__topic {
+    margin: 0 0 var(--space-2);
+  }
+
+  .hero-feature__title {
+    margin: 0;
     font-family: var(--font-display);
-    font-size: var(--step-2);
-    line-height: 1.08;
-    letter-spacing: -0.02em;
-    margin-bottom: var(--space-3);
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
   }
 
-  .preview-card p {
+  .hero-feature__deck {
+    margin: var(--space-4) 0 0;
     color: var(--color-muted);
+    font-size: var(--step-0);
+    line-height: 1.7;
   }
 
-  .preview-card h2 a:hover,
-  .preview-card h2 a:focus-visible {
+  .hero-feature__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: var(--space-4);
+    color: var(--color-muted);
+    font-size: var(--step--1);
+  }
+
+  .hero-feature__title a:hover,
+  .hero-feature__title a:focus-visible {
     color: var(--color-accent);
   }
 
-  @media (min-width: 900px) {
-    .preview-grid {
-      grid-template-columns: repeat(3, 1fr);
+  .front-section {
+    padding-top: var(--space-7);
+    padding-bottom: var(--space-7);
+    border-top: var(--border-subtle);
+  }
+
+  .front-section__header {
+    max-width: 46rem;
+    margin-bottom: var(--space-5);
+  }
+
+  .front-section__title {
+    margin: var(--space-2) 0 0;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .front-section__description {
+    margin-top: var(--space-4);
+    color: var(--color-muted);
+    font-size: var(--step-1);
+    line-height: 1.7;
+  }
+
+  .story-grid,
+  .service-grid {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .story-card,
+  .service-card {
+    padding: var(--space-5);
+  }
+
+  .story-card__topic,
+  .service-card__label {
+    margin: 0 0 var(--space-3);
+  }
+
+  .story-card__title,
+  .service-card h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .story-card__title {
+    font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  }
+
+  .service-card h3 {
+    font-size: clamp(1.35rem, 2vw, 1.85rem);
+  }
+
+  .story-card__deck,
+  .service-card p:last-child {
+    margin: var(--space-4) 0 0;
+    color: var(--color-muted);
+    line-height: 1.7;
+  }
+
+  .story-card__status {
+    margin-top: var(--space-4);
+    color: var(--color-muted);
+    font-size: var(--step--1);
+  }
+
+  @media (min-width: 68rem) {
+    .hero {
+      grid-template-columns: minmax(0, 1.2fr) minmax(22rem, 0.8fr);
+      align-items: start;
+    }
+
+    .story-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .service-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 56rem) {
+    .hero {
+      padding-top: var(--space-6);
+      padding-bottom: var(--space-6);
+    }
+
+    .hero__title {
+      max-width: 9ch;
+      font-size: clamp(2.2rem, 11vw, 3.8rem);
+      line-height: 0.97;
+    }
+
+    .hero__deck,
+    .front-section__description {
+      font-size: 1.0625rem;
+    }
+
+    .front-section {
+      padding-top: var(--space-6);
+      padding-bottom: var(--space-6);
+    }
+
+    .hero-feature,
+    .story-card,
+    .service-card {
+      border-radius: var(--radius-md);
     }
   }
 </style>
