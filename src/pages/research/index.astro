@@ -32,6 +32,9 @@ const formatDate = (date: Date) =>
     year: "numeric",
     timeZone: "UTC",
   }).format(date);
+
+const toTopicSlug = (value: string) =>
+  value.toLowerCase().trim().replace(/\s+/g, "-");
 ---
 
 <PageLayout
@@ -48,7 +51,11 @@ const formatDate = (date: Date) =>
         <p class="research-index__label">Featured</p>
 
         <article class="research-card research-card--featured">
-          <p class="research-card__topic">{featuredArticle.data.topic}</p>
+          <p class="research-card__topic">
+            <a href={`/research/topics/${toTopicSlug(featuredArticle.data.topics?.[0] ?? featuredArticle.data.topic)}/`}>
+              {featuredArticle.data.topic}
+            </a>
+          </p>
           <h2 class="research-card__title">
             <a href={`/research/${featuredArticle.id}/`}>
               {featuredArticle.data.title}
@@ -73,7 +80,11 @@ const formatDate = (date: Date) =>
         <div class="research-grid research-grid--archive">
           {archiveArticles.map((article) => (
             <article class="research-card">
-              <p class="research-card__topic">{article.data.topic}</p>
+              <p class="research-card__topic">
+                <a href={`/research/topics/${toTopicSlug(article.data.topics?.[0] ?? article.data.topic)}/`}>
+                  {article.data.topic}
+                </a>
+              </p>
               <h2 class="research-card__title research-card__title--archive">
                 <a href={`/research/${article.id}/`}>{article.data.title}</a>
               </h2>
@@ -98,7 +109,11 @@ const formatDate = (date: Date) =>
         <div class="research-grid research-grid--forthcoming">
           {forthcomingArticles.map((article) => (
             <article class="research-card research-card--forthcoming">
-              <p class="research-card__topic">{article.data.topic}</p>
+              <p class="research-card__topic">
+                <a href={`/research/topics/${toTopicSlug(article.data.topics?.[0] ?? article.data.topic)}/`}>
+                  {article.data.topic}
+                </a>
+              </p>
               <h2 class="research-card__title research-card__title--archive">
                 {article.data.title}
               </h2>
@@ -171,6 +186,16 @@ const formatDate = (date: Date) =>
 
   .research-card__topic {
     margin-bottom: var(--space-3);
+  }
+
+  .research-card__topic a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .research-card__topic a:hover,
+  .research-card__topic a:focus-visible {
+    color: var(--color-accent);
   }
 
   .research-card__title {

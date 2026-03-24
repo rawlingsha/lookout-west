@@ -41,6 +41,7 @@ const topics = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/topics" }),
   schema: z.object({
     title: z.string(),
+    slug: z.string(),
     description: z.string().optional(),
   }),
 });

@@ -7,6 +7,7 @@ interface Props {
   title: string;
   deck: string;
   topic: string;
+  topicHref?: string;
   author: string;
   publishDate: Date;
   updatedDate?: Date;
@@ -16,6 +17,7 @@ const {
   title,
   deck,
   topic,
+  topicHref,
   author,
   publishDate,
   updatedDate,
@@ -39,7 +41,13 @@ const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
   <article class="article-layout">
     <Container>
       <header class="article-layout__header">
-        <p class="article-layout__eyebrow">{topic}</p>
+        <p class="article-layout__eyebrow">
+          {topicHref ? (
+            <a class="article-layout__eyebrow-link" href={topicHref}>{topic}</a>
+          ) : (
+            topic
+          )}
+        </p>
         <h1 class="article-layout__title">{title}</h1>
         <p class="article-layout__deck">{deck}</p>
 
@@ -107,6 +115,16 @@ const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+  }
+
+  .article-layout__eyebrow-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .article-layout__eyebrow-link:hover,
+  .article-layout__eyebrow-link:focus-visible {
+    color: var(--color-text);
   }
 
   .article-layout__title {

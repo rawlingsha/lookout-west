@@ -1,0 +1,151 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "../../../layouts/PageLayout.astro";
+
+const topics = (await getCollection("topics")).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title)
+);
+
+const articles = await getCollection("articles");
+
+const toTopicSlug = (value: string) =>
+  value.toLowerCase().trim().replace(/\s+/g, "-");
+
+const publishedCounts = new Map<string, number>();
+const draftCounts = new Map<string, number>();
+
+for (const article of articles) {
+  const topicKeys = new Set(
+    (article.data.topics?.length ? article.data.topics : [article.data.topic]).map(
+      toTopicSlug
+    )
+  );
+
+  const target = article.data.draft ? draftCounts : publishedCounts;
+
+  for (const key of topicKeys) {
+    target.set(key, (target.get(key) ?? 0) + 1);
+  }
+}
+
+const countLabel = (count: number, singular: string, plural = `${singular}s`) =>
+  `${count} ${count === 1 ? singular : plural}`;
+
+const topicCards = topics.map((topic) => {
+  const slug = topic.data.slug;
+  const publishedCount = publishedCounts.get(slug) ?? 0;
+  const draftCount = draftCounts.get(slug) ?? 0;
+
+  return {
+    ...topic,
+    slug,
+    publishedCount,
+    draftCount,
+    publishedLabel: countLabel(publishedCount, "published article"),
+    draftLabel: countLabel(draftCount, "article in development", "articles in development"),
+  };
+});
+---
+
+<PageLayout
+  title="Topics"
+  description="Topic pages for research on water, energy, housing, labor, and other systems shaping the American West."
+  eyebrow="Research"
+  intro="Browse the publication by topic: the systems, pressures, and regional questions that organize the work."
+  prose={false}
+  contentWidth="wide"
+>
+  <div class="topics-page">
+    <section class="topics-grid">
+      {topicCards.map((topic) => (
+        <a class="topic-card" href={`/research/topics/${topic.slug}/`}>
+          <p class="topic-card__label">Topic</p>
+          <h2 class="topic-card__title">{topic.data.title}</h2>
+
+          {topic.data.description && (
+            <p class="topic-card__deck">{topic.data.description}</p>
+          )}
+
+          <div class="topic-card__meta">
+            <span>{topic.publishedLabel}</span>
+            <span aria-hidden="true">•</span>
+            <span>{topic.draftLabel}</span>
+          </div>
+        </a>
+      ))}
+    </section>
+  </div>
+</PageLayout>
+
+<style>
+  .topics-page {
+    display: grid;
+  }
+
+  .topics-grid {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .topic-card {
+    display: grid;
+    align-content: start;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    border: var(--border-subtle);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.56);
+    text-decoration: none;
+  }
+
+  .topic-card:hover,
+  .topic-card:focus-visible {
+    border-color: rgba(74, 93, 68, 0.24);
+    transform: translateY(-1px);
+  }
+
+  .topic-card__label {
+    margin: 0;
+    color: var(--color-accent);
+    font-size: var(--step--1);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .topic-card__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2vw, 1.85rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .topic-card__deck {
+    margin: 0;
+    max-width: 34ch;
+    color: var(--color-muted);
+    line-height: 1.7;
+  }
+
+  .topic-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.65rem;
+    color: var(--color-muted);
+    font-size: var(--step--1);
+  }
+
+  @media (min-width: 64rem) {
+    .topics-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 56rem) {
+    .topic-card {
+      border-radius: var(--radius-md);
+    }
+  }
+</style>

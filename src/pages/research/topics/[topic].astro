@@ -1,0 +1,230 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "../../../layouts/PageLayout.astro";
+
+const slugifyTopic = (value: string) =>
+  value.toLowerCase().trim().replace(/\s+/g, "-");
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(date);
+
+export async function getStaticPaths() {
+  const [topics, articles] = await Promise.all([
+    getCollection("topics"),
+    getCollection("articles"),
+  ]);
+
+  return topics.map((topic) => {
+    const slug = topic.data.slug;
+
+    const matchingArticles = articles
+      .filter((article) => {
+        const rawTopics =
+          article.data.topics && article.data.topics.length > 0
+            ? article.data.topics
+            : [article.data.topic];
+
+        const articleTopicSlugs = rawTopics.map((value) =>
+          value.toLowerCase().trim().replace(/\s+/g, "-")
+        );
+
+        return articleTopicSlugs.includes(slug);
+      })
+      .sort(
+        (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+      );
+
+    const published = matchingArticles.filter((article) => !article.data.draft);
+    const forthcoming = matchingArticles.filter((article) => article.data.draft);
+
+    return {
+      params: { topic: slug },
+      props: {
+        topic,
+        published,
+        forthcoming,
+      },
+    };
+  });
+}
+
+const { topic, published, forthcoming } = Astro.props;
+---
+
+<PageLayout
+  title={topic.data.title}
+  description={topic.data.description ?? `${topic.data.title} research from Lookout West.`}
+  eyebrow="Topic"
+  intro={topic.data.description ?? `Research and analysis on ${topic.data.title.toLowerCase()} across the American West.`}
+  prose={false}
+  contentWidth="wide"
+>
+  <div class="topic-page">
+    {published.length > 0 && (
+      <section class="topic-section">
+        <p class="topic-section__label">Published</p>
+
+        <div class="topic-grid">
+          {published.map((article) => (
+            <article class="topic-article-card">
+              <p class="topic-article-card__topic">
+                <a href={`/research/topics/${slugifyTopic(article.data.topics?.[0] ?? article.data.topic)}/`}>
+                  {article.data.topic}
+                </a>
+              </p>
+
+              <h2 class="topic-article-card__title">
+                <a href={`/research/${article.id}/`}>{article.data.title}</a>
+              </h2>
+
+              <p class="topic-article-card__deck">{article.data.deck}</p>
+
+              <div class="topic-article-card__meta">
+                <span>{article.data.author}</span>
+                <span aria-hidden="true">•</span>
+                <time datetime={article.data.publishDate.toISOString()}>
+                  {formatDate(article.data.publishDate)}
+                </time>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {forthcoming.length > 0 && (
+      <section class="topic-section">
+        <p class="topic-section__label">In development</p>
+
+        <div class="topic-grid">
+          {forthcoming.map((article) => (
+            <article class="topic-article-card topic-article-card--forthcoming">
+              <p class="topic-article-card__topic">
+                {article.data.topic}
+              </p>
+
+              <h2 class="topic-article-card__title">{article.data.title}</h2>
+              <p class="topic-article-card__deck">{article.data.deck}</p>
+              <p class="topic-article-card__status">In development</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {published.length === 0 && forthcoming.length === 0 && (
+      <section class="topic-empty">
+        <p class="topic-empty__label">No articles yet</p>
+        <h2 class="topic-empty__title">
+          This topic page is ready before the archive is.
+        </h2>
+        <p class="topic-empty__deck">
+          Additional reporting and analysis will be added here as the publication grows.
+        </p>
+      </section>
+    )}
+  </div>
+</PageLayout>
+
+<style>
+  .topic-page {
+    display: grid;
+    gap: var(--space-7);
+  }
+
+  .topic-section {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .topic-section__label,
+  .topic-empty__label,
+  .topic-article-card__topic {
+    margin: 0;
+    color: var(--color-accent);
+    font-size: var(--step--1);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .topic-grid {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .topic-article-card,
+  .topic-empty {
+    display: grid;
+    align-content: start;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    border: var(--border-subtle);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.56);
+  }
+
+  .topic-article-card__topic a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .topic-article-card__topic a:hover,
+  .topic-article-card__topic a:focus-visible,
+  .topic-article-card__title a:hover,
+  .topic-article-card__title a:focus-visible {
+    color: var(--color-accent);
+  }
+
+  .topic-article-card__title,
+  .topic-empty__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 1.8vw, 1.72rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .topic-article-card__deck,
+  .topic-empty__deck {
+    margin: 0;
+    max-width: 42rem;
+    color: var(--color-muted);
+    line-height: 1.7;
+  }
+
+  .topic-article-card__meta,
+  .topic-article-card__status {
+    color: var(--color-muted);
+    font-size: var(--step--1);
+  }
+
+  .topic-article-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.65rem;
+  }
+
+  @media (min-width: 64rem) {
+    .topic-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 56rem) {
+    .topic-page {
+      gap: var(--space-6);
+    }
+
+    .topic-article-card,
+    .topic-empty {
+      border-radius: var(--radius-md);
+    }
+  }
+</style>

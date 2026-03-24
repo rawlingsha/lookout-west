@@ -15,12 +15,20 @@ export async function getStaticPaths() {
 const { article } = Astro.props;
 const { Content } = await render(article);
 const sources = article.data.sources ?? [];
+
+const toTopicSlug = (value: string) =>
+  value.toLowerCase().trim().replace(/\s+/g, "-");
+
+const primaryTopicSlug = toTopicSlug(
+  article.data.topics?.[0] ?? article.data.topic
+);
 ---
 
 <ArticleLayout
   title={article.data.title}
   deck={article.data.deck}
   topic={article.data.topic}
+  topicHref={`/research/topics/${primaryTopicSlug}/`}
   author={article.data.author}
   publishDate={article.data.publishDate}
   updatedDate={article.data.updatedDate}
