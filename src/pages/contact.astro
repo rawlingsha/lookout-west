@@ -106,7 +106,7 @@ import PageLayout from "../layouts/PageLayout.astro";
   }
 
   .contact-section + .contact-section {
-    padding-top: var(--space-6);
+    padding-top: var(--space-5);
     border-top: var(--border-subtle);
   }
 
@@ -116,16 +116,23 @@ import PageLayout from "../layouts/PageLayout.astro";
     padding: var(--space-5);
     border: var(--border-subtle);
     border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.52);
   }
 
-  .contact-hero__content,
+  .contact-hero {
+    width: min(100%, 68rem);
+  }
+
+  .contact-hero__content {
+    max-width: 38rem;
+  }
+
   .contact-section__header {
-    max-width: 44rem;
+    max-width: 42rem;
   }
 
   .details-card {
-    max-width: 58rem;
+    width: min(100%, 56rem);
   }
 
   .contact-hero__label,
@@ -140,28 +147,35 @@ import PageLayout from "../layouts/PageLayout.astro";
 
   .contact-hero__title {
     margin: var(--space-2) 0 0;
-    max-width: 18ch;
+    max-width: 21ch;
     font-family: var(--font-display);
-    font-size: clamp(1.75rem, 2.6vw, 2.35rem);
-    line-height: 1.06;
+    font-size: clamp(1.42rem, 1.75vw, 1.7rem);
+    line-height: 1.1;
     letter-spacing: -0.02em;
     text-wrap: balance;
   }
 
   .contact-section__title {
     margin: var(--space-2) 0 0;
-    max-width: 22ch;
+    max-width: 24ch;
     font-family: var(--font-display);
-    font-size: clamp(1.5rem, 2.1vw, 1.95rem);
-    line-height: 1.08;
+    font-size: clamp(1.32rem, 1.7vw, 1.58rem);
+    line-height: 1.1;
     letter-spacing: -0.02em;
     text-wrap: balance;
   }
 
-  .contact-hero__deck,
+  .contact-hero__deck {
+    margin-top: var(--space-4);
+    max-width: 38rem;
+    color: var(--color-muted);
+    font-size: var(--step-0);
+    line-height: 1.7;
+  }
+
   .contact-section__description {
     margin-top: var(--space-4);
-    max-width: 44rem;
+    max-width: 42rem;
     color: var(--color-muted);
     font-size: var(--step-0);
     line-height: 1.7;
@@ -171,7 +185,7 @@ import PageLayout from "../layouts/PageLayout.astro";
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-3);
-    margin-top: var(--space-5);
+    margin-top: var(--space-4);
   }
 
   .contact-grid {
@@ -179,16 +193,24 @@ import PageLayout from "../layouts/PageLayout.astro";
     gap: var(--space-4);
   }
 
+  .contact-card {
+    display: grid;
+    align-content: start;
+    gap: var(--space-3);
+  }
+
   .contact-card h3 {
     margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(1.1rem, 1.4vw, 1.3rem);
-    line-height: 1.08;
+    font-size: clamp(1rem, 1.1vw, 1.16rem);
+    line-height: 1.12;
     letter-spacing: -0.02em;
+    text-wrap: balance;
   }
 
   .contact-card p {
-    margin: var(--space-3) 0 0;
+    margin: 0;
+    max-width: 30ch;
     color: var(--color-muted);
     line-height: 1.7;
   }
@@ -219,7 +241,7 @@ import PageLayout from "../layouts/PageLayout.astro";
     }
 
     .contact-section + .contact-section {
-      padding-top: var(--space-5);
+      padding-top: var(--space-4);
     }
 
     .contact-hero,

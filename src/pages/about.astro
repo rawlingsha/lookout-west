@@ -142,7 +142,7 @@ import PageLayout from "../layouts/PageLayout.astro";
   }
 
   .about-section + .about-section {
-    padding-top: var(--space-6);
+    padding-top: var(--space-5);
     border-top: var(--border-subtle);
   }
 
@@ -153,16 +153,24 @@ import PageLayout from "../layouts/PageLayout.astro";
     padding: var(--space-5);
     border: var(--border-subtle);
     border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.52);
+  }
+
+  .about-hero {
+    width: min(100%, 68rem);
   }
 
   .about-cta {
+    width: min(100%, 68rem);
     padding: var(--space-6);
   }
 
-  .about-hero__content,
+  .about-hero__content {
+    max-width: 38rem;
+  }
+
   .about-section__header {
-    max-width: 44rem;
+    max-width: 42rem;
   }
 
   .about-hero__label,
@@ -178,18 +186,25 @@ import PageLayout from "../layouts/PageLayout.astro";
 
   .about-hero__title {
     margin: var(--space-2) 0 0;
-    max-width: 15ch;
+    max-width: 18ch;
     font-family: var(--font-display);
-    font-size: clamp(1.95rem, 3vw, 2.85rem);
-    line-height: 1.04;
+    font-size: clamp(1.48rem, 1.9vw, 1.86rem);
+    line-height: 1.08;
     letter-spacing: -0.03em;
     text-wrap: balance;
   }
 
-  .about-hero__deck,
+  .about-hero__deck {
+    margin-top: var(--space-4);
+    max-width: 38rem;
+    color: var(--color-muted);
+    font-size: var(--step-0);
+    line-height: 1.7;
+  }
+
   .about-section__description {
     margin-top: var(--space-4);
-    max-width: 44rem;
+    max-width: 42rem;
     color: var(--color-muted);
     font-size: var(--step-0);
     line-height: 1.7;
@@ -198,10 +213,10 @@ import PageLayout from "../layouts/PageLayout.astro";
   .about-section__title,
   .about-cta__title {
     margin: var(--space-2) 0 0;
-    max-width: 24ch;
+    max-width: 26ch;
     font-family: var(--font-display);
-    font-size: clamp(1.45rem, 2vw, 1.85rem);
-    line-height: 1.08;
+    font-size: clamp(1.26rem, 1.55vw, 1.52rem);
+    line-height: 1.1;
     letter-spacing: -0.02em;
     text-wrap: balance;
   }
@@ -212,18 +227,27 @@ import PageLayout from "../layouts/PageLayout.astro";
     gap: var(--space-4);
   }
 
+  .about-card,
+  .coverage-card {
+    display: grid;
+    align-content: start;
+    gap: var(--space-3);
+  }
+
   .about-card h3,
   .coverage-card h3 {
     margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(1.08rem, 1.3vw, 1.22rem);
-    line-height: 1.08;
+    font-size: clamp(0.98rem, 1.02vw, 1.1rem);
+    line-height: 1.12;
     letter-spacing: -0.02em;
+    text-wrap: balance;
   }
 
   .about-card p,
   .coverage-card p {
-    margin: var(--space-3) 0 0;
+    margin: 0;
+    max-width: 30ch;
     color: var(--color-muted);
     line-height: 1.7;
   }
@@ -248,7 +272,7 @@ import PageLayout from "../layouts/PageLayout.astro";
     }
 
     .about-section + .about-section {
-      padding-top: var(--space-5);
+      padding-top: var(--space-4);
     }
 
     .about-hero,
