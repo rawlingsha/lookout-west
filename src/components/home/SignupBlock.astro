@@ -1,0 +1,85 @@
+---
+interface Props {
+  primaryHref?: string;
+  primaryLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}
+
+const {
+  primaryHref = "mailto:hello@lookoutwest.us?subject=Join%20the%20Lookout%20West%20list",
+  primaryLabel = "Join the list",
+  secondaryHref = "/research",
+  secondaryLabel = "Browse research",
+} = Astro.props;
+---
+
+<section class="signup-block" aria-labelledby="signup-block-title">
+  <p class="signup-block__label">Subscribe</p>
+  <h2 id="signup-block-title" class="signup-block__title">
+    Get new essays and regional signals as they publish.
+  </h2>
+  <p class="signup-block__deck">
+    Join the early list for flagship essays, new research, and selective notes on the
+    changing West. Until the full subscription flow is live, the cleanest path is a
+    direct email.
+  </p>
+
+  <div class="signup-block__actions">
+    <a class="button button--primary" href={primaryHref}>{primaryLabel}</a>
+    <a class="button" href={secondaryHref}>{secondaryLabel}</a>
+  </div>
+</section>
+
+<style>
+  .signup-block {
+    padding-top: var(--space-7);
+    padding-bottom: var(--space-8);
+    border-top: var(--border-subtle);
+  }
+
+  .signup-block__label {
+    margin: 0;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+
+  .signup-block__title {
+    margin: var(--space-2) 0 0;
+    max-width: 16ch;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .signup-block__deck {
+    margin-top: var(--space-4);
+    max-width: 42rem;
+    color: var(--color-muted);
+    font-size: var(--step-1);
+    line-height: 1.7;
+  }
+
+  .signup-block__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+  }
+
+  @media (max-width: 56rem) {
+    .signup-block {
+      padding-top: var(--space-6);
+      padding-bottom: var(--space-7);
+    }
+
+    .signup-block__deck {
+      font-size: 1.0625rem;
+    }
+  }
+</style>

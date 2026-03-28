@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Container from "../components/base/Container.astro";
+import SignupBlock from "../components/home/SignupBlock.astro";
 
 const pageTitle = "Lookout West | Research, data, and decisions in the American West";
 const pageDescription =
@@ -145,6 +146,7 @@ const formatDate = (date: Date) =>
         <a class="button" href="/contact">Make contact</a>
       </div>
     </section>
+    <SignupBlock />
   </Container>
 </BaseLayout>
 
