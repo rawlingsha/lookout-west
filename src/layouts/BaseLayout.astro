@@ -7,12 +7,18 @@ import { site } from "../data/site";
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 
 const {
   title = site.title,
   description = site.description,
+  ogImage = "/social/og-default.jpg",
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, site.siteUrl).toString();
+const absoluteOgImage = new URL(ogImage, site.siteUrl).toString();
+const rssUrl = new URL("/rss.xml", site.siteUrl).toString();
 ---
 
 <!doctype html>
@@ -22,7 +28,22 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={site.siteUrl + Astro.url.pathname} />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#F4F4F0" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/rss+xml" title="Lookout West RSS" href={rssUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={absoluteOgImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteOgImage} />
   </head>
   <body>
     <Header />
