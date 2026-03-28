@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/base/Container.astro";
+---
+
+<BaseLayout
+  title="Page not found | Lookout West"
+  description="The page you requested could not be found."
+>
+  <Container>
+    <section class="not-found">
+      <p class="not-found__label">404</p>
+      <h1 class="not-found__title">That page is not here.</h1>
+      <p class="not-found__deck">
+        The link may be outdated, the page may have moved, or the address may be wrong.
+        Start from the research archive or return to the front door.
+      </p>
+
+      <div class="not-found__actions">
+        <a class="button button--primary" href="/research">Browse research</a>
+        <a class="button" href="/">Go home</a>
+      </div>
+    </section>
+  </Container>
+</BaseLayout>
+
+<style>
+  .not-found {
+    padding-top: var(--space-9);
+    padding-bottom: var(--space-9);
+    max-width: 42rem;
+  }
+
+  .not-found__label {
+    margin: 0 0 var(--space-3);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+
+  .not-found__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    max-width: 10ch;
+    text-wrap: balance;
+  }
+
+  .not-found__deck {
+    margin-top: var(--space-4);
+    max-width: 36rem;
+    color: var(--color-muted);
+    font-size: var(--step-1);
+    line-height: 1.7;
+  }
+
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+  }
+
+  @media (max-width: 56rem) {
+    .not-found {
+      padding-top: var(--space-8);
+      padding-bottom: var(--space-8);
+    }
+
+    .not-found__deck {
+      font-size: 1.0625rem;
+    }
+  }
+</style>
