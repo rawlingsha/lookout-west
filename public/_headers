@@ -1,3 +1,4 @@
+
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
@@ -5,10 +6,11 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
   Content-Security-Policy: default-src 'self'; base-uri 'self'; frame-ancestors 'none'; form-action 'self' mailto:; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; script-src 'self'; connect-src 'self'
 
-https://lookout-west.pages.dev/*
+https://:project.pages.dev/*
   X-Robots-Tag: noindex
 
-https://:version.lookout-west.pages.dev/*
+https://:version.:project.pages.dev/*
   X-Robots-Tag: noindex
+
 
 
