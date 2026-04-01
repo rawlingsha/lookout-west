@@ -525,3 +525,32 @@ html.has-overlay-open body {
     padding-inline: 0.9rem;
   }
 }
+
+@media (max-width: 34rem) {
+  .site-header__inner {
+    gap: 0.5rem;
+    min-height: 3.85rem;
+    padding: 0.5rem 0;
+  }
+
+  .site-header__brand {
+    font-size: 0.98rem;
+    letter-spacing: 0.08em;
+  }
+
+  .site-header__mobile {
+    gap: 0.45rem;
+  }
+
+  .site-header__subscribe-button--mobile,
+  .mobile-menu__toggle {
+    min-height: 2.35rem;
+    padding: 0.55rem 0.72rem;
+  }
+
+  .site-header__subscribe-button--mobile,
+  .mobile-menu__label {
+    font-size: 0.7rem;
+    letter-spacing: 0.07em;
+  }
+}
