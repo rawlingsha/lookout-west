@@ -1,0 +1,110 @@
+---
+const headline = "Stay up to date with indispensable analysis of the American West.";
+const blurb =
+  "New essays, research notes, and publication updates from Lookout West.";
+const formAction = "https://buttondown.com/api/emails/embed-subscribe/lookoutwest";
+---
+
+<div
+  class="subscribe-modal"
+  data-subscribe-modal
+  hidden
+  aria-hidden="true"
+>
+  <button
+    type="button"
+    class="subscribe-modal__backdrop"
+    data-subscribe-close
+    aria-label="Close subscription dialog"
+    tabindex="-1"
+  ></button>
+
+  <div
+    class="subscribe-modal__dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="subscribe-modal-title"
+    aria-describedby="subscribe-modal-description"
+  >
+    <button
+      type="button"
+      class="subscribe-modal__close"
+      data-subscribe-close
+      aria-label="Close subscription dialog"
+    >
+      ×
+    </button>
+
+    <div class="subscribe-modal__content" data-subscribe-state="form">
+      <p class="subscribe-modal__eyebrow">Subscribe</p>
+      <h2 id="subscribe-modal-title" class="subscribe-modal__title">
+        {headline}
+      </h2>
+      <p id="subscribe-modal-description" class="subscribe-modal__description">
+        {blurb}
+      </p>
+
+      <form
+        class="subscribe-modal__form"
+        action={formAction}
+        method="post"
+        target="buttondown-subscribe-target"
+        data-subscribe-form
+      >
+        <label class="visually-hidden" for="buttondown-email">
+          Email address
+        </label>
+
+        <input
+          id="buttondown-email"
+          class="subscribe-modal__input"
+          type="email"
+          name="email"
+          placeholder="you@example.com"
+          autocomplete="email"
+          required
+        />
+
+        <input type="hidden" name="embed" value="1" />
+
+        <button type="submit" class="subscribe-modal__submit">
+          Subscribe
+        </button>
+      </form>
+
+      <p class="subscribe-modal__note">
+        After you subscribe, check your inbox for the confirmation email.
+      </p>
+    </div>
+
+    <div
+      class="subscribe-modal__content"
+      data-subscribe-state="submitted"
+      hidden
+    >
+      <p class="subscribe-modal__eyebrow">Check your inbox</p>
+      <h2 class="subscribe-modal__title">Almost done.</h2>
+      <p class="subscribe-modal__description">
+        If your address was accepted, Buttondown will send a confirmation email.
+        Once you confirm, you’ll be on the list.
+      </p>
+
+      <button
+        type="button"
+        class="subscribe-modal__submit subscribe-modal__submit--secondary"
+        data-subscribe-close
+      >
+        Close
+      </button>
+    </div>
+  </div>
+
+  <iframe
+    name="buttondown-subscribe-target"
+    class="visually-hidden"
+    tabindex="-1"
+    aria-hidden="true"
+  ></iframe>
+</div>
+
+<script is:inline src="/scripts/subscribe-modal.js"></script>

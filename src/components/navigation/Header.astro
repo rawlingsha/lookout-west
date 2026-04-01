@@ -1,6 +1,7 @@
 ---
 import Container from "../base/Container.astro";
 import MobileMenu from "./MobileMenu.astro";
+import SubscribeModal from "./SubscribeModal.astro";
 import { primaryNav } from "../../data/navigation";
 
 const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
@@ -17,23 +18,43 @@ const isActive = (href: string) => {
       Lookout West
     </a>
 
-    <nav class="site-header__nav site-header__nav--desktop" aria-label="Primary">
-      <ul>
-        {primaryNav.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              aria-current={isActive(item.href) ? "page" : undefined}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div class="site-header__desktop">
+      <nav class="site-header__nav site-header__nav--desktop" aria-label="Primary">
+        <ul>
+          {primaryNav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <button
+        type="button"
+        class="site-header__subscribe-button"
+        data-subscribe-open
+      >
+        Subscribe
+      </button>
+    </div>
 
     <div class="site-header__mobile">
+      <button
+        type="button"
+        class="site-header__subscribe-button site-header__subscribe-button--mobile"
+        data-subscribe-open
+      >
+        Subscribe
+      </button>
+
       <MobileMenu currentPath={pathname} />
     </div>
   </Container>
+
+  <SubscribeModal />
 </header>
