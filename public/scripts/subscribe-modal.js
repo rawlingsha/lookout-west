@@ -8,11 +8,14 @@
     const formState = modal.querySelector('[data-subscribe-state="form"]');
     const submittedState = modal.querySelector('[data-subscribe-state="submitted"]');
     const form = modal.querySelector("[data-subscribe-form]");
+    const iframe = modal.querySelector('iframe[name="buttondown-subscribe-target"]');
     const emailInput = modal.querySelector("#buttondown-email");
     const openButtons = document.querySelectorAll("[data-subscribe-open]");
     const closeButtons = modal.querySelectorAll("[data-subscribe-close]");
 
     let lastFocusedElement = null;
+    let awaitingResponse = false;
+    let iframeInitialized = false;
 
     const setSubmittedState = (submitted) => {
       if (!formState || !submittedState) return;
@@ -36,6 +39,7 @@
       modal.setAttribute("aria-hidden", "true");
       document.documentElement.classList.remove("has-overlay-open");
       setSubmittedState(false);
+      awaitingResponse = false;
       if (form) form.reset();
       if (lastFocusedElement instanceof HTMLElement) {
         lastFocusedElement.focus();
@@ -58,9 +62,21 @@
 
     if (form) {
       form.addEventListener("submit", () => {
-        window.setTimeout(() => {
+        awaitingResponse = true;
+      });
+    }
+
+    if (iframe) {
+      iframe.addEventListener("load", () => {
+        if (!iframeInitialized) {
+          iframeInitialized = true;
+          return;
+        }
+
+        if (awaitingResponse) {
+          awaitingResponse = false;
           setSubmittedState(true);
-        }, 150);
+        }
       });
     }
   };
