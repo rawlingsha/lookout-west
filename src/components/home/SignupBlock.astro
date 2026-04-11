@@ -1,14 +1,10 @@
 ---
 interface Props {
-  primaryHref?: string;
-  primaryLabel?: string;
   secondaryHref?: string;
   secondaryLabel?: string;
 }
 
 const {
-  primaryHref = "mailto:hello@lookoutwest.us?subject=Join%20the%20Lookout%20West%20list",
-  primaryLabel = "Join the list",
   secondaryHref = "/research",
   secondaryLabel = "Browse research",
 } = Astro.props;
@@ -20,13 +16,14 @@ const {
     Get new essays and regional signals as they publish.
   </h2>
   <p class="signup-block__deck">
-    Join the early list for flagship essays, new research, and selective notes on the
-    changing West. Until the full subscription flow is live, the cleanest path is a
-    direct email.
+    Subscribe for flagship essays, new research, and selective notes on the changing
+    West. New readers should use the subscription flow here rather than email.
   </p>
 
   <div class="signup-block__actions">
-    <a class="button button--primary" href={primaryHref}>{primaryLabel}</a>
+    <button type="button" class="button button--primary" data-subscribe-open>
+      Subscribe
+    </button>
     <a class="button" href={secondaryHref}>{secondaryLabel}</a>
   </div>
 </section>
