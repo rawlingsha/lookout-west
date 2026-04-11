@@ -1,12 +1,15 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
+
+const inquiryMailto =
+  "mailto:lookoutwest.us@gmail.com?subject=Lookout%20West%20inquiry&body=Name%3A%0AOrganization%3A%0AQuestion%20or%20decision%3A%0ATiming%3A%0ARequested%20output%3A%0A";
 ---
 
 <PageLayout
   title="Services"
   description="Briefings, custom research, and speaking for institutions making decisions in and around the American West."
   eyebrow="Services"
-  intro="Briefings, custom research, and speaking for institutions making decisions in and around the American West."
+  intro="Briefings, custom research, and speaking for institutions that need clear judgment about the economics of the American West."
   prose={false}
   contentWidth="wide"
 >
@@ -15,7 +18,7 @@ import PageLayout from "../layouts/PageLayout.astro";
       <div class="services-section__header">
         <p class="services-section__label">Service lines</p>
         <h2 class="services-section__title">
-          A small set of advisory offerings, grounded in the same editorial discipline as the publication.
+          A small advisory surface, grounded in the same editorial discipline as the publication.
         </h2>
         <p class="services-section__description">
           The goal is not to become a generalist shop. The goal is to provide clear,
@@ -66,8 +69,8 @@ import PageLayout from "../layouts/PageLayout.astro";
         <article class="fit-card">
           <h3>Utilities and infrastructure organizations</h3>
           <p>
-            Especially where water, energy demand, growth patterns, or long-run regional
-            planning questions are material.
+            Especially where water, energy demand, growth patterns, reliability questions,
+            or long-run regional planning are material.
           </p>
         </article>
 
@@ -91,31 +94,34 @@ import PageLayout from "../layouts/PageLayout.astro";
 
     <section class="services-section">
       <div class="services-section__header">
-        <p class="services-section__label">Working style</p>
+        <p class="services-section__label">Good reasons to reach out</p>
         <h2 class="services-section__title">
-          Engagements should feel concise, serious, and analytically honest.
+          The strongest engagements begin with a concrete decision, audience, or framing problem.
         </h2>
       </div>
 
       <div class="principles-grid">
         <article class="principle-card">
-          <h3>Specific scope</h3>
+          <h3>A major decision is in view</h3>
           <p>
-            The work should answer a real question, not drift into broad advisory theater.
+            For example: planning, investment, growth, reliability, stakeholder strategy,
+            or a public-facing decision that needs stronger economic framing.
           </p>
         </article>
 
         <article class="principle-card">
-          <h3>Publication-grade reasoning</h3>
+          <h3>The regional picture is blurry</h3>
           <p>
-            The same discipline applied to essays and visuals should carry into client work.
+            When national commentary is not enough and the work needs a clearer Western
+            frame, sharper synthesis, or better signal selection.
           </p>
         </article>
 
         <article class="principle-card">
-          <h3>Regional truth over generic narratives</h3>
+          <h3>A room needs substance quickly</h3>
           <p>
-            The point is to understand the West on its own terms, not through borrowed framing.
+            Boards, conferences, leadership teams, and public audiences often need a
+            concise briefing rather than a long consulting process.
           </p>
         </article>
       </div>
@@ -124,16 +130,16 @@ import PageLayout from "../layouts/PageLayout.astro";
     <section class="services-cta">
       <p class="services-cta__label">Inquiries</p>
       <h2 class="services-cta__title">
-        If there is a concrete question, decision, or audience in view, start the conversation.
+        A short note is enough to start.
       </h2>
       <p class="services-cta__deck">
-        The best inquiries are specific about the institution, the problem, and the kind of
-        output needed.
+        The best inquiries are specific about the institution, the problem, the timing,
+        and the kind of output needed. You do not need a polished scope document to begin.
       </p>
 
       <div class="services-cta__actions">
-        <a class="button button--primary" href="/contact">Contact Lookout West</a>
-        <a class="button" href="mailto:hello@lookoutwest.us">Email directly</a>
+        <a class="button button--primary" href="/contact">Start an inquiry</a>
+        <a class="button" href={inquiryMailto}>Email directly</a>
       </div>
     </section>
   </div>
@@ -172,11 +178,11 @@ import PageLayout from "../layouts/PageLayout.astro";
 
   .services-section__title {
     margin: var(--space-2) 0 0;
-    max-width: 26ch;
+    max-width: 22ch;
     font-family: var(--font-display);
-    font-size: clamp(1.38rem, 1.75vw, 1.72rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    font-size: clamp(1.75rem, 2.6vw, 2.35rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
     text-wrap: balance;
   }
 
@@ -228,36 +234,36 @@ import PageLayout from "../layouts/PageLayout.astro";
     margin: 0;
     max-width: 18ch;
     font-family: var(--font-display);
-    line-height: 1.12;
-    letter-spacing: -0.02em;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
     text-wrap: balance;
   }
 
   .service-card h3 {
-    font-size: clamp(1.05rem, 1.15vw, 1.22rem);
+    font-size: clamp(1.3rem, 1.6vw, 1.55rem);
   }
 
   .fit-card h3,
   .principle-card h3 {
-    font-size: clamp(1rem, 1.05vw, 1.1rem);
+    font-size: clamp(1.12rem, 1.25vw, 1.28rem);
   }
 
   .service-card p:last-child,
   .fit-card p,
   .principle-card p {
     margin: 0;
-    max-width: 32ch;
+    max-width: 34ch;
     color: var(--color-muted);
     line-height: 1.7;
   }
 
   .services-cta__title {
     margin: var(--space-2) 0 0;
-    max-width: 24ch;
+    max-width: 22ch;
     font-family: var(--font-display);
-    font-size: clamp(1.45rem, 1.95vw, 1.8rem);
-    line-height: 1.08;
-    letter-spacing: -0.02em;
+    font-size: clamp(1.85rem, 2.8vw, 2.45rem);
+    line-height: 1.03;
+    letter-spacing: -0.03em;
     text-wrap: balance;
   }
 

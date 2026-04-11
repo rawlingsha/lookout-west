@@ -5,7 +5,7 @@ export const site = {
   description:
     "Independent research, data, and economic analysis on the American West.",
   tagline: "Research, data, and decisions in the American West.",
-  email: "hello@lookoutwest.us",
+  email: "lookoutwest.us@gmail.com",
   social: {
     x: "",
     instagram: "",

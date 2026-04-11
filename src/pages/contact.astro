@@ -1,12 +1,15 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
+
+const inquiryMailto =
+  "mailto:lookoutwest.us@gmail.com?subject=Lookout%20West%20inquiry&body=Name%3A%0AOrganization%3A%0AQuestion%20or%20decision%3A%0ATiming%3A%0ARequested%20output%3A%0A";
 ---
 
 <PageLayout
   title="Contact"
   description="Contact Lookout West for research, speaking, and advisory inquiries."
   eyebrow="Contact"
-  intro="For research, speaking, or advisory inquiries, reach out directly."
+  intro="For advisory, speaking, or editorial collaboration, start with a short note."
   prose={false}
   contentWidth="wide"
 >
@@ -15,17 +18,17 @@ import PageLayout from "../layouts/PageLayout.astro";
       <div class="contact-hero__content">
         <p class="contact-hero__label">Advisory inquiries</p>
         <h2 class="contact-hero__title">
-          For advisory, speaking, or editorial collaboration, the cleanest path is still a direct email.
+          Start with a short note. It does not need to be polished.
         </h2>
         <p class="contact-hero__deck">
           If you are reaching out about a briefing, custom research project, speaking
-          opportunity, or collaboration, send a note with enough context to frame the ask well.
-          Readers who simply want new essays and notes should use the subscription flow in the
-          header.
+          opportunity, or editorial collaboration, a few concrete details are enough to
+          begin. Readers who simply want new essays and notes should use the subscription
+          flow in the header.
         </p>
 
         <div class="contact-hero__actions">
-          <a class="button button--primary" href="mailto:hello@lookoutwest.us">hello@lookoutwest.us</a>
+          <a class="button button--primary" href={inquiryMailto}>Start an email</a>
           <a class="button" href="/services">Review services</a>
         </div>
       </div>
@@ -65,7 +68,7 @@ import PageLayout from "../layouts/PageLayout.astro";
 
     <section class="contact-section">
       <div class="contact-section__header">
-        <p class="contact-section__label">Helpful context</p>
+        <p class="contact-section__label">What to include</p>
         <h2 class="contact-section__title">
           A short note is fine, but these details make the conversation sharper.
         </h2>
@@ -83,14 +86,29 @@ import PageLayout from "../layouts/PageLayout.astro";
 
     <section class="contact-section">
       <div class="contact-section__header">
-        <p class="contact-section__label">Current scope</p>
+        <p class="contact-section__label">What happens next</p>
         <h2 class="contact-section__title">
-          Lookout West is focused on serious work tied to the economics of the American West.
+          If the fit is clear, the next step is a scoped reply, not a long intake process.
         </h2>
-        <p class="contact-section__description">
-          That includes land, water, energy, housing, labor, growth, and the regional systems
-          that shape long-run economic outcomes.
-        </p>
+      </div>
+
+      <div class="process-grid">
+        <article class="process-card">
+          <h3>Current scope</h3>
+          <p>
+            Lookout West is focused on serious work tied to the economics of the American West:
+            land, water, energy, housing, labor, growth, and the regional systems that shape
+            long-run outcomes.
+          </p>
+        </article>
+
+        <article class="process-card">
+          <h3>Next step</h3>
+          <p>
+            If the fit is there, the reply should move quickly toward scope, timing, and the
+            most useful next conversation. A formal RFP is not required to start.
+          </p>
+        </article>
       </div>
     </section>
   </div>
@@ -114,7 +132,8 @@ import PageLayout from "../layouts/PageLayout.astro";
 
   .contact-hero,
   .contact-card,
-  .details-card {
+  .details-card,
+  .process-card {
     padding: var(--space-5);
     border: var(--border-subtle);
     border-radius: var(--radius-lg);
@@ -149,32 +168,25 @@ import PageLayout from "../layouts/PageLayout.astro";
 
   .contact-hero__title {
     margin: var(--space-2) 0 0;
-    max-width: 21ch;
+    max-width: 20ch;
     font-family: var(--font-display);
-    font-size: clamp(1.42rem, 1.75vw, 1.7rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    font-size: clamp(1.85rem, 2.5vw, 2.45rem);
+    line-height: 1.03;
+    letter-spacing: -0.03em;
     text-wrap: balance;
   }
 
   .contact-section__title {
     margin: var(--space-2) 0 0;
-    max-width: 24ch;
+    max-width: 22ch;
     font-family: var(--font-display);
-    font-size: clamp(1.32rem, 1.7vw, 1.58rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    font-size: clamp(1.7rem, 2.35vw, 2.15rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
     text-wrap: balance;
   }
 
-  .contact-hero__deck {
-    margin-top: var(--space-4);
-    max-width: 38rem;
-    color: var(--color-muted);
-    font-size: var(--step-0);
-    line-height: 1.7;
-  }
-
+  .contact-hero__deck,
   .contact-section__description {
     margin-top: var(--space-4);
     max-width: 42rem;
@@ -190,29 +202,33 @@ import PageLayout from "../layouts/PageLayout.astro";
     margin-top: var(--space-4);
   }
 
-  .contact-grid {
+  .contact-grid,
+  .process-grid {
     display: grid;
     gap: var(--space-4);
   }
 
-  .contact-card {
+  .contact-card,
+  .process-card {
     display: grid;
     align-content: start;
     gap: var(--space-3);
   }
 
-  .contact-card h3 {
+  .contact-card h3,
+  .process-card h3 {
     margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(1rem, 1.1vw, 1.16rem);
-    line-height: 1.12;
-    letter-spacing: -0.02em;
+    font-size: clamp(1.12rem, 1.25vw, 1.28rem);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
     text-wrap: balance;
   }
 
-  .contact-card p {
+  .contact-card p,
+  .process-card p {
     margin: 0;
-    max-width: 30ch;
+    max-width: 34ch;
     color: var(--color-muted);
     line-height: 1.7;
   }
@@ -232,6 +248,11 @@ import PageLayout from "../layouts/PageLayout.astro";
   }
 
   @media (min-width: 68rem) {
+    .contact-grid,
+    .process-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .contact-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -248,7 +269,8 @@ import PageLayout from "../layouts/PageLayout.astro";
 
     .contact-hero,
     .contact-card,
-    .details-card {
+    .details-card,
+    .process-card {
       border-radius: var(--radius-md);
     }
 
