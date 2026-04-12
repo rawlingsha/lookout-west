@@ -37,6 +37,8 @@ const isActive = (href: string) => {
         type="button"
         class="site-header__subscribe-button"
         data-subscribe-open
+        aria-haspopup="dialog"
+        aria-controls="subscribe-modal"
       >
         Subscribe
       </button>
@@ -47,6 +49,8 @@ const isActive = (href: string) => {
         type="button"
         class="site-header__subscribe-button site-header__subscribe-button--mobile"
         data-subscribe-open
+        aria-haspopup="dialog"
+        aria-controls="subscribe-modal"
       >
         Subscribe
       </button>

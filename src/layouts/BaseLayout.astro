@@ -50,8 +50,9 @@ const rssUrl = new URL("/rss.xml", site.siteUrl).toString();
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <Header />
-    <main class="site-main">
+    <main id="main-content" class="site-main" tabindex="-1">
       <slot />
     </main>
     <Footer />
