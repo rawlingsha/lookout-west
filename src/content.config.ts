@@ -24,6 +24,9 @@ const articles = defineCollection({
     draft: z.boolean().optional().default(false),
     seoTitle: z.string().optional(),
     seoDescription: z.string().optional(),
+    cardImage: z.string().optional(),
+    cardImageAlt: z.string().optional(),
+    showCardImage: z.boolean().optional().default(false),
     sources: z.array(articleSourceSchema).optional(),
   }),
 });
