@@ -25,6 +25,11 @@ const latestArticles = publishedArticles
   .filter((article) => article.id !== featuredArticle?.id)
   .slice(0, 4);
 
+const featuredCardImage =
+  featuredArticle?.data.showCardImage && featuredArticle.data.cardImage
+    ? featuredArticle.data.cardImage
+    : null;
+
 const formatDate = (date: Date) =>
   new Intl.DateTimeFormat("en-US", {
     month: "long",
@@ -51,8 +56,21 @@ const formatDate = (date: Date) =>
       </div>
 
       {featuredArticle && (
-        <article class="hero-feature">
-          <p class="hero-feature__label">Featured research</p>
+        <article class={`hero-feature ${featuredCardImage ? "hero-feature--visual" : ""}`}>
+          {featuredCardImage && (
+            <a
+              class="hero-feature__visual"
+              href={`/research/${featuredArticle.id}/`}
+              aria-label={`Read ${featuredArticle.data.title}`}
+            >
+              <img
+                src={featuredCardImage}
+                alt={featuredArticle.data.cardImageAlt ?? ""}
+                loading="eager"
+              />
+            </a>
+          )}
+
           <p class="hero-feature__topic">{featuredArticle.data.topic}</p>
           <h2 class="hero-feature__title">
             <a href={`/research/${featuredArticle.id}/`}>
@@ -74,13 +92,7 @@ const formatDate = (date: Date) =>
     {latestArticles.length > 0 && (
       <section class="front-section">
         <div class="front-section__header">
-          <p class="front-section__label">Latest research</p>
-          <h2 class="front-section__title">
-            Recent essays and notes from Lookout West.
-          </h2>
-          <p class="front-section__description">
-            The homepage should show the publication in motion: current research first,
-            forthcoming work only when it belongs somewhere quieter.
+          <p class="front-section__label">Latest</p>
           </p>
         </div>
 
@@ -234,6 +246,29 @@ const formatDate = (date: Date) =>
   .hero-feature {
     padding: var(--space-6);
     align-self: end;
+    overflow: hidden;
+  }
+
+  .hero-feature__visual {
+    display: block;
+    aspect-ratio: 16 / 10;
+    margin: calc(var(--space-6) * -1) calc(var(--space-6) * -1) var(--space-5);
+    border-bottom: var(--border-subtle);
+    background:
+      linear-gradient(135deg, rgba(74, 93, 68, 0.16), rgba(218, 168, 94, 0.16));
+    overflow: hidden;
+  }
+
+  .hero-feature__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+  }
+
+  .hero-feature__visual:hover img,
+  .hero-feature__visual:focus-visible img {
+    transform: scale(1.02);
   }
 
   .hero-feature__topic {
@@ -383,8 +418,13 @@ const formatDate = (date: Date) =>
 
   @media (min-width: 68rem) {
     .hero {
-      grid-template-columns: minmax(0, 1.2fr) minmax(22rem, 0.8fr);
+      grid-template-columns: minmax(0, 1.15fr) minmax(23rem, 0.85fr);
       align-items: start;
+      column-gap: var(--space-8);
+    }
+
+    .hero-feature__visual {
+      aspect-ratio: 16 / 7.5;
     }
 
     .story-grid {
@@ -393,6 +433,16 @@ const formatDate = (date: Date) =>
 
     .service-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 68rem) {
+    .hero {
+      padding-bottom: var(--space-5);
+    }
+
+    .hero-feature__visual {
+      aspect-ratio: 16 / 7;
     }
   }
 
