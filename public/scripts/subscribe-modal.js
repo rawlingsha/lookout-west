@@ -8,6 +8,7 @@
     'textarea:not([disabled])',
     '[tabindex]:not([tabindex="-1"])',
     '[contenteditable="true"]',
+    'iframe:not([tabindex="-1"])',
   ].join(",");
 
   const init = () => {
@@ -16,10 +17,6 @@
     if (modal.dataset.initialized === "true") return;
 
     const dialog = modal.querySelector(".subscribe-modal__dialog");
-    const formState = modal.querySelector('[data-subscribe-state="form"]');
-    const submittedState = modal.querySelector('[data-subscribe-state="submitted"]');
-    const form = modal.querySelector("[data-subscribe-form]");
-    const iframe = modal.querySelector('iframe[name="buttondown-subscribe-target"]');
     const emailInput = modal.querySelector("#buttondown-email");
     const openButtons = document.querySelectorAll("[data-subscribe-open]");
     const closeButtons = modal.querySelectorAll("[data-subscribe-close]");
@@ -32,19 +29,7 @@
     modal.dataset.initialized = "true";
 
     let lastFocusedElement = null;
-    let awaitingResponse = false;
-    let iframeInitialized = false;
-
     const isOpen = () => modal.hidden === false;
-
-    const setSubmittedState = (submitted) => {
-      if (!(formState instanceof HTMLElement) || !(submittedState instanceof HTMLElement)) {
-        return;
-      }
-
-      formState.hidden = submitted;
-      submittedState.hidden = !submitted;
-    };
 
     const getFocusableElements = () =>
       Array.from(dialog.querySelectorAll(focusableSelector)).filter((element) => {
@@ -76,7 +61,6 @@
       lastFocusedElement =
         document.activeElement instanceof HTMLElement ? document.activeElement : null;
 
-      setSubmittedState(false);
       modal.hidden = false;
       modal.setAttribute("aria-hidden", "false");
       document.documentElement.classList.add("has-overlay-open");
@@ -92,13 +76,6 @@
       modal.hidden = true;
       modal.setAttribute("aria-hidden", "true");
       document.documentElement.classList.remove("has-overlay-open");
-      setSubmittedState(false);
-      awaitingResponse = false;
-
-      if (form instanceof HTMLFormElement) {
-        form.reset();
-      }
-
       if (lastFocusedElement instanceof HTMLElement && lastFocusedElement.isConnected) {
         lastFocusedElement.focus();
       }
@@ -152,34 +129,6 @@
 
     document.addEventListener("keydown", handleKeydown);
 
-    if (form instanceof HTMLFormElement) {
-      form.addEventListener("submit", () => {
-        awaitingResponse = true;
-      });
-    }
-
-    if (iframe instanceof HTMLIFrameElement) {
-      iframe.addEventListener("load", () => {
-        if (!iframeInitialized) {
-          iframeInitialized = true;
-          return;
-        }
-
-        if (awaitingResponse) {
-          awaitingResponse = false;
-          setSubmittedState(true);
-
-          window.requestAnimationFrame(() => {
-            const focusable = getFocusableElements();
-            if (focusable.length > 0) {
-              focusable[0].focus();
-            } else {
-              dialog.focus();
-            }
-          });
-        }
-      });
-    }
   };
 
   if (document.readyState === "loading") {

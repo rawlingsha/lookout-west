@@ -599,3 +599,18 @@ select:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+.subscribe-modal__iframe {
+  display: block;
+  width: 100%;
+  min-height: 18rem;
+  margin-top: var(--space-5);
+  border: var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.subscribe-modal__note a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
