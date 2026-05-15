@@ -5,5 +5,10 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://lookoutwest.us",
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => !page.endsWith("/welcome/"),
+    }),
+  ],
 });

@@ -1,0 +1,169 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/base/Container.astro";
+
+const title = "Welcome | Lookout West";
+const description =
+  "Welcome to Lookout West. Your subscription has been confirmed.";
+---
+
+<BaseLayout title={title} description={description} robots="noindex,follow">
+  <Container>
+    <section class="welcome-page" aria-labelledby="welcome-title">
+      <div class="welcome-page__intro">
+        <p class="welcome-page__eyebrow">Subscription confirmed</p>
+
+        <h1 id="welcome-title">Welcome to Lookout West.</h1>
+
+        <p class="welcome-page__dek">
+          You’re on the dispatch list. New essays, research notes, and regional analysis 
+          will arrive when there is something worth sending.
+        </p>
+
+      <div class="welcome-page__cards" aria-label="Suggested pages">
+        <a class="welcome-card" href="/research/topics">
+          <span>Explore research topics</span>
+          <strong>Water, energy, housing, labor, and regional growth.</strong>
+        </a>
+
+        <a class="welcome-card" href="/services">
+          <span>Understand services</span>
+          <strong>Briefings, custom research, and decision support.</strong>
+        </a>
+
+        </a>
+      </div>
+    </section>
+  </Container>
+</BaseLayout>
+
+<style>
+  .welcome-page {
+    padding-block: var(--space-8);
+  }
+
+  .welcome-page__intro {
+    max-width: 48rem;
+  }
+
+  .welcome-page__eyebrow {
+    margin: 0 0 var(--space-3);
+    color: var(--color-accent);
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .welcome-page h1 {
+    max-width: 15ch;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 5vw, 4.75rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+  }
+
+  .welcome-page__dek {
+    max-width: 42rem;
+    margin: var(--space-5) 0 0;
+    color: var(--color-muted);
+    font-size: clamp(1.125rem, 1.6vw, 1.35rem);
+    line-height: 1.65;
+  }
+
+  .welcome-page__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+  }
+
+  .welcome-page__next {
+    max-width: 46rem;
+    margin-top: var(--space-7);
+    padding-top: var(--space-6);
+    border-top: var(--border-subtle);
+  }
+
+  .welcome-page__next h2 {
+    margin: 0 0 var(--space-4);
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+
+  .welcome-page__next ul {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding-left: 1.15rem;
+    color: var(--color-muted);
+    line-height: 1.65;
+  }
+
+  .welcome-page__cards {
+    display: grid;
+    gap: var(--space-4);
+    margin-top: var(--space-7);
+    padding-top: var(--space-6);
+    border-top: var(--border-subtle);
+  }
+
+  .welcome-card {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-5);
+    border: var(--border-subtle);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    transition:
+      border-color var(--transition-base),
+      transform var(--transition-base);
+  }
+
+  .welcome-card:hover,
+  .welcome-card:focus-visible {
+    border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
+    transform: translateY(-1px);
+  }
+
+  .welcome-card span {
+    color: var(--color-accent);
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .welcome-card strong {
+    max-width: 34rem;
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    line-height: 1.14;
+    letter-spacing: -0.02em;
+  }
+
+  @media (min-width: 56rem) {
+    .welcome-page {
+      padding-block: var(--space-9);
+    }
+
+    .welcome-page__cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 56rem) {
+    .welcome-page {
+      padding-block: var(--space-7);
+    }
+
+    .welcome-page h1 {
+      max-width: 12ch;
+    }
+  }
+</style>
