@@ -35,6 +35,12 @@ const formatDate = (date: Date) =>
 
 const toTopicSlug = (value: string) =>
   value.toLowerCase().trim().replace(/\s+/g, "-");
+
+const shouldShowCardImage = (article) =>
+  Boolean(article.data.showCardImage && article.data.cardImage);
+
+const getCardImageAlt = (article) =>
+  article.data.cardImageAlt ?? "";
 ---
 
 <PageLayout
@@ -50,24 +56,41 @@ const toTopicSlug = (value: string) =>
       <section class="research-index__section">
         <p class="research-index__label">Featured</p>
 
-        <article class="research-card research-card--featured">
-          <p class="research-card__topic">
-            <a href={`/research/topics/${toTopicSlug(featuredArticle.data.topics?.[0] ?? featuredArticle.data.topic)}/`}>
-              {featuredArticle.data.topic}
+        <article class={`research-card research-card--featured${shouldShowCardImage(featuredArticle) ? " research-card--with-media" : ""}`}>
+          {shouldShowCardImage(featuredArticle) && (
+            <a
+              class="research-card__media research-card__media--featured"
+              href={`/research/${featuredArticle.id}/`}
+              aria-label={`Read ${featuredArticle.data.title}`}
+            >
+              <img
+                src={featuredArticle.data.cardImage}
+                alt={getCardImageAlt(featuredArticle)}
+                loading="eager"
+                decoding="async"
+              />
             </a>
-          </p>
-          <h2 class="research-card__title">
-            <a href={`/research/${featuredArticle.id}/`}>
-              {featuredArticle.data.title}
-            </a>
-          </h2>
-          <p class="research-card__deck">{featuredArticle.data.deck}</p>
-          <div class="research-card__meta">
-            <span>{featuredArticle.data.author}</span>
-            <span aria-hidden="true">•</span>
-            <time datetime={featuredArticle.data.publishDate.toISOString()}>
-              {formatDate(featuredArticle.data.publishDate)}
-            </time>
+          )}
+
+          <div class="research-card__body">
+            <p class="research-card__topic">
+              <a href={`/research/topics/${toTopicSlug(featuredArticle.data.topics?.[0] ?? featuredArticle.data.topic)}/`}>
+                {featuredArticle.data.topic}
+              </a>
+            </p>
+            <h2 class="research-card__title">
+              <a href={`/research/${featuredArticle.id}/`}>
+                {featuredArticle.data.title}
+              </a>
+            </h2>
+            <p class="research-card__deck">{featuredArticle.data.deck}</p>
+            <div class="research-card__meta">
+              <span>{featuredArticle.data.author}</span>
+              <span aria-hidden="true">•</span>
+              <time datetime={featuredArticle.data.publishDate.toISOString()}>
+                {formatDate(featuredArticle.data.publishDate)}
+              </time>
+            </div>
           </div>
         </article>
       </section>
@@ -79,22 +102,39 @@ const toTopicSlug = (value: string) =>
 
         <div class="research-grid research-grid--archive">
           {archiveArticles.map((article) => (
-            <article class="research-card">
-              <p class="research-card__topic">
-                <a href={`/research/topics/${toTopicSlug(article.data.topics?.[0] ?? article.data.topic)}/`}>
-                  {article.data.topic}
+            <article class={`research-card${shouldShowCardImage(article) ? " research-card--with-media" : ""}`}>
+              {shouldShowCardImage(article) && (
+                <a
+                  class="research-card__media"
+                  href={`/research/${article.id}/`}
+                  aria-label={`Read ${article.data.title}`}
+                >
+                  <img
+                    src={article.data.cardImage}
+                    alt={getCardImageAlt(article)}
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </a>
-              </p>
-              <h2 class="research-card__title research-card__title--archive">
-                <a href={`/research/${article.id}/`}>{article.data.title}</a>
-              </h2>
-              <p class="research-card__deck">{article.data.deck}</p>
-              <div class="research-card__meta">
-                <span>{article.data.author}</span>
-                <span aria-hidden="true">•</span>
-                <time datetime={article.data.publishDate.toISOString()}>
-                  {formatDate(article.data.publishDate)}
-                </time>
+              )}
+
+              <div class="research-card__body">
+                <p class="research-card__topic">
+                  <a href={`/research/topics/${toTopicSlug(article.data.topics?.[0] ?? article.data.topic)}/`}>
+                    {article.data.topic}
+                  </a>
+                </p>
+                <h2 class="research-card__title research-card__title--archive">
+                  <a href={`/research/${article.id}/`}>{article.data.title}</a>
+                </h2>
+                <p class="research-card__deck">{article.data.deck}</p>
+                <div class="research-card__meta">
+                  <span>{article.data.author}</span>
+                  <span aria-hidden="true">•</span>
+                  <time datetime={article.data.publishDate.toISOString()}>
+                    {formatDate(article.data.publishDate)}
+                  </time>
+                </div>
               </div>
             </article>
           ))}
@@ -108,17 +148,30 @@ const toTopicSlug = (value: string) =>
 
         <div class="research-grid research-grid--forthcoming">
           {forthcomingArticles.map((article) => (
-            <article class="research-card research-card--forthcoming">
-              <p class="research-card__topic">
-                <a href={`/research/topics/${toTopicSlug(article.data.topics?.[0] ?? article.data.topic)}/`}>
-                  {article.data.topic}
-                </a>
-              </p>
-              <h2 class="research-card__title research-card__title--archive">
-                {article.data.title}
-              </h2>
-              <p class="research-card__deck">{article.data.deck}</p>
-              <p class="research-card__status">In development</p>
+            <article class={`research-card research-card--forthcoming${shouldShowCardImage(article) ? " research-card--with-media" : ""}`}>
+              {shouldShowCardImage(article) && (
+                <div class="research-card__media">
+                  <img
+                    src={article.data.cardImage}
+                    alt={getCardImageAlt(article)}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              )}
+
+              <div class="research-card__body">
+                <p class="research-card__topic">
+                  <a href={`/research/topics/${toTopicSlug(article.data.topics?.[0] ?? article.data.topic)}/`}>
+                    {article.data.topic}
+                  </a>
+                </p>
+                <h2 class="research-card__title research-card__title--archive">
+                  {article.data.title}
+                </h2>
+                <p class="research-card__deck">{article.data.deck}</p>
+                <p class="research-card__status">In development</p>
+              </div>
             </article>
           ))}
         </div>
@@ -180,8 +233,56 @@ const toTopicSlug = (value: string) =>
     background: rgba(255, 255, 255, 0.6);
   }
 
+  .research-card {
+    overflow: hidden;
+  }
+
+  .research-card--with-media {
+    padding: 0;
+  }
+
   .research-card--featured {
     padding: var(--space-6);
+  }
+
+  .research-card--featured.research-card--with-media {
+    padding: 0;
+  }
+
+  .research-card__body {
+    padding: 0;
+  }
+
+  .research-card--with-media .research-card__body {
+    padding: var(--space-5);
+  }
+
+  .research-card--featured.research-card--with-media .research-card__body {
+    padding: var(--space-6);
+  }
+
+  .research-card__media {
+    display: block;
+    border-bottom: var(--border-subtle);
+    background: var(--color-surface-strong);
+    overflow: hidden;
+  }
+
+  .research-card__media img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+  }
+
+  .research-card__media:hover img,
+  .research-card__media:focus-visible img {
+    transform: scale(1.015);
+  }
+
+  .research-card__media--featured img {
+    aspect-ratio: 16 / 9;
   }
 
   .research-card__topic {
@@ -256,6 +357,26 @@ const toTopicSlug = (value: string) =>
   }
 
   @media (min-width: 64rem) {
+    .research-card--featured.research-card--with-media {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      align-items: stretch;
+    }
+
+    .research-card--featured .research-card__media {
+      border-right: var(--border-subtle);
+      border-bottom: 0;
+    }
+
+    .research-card--featured .research-card__media img {
+      aspect-ratio: auto;
+      min-height: 24rem;
+    }
+
+    .research-card--featured.research-card--with-media .research-card__body {
+      align-self: center;
+    }
+
     .research-grid--archive,
     .research-grid--forthcoming {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -273,6 +394,14 @@ const toTopicSlug = (value: string) =>
     }
 
     .research-card--featured {
+      padding: var(--space-5);
+    }
+
+    .research-card--featured.research-card--with-media {
+      padding: 0;
+    }
+
+    .research-card--featured.research-card--with-media .research-card__body {
       padding: var(--space-5);
     }
   }
