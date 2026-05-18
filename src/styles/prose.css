@@ -29,7 +29,7 @@
 
 .lw-prose h2 {
   font-size: clamp(1.875rem, 3vw, 2.5rem);
-  margin-top: 2.2em;
+  margin-top: 1.5em;
 }
 
 .lw-prose h3 {
@@ -135,7 +135,7 @@
   }
 
   .lw-prose h2 {
-    margin-top: 2em;
+    margin-top: 1.5em;
   }
 
   .lw-prose h3 {
