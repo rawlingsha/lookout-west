@@ -16,7 +16,7 @@ const {
   title = site.title,
   description = site.description,
   ogImage = "/social/og-default.jpg",
-  robots = "index,follow",
+  robots = "index,follow,max-image-preview:none",
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, site.siteUrl).toString();
