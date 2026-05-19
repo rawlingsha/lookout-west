@@ -95,7 +95,7 @@
 }
 
 .lw-prose figure {
-  margin: 3rem 0 2.5rem;
+  margin: 1.5rem 0 1.5rem;
 }
 
 .lw-prose figure > :where(img, picture, svg, video, canvas, iframe, div) {
