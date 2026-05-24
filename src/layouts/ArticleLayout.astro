@@ -11,6 +11,7 @@ interface Props {
   author: string;
   publishDate: Date;
   updatedDate?: Date;
+  hasSources?: boolean;
 }
 
 const {
@@ -21,6 +22,7 @@ const {
   author,
   publishDate,
   updatedDate,
+  hasSources = false,
 } = Astro.props;
 
 const pageTitle = `${title} | Lookout West`;
@@ -88,7 +90,7 @@ const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
       </section>
     </Container>
 
-    {Astro.slots.has("sources") && (
+    {hasSources && (
       <Container>
         <section class="article-layout__sources">
           <h2 class="article-layout__sources-title">Sources</h2>
