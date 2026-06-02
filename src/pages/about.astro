@@ -3,130 +3,190 @@ import PageLayout from "../layouts/PageLayout.astro";
 ---
 
 <PageLayout
-  title="About"
-  description="Lookout West is an independent publication and advisory platform focused on the economics of the American West."
-  eyebrow="About"
-  intro="Lookout West is an independent publication and advisory platform focused on the economics of the American West."
-  prose={false}
-  contentWidth="wide"
+title="About"
+description="Lookout West is an independent publication on the economics of the American West."
+eyebrow="About"
+intro="Lookout West is an independent publication on the economics of the American West."
+prose={false}
+contentWidth="wide"
+
 >
+
   <div class="about-page">
     <section class="about-hero">
       <div class="about-hero__content">
-        <p class="about-hero__label">Why this exists</p>
+        <p class="about-hero__label">About Lookout West</p>
         <h2 class="about-hero__title">
-          A serious publication for understanding the systems shaping the American West.
+          The West is changing because its systems are changing.
         </h2>
         <p class="about-hero__deck">
-          Lookout West is being built to cover land, water, energy, housing, labor,
-          growth, and regional change with more discipline than generic commentary and
-          more readability than institutional boilerplate.
+          Water, land, power, housing, labor, and growth do not move separately for long.
+          Lookout West follows those connections.
+        </p>
+        <p class="about-hero__note">
+          The goal is to make the economics of the American West clearer without turning
+          the region into a slogan, a dashboard, or a pile of disconnected trend stories.
         </p>
       </div>
     </section>
 
-    <section class="about-section">
-      <div class="about-section__header">
-        <p class="about-section__label">Editorial stance</p>
-        <h2 class="about-section__title">Publication first.</h2>
-        <p class="about-section__description">
-          The center of gravity is the publication itself: essays, reporting, analysis,
-          and visual explanation designed to help readers understand the West as a real
-          economic system rather than a bundle of disconnected trend stories.
-        </p>
-      </div>
+<section class="about-section">
+  <div class="about-section__header">
+    <p class="about-section__label">Why it exists</p>
+    <h2 class="about-section__title">
+      A lot of Western coverage is either too thin or too hard to use.
+    </h2>
+    <p class="about-section__description">
+      The region is full of serious economic questions: who can afford to live where,
+      how water gets allocated, where power demand is going, what growth does to local
+      institutions, and how physical constraint shapes opportunity.
+    </p>
+    <p class="about-section__description">
+      Those questions need more than quick commentary. They also need writing that
+      normal busy people can actually read. Lookout West is built for that middle ground:
+      rigorous enough to be useful, clear enough to stay with.
+    </p>
+  </div>
+</section>
 
-      <div class="about-grid">
-        <article class="about-card">
-          <h3>Serious, restrained, editorial</h3>
-          <p>
-            The aim is authority through clarity, structure, and judgment rather than noise,
-            hype, or dashboard theater.
-          </p>
-        </article>
+<section class="about-section">
+  <div class="about-section__header">
+    <p class="about-section__label">How the work is handled</p>
+    <h2 class="about-section__title">
+      Start with the real constraint. Explain the mechanism. Keep the page readable.
+    </h2>
+    <p class="about-section__description">
+      The publication comes first. Essays, research notes, charts, and visual explanation
+      are the core product. Advisory work grows from that base; it should never pull the
+      site away from the reading experience.
+    </p>
+  </div>
 
-        <article class="about-card">
-          <h3>Built for reading</h3>
-          <p>
-            The reader experience matters: rhythm, spacing, hierarchy, and mobile usability
-            are not cosmetic extras.
-          </p>
-        </article>
+  <div class="about-grid">
+    <article class="about-card">
+      <h3>Follow the system</h3>
+      <p>
+        The useful story is usually not one variable. It is how water, land, housing,
+        energy, labor, and public capacity press against each other.
+      </p>
+    </article>
 
-        <article class="about-card">
-          <h3>Regional truth over abstraction</h3>
-          <p>
-            The West has its own operating logic. The work should reflect that, not flatten it
-            into generic national framing.
-          </p>
-        </article>
-      </div>
-    </section>
+    <article class="about-card">
+      <h3>Use plain structure</h3>
+      <p>
+        Good analysis should not require a decoder ring. The work should be sharp,
+        sourced, and written in a way that helps the reader keep moving.
+      </p>
+    </article>
 
-    <section class="about-section">
-      <div class="about-section__header">
-        <p class="about-section__label">Coverage</p>
-        <h2 class="about-section__title">
-          The reporting surface is intentionally narrow enough to stay sharp.
-        </h2>
-      </div>
+    <article class="about-card">
+      <h3>Show what helps</h3>
+      <p>
+        Charts, maps, and diagrams belong when they clarify the argument. They do not
+        belong just because a page needs decoration.
+      </p>
+    </article>
+  </div>
+</section>
 
-      <div class="coverage-grid">
-        <article class="coverage-card">
-          <h3>Land</h3>
-          <p>How geography, ownership, development, and physical constraint shape Western outcomes.</p>
-        </article>
+<section class="about-section">
+  <div class="about-section__header">
+    <p class="about-section__label">Coverage</p>
+    <h2 class="about-section__title">
+      The scope is narrow on purpose.
+    </h2>
+    <p class="about-section__description">
+      Lookout West focuses on the recurring pressures that explain how the region works
+      and where it is heading.
+    </p>
+  </div>
 
-        <article class="coverage-card">
-          <h3>Water</h3>
-          <p>Scarcity, allocation, governance, pricing, infrastructure, and long-run regional pressure.</p>
-        </article>
+  <div class="coverage-grid">
+    <article class="coverage-card">
+      <h3>Land</h3>
+      <p>Geography, ownership, development pressure, and physical constraint.</p>
+    </article>
 
-        <article class="coverage-card">
-          <h3>Energy</h3>
-          <p>Generation, transmission, power demand, resource advantage, and industrial implications.</p>
-        </article>
+    <article class="coverage-card">
+      <h3>Water</h3>
+      <p>Scarcity, allocation, governance, infrastructure, pricing, and risk.</p>
+    </article>
 
-        <article class="coverage-card">
-          <h3>Housing</h3>
-          <p>Cost pressure, supply, migration, local growth politics, and the structure of household strain.</p>
-        </article>
+    <article class="coverage-card">
+      <h3>Energy</h3>
+      <p>Power demand, generation, transmission, resources, and industrial change.</p>
+    </article>
 
-        <article class="coverage-card">
-          <h3>Labor</h3>
-          <p>Workforce conditions, sector shifts, regional opportunity, and the economics of local adjustment.</p>
-        </article>
+    <article class="coverage-card">
+      <h3>Housing</h3>
+      <p>Costs, supply, migration, household strain, and local growth politics.</p>
+    </article>
 
-        <article class="coverage-card">
-          <h3>Growth</h3>
-          <p>How institutions, infrastructure, and demographic change interact across the region over time.</p>
-        </article>
-      </div>
-    </section>
+    <article class="coverage-card">
+      <h3>Labor</h3>
+      <p>Workforce shifts, wages, sector change, local adjustment, and opportunity.</p>
+    </article>
 
-    <section class="about-section">
-      <div class="about-section__header">
-        <p class="about-section__label">Consulting</p>
-        <h2 class="about-section__title">Advisory work comes second, and should feel earned.</h2>
-        <p class="about-section__description">
-          Over time, the publication supports a focused consulting practice: briefings,
-          custom research, and speaking for institutions that need better regional judgment.
-          The consulting lane should extend the publication, not dilute it.
-        </p>
-      </div>
-    </section>
+    <article class="coverage-card">
+      <h3>Growth</h3>
+      <p>Infrastructure, institutions, demographics, and long-run regional change.</p>
+    </article>
+  </div>
+</section>
 
-    <section class="about-cta">
-      <p class="about-cta__label">Next steps</p>
-      <h2 class="about-cta__title">
-        Read the research first. Reach out when there is a concrete institutional question behind the inquiry.
-      </h2>
+<section class="about-section about-section--split">
+  <div class="about-section__header">
+    <p class="about-section__label">Editor</p>
+    <h2 class="about-section__title">Edited by Henry Rawlings.</h2>
+  </div>
 
-      <div class="about-cta__actions">
-        <a class="button button--primary" href="/research">Browse research</a>
-        <a class="button" href="/contact">Contact Lookout West</a>
-      </div>
-    </section>
+  <div class="about-section__body">
+    <p>
+      My background is in economics, macroeconomic analysis, and institutional research.
+      Lookout West is where I apply that lens to the region I care most about.
+    </p>
+    <p>
+      I am interested in the parts of the West that do not fit neatly into national
+      talking points: water systems, power demand, housing pressure, land constraint,
+      labor adjustment, and the local institutions that have to make real decisions
+      under pressure.
+    </p>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="about-section__header">
+    <p class="about-section__label">Advisory work</p>
+    <h2 class="about-section__title">
+      Advisory work is available when there is a real question behind it.
+    </h2>
+    <p class="about-section__description">
+      Lookout West can support briefings, custom research, market and regional analysis,
+      and speaking for institutions that need a clearer view of the American West.
+    </p>
+    <p class="about-section__description">
+      The right inquiry usually starts with something specific: a place, a sector, a
+      decision, a board discussion, a public issue, or an audience that needs a better
+      framework.
+    </p>
+  </div>
+</section>
+
+<section class="about-cta">
+  <p class="about-cta__label">Next steps</p>
+  <h2 class="about-cta__title">
+    Start with the research. Subscribe if you want the next piece. Reach out when there is a concrete question.
+  </h2>
+
+  <div class="about-cta__actions">
+    <a class="button button--primary" href="/research">Read the research</a>
+    <button class="button" type="button" data-subscribe-open>
+      Subscribe
+    </button>
+    <a class="button" href="/contact">Start an inquiry</a>
+  </div>
+</section>
+
   </div>
 </PageLayout>
 
@@ -166,11 +226,26 @@ import PageLayout from "../layouts/PageLayout.astro";
   }
 
   .about-hero__content {
-    max-width: 38rem;
+    max-width: 42rem;
   }
 
   .about-section__header {
+    max-width: 44rem;
+  }
+
+  .about-section__body {
     max-width: 42rem;
+    color: var(--color-muted);
+    font-size: var(--step-0);
+    line-height: 1.75;
+  }
+
+  .about-section__body p {
+    margin: 0;
+  }
+
+  .about-section__body p + p {
+    margin-top: var(--space-4);
   }
 
   .about-hero__label,
@@ -194,26 +269,38 @@ import PageLayout from "../layouts/PageLayout.astro";
     text-wrap: balance;
   }
 
-  .about-hero__deck {
-    margin-top: var(--space-4);
-    max-width: 38rem;
+  .about-hero__deck,
+  .about-hero__note {
+    max-width: 40rem;
     color: var(--color-muted);
     font-size: var(--step-0);
     line-height: 1.7;
   }
 
+  .about-hero__deck {
+    margin: var(--space-4) 0 0;
+  }
+
+  .about-hero__note {
+    margin: var(--space-3) 0 0;
+  }
+
   .about-section__description {
     margin-top: var(--space-4);
-    max-width: 42rem;
+    max-width: 44rem;
     color: var(--color-muted);
     font-size: var(--step-0);
     line-height: 1.7;
+  }
+
+  .about-section__description + .about-section__description {
+    margin-top: var(--space-3);
   }
 
   .about-section__title,
   .about-cta__title {
     margin: var(--space-2) 0 0;
-    max-width: 26ch;
+    max-width: 27ch;
     font-family: var(--font-display);
     font-size: clamp(1.26rem, 1.55vw, 1.52rem);
     line-height: 1.1;
@@ -247,7 +334,7 @@ import PageLayout from "../layouts/PageLayout.astro";
   .about-card p,
   .coverage-card p {
     margin: 0;
-    max-width: 30ch;
+    max-width: 31ch;
     color: var(--color-muted);
     line-height: 1.7;
   }
@@ -263,6 +350,16 @@ import PageLayout from "../layouts/PageLayout.astro";
     .about-grid,
     .coverage-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .about-section--split {
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      align-items: start;
+      column-gap: var(--space-7);
+    }
+
+    .about-section--split .about-section__header {
+      max-width: 28rem;
     }
   }
 
@@ -283,7 +380,9 @@ import PageLayout from "../layouts/PageLayout.astro";
     }
 
     .about-hero__deck,
-    .about-section__description {
+    .about-hero__note,
+    .about-section__description,
+    .about-section__body {
       font-size: 1.0625rem;
     }
   }
