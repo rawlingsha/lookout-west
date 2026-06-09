@@ -3,190 +3,63 @@ import PageLayout from "../layouts/PageLayout.astro";
 ---
 
 <PageLayout
-title="About"
-description="Lookout West is an independent publication on the economics of the American West."
-eyebrow="About"
-intro="Lookout West is an independent publication on the economics of the American West."
-prose={false}
-contentWidth="wide"
-
+  title="About"
+  description="Lookout West is an independent publication on the economics of the American West."
+  eyebrow="Why we exist"
+  intro="We provide leading, independent economic analysis of the American West."
+  prose={false}
+  contentWidth="wide"
 >
-
   <div class="about-page">
-    <section class="about-hero">
-      <div class="about-hero__content">
-        <p class="about-hero__label">About Lookout West</p>
-        <h2 class="about-hero__title">
-          The West is changing because its systems are changing.
+    <section class="about-section">
+      <div class="about-section__header">
+        <p class="about-section__label"></p>
+        <h2 class="about-section__title">
+          The story of the West, has always been a story about economics.
         </h2>
-        <p class="about-hero__deck">
-          Water, land, power, housing, labor, and growth do not move separately for long.
-          Lookout West follows those connections.
+        <p class="about-section__description">
+          The region has always demanded we face relentless economic forces:
+          Who can afford to live where, how water gets allocated, where power demand is going,
+          what growth does to local institutions, and how physical constraint shapes opportunity.
         </p>
-        <p class="about-hero__note">
-          The goal is to make the economics of the American West clearer without turning
-          the region into a slogan, a dashboard, or a pile of disconnected trend stories.
+        <p class="about-section__description">
+          Those complex questions require serious engagement. Lookout West provides rigorous, region-specific analytics grounded in local data and economic theory,
+          built to help Western communities make clearer decisions under constraint.
+        </p>
+
+    <section class="about-section">
+      <div class="about-section__header">
+        <p class="about-section__label"></p>
+        <h2 class="about-section__title">
+          People need analysis they can use from a source they can trust.
+        </h2>
+        <p class="about-section__description">
+          We built Lookout West to focus squarely on the American West, and we are proud to be based here.
+          We know this region is one of the places where some of the biggest economic questions are
+          being tested in real time. We hope readers feel that connection:
+          to the place, to the stakes, and to reporting that understands both.
+        </p>
+        <p class="about-section__description">
+          Good analysis should not require a policy background or hours of spare time.
+          Lookout West is built for readers who want serious work in plain language: useful, rigorous, and clear enough to carry into the rest of your day.
         </p>
       </div>
     </section>
 
-<section class="about-section">
-  <div class="about-section__header">
-    <p class="about-section__label">Why it exists</p>
-    <h2 class="about-section__title">
-      A lot of Western coverage is either too thin or too hard to use.
-    </h2>
-    <p class="about-section__description">
-      The region is full of serious economic questions: who can afford to live where,
-      how water gets allocated, where power demand is going, what growth does to local
-      institutions, and how physical constraint shapes opportunity.
-    </p>
-    <p class="about-section__description">
-      Those questions need more than quick commentary. They also need writing that
-      normal busy people can actually read. Lookout West is built for that middle ground:
-      rigorous enough to be useful, clear enough to stay with.
-    </p>
-  </div>
-</section>
+    <section class="about-cta">
+      <p class="about-cta__label">Next steps</p>
+      <h2 class="about-cta__title">
+        Start with the research. Subscribe if you want the next piece. Reach out when there is a concrete question.
+      </h2>
 
-<section class="about-section">
-  <div class="about-section__header">
-    <p class="about-section__label">How the work is handled</p>
-    <h2 class="about-section__title">
-      Start with the real constraint. Explain the mechanism. Keep the page readable.
-    </h2>
-    <p class="about-section__description">
-      The publication comes first. Essays, research notes, charts, and visual explanation
-      are the core product. Advisory work grows from that base; it should never pull the
-      site away from the reading experience.
-    </p>
-  </div>
-
-  <div class="about-grid">
-    <article class="about-card">
-      <h3>Follow the system</h3>
-      <p>
-        The useful story is usually not one variable. It is how water, land, housing,
-        energy, labor, and public capacity press against each other.
-      </p>
-    </article>
-
-    <article class="about-card">
-      <h3>Use plain structure</h3>
-      <p>
-        Good analysis should not require a decoder ring. The work should be sharp,
-        sourced, and written in a way that helps the reader keep moving.
-      </p>
-    </article>
-
-    <article class="about-card">
-      <h3>Show what helps</h3>
-      <p>
-        Charts, maps, and diagrams belong when they clarify the argument. They do not
-        belong just because a page needs decoration.
-      </p>
-    </article>
-  </div>
-</section>
-
-<section class="about-section">
-  <div class="about-section__header">
-    <p class="about-section__label">Coverage</p>
-    <h2 class="about-section__title">
-      The scope is narrow on purpose.
-    </h2>
-    <p class="about-section__description">
-      Lookout West focuses on the recurring pressures that explain how the region works
-      and where it is heading.
-    </p>
-  </div>
-
-  <div class="coverage-grid">
-    <article class="coverage-card">
-      <h3>Land</h3>
-      <p>Geography, ownership, development pressure, and physical constraint.</p>
-    </article>
-
-    <article class="coverage-card">
-      <h3>Water</h3>
-      <p>Scarcity, allocation, governance, infrastructure, pricing, and risk.</p>
-    </article>
-
-    <article class="coverage-card">
-      <h3>Energy</h3>
-      <p>Power demand, generation, transmission, resources, and industrial change.</p>
-    </article>
-
-    <article class="coverage-card">
-      <h3>Housing</h3>
-      <p>Costs, supply, migration, household strain, and local growth politics.</p>
-    </article>
-
-    <article class="coverage-card">
-      <h3>Labor</h3>
-      <p>Workforce shifts, wages, sector change, local adjustment, and opportunity.</p>
-    </article>
-
-    <article class="coverage-card">
-      <h3>Growth</h3>
-      <p>Infrastructure, institutions, demographics, and long-run regional change.</p>
-    </article>
-  </div>
-</section>
-
-<section class="about-section about-section--split">
-  <div class="about-section__header">
-    <p class="about-section__label">Editor</p>
-    <h2 class="about-section__title">Edited by Henry Rawlings.</h2>
-  </div>
-
-  <div class="about-section__body">
-    <p>
-      My background is in economics, macroeconomic analysis, and institutional research.
-      Lookout West is where I apply that lens to the region I care most about.
-    </p>
-    <p>
-      I am interested in the parts of the West that do not fit neatly into national
-      talking points: water systems, power demand, housing pressure, land constraint,
-      labor adjustment, and the local institutions that have to make real decisions
-      under pressure.
-    </p>
-  </div>
-</section>
-
-<section class="about-section">
-  <div class="about-section__header">
-    <p class="about-section__label">Advisory work</p>
-    <h2 class="about-section__title">
-      Advisory work is available when there is a real question behind it.
-    </h2>
-    <p class="about-section__description">
-      Lookout West can support briefings, custom research, market and regional analysis,
-      and speaking for institutions that need a clearer view of the American West.
-    </p>
-    <p class="about-section__description">
-      The right inquiry usually starts with something specific: a place, a sector, a
-      decision, a board discussion, a public issue, or an audience that needs a better
-      framework.
-    </p>
-  </div>
-</section>
-
-<section class="about-cta">
-  <p class="about-cta__label">Next steps</p>
-  <h2 class="about-cta__title">
-    Start with the research. Subscribe if you want the next piece. Reach out when there is a concrete question.
-  </h2>
-
-  <div class="about-cta__actions">
-    <a class="button button--primary" href="/research">Read the research</a>
-    <button class="button" type="button" data-subscribe-open>
-      Subscribe
-    </button>
-    <a class="button" href="/contact">Start an inquiry</a>
-  </div>
-</section>
-
+      <div class="about-cta__actions">
+        <a class="button button--primary" href="/research">Read the research</a>
+        <button class="button" type="button" data-subscribe-open>
+          Subscribe
+        </button>
+        <a class="button" href="/contact">Start an inquiry</a>
+      </div>
+    </section>
   </div>
 </PageLayout>
 
@@ -221,7 +94,6 @@ contentWidth="wide"
   }
 
   .about-cta {
-    width: min(100%, 68rem);
     padding: var(--space-6);
   }
 
@@ -347,6 +219,10 @@ contentWidth="wide"
   }
 
   @media (min-width: 68rem) {
+    .about-cta {
+      width: min(100%, 44rem);
+    }
+
     .about-grid,
     .coverage-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
