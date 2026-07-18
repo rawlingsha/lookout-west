@@ -106,6 +106,57 @@
   overflow: hidden;
 }
 
+.lw-prose .table-figure {
+  width: 100%;
+  max-width: 100%;
+  margin: 2rem 0;
+}
+
+.lw-prose .table-scroll {
+  overflow-x: auto;
+  border: var(--border-subtle);
+  background: rgba(255, 255, 255, 0.54);
+}
+
+.lw-prose table {
+  width: 100%;
+  min-width: 42rem;
+  border-collapse: collapse;
+  font-size: var(--step--1);
+  line-height: 1.45;
+}
+
+.lw-prose th,
+.lw-prose td {
+  padding: 0.85rem 0.95rem;
+  border-bottom: var(--border-subtle);
+  border-left: var(--border-subtle);
+  text-align: left;
+  vertical-align: top;
+}
+
+.lw-prose th:first-child,
+.lw-prose td:first-child {
+  border-left: 0;
+}
+
+.lw-prose thead th {
+  background: rgba(74, 93, 68, 0.08);
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.lw-prose tbody th {
+  width: 9rem;
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.lw-prose tbody tr:last-child th,
+.lw-prose tbody tr:last-child td {
+  border-bottom: 0;
+}
+
 .lw-prose figcaption {
   max-width: 38rem;
   margin-top: 0.9rem;
@@ -149,6 +200,15 @@
 
   .lw-prose figure {
     margin: 2.3rem 0 2rem;
+  }
+
+  .lw-prose .table-figure {
+    width: 100%;
+  }
+
+  .lw-prose th,
+  .lw-prose td {
+    padding: 0.75rem 0.8rem;
   }
 
   .lw-prose figcaption {
