@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import PageLayout from "../../layouts/PageLayout.astro";
 
 const allArticles = await getCollection("articles");
@@ -36,10 +36,10 @@ const formatDate = (date: Date) =>
 const toTopicSlug = (value: string) =>
   value.toLowerCase().trim().replace(/\s+/g, "-");
 
-const shouldShowCardImage = (article) =>
+const shouldShowCardImage = (article: CollectionEntry<"articles">) =>
   Boolean(article.data.showCardImage && article.data.cardImage);
 
-const getCardImageAlt = (article) =>
+const getCardImageAlt = (article: CollectionEntry<"articles">) =>
   article.data.cardImageAlt ?? "";
 ---
 

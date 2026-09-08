@@ -1,0 +1,37 @@
+---
+import SharePanel from "./SharePanel.astro";
+import type { ShareImages, SharePayload } from "../../lib/share";
+import "../../styles/sharing.css";
+
+interface Props extends SharePayload {
+  id: string;
+  kind?: "article" | "chart" | "table";
+  images?: ShareImages;
+  download?: string;
+  label?: string;
+}
+const { id, title, url, text = "", kind = "article", images, download, label } = Astro.props;
+---
+
+<div class="share-actions" data-share-actions data-url={url} data-title={title} data-text={text}>
+  {label && <p class="share-actions__label">{label}</p>}
+  <div class="share-actions__controls">
+    <details class="share-disclosure" data-share-disclosure>
+      <summary class="share-control" aria-label={`Share this ${kind}`}>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 16V3m-5 5 5-5 5 5M5 13v7h14v-7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        {kind === "article" ? "Share" : `Share ${kind}`}
+      </summary>
+      <SharePanel id={id} title={title} url={url} text={text} kind={kind} images={images} />
+    </details>
+    <button class="share-control" type="button" data-copy-link hidden>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m10 14 4-4m-6 6-1 1a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0m2 2 1-1a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0" transform="translate(1 -1)" stroke-linecap="round" /></svg>
+      <span data-copy-label>Copy link</span>
+    </button>
+    {download && <a class="share-control" href={download} download>Download image <span aria-hidden="true">↓</span></a>}
+  </div>
+  <p class="share-status" role="status" aria-live="polite" data-share-status></p>
+</div>
+
+<script>
+  import "../../scripts/share-actions";
+</script>

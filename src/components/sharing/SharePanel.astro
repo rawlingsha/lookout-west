@@ -1,0 +1,45 @@
+---
+import { shareDestinations, type ShareImages, type SharePayload } from "../../lib/share";
+interface Props extends SharePayload { id: string; kind: string; images?: ShareImages }
+const { id, title, url, text, kind, images } = Astro.props;
+---
+<div class="share-panel" data-share-panel>
+  <div class="share-panel__heading">
+    <h2 id={`${id}-heading`}>Share this {kind}</h2>
+    <button class="share-close" type="button" data-share-close aria-label="Close sharing options" hidden>×</button>
+  </div>
+  <p class="share-panel__title">{title}</p>
+  <button class="share-control share-control--wide" type="button" data-native-share hidden>Share via your device… <span aria-hidden="true">↗</span></button>
+  <div class="share-destinations" aria-label="Sharing destinations">
+    {shareDestinations({ title, url, text }).map(({ name, href }) => (
+      <a class="share-destination" href={href} target={name === "Email" ? undefined : "_blank"} rel={name === "Email" ? undefined : "noopener noreferrer"}>{name}<span aria-hidden="true">↗</span></a>
+    ))}
+  </div>
+  <details class="share-helper">
+    <summary>Substack Notes <span aria-hidden="true">+</span></summary>
+    <p>Copy this link, then paste it into a new note on Substack.</p>
+    <div class="share-helper__actions">
+      <button class="share-control" type="button" data-copy-link hidden><span data-copy-label>Copy link</span></button>
+      <a class="share-control" href="https://substack.com/notes" target="_blank" rel="noopener noreferrer">Open Notes ↗</a>
+    </div>
+  </details>
+  <details class="share-helper" data-image-helper>
+    <summary>Instagram <span aria-hidden="true">+</span></summary>
+    <p>{images ? "Save an image and add it in Instagram. Paste the link in a message or a Story link sticker." : "Copy the link and paste it in an Instagram message or a Story link sticker."}</p>
+    {images && <>
+      <img class="share-image-preview" src={images.portrait} alt={images.alt} width="1080" height="1350" loading="lazy" />
+      <div class="share-helper__actions">
+        <a class="share-control" href={images.portrait} download>Download post image ↓</a>
+        <a class="share-control" href={images.story} download>Download Story image ↓</a>
+        <button class="share-control" type="button" data-share-image={images.story} hidden>Share Story image…</button>
+      </div>
+    </>}
+    <button class="share-control" type="button" data-copy-link hidden><span data-copy-label>Copy link</span></button>
+  </details>
+  <div class="share-link-field">
+    <label for={`${id}-url`}>Link to this {kind}</label>
+    <input id={`${id}-url`} type="url" value={url} readonly data-share-url />
+    <button class="share-control" type="button" data-copy-link hidden><span data-copy-label>Copy link</span></button>
+  </div>
+  <p class="share-status" role="status" aria-live="polite" data-panel-status></p>
+</div>

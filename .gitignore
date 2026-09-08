@@ -2,6 +2,7 @@
 dist/
 # generated types
 .astro/
+public/social/generated/
 
 # dependencies
 node_modules/

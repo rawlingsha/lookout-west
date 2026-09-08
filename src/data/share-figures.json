@@ -1,0 +1,30 @@
+[
+  {
+    "id": "growth-drivers",
+    "article": "west-growth-drivers",
+    "kind": "chart",
+    "title": "What’s been driving Western growth?",
+    "caption": "Average industry contributions to real GDP growth in Western states, 2022–2024.",
+    "source": "U.S. Bureau of Economic Analysis; Lookout West.",
+    "image": "/images/research/west-growth/growth-drivers.png",
+    "alt": "Heatmap of average contributions to real GDP growth, 2022–2024, by industry and Western state. Green indicates positive contributions and red indicates negative contributions; total growth appears below each state."
+  },
+  {
+    "id": "tax-bases",
+    "article": "taxes-in-the-west",
+    "kind": "chart",
+    "title": "The West bets on different tax bases",
+    "caption": "The mix of state and local tax collections across Western states, fiscal year 2024.",
+    "source": "U.S. Census Bureau; Lookout West.",
+    "image": "/images/research/taxes/Tax bases.png",
+    "alt": "Stacked bars comparing property, sales, income, business, severance, and other taxes as shares of state and local collections in Western states and the U.S., fiscal year 2024."
+  },
+  {
+    "id": "local-capacity-ledger",
+    "article": "data-centers",
+    "kind": "table",
+    "title": "The local-capacity ledger",
+    "caption": "A proposed public ledger of the resources a large-load project consumes, its commitments, and the institutions responsible for oversight.",
+    "source": "Lookout West."
+  }
+]

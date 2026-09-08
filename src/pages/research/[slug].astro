@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from "astro:content";
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import sharp from "sharp";
+import path from "node:path";
 
 export async function getStaticPaths() {
   const articles = await getCollection("articles");
@@ -15,6 +17,9 @@ export async function getStaticPaths() {
 const { article } = Astro.props;
 const { Content } = await render(article);
 const sources = article.data.sources ?? [];
+const socialImageInfo = article.data.socialImage
+  ? await sharp(path.join(process.cwd(), "public", article.data.socialImage)).metadata()
+  : undefined;
 
 const toTopicSlug = (value: string) =>
   value.toLowerCase().trim().replace(/\s+/g, "-");
@@ -25,6 +30,7 @@ const primaryTopicSlug = toTopicSlug(
 ---
 
 <ArticleLayout
+  id={article.id}
   title={article.data.title}
   deck={article.data.deck}
   topic={article.data.topic}
@@ -33,6 +39,12 @@ const primaryTopicSlug = toTopicSlug(
   publishDate={article.data.publishDate}
   updatedDate={article.data.updatedDate}
   hasSources={sources.length > 0}
+  seoTitle={article.data.seoTitle}
+  seoDescription={article.data.seoDescription}
+  socialImage={article.data.socialImage}
+  socialImageAlt={article.data.socialImageAlt}
+  socialImageWidth={socialImageInfo?.width}
+  socialImageHeight={socialImageInfo?.height}
 >
   <Content />
 

@@ -2,8 +2,12 @@
 import BaseLayout from "./BaseLayout.astro";
 import Container from "../components/base/Container.astro";
 import Prose from "../components/base/Prose.astro";
+import ShareActions from "../components/sharing/ShareActions.astro";
+import { articleShareImages } from "../lib/share";
+import { contentUrl } from "../lib/urls";
 
 interface Props {
+  id: string;
   title: string;
   deck: string;
   topic: string;
@@ -12,9 +16,16 @@ interface Props {
   publishDate: Date;
   updatedDate?: Date;
   hasSources?: boolean;
+  seoTitle?: string;
+  seoDescription?: string;
+  socialImage?: string;
+  socialImageAlt?: string;
+  socialImageWidth?: number;
+  socialImageHeight?: number;
 }
 
 const {
+  id,
   title,
   deck,
   topic,
@@ -23,9 +34,18 @@ const {
   publishDate,
   updatedDate,
   hasSources = false,
+  seoTitle,
+  seoDescription,
+  socialImage,
+  socialImageAlt,
+  socialImageWidth,
+  socialImageHeight,
 } = Astro.props;
 
-const pageTitle = `${title} | Lookout West`;
+const pageTitle = seoTitle ?? `${title} | Lookout West`;
+const description = seoDescription ?? deck;
+const images = articleShareImages(id, title);
+const url = contentUrl(`/research/${id}/`);
 
 const formatDate = (date: Date) =>
   new Intl.DateTimeFormat("en-US", {
@@ -39,7 +59,7 @@ const publishedLabel = formatDate(publishDate);
 const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
 ---
 
-<BaseLayout title={pageTitle} description={deck}>
+<BaseLayout title={pageTitle} description={description} ogTitle={title} ogType="article" ogImage={socialImage ?? images.preview} ogImageAlt={socialImageAlt ?? images.alt} ogImageWidth={socialImageWidth} ogImageHeight={socialImageHeight} publishDate={publishDate} updatedDate={updatedDate} author={author}>
   <article class="article-layout">
     <Container>
       <header class="article-layout__header">
@@ -71,6 +91,7 @@ const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
             </>
           )}
         </div>
+        <ShareActions id="article-share-top" title={title} text={description} url={url} images={images} />
       </header>
     </Container>
 
@@ -87,6 +108,9 @@ const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
         <Prose>
           <slot />
         </Prose>
+        <div class="article-layout__sharing-end">
+          <ShareActions id="article-share-end" title={title} text={description} url={url} images={images} label="Share this article" />
+        </div>
       </section>
     </Container>
 
@@ -104,6 +128,7 @@ const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
 </BaseLayout>
 
 <style>
+  .article-layout__sharing-end { width: min(100%, 42rem); margin-top: var(--space-7); padding-top: var(--space-5); border-top: var(--border-subtle); }
   .article-layout__header {
     width: min(100%, 46rem);
     padding-top: var(--space-7);
