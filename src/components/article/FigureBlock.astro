@@ -1,5 +1,7 @@
 ---
 interface Props {
+  id?: string;
+  kind?: "chart" | "table";
   caption: string;
   label?: string;
   note?: string;
@@ -8,23 +10,33 @@ interface Props {
 }
 
 const {
+  id,
+  kind = "chart",
   caption,
   label,
   note,
-  aspectRatio = "16 / 9",
+  aspectRatio,
   placeholderText = "Chart or graphic",
 } = Astro.props;
 ---
 
-<figure class="figure-block">
-  <div class="figure-block__media" style={`--figure-aspect: ${aspectRatio};`}>
-    {Astro.slots.has("default") ? (
-      <slot />
-    ) : (
-      <div class="figure-block__placeholder" aria-hidden="true">
-        <span class="figure-block__placeholder-text">{placeholderText}</span>
-      </div>
-    )}
+<figure
+  id={id}
+  class:list={["figure-block", { "table-figure": kind === "table" }]}
+>
+  <div
+    class="figure-block__media"
+    style={aspectRatio ? `--figure-aspect: ${aspectRatio};` : undefined}
+  >
+    {
+      Astro.slots.has("default") ? (
+        <slot />
+      ) : (
+        <div class="figure-block__placeholder" aria-hidden="true">
+          <span class="figure-block__placeholder-text">{placeholderText}</span>
+        </div>
+      )
+    }
   </div>
 
   <figcaption class="figure-block__caption">
@@ -32,16 +44,22 @@ const {
     <span>{caption}</span>
     {note && <span class="figure-block__note">{note}</span>}
   </figcaption>
+  <slot name="actions" />
 </figure>
 
 <style>
   .figure-block {
     margin: 0;
+    scroll-margin-top: 7rem;
+  }
+
+  .figure-block:target {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 0.5rem;
   }
 
   .figure-block__media {
-    aspect-ratio: var(--figure-aspect);
-    overflow: hidden;
+    aspect-ratio: var(--figure-aspect, auto);
     border: 1px solid var(--color-border);
     border-radius: 1rem;
     background: rgba(17, 17, 17, 0.03);
@@ -55,22 +73,22 @@ const {
   .figure-block__media :global(iframe) {
     display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
   }
 
   .figure-block__placeholder {
+    min-height: 15rem;
     display: grid;
     place-items: center;
     width: 100%;
     height: 100%;
     padding: 1.25rem;
-    background:
-      linear-gradient(
-        180deg,
-        rgba(17, 17, 17, 0.02) 0%,
-        rgba(17, 17, 17, 0.05) 100%
-      );
+    background: linear-gradient(
+      180deg,
+      rgba(17, 17, 17, 0.02) 0%,
+      rgba(17, 17, 17, 0.05) 100%
+    );
   }
 
   .figure-block__placeholder-text {

@@ -18,14 +18,16 @@ const { article } = Astro.props;
 const { Content } = await render(article);
 const sources = article.data.sources ?? [];
 const socialImageInfo = article.data.socialImage
-  ? await sharp(path.join(process.cwd(), "public", article.data.socialImage)).metadata()
+  ? await sharp(
+      path.join(process.cwd(), "public", article.data.socialImage),
+    ).metadata()
   : undefined;
 
 const toTopicSlug = (value: string) =>
   value.toLowerCase().trim().replace(/\s+/g, "-");
 
 const primaryTopicSlug = toTopicSlug(
-  article.data.topics?.[0] ?? article.data.topic
+  article.data.topics?.[0] ?? article.data.topic,
 );
 ---
 
@@ -48,25 +50,27 @@ const primaryTopicSlug = toTopicSlug(
 >
   <Content />
 
-  {sources.length > 0 && (
-    <Fragment slot="sources">
-      <ol class="article-sources">
-        {sources.map((source) => (
-          <li>
-            <a href={source.url} target="_blank" rel="noopener noreferrer">
-              {source.title}
-            </a>
+  {
+    sources.length > 0 && (
+      <Fragment slot="sources">
+        <ol class="article-sources">
+          {sources.map((source) => (
+            <li>
+              <a href={source.url} target="_blank" rel="noopener noreferrer">
+                {source.title}
+              </a>
 
-            {(source.publisher || source.published || source.note) && (
-              <span class="article-source__meta">
-                {[source.publisher, source.published, source.note]
-                  .filter(Boolean)
-                  .join(" • ")}
-              </span>
-            )}
-          </li>
-        ))}
-      </ol>
-    </Fragment>
-  )}
+              {(source.publisher || source.published || source.note) && (
+                <span class="article-source__meta">
+                  {[source.publisher, source.published, source.note]
+                    .filter(Boolean)
+                    .join(" • ")}
+                </span>
+              )}
+            </li>
+          ))}
+        </ol>
+      </Fragment>
+    )
+  }
 </ArticleLayout>

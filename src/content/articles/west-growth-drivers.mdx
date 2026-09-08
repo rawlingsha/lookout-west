@@ -95,6 +95,8 @@ sources:
 
 ---
 
+import ShareableFigure from "../../components/article/ShareableFigure.astro";
+
 
 The Pinedale Aquatic Center hopes to keep its doors open.¹ The $17 million Wyoming facility was built during times flush with oil and gas revenue, back when money felt permanent. Now those revenues have cratered and the town’s working to keep the lights on at a swimming pool.
 
@@ -104,6 +106,9 @@ Meanwhile, in Everett, Washington, when Boeing’s machinists went on strike for
   <img
     src="/images/research/west-growth/growth-bars.png"
     alt="graph showing growth rates"
+    width={1080}
+    height={1080}
+    decoding="async"
   />
 </figure>
 
@@ -121,12 +126,7 @@ This is the fundamental tension of export-led growth. It works awesomely when it
 
 Utah’s economy doesn’t work like Washington’s. It’s not dominated by one massive exporter. Instead, Utah has been growing through a different mechanism: people show up, which creates jobs, which attracts more people.
 
-<figure>
-  <img
-    src="/images/research/west-growth/growth-drivers.png"
-    alt="graph showing drivers of economic growth"
-  />
-</figure>
+<ShareableFigure id="growth-drivers" />
 
 The state added 50,392 residents in 2024. That’s roughly the size of Murray City appearing in one year.11 Those new residents need housing, which creates construction jobs. They need healthcare, retail, schools, and local services. Each new household generates its own economic multiplier. The tech sector alone generated $22.5 billion in economic impact in 2023—10% of Utah’s entire economy.12
 
@@ -144,6 +144,9 @@ Wyoming’s economy runs on a different schedule. Oil and gas provided over $11 
   <img
     src="/images/research/west-growth/growth-resource.png"
     alt="graph comparing cost of living in west vs rest"
+    width={1080}
+    height={1080}
+    decoding="async"
   />
 </figure>
 

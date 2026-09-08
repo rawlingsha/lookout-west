@@ -1,0 +1,83 @@
+---
+import sharp from "sharp";
+import path from "node:path";
+import FigureBlock from "./FigureBlock.astro";
+import ShareActions from "../sharing/ShareActions.astro";
+import {
+  shareFigures,
+  figureArticleUrl,
+  figurePagePath,
+  figureShareImages,
+} from "../../lib/figures";
+import { contentUrl } from "../../lib/urls";
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+const figure = shareFigures.find((entry) => entry.id === id);
+if (!figure) throw new Error(`Unknown share figure: ${id}`);
+const metadata = figure.image
+  ? await sharp(path.join(process.cwd(), "public", figure.image)).metadata()
+  : undefined;
+const url = figure.image
+  ? contentUrl(figurePagePath(figure))
+  : figureArticleUrl(figure);
+---
+
+<FigureBlock
+  id={`figure-${id}`}
+  kind={figure.kind === "table" ? "table" : "chart"}
+  label={figure.title}
+  caption={figure.caption}
+  note={`Source: ${figure.source}`}
+>
+  {
+    figure.image ? (
+      <img
+        src={figure.image}
+        alt={figure.alt ?? figure.title}
+        width={metadata?.width}
+        height={metadata?.height}
+        loading="lazy"
+        decoding="async"
+      />
+    ) : (
+      <slot />
+    )
+  }
+  <div slot="actions">
+    <ShareActions
+      id={`share-${id}`}
+      title={figure.title}
+      text={figure.caption}
+      url={url}
+      kind={figure.kind === "table" ? "table" : "chart"}
+      images={figureShareImages(figure)}
+      download={figure.image
+        ? `/social/generated/figures/${id}.png`
+        : undefined}
+    />
+    {
+      figure.image && (
+        <a class="figure-page-link" href={figurePagePath(figure)}>
+          Open chart and source details <span aria-hidden="true">↗</span>
+        </a>
+      )
+    }
+  </div>
+</FigureBlock>
+<style>
+  .figure-page-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    gap: 0.35rem;
+    margin-top: 0.25rem;
+    color: var(--color-muted);
+    font: 400 0.875rem/1.4 var(--font-sans);
+  }
+  .figure-page-link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+</style>

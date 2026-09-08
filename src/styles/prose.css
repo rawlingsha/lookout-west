@@ -98,7 +98,7 @@
   margin: 1.5rem 0 1.5rem;
 }
 
-.lw-prose figure > :where(img, picture, svg, video, canvas, iframe, div) {
+.lw-prose figure > :where(img, picture, svg, video, canvas, iframe, div.figure-block__media, div.table-scroll) {
   display: block;
   width: 100%;
   max-width: 100%;
@@ -112,10 +112,19 @@
   margin: 2rem 0;
 }
 
+.lw-prose figure img {
+  height: auto;
+}
+
 .lw-prose .table-scroll {
   overflow-x: auto;
   border: var(--border-subtle);
   background: rgba(255, 255, 255, 0.54);
+}
+
+.lw-prose .table-scroll:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 .lw-prose table {

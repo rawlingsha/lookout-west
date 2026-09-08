@@ -59,49 +59,86 @@ const publishedLabel = formatDate(publishDate);
 const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
 ---
 
-<BaseLayout title={pageTitle} description={description} ogTitle={title} ogType="article" ogImage={socialImage ?? images.preview} ogImageAlt={socialImageAlt ?? images.alt} ogImageWidth={socialImageWidth} ogImageHeight={socialImageHeight} publishDate={publishDate} updatedDate={updatedDate} author={author}>
+<BaseLayout
+  title={pageTitle}
+  description={description}
+  ogTitle={title}
+  ogType="article"
+  ogImage={socialImage ?? images.preview}
+  ogImageAlt={socialImageAlt ?? images.alt}
+  ogImageWidth={socialImageWidth}
+  ogImageHeight={socialImageHeight}
+  publishDate={publishDate}
+  updatedDate={updatedDate}
+  author={author}
+>
   <article class="article-layout">
     <Container>
       <header class="article-layout__header">
         <p class="article-layout__eyebrow">
-          {topicHref ? (
-            <a class="article-layout__eyebrow-link" href={topicHref}>{topic}</a>
-          ) : (
-            topic
-          )}
+          {
+            topicHref ? (
+              <a class="article-layout__eyebrow-link" href={topicHref}>
+                {topic}
+              </a>
+            ) : (
+              topic
+            )
+          }
         </p>
         <h1 class="article-layout__title">{title}</h1>
         <p class="article-layout__deck">{deck}</p>
 
         <div class="article-layout__meta" aria-label="Article metadata">
-          <span class="article-layout__meta-item article-layout__meta-item--author">
+          <span
+            class="article-layout__meta-item article-layout__meta-item--author"
+          >
             By {author}
           </span>
-          <span class="article-layout__meta-separator" aria-hidden="true">•</span>
+          <span class="article-layout__meta-separator" aria-hidden="true"
+            >•</span
+          >
           <span class="article-layout__meta-item">
-            Published <time datetime={publishDate.toISOString()}>{publishedLabel}</time>
+            Published <time datetime={publishDate.toISOString()}
+              >{publishedLabel}</time
+            >
           </span>
 
-          {updatedLabel && (
-            <>
-              <span class="article-layout__meta-separator" aria-hidden="true">•</span>
-              <span class="article-layout__meta-item">
-                Updated <time datetime={updatedDate?.toISOString()}>{updatedLabel}</time>
-              </span>
-            </>
-          )}
+          {
+            updatedLabel && (
+              <>
+                <span class="article-layout__meta-separator" aria-hidden="true">
+                  •
+                </span>
+                <span class="article-layout__meta-item">
+                  Updated{" "}
+                  <time datetime={updatedDate?.toISOString()}>
+                    {updatedLabel}
+                  </time>
+                </span>
+              </>
+            )
+          }
         </div>
-        <ShareActions id="article-share-top" title={title} text={description} url={url} images={images} />
+        <ShareActions
+          id="article-share-top"
+          title={title}
+          text={description}
+          url={url}
+          images={images}
+        />
       </header>
     </Container>
 
-    {Astro.slots.has("hero") && (
-      <Container>
-        <div class="article-layout__hero">
-          <slot name="hero" />
-        </div>
-      </Container>
-    )}
+    {
+      Astro.slots.has("hero") && (
+        <Container>
+          <div class="article-layout__hero">
+            <slot name="hero" />
+          </div>
+        </Container>
+      )
+    }
 
     <Container>
       <section class="article-layout__body">
@@ -109,26 +146,40 @@ const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
           <slot />
         </Prose>
         <div class="article-layout__sharing-end">
-          <ShareActions id="article-share-end" title={title} text={description} url={url} images={images} label="Share this article" />
+          <ShareActions
+            id="article-share-end"
+            title={title}
+            text={description}
+            url={url}
+            images={images}
+            label="Share this article"
+          />
         </div>
       </section>
     </Container>
 
-    {hasSources && (
-      <Container>
-        <section class="article-layout__sources">
-          <h2 class="article-layout__sources-title">Sources</h2>
-          <div class="article-layout__sources-body">
-            <slot name="sources" />
-          </div>
-        </section>
-      </Container>
-    )}
+    {
+      hasSources && (
+        <Container>
+          <section class="article-layout__sources">
+            <h2 class="article-layout__sources-title">Sources</h2>
+            <div class="article-layout__sources-body">
+              <slot name="sources" />
+            </div>
+          </section>
+        </Container>
+      )
+    }
   </article>
 </BaseLayout>
 
 <style>
-  .article-layout__sharing-end { width: min(100%, 42rem); margin-top: var(--space-7); padding-top: var(--space-5); border-top: var(--border-subtle); }
+  .article-layout__sharing-end {
+    width: min(100%, 42rem);
+    margin-top: var(--space-7);
+    padding-top: var(--space-5);
+    border-top: var(--border-subtle);
+  }
   .article-layout__header {
     width: min(100%, 46rem);
     padding-top: var(--space-7);

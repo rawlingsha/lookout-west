@@ -230,6 +230,8 @@ sources:
     note: "Resource revenue management overview"
 ---
 
+import ShareableFigure from "../../components/article/ShareableFigure.astro";
+
 In 2025 Wyoming cut property taxes on single-family homes, exempting 25 percent of the first $1 million in value for qualifying homes.
 
 That provided many homeowners with much-needed relief, but did the real costs go away? Property taxes help pay for Wyoming’s schools, counties, towns, and special districts. 
@@ -248,12 +250,7 @@ It is all a bet about who pays, when, and what happens when forecasts go wrong. 
 
 Western states begin from very different places. In fiscal 2023, personal income taxes supplied 42 percent of combined state and local tax collections in Oregon. Sales and excise taxes supplied 62 percent in Washington and 66 percent in Nevada. Severance taxes on oil, gas, coal, and other minerals supplied 42 percent in Alaska, 28 percent in New Mexico, and 24 percent in Wyoming.
 
-<figure>
-  <img
-    src="/images/research/taxes/Tax bases.png"
-    alt="[Placeholder: Chart comparing the tax bases of Western states.]"
-  />
-</figure>
+<ShareableFigure id="tax-bases" />
 
 But who is “taxed” can be different from who ultimately gives up the income. A landlord may recover part of a property-tax increase through rent. A business tax can reach shareholders through lower profits, workers through lower pay, or customers through higher prices. A hotel tax can be carried home by a visitor. Economists call this tax incidence. In everyday terms, the side with fewer good ways to avoid a tax usually pays more of it.
 
@@ -265,6 +262,9 @@ Another way to look at these states is by tax incidence—meaning who actually p
   <img
     src="/images/research/taxes/effective_tax_rates_by_income group.png"
     alt="[Placeholder: Chart comparing the effective tax rates across income group.]"
+    width={1080}
+    height={1080}
+    decoding="async"
   />
 </figure>
 

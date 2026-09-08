@@ -8,7 +8,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      filter: (page) => !page.endsWith("/welcome/"),
+      filter: (page) => !page.endsWith("/welcome/") && !new URL(page).pathname.startsWith("/visualizations/"),
     }),
   ],
 });

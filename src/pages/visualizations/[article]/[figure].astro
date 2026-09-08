@@ -1,0 +1,149 @@
+---
+import { getCollection } from "astro:content";
+import sharp from "sharp";
+import path from "node:path";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Container from "../../../components/base/Container.astro";
+import ShareActions from "../../../components/sharing/ShareActions.astro";
+import {
+  shareFigures,
+  figureArticleUrl,
+  figurePagePath,
+  figureShareImages,
+} from "../../../lib/figures";
+import { contentUrl } from "../../../lib/urls";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("articles", ({ data }) => !data.draft);
+  return shareFigures
+    .filter(
+      (figure) =>
+        figure.image &&
+        articles.some((article) => article.id === figure.article),
+    )
+    .map((figure) => ({
+      params: { article: figure.article, figure: figure.id },
+      props: {
+        figure,
+        article: articles.find((article) => article.id === figure.article)!,
+      },
+    }));
+}
+const { figure, article } = Astro.props;
+const images = figureShareImages(figure)!;
+const metadata = await sharp(
+  path.join(process.cwd(), "public", figure.image!),
+).metadata();
+const url = contentUrl(figurePagePath(figure));
+---
+
+<BaseLayout
+  title={`${figure.title} | Lookout West`}
+  ogTitle={figure.title}
+  description={figure.caption}
+  ogImage={images.preview}
+  ogImageAlt={images.alt}
+  canonicalPath={figurePagePath(figure)}
+  robots="noindex,follow"
+>
+  <Container>
+    <article class="visualization">
+      <header>
+        <a class="visualization__back" href={figureArticleUrl(figure)}
+          >← Read the full article</a
+        >
+        <p class="visualization__eyebrow">Lookout West · Chart</p>
+        <h1>{figure.title}</h1>
+        <p class="visualization__caption">{figure.caption}</p>
+        <ShareActions
+          id="visualization-share"
+          title={figure.title}
+          text={figure.caption}
+          url={url}
+          kind="chart"
+          images={images}
+          download={`/social/generated/figures/${figure.id}.png`}
+        />
+      </header>
+      <figure>
+        <img
+          src={figure.image}
+          alt={figure.alt ?? figure.title}
+          width={metadata.width}
+          height={metadata.height}
+        />
+        <figcaption>Source: {figure.source}</figcaption>
+      </figure>
+      <div class="visualization__context">
+        <p>From <a href={figureArticleUrl(figure)}>{article.data.title}</a></p>
+        <p>{article.data.deck}</p>
+        <a href={figureArticleUrl(figure)}
+          >Read the analysis and supporting sources →</a
+        >
+      </div>
+    </article>
+  </Container>
+</BaseLayout>
+<style>
+  .visualization {
+    width: min(100%, 64rem);
+    padding: var(--space-6) 0 var(--space-8);
+  }
+  .visualization header {
+    max-width: 46rem;
+  }
+  .visualization__back {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 0.875rem;
+    color: var(--color-muted);
+  }
+  .visualization__eyebrow {
+    margin: 1.75rem 0 0.75rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+  .visualization h1 {
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  .visualization__caption {
+    color: var(--color-muted);
+    font-size: 1.1rem;
+  }
+  .visualization figure {
+    margin: 2.5rem 0 1.5rem;
+  }
+  .visualization img {
+    width: 100%;
+    height: auto;
+    border: var(--border-subtle);
+    border-radius: 0.75rem;
+  }
+  .visualization figcaption {
+    margin-top: 0.75rem;
+    color: var(--color-muted);
+    font-size: 0.875rem;
+  }
+  .visualization__context {
+    max-width: 46rem;
+    border-top: var(--border-subtle);
+    padding-top: 1.5rem;
+  }
+  .visualization__context p {
+    color: var(--color-muted);
+  }
+  .visualization__context a {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .visualization a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+</style>

@@ -73,6 +73,8 @@ sources:
     url: "https://www.aeaweb.org/articles?id=10.1257/jep.34.2.90"
 ---
 
+import ShareableFigure from "../../components/article/ShareableFigure.astro";
+
 We’re long past being naive about data centers. 
 
 We now know they claim power from the grid, water from a basin, and land that could have served another use. They’re a noise source, a heat source, and a source of stress for local governments. It claims room in transmission plans, permits from air and water regulators, time from county staff, and future options the next employer, hospital, or neighborhood may need. 
@@ -85,6 +87,9 @@ The Western U.S. is never one to miss a boom. The Western Electricity Coordinati
   <img
     src="/images/research/data-centers/Flat-Load Era is Over.png"
     alt="bar chart of WECC demand projections into 2035"
+    width={1080}
+    height={1080}
+    decoding="async"
   />
 </figure>
 
@@ -144,6 +149,9 @@ Consider a facility using 100 million gallons a year, or about 307 acre-feet. At
   <img
     src="/images/research/data-centers/Sourcing Scarce Water.png"
     alt="bar chart of WECC demand projections into 2034"
+    width={1080}
+    height={1080}
+    decoding="async"
   />
 </figure>
 
@@ -163,8 +171,8 @@ Under those terms, a data center can bring investment and tax revenue while keep
 
 The local-capacity ledger is how a community tells the difference. Before the final public vote, one document should show the project’s requested and contracted electricity load; its firm peak requirement and curtailment terms; the grid upgrades it triggers and who pays for them; its water source, annual use, and drought plan; the land and local impacts involved; the full value of any tax incentive; the promised jobs and investment; and the penalties if those commitments are missed.
 
-<figure className="table-figure">
-  <div className="table-scroll">
+<ShareableFigure id="local-capacity-ledger">
+  <div className="table-scroll" role="region" aria-label="Local-capacity ledger" tabindex="0">
     <table>
       <thead>
         <tr>
@@ -212,7 +220,7 @@ The local-capacity ledger is how a community tells the difference. Before the fi
       </tbody>
     </table>
   </div>
-</figure>
+</ShareableFigure>
 
 State law should require the ledger for any project large enough to materially alter a utility’s resource plan, its transmission plans, or a community’s water budget. The threshold should scale with the local system: a project would trigger the rule when it exceeds either a state-set megawatt floor or a specified share of the utility’s peak load. A large project can be manageable for one utility and transformative for another.
 
