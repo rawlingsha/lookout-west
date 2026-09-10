@@ -3,6 +3,7 @@ import { readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 import { Window } from "happy-dom";
 import sharp from "sharp";
+import { parse } from "yaml";
 import { contentUrl } from "../src/lib/urls.ts";
 import { shareDestinations } from "../src/lib/share.ts";
 import { initializeShareActions } from "../src/scripts/share-actions.ts";
@@ -90,10 +91,28 @@ test("destinations preserve encoded URLs and punctuation without extra parameter
 
 test("all built articles have distinct, valid previews and downloads", async (t) => {
   const previews = new Set();
+  let publishedCount = 0;
   for (const file of (await readdir("src/content/articles")).filter((name) =>
     name.endsWith(".mdx"),
   )) {
     const id = file.replace(/\.mdx$/, "");
+    const source = await readFile(`src/content/articles/${file}`, "utf8");
+    const data = parse(source.match(/^---\r?\n([\s\S]*?)\r?\n---/)[1]);
+    if (data.draft) {
+      await assert.rejects(readFile(`dist/research/${id}/index.html`), {
+        code: "ENOENT",
+      });
+      for (const index of ["rss.xml", "sitemap-0.xml"]) {
+        assert.ok(
+          !(await readFile(`dist/${index}`, "utf8")).includes(
+            `/research/${id}/`,
+          ),
+          `Draft ${id} must be absent from ${index}`,
+        );
+      }
+      continue;
+    }
+    publishedCount += 1;
     const markup = await readFile(`dist/research/${id}/index.html`, "utf8");
     const { doc } = fixture(t, { markup, enhance: false });
     const meta = (name) =>
@@ -106,10 +125,10 @@ test("all built articles have distinct, valid previews and downloads", async (t)
     assert.ok(meta("article:published_time"));
     const image = new URL(meta("og:image"));
     previews.add(image.pathname);
-    const data = await sharp(`dist${image.pathname}`).metadata();
-    assert.equal(data.width, Number(meta("og:image:width")));
-    assert.equal(data.height, Number(meta("og:image:height")));
-    assert.equal(data.format, "jpeg");
+    const imageData = await sharp(`dist${image.pathname}`).metadata();
+    assert.equal(imageData.width, Number(meta("og:image:width")));
+    assert.equal(imageData.height, Number(meta("og:image:height")));
+    assert.equal(imageData.format, "jpeg");
     assert.equal(doc.querySelectorAll("#article-share-top-heading").length, 1);
     assert.equal(doc.querySelectorAll("#article-share-end-heading").length, 1);
     for (const variant of ["portrait", "story"]) {
@@ -120,7 +139,8 @@ test("all built articles have distinct, valid previews and downloads", async (t)
       assert.equal(image.height, variant === "portrait" ? 1350 : 1920);
     }
   }
-  assert.equal(previews.size, 7);
+  assert.ok(publishedCount > 0);
+  assert.equal(previews.size, publishedCount);
   assert.equal(
     (await sharp("dist/social/og-default.jpg").metadata()).width,
     1200,

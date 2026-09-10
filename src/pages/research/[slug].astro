@@ -6,9 +6,12 @@ import path from "node:path";
 
 export async function getStaticPaths() {
   const articles = await getCollection("articles");
-  const publishedArticles = articles.filter((article) => !article.data.draft);
+  // Drafts are reviewable locally, but never receive a production article route.
+  const visibleArticles = articles.filter(
+    (article) => import.meta.env.DEV || !article.data.draft,
+  );
 
-  return publishedArticles.map((article) => ({
+  return visibleArticles.map((article) => ({
     params: { slug: article.id },
     props: { article },
   }));
@@ -39,6 +42,7 @@ const primaryTopicSlug = toTopicSlug(
   topicHref={`/research/topics/${primaryTopicSlug}/`}
   author={article.data.author}
   publishDate={article.data.publishDate}
+  draft={article.data.draft}
   updatedDate={article.data.updatedDate}
   hasSources={sources.length > 0}
   seoTitle={article.data.seoTitle}

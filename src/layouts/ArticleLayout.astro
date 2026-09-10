@@ -14,6 +14,7 @@ interface Props {
   topicHref?: string;
   author: string;
   publishDate: Date;
+  draft?: boolean;
   updatedDate?: Date;
   hasSources?: boolean;
   seoTitle?: string;
@@ -32,6 +33,7 @@ const {
   topicHref,
   author,
   publishDate,
+  draft = false,
   updatedDate,
   hasSources = false,
   seoTitle,
@@ -64,17 +66,23 @@ const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
   description={description}
   ogTitle={title}
   ogType="article"
-  ogImage={socialImage ?? images.preview}
-  ogImageAlt={socialImageAlt ?? images.alt}
-  ogImageWidth={socialImageWidth}
-  ogImageHeight={socialImageHeight}
-  publishDate={publishDate}
-  updatedDate={updatedDate}
+  ogImage={draft ? undefined : (socialImage ?? images.preview)}
+  ogImageAlt={draft ? undefined : (socialImageAlt ?? images.alt)}
+  ogImageWidth={draft ? undefined : socialImageWidth}
+  ogImageHeight={draft ? undefined : socialImageHeight}
+  publishDate={draft ? undefined : publishDate}
+  updatedDate={draft ? undefined : updatedDate}
   author={author}
+  robots={draft ? "noindex,nofollow" : undefined}
 >
   <article class="article-layout">
     <Container>
       <header class="article-layout__header">
+        {
+          draft && (
+            <p class="article-layout__draft">Draft preview · Not published</p>
+          )
+        }
         <p class="article-layout__eyebrow">
           {
             topicHref ? (
@@ -99,9 +107,8 @@ const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
             >•</span
           >
           <span class="article-layout__meta-item">
-            Published <time datetime={publishDate.toISOString()}
-              >{publishedLabel}</time
-            >
+            {draft ? "Draft dated" : "Published"}
+            <time datetime={publishDate.toISOString()}>{publishedLabel}</time>
           </span>
 
           {
@@ -120,13 +127,17 @@ const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
             )
           }
         </div>
-        <ShareActions
-          id="article-share-top"
-          title={title}
-          text={description}
-          url={url}
-          images={images}
-        />
+        {
+          !draft && (
+            <ShareActions
+              id="article-share-top"
+              title={title}
+              text={description}
+              url={url}
+              images={images}
+            />
+          )
+        }
       </header>
     </Container>
 
@@ -145,16 +156,20 @@ const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
         <Prose>
           <slot />
         </Prose>
-        <div class="article-layout__sharing-end">
-          <ShareActions
-            id="article-share-end"
-            title={title}
-            text={description}
-            url={url}
-            images={images}
-            label="Share this article"
-          />
-        </div>
+        {
+          !draft && (
+            <div class="article-layout__sharing-end">
+              <ShareActions
+                id="article-share-end"
+                title={title}
+                text={description}
+                url={url}
+                images={images}
+                label="Share this article"
+              />
+            </div>
+          )
+        }
       </section>
     </Container>
 
@@ -174,6 +189,16 @@ const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
 </BaseLayout>
 
 <style>
+  .article-layout__draft {
+    margin: 0 0 var(--space-4);
+    padding: var(--space-3);
+    border: var(--border-subtle);
+    border-left: 3px solid var(--color-accent);
+    color: var(--color-accent);
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+
   .article-layout__sharing-end {
     width: min(100%, 42rem);
     margin-top: var(--space-7);
