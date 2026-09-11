@@ -14,7 +14,7 @@ seoTitle: "Why High Beef Prices Haven’t Rebuilt the Herd | Lookout West"
 seoDescription: "Nineteen states across the West and Plains sold $97.2 billion in cattle and calves in 2025. Expanding the herd depends on future returns, reliable forage and a processing system producers can reach."
 ---
 
-import FigureBlock from "../../components/article/FigureBlock.astro";
+import ShareableFigure from "../../components/article/ShareableFigure.astro";
 
 On Aug. 13, [Tyson Foods announced](https://www.tysonfoods.com/news/news-releases/2026/8/tyson-foods-announces-network-restructuring-beef-business-strengthen-long) that it would end operations at its case-ready plant in Eagle Mountain, Utah, close a beef plant in Joslin, Illinois, and seek a buyer for its beef plant in Pasco, Washington. Its beef business would center on three facilities: Dakota City, Nebraska; Holcomb, Kansas; and Amarillo, Texas. The company said the reorganized network could maintain a similar level of cattle harvesting.
 
@@ -24,26 +24,7 @@ Key to Tyson's restructuring has been a nation-wide cattle shortage, and househo
 
 **The United States began 2026 with [86.2 million cattle and calves](https://www.nass.usda.gov/Newsroom/2026/01-30-2026.php), with beef-cow numbers down 1 percent from a year earlier.** Retail beef and veal prices in July were [9.4 percent higher than a year earlier](https://www.ers.usda.gov/data-products/food-price-outlook/summary-findings). Yet high prices have not produced a sustained expansion of the breeding herd.
 
-<FigureBlock
-  id="figure-price-and-herd"
-  label="High beef prices, a smaller breeding herd"
-  caption="Beef-cow inventory and inflation-adjusted retail beef prices have different observation dates; neither series measures ranch profits."
-  note="Select the chart to view it at full size."
->
-  <a
-    href="/images/research/cattle-herd/price-and-herd.png"
-    aria-label="View full-size chart: High beef prices, a smaller breeding herd"
-  >
-    <img
-      src="/images/research/cattle-herd/price-and-herd.png"
-      alt="Two line charts: U.S. beef-cow inventory falls to 27.6 million on January 1, 2026, while retail beef reaches $9.46 per pound in July 2026, in December 2025 dollars."
-      width={1033}
-      height={804}
-      loading="lazy"
-      decoding="async"
-    />
-  </a>
-</FigureBlock>
+<ShareableFigure id="price-and-herd" />
 
 Understanding why requires following cattle through a system that crosses state lines. Many calves [move from breeding ranches through additional grazing and then into feedlots](https://www.ers.usda.gov/topics/animal-products/cattle-beef/sector-at-a-glance) before slaughter. High calf prices can improve ranchers' returns while also raising feedlots' purchase costs. Then, packers must cover the cost of finished cattle and processing from what they earn selling beef and byproducts. So, each stage faces a different margin.
 
@@ -59,26 +40,7 @@ Cattle ranching and feedlots supported at least 46,790 covered payroll jobs acro
 
 A feedlot, auction, veterinary practice or packing shift can support customers and suppliers across a wide rural area. Those relationships are difficult to see in state averages, and processing and supplier jobs are outside the payroll measure above.
 
-<FigureBlock
-  id="figure-state-scale-and-dependence"
-  label="Cattle’s scale and local importance differ"
-  caption="Cattle and calf sales across the 13-state West and six Plains states, alongside their share of each state’s farm receipts in 2025."
-  note="Select the chart to view it at full size."
->
-  <a
-    href="/images/research/cattle-herd/state-scale-and-dependence.png"
-    aria-label="View full-size chart: Cattle’s scale and local importance differ"
-  >
-    <img
-      src="/images/research/cattle-herd/state-scale-and-dependence.png"
-      alt="Paired bar charts compare cattle sales and farm-receipt shares in 19 states. Nebraska leads sales at $20.34 billion; Wyoming has the highest cattle share of farm receipts at 77.7 percent."
-      width={1033}
-      height={804}
-      loading="lazy"
-      decoding="async"
-    />
-  </a>
-</FigureBlock>
+<ShareableFigure id="state-scale-and-dependence" />
 
 ## The economics of a short herd
 
@@ -86,26 +48,7 @@ The cattle cycle begins with an unusually long production lag. A rancher expandi
 
 --that is to say: retaining a heifer is also an investment. The rancher gives up a valuable sale today, pays to carry and breed her, and waits for uncertain future calf revenue. Expansion depends on expected returns after feed, forage, labor and financing costs. High replacement-animal prices and the risk of another drought can make waiting sensible even when current calf prices are attractive. [Kansas City Fed research published in August](https://www.kansascityfed.org/research/economic-bulletin/high-costs-and-uncertainty-will-likely-keep-cattle-inventories-low-and-beef-prices-elevated-for-some-time/) identifies these costs and uncertainties as obstacles to rebuilding.
 
-<FigureBlock
-  id="figure-rebuilding-timeline"
-  label="A retained heifer takes years to add beef"
-  caption="An illustrative retention decision in autumn 2026 can produce calf-sale revenue in autumn 2028, before the offspring supplies beef in late 2029. Timing is not a forecast."
-  note="Select the chart to view it at full size."
->
-  <a
-    href="/images/research/cattle-herd/rebuilding-timeline.png"
-    aria-label="View full-size chart: A retained heifer takes years to add beef"
-  >
-    <img
-      src="/images/research/cattle-herd/rebuilding-timeline.png"
-      alt="Timeline: retain a heifer in autumn 2026, breed her in spring 2027, first calf born in spring 2028, sell the calf at weaning in autumn 2028, and offspring supplies beef in late 2029."
-      width={1033}
-      height={804}
-      loading="lazy"
-      decoding="async"
-    />
-  </a>
-</FigureBlock>
+<ShareableFigure id="rebuilding-timeline" />
 
 USDA's [August livestock outlook](https://www.ers.usda.gov/media/29466/ldp-m-386.pdf?v=50341) describes early signs of greater heifer retention, alongside a projected 1.5 percent decline in this year's calf crop. It forecasts 24.97 billion pounds of U.S. beef production in 2026, about 4 percent below last year, and nearly the same amount in 2027. Heavier slaughter weights, dairy-beef calves and imports also affect available supply. The number of beef cows alone does not determine how much beef reaches consumers.
 
@@ -119,26 +62,7 @@ Plants carry large fixed costs and need reliable throughput. Scarce cattle can r
 
 Eagle Mountain prepares retail-ready cuts; its closure is not a loss of cattle-slaughter capacity at that location. Pasco harvests and processes cattle, but a sale need not remove that capacity. For cattle suppliers, the eventual ownership, operating plans and available alternatives will matter.
 
-<FigureBlock
-  id="figure-processing-and-feedlots"
-  label="Tyson’s planned hubs sit in the feeding belt"
-  caption="Selected facilities in Tyson’s August 13 announcement, with state cattle-on-feed inventories as of August 1. Plant symbols mark communities, not facility gates."
-  note="Select the chart to view it at full size."
->
-  <a
-    href="/images/research/cattle-herd/processing-and-feedlots.png"
-    aria-label="View full-size chart: Tyson’s planned hubs sit in the feeding belt"
-  >
-    <img
-      src="/images/research/cattle-herd/processing-and-feedlots.png"
-      alt="Map shows planned core hubs in Dakota City, Nebraska; Holcomb, Kansas; and Amarillo, Texas. Pasco, Washington, is marked for sale, Eagle Mountain, Utah, for case-ready closure, and Joslin, Illinois, for slaughter closure. Nebraska, Kansas and Texas hold 65.1 percent of reported national feedlot inventory."
-      width={1033}
-      height={804}
-      loading="lazy"
-      decoding="async"
-    />
-  </a>
-</FigureBlock>
+<ShareableFigure id="processing-and-feedlots" />
 
 Competition still warrants scrutiny. The four largest firms account for about [85 percent of steer and heifer purchases](https://www.ers.usda.gov/amber-waves/2024/january/concentration-in-u-s-meatpacking-industry-and-how-it-affects-competition-and-cattle-prices). Research documents both processing economies of scale and the potential for buyer power where producers have few alternatives. A [recent spatial study](https://onlinelibrary.wiley.com/doi/full/10.1111/ajae.70003) underscores the importance of plant locations and available capacity. Packer losses do not rule out buyer power: cattle prices could still be below those in a more competitive market. The relevant questions concern actual buying options, contracts and conduct alongside operating costs.
 
@@ -166,26 +90,7 @@ Applicants should demonstrate credible cattle supplies, customers, staffing and 
 
 [USDA’s proposed heifer-retention coverage](https://www.usda.gov/ranchers-first) deserves independent actuarial review and a staged evaluation before broad expansion. The questions are whether it improves risk protection, encourages investments that remain viable without continuing subsidy, and justifies its taxpayer cost. Evaluation should also examine grazing pressure. Effective drought policy must leave producers able to reduce stocking when forage fails and rebuild when conditions improve.
 
-<FigureBlock
-  id="figure-drought-exposure"
-  label="Drought repeatedly puts forage at risk"
-  caption="Estimated national cattle exposure to drought, January 2010–September 1, 2026. Severe-or-worse drought is included within the moderate-or-worse total; exposure does not measure individual ranch losses."
-  note="Select the chart to view it at full size."
->
-  <a
-    href="/images/research/cattle-herd/drought-exposure.png"
-    aria-label="View full-size chart: Drought repeatedly puts forage at risk"
-  >
-    <img
-      src="/images/research/cattle-herd/drought-exposure.png"
-      alt="Area chart of estimated U.S. cattle inventory exposed to drought. On September 1, 2026, 60 percent is exposed to moderate-or-worse drought, including 34 percent exposed to severe-or-worse drought."
-      width={1033}
-      height={804}
-      loading="lazy"
-      decoding="async"
-    />
-  </a>
-</FigureBlock>
+<ShareableFigure id="drought-exposure" />
 
 **4. Prepare grazing and water decisions before drought forces them.** On BLM allotments, agencies and permittees should establish clear conditions for adjusting grazing dates, pasture use and stocking, supported by monitoring and appropriate consultation. [Existing BLM policy provides a route for incorporating this flexibility into permits and management plans](https://www.blm.gov/policy/im-2025-011). Adequate field staffing would help turn that authority into timely decisions that protect both operations and rangeland recovery.
 

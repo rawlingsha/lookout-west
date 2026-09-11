@@ -33,14 +33,20 @@ const url = figure.image
 >
   {
     figure.image ? (
-      <img
-        src={figure.image}
-        alt={figure.alt ?? figure.title}
-        width={metadata?.width}
-        height={metadata?.height}
-        loading="lazy"
-        decoding="async"
-      />
+      <a
+        class="figure-image-link"
+        href={figure.image}
+        aria-label={`View full-size chart: ${figure.title}`}
+      >
+        <img
+          src={figure.image}
+          alt={figure.alt ?? figure.title}
+          width={metadata?.width}
+          height={metadata?.height}
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
     ) : (
       <slot />
     )
@@ -67,6 +73,14 @@ const url = figure.image
   </div>
 </FigureBlock>
 <style>
+  .figure-image-link {
+    display: block;
+    border-radius: inherit;
+  }
+  .figure-image-link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -3px;
+  }
   .figure-page-link {
     display: inline-flex;
     align-items: center;

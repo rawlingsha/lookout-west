@@ -148,10 +148,12 @@ test("all built articles have distinct, valid previews and downloads", async (t)
 });
 
 test("chart pages have their own metadata and return to real article anchors", async (t) => {
-  for (const [article, figure] of [
-    ["west-growth-drivers", "growth-drivers"],
-    ["taxes-in-the-west", "tax-bases"],
-  ]) {
+  const figures = JSON.parse(
+    await readFile("src/data/share-figures.json", "utf8"),
+  );
+  for (const { article, id: figure, image: sourceImage } of figures.filter(
+    (entry) => entry.image,
+  )) {
     const url = `/visualizations/${article}/${figure}/`;
     const { doc } = fixture(t, {
       markup: await readFile(`dist${url}index.html`, "utf8"),
@@ -179,17 +181,36 @@ test("chart pages have their own metadata and return to real article anchors", a
       markup: await readFile(`dist/research/${article}/index.html`, "utf8"),
       enhance: false,
     }).doc;
-    assert.ok(articleDoc.getElementById(`figure-${figure}`));
+    const block = articleDoc.getElementById(`figure-${figure}`);
+    assert.ok(block);
     assert.ok(
-      articleDoc.querySelector(
-        `[data-share-actions][data-url="${origin}${url}"]`,
+      block.querySelector(`[data-share-actions][data-url="${origin}${url}"]`),
+    );
+    assert.ok(block.querySelector("[data-copy-link]"));
+    assert.ok(block.querySelector(`a[href="${sourceImage}"] img`));
+    assert.ok(
+      block.querySelector(
+        `a[download][href="/social/generated/figures/${figure}.png"]`,
       ),
     );
-    assert.equal(
-      (await sharp(`dist/social/generated/figures/${figure}.png`).metadata())
-        .width,
-      1080,
-    );
+    const original = await sharp(`public${sourceImage}`).metadata();
+    const download = await sharp(
+      `dist/social/generated/figures/${figure}.png`,
+    ).metadata();
+    assert.equal(download.width, original.width);
+    assert.equal(download.height, original.height);
+    assert.equal(download.format, "png");
+    for (const [variant, width, height] of [
+      ["preview", 1200, 630],
+      ["portrait", 1080, 1350],
+      ["story", 1080, 1920],
+    ]) {
+      const exported = await sharp(
+        `dist/social/generated/figures/${figure}-${variant}.jpg`,
+      ).metadata();
+      assert.equal(exported.width, width);
+      assert.equal(exported.height, height);
+    }
   }
   const { doc } = fixture(t, { enhance: false });
   assert.ok(doc.querySelector("#figure-local-capacity-ledger table"));

@@ -4,12 +4,12 @@ Implemented September 8, 2026, following [the design plan](sharing-design-plan-2
 
 ## Available now
 
-- All seven articles have **Share** and **Copy link** below their metadata and after their body, before Sources.
+- Every published article has **Share** and **Copy link** below its metadata and after its body. Draft previews hide these controls.
 - The destination panel includes LinkedIn, X, Facebook, email, native device sharing when supported, and guided Instagram/Substack Notes flows.
 - Copy success is announced. Clipboard denial reveals a selectable URL. Cancellation of native sharing is quiet; other failures leave working alternatives.
 - Desktop uses an anchored, nonmodal dialog. Narrow screens use a native modal dialog styled as a bottom sheet. Server-rendered disclosure panels, destination links, and URLs work without JavaScript.
 - Each article has a generated landscape preview, portrait post image, and Story image. The two empty default images have been replaced. Article metadata now uses its own image, full sharing headline, description, publication dates, and image alt text/dimensions.
-- The Growth heatmap and Taxes chart have contextual controls, PNG downloads, portrait/Story exports, and dedicated pages with independent Open Graph metadata. Chart links lead to these pages; the pages link back to the exact article anchor.
+- The Growth heatmap, Taxes chart, and all five cattle charts have contextual controls, PNG downloads, portrait/Story exports, and dedicated pages with independent Open Graph metadata. Chart links lead to these pages; the pages link back to the exact article anchor. Selecting a chart image opens its full-size original.
 - The Data Centers table has a stable anchor and sharing controls; it remains a semantic HTML table and does not offer a raster download.
 - Existing article images now declare dimensions to reduce layout shifts when navigating to a figure.
 
@@ -34,6 +34,12 @@ import ShareableFigure from "../../components/article/ShareableFigure.astro";
 
 <ShareableFigure id="permanent-figure-id" />
 ```
+
+Use this component for charts that should have sharing controls. `FigureBlock`
+only formats an image and caption; publishing an article does not add controls
+to it. Once registered and rendered with `ShareableFigure`, the chart uses the
+same controls as the other charts and receives exports on the next npm build
+or dev startup. During an existing dev session, run `npm run images:share`.
 
 Each entry needs `id`, `article` (the content filename without extension), `kind`, `title`, `caption`, and `source`. Image figures also need a local `image` and meaningful `alt` description. Preserve existing IDs when editing titles or moving figures. Tables omit `image` and provide their existing table markup inside the component's slot.
 

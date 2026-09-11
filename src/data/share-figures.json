@@ -26,5 +26,55 @@
     "title": "The local-capacity ledger",
     "caption": "A proposed public ledger of the resources a large-load project consumes, its commitments, and the institutions responsible for oversight.",
     "source": "Lookout West."
+  },
+  {
+    "id": "price-and-herd",
+    "article": "cattle-herd",
+    "kind": "chart",
+    "title": "High beef prices, a smaller breeding herd",
+    "caption": "Beef-cow inventory and inflation-adjusted retail beef prices have different observation dates; neither series measures ranch profits.",
+    "source": "USDA NASS and ERS; BLS CPI-U via FRED; Lookout West. Retrieved September 9, 2026.",
+    "image": "/images/research/cattle-herd/price-and-herd.png",
+    "alt": "Two line charts: U.S. beef-cow inventory falls to 27.6 million on January 1, 2026, while retail beef reaches $9.46 per pound in July 2026, in December 2025 dollars."
+  },
+  {
+    "id": "state-scale-and-dependence",
+    "article": "cattle-herd",
+    "kind": "chart",
+    "title": "Cattle’s scale and local importance differ",
+    "caption": "Cattle and calf sales across the 13-state West and six Plains states, alongside their share of each state’s farm receipts in 2025.",
+    "source": "USDA ERS, Farm Income and Wealth Statistics, September 3, 2026 release; Lookout West calculations.",
+    "image": "/images/research/cattle-herd/state-scale-and-dependence.png",
+    "alt": "Paired bar charts compare cattle sales and farm-receipt shares in 19 states. Nebraska leads sales at $20.34 billion; Wyoming has the highest cattle share of farm receipts at 77.7 percent."
+  },
+  {
+    "id": "rebuilding-timeline",
+    "article": "cattle-herd",
+    "kind": "chart",
+    "title": "A retained heifer takes years to add beef",
+    "caption": "An illustrative retention decision in autumn 2026 can produce calf-sale revenue in autumn 2028, before the offspring supplies beef in late 2029. Timing is not a forecast.",
+    "source": "Biological sequence adapted from Oklahoma State University Extension; Lookout West. Illustrative timing, not a forecast.",
+    "image": "/images/research/cattle-herd/rebuilding-timeline.png",
+    "alt": "Timeline: retain a heifer in autumn 2026, breed her in spring 2027, first calf born in spring 2028, sell the calf at weaning in autumn 2028, and offspring supplies beef in late 2029."
+  },
+  {
+    "id": "processing-and-feedlots",
+    "article": "cattle-herd",
+    "kind": "chart",
+    "title": "Tyson’s planned hubs sit in the feeding belt",
+    "caption": "Selected facilities in Tyson’s August 13 announcement, with state cattle-on-feed inventories as of August 1. Plant symbols mark communities, not facility gates.",
+    "source": "USDA NASS, August 21, 2026; Tyson Foods, August 13, 2026; U.S. Census Bureau 2025 community coordinates; Lookout West.",
+    "image": "/images/research/cattle-herd/processing-and-feedlots.png",
+    "alt": "Map shows planned core hubs in Dakota City, Nebraska; Holcomb, Kansas; and Amarillo, Texas. Pasco, Washington, is marked for sale, Eagle Mountain, Utah, for case-ready closure, and Joslin, Illinois, for slaughter closure. Nebraska, Kansas and Texas hold 65.1 percent of reported national feedlot inventory."
+  },
+  {
+    "id": "drought-exposure",
+    "article": "cattle-herd",
+    "kind": "chart",
+    "title": "Drought repeatedly puts forage at risk",
+    "caption": "Estimated national cattle exposure to drought, January 2010–September 1, 2026. Severe-or-worse drought is included within the moderate-or-worse total; exposure does not measure individual ranch losses.",
+    "source": "U.S. Agricultural Commodities in Drought, USDA/NDMC; Lookout West. Retrieved September 9, 2026.",
+    "image": "/images/research/cattle-herd/drought-exposure.png",
+    "alt": "Area chart of estimated U.S. cattle inventory exposed to drought. On September 1, 2026, 60 percent is exposed to moderate-or-worse drought, including 34 percent exposed to severe-or-worse drought."
   }
 ]
