@@ -66,6 +66,7 @@ const getCardImageAlt = (article: CollectionEntry<"articles">) =>
               <img
                 src={featuredArticle.data.cardImage}
                 alt={getCardImageAlt(featuredArticle)}
+                style={{ "--card-image-position": featuredArticle.data.cardImagePosition }}
                 loading="eager"
                 decoding="async"
               />
@@ -112,6 +113,7 @@ const getCardImageAlt = (article: CollectionEntry<"articles">) =>
                   <img
                     src={article.data.cardImage}
                     alt={getCardImageAlt(article)}
+                    style={{ "--card-image-position": article.data.cardImagePosition }}
                     loading="lazy"
                     decoding="async"
                   />
@@ -154,6 +156,7 @@ const getCardImageAlt = (article: CollectionEntry<"articles">) =>
                   <img
                     src={article.data.cardImage}
                     alt={getCardImageAlt(article)}
+                    style={{ "--card-image-position": article.data.cardImagePosition }}
                     loading="lazy"
                     decoding="async"
                   />
@@ -272,6 +275,7 @@ const getCardImageAlt = (article: CollectionEntry<"articles">) =>
     height: 100%;
     aspect-ratio: 16 / 10;
     object-fit: cover;
+    object-position: var(--card-image-position, 50% 50%);
     transition: transform var(--transition-base);
   }
 
@@ -363,13 +367,16 @@ const getCardImageAlt = (article: CollectionEntry<"articles">) =>
     }
 
     .research-card--featured .research-card__media {
+      position: relative;
+      min-height: 24rem;
       border-right: var(--border-subtle);
       border-bottom: 0;
     }
 
     .research-card--featured .research-card__media img {
+      position: absolute;
+      inset: 0;
       aspect-ratio: auto;
-      min-height: 24rem;
     }
 
     .research-card--featured.research-card--with-media .research-card__body {

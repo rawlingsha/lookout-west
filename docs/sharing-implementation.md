@@ -27,6 +27,12 @@ The first two are fetchable utility pages with `noindex,follow` and are omitted 
 
 Article artwork comes from `cardImage`, with a typography-only template when that field is absent. PNG/JPEG exports preserve the full source image. Optional `socialImage` and `socialImageAlt` frontmatter override the link preview; the custom image must be a valid local asset under `public/`. The portrait/Story downloads still use the article card artwork.
 
+For card framing, optional `cardImagePosition` sets the CSS `object-position`
+(for example, `"50% 55%"`). `cardImageWidePosition` overrides it for the wide
+desktop homepage card. Other articles retain centered framing. These settings
+crop the displayed card only; the saved image and full-image social exports
+are preserved.
+
 To add a shareable figure, add an entry to `src/data/share-figures.json` and replace its raw MDX figure with:
 
 ```mdx

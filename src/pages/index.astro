@@ -66,6 +66,10 @@ const formatDate = (date: Date) =>
               <img
                 src={featuredCardImage}
                 alt={featuredArticle.data.cardImageAlt ?? ""}
+                style={{
+                  "--card-image-position": featuredArticle.data.cardImagePosition,
+                  "--card-image-wide-position": featuredArticle.data.cardImageWidePosition,
+                }}
                 loading="eager"
               />
             </a>
@@ -113,6 +117,7 @@ const formatDate = (date: Date) =>
                     <img
                       src={cardImage}
                       alt={article.data.cardImageAlt ?? ""}
+                      style={{ "--card-image-position": article.data.cardImagePosition }}
                       loading="lazy"
                     />
                   </a>
@@ -266,6 +271,7 @@ const formatDate = (date: Date) =>
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: var(--card-image-position, 50% 50%);
     transition: transform var(--transition-base);
   }
 
@@ -376,6 +382,7 @@ const formatDate = (date: Date) =>
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: var(--card-image-position, 50% 50%);
     transition: transform var(--transition-base);
   }
 
@@ -446,6 +453,10 @@ const formatDate = (date: Date) =>
 
     .hero-feature__visual {
       aspect-ratio: 16 / 7;
+    }
+
+    .hero-feature__visual img {
+      object-position: var(--card-image-wide-position, var(--card-image-position, 50% 50%));
     }
   }
 

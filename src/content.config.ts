@@ -26,6 +26,8 @@ const articles = defineCollection({
     seoDescription: z.string().optional(),
     cardImage: z.string().optional(),
     cardImageAlt: z.string().optional(),
+    cardImagePosition: z.string().optional(),
+    cardImageWidePosition: z.string().optional(),
     socialImage: z.string().startsWith("/").optional(),
     socialImageAlt: z.string().optional(),
     showCardImage: z.boolean().optional().default(false),

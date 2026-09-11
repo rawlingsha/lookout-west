@@ -5,8 +5,10 @@ added as a draft; its frontmatter now has `draft: false`. Published articles use
 the normal header and footer sharing controls. The article route is
 `/research/cattle-herd/`.
 
-The six supplied images are stored, without alteration, in
-`public/images/research/cattle-herd/`. The Benton reproduction is the card image.
+The supplied images are stored in `public/images/research/cattle-herd/`.
+`cattle-and-cowboys-card.jpeg` is the card image, with framing set in the article
+frontmatter for regular and wide homepage cards. The Benton reproduction remains
+in the article before the sources section.
 The five charts appear beside the introductory price/herd comparison, regional
 receipts, heifer-retention economics, processing geography, and drought policy.
 
