@@ -66,6 +66,11 @@
   font-weight: 600;
 }
 
+.lw-prose .source-note > p {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
 .lw-prose ul,
 .lw-prose ol {
   padding-left: 1.25rem;
