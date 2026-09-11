@@ -2,7 +2,7 @@
 interface Props {
   id?: string;
   kind?: "chart" | "table";
-  caption: string;
+  caption?: string;
   label?: string;
   note?: string;
   aspectRatio?: string;
@@ -41,7 +41,7 @@ const {
 
   <figcaption class="figure-block__caption">
     {label && <span class="figure-block__label">{label}</span>}
-    <span>{caption}</span>
+    <span><slot name="caption">{caption}</slot></span>
     {note && <span class="figure-block__note">{note}</span>}
   </figcaption>
   <slot name="actions" />
