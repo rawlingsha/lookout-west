@@ -1,0 +1,11 @@
+---
+import "../../../styles/energy.css";
+---
+
+<div class="energy-story"><slot /></div>
+<script>
+  import { initializeEnergy } from "../../../lib/interactive/energy/enhance";
+  import { enhanceHeroFilm } from "../../../lib/interactive/energy/hero-film";
+  document.querySelectorAll<HTMLElement>("[data-energy-film]").forEach(enhanceHeroFilm);
+  initializeEnergy(document);
+</script>

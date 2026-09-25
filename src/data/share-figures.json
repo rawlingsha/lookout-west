@@ -60,6 +60,7 @@
   {
     "id": "processing-and-feedlots",
     "article": "cattle-herd",
+    "standalone": true,
     "kind": "chart",
     "title": "Tyson’s planned hubs sit in the feeding belt",
     "caption": "Selected facilities in Tyson’s August 13 announcement, with state cattle-on-feed inventories as of August 1. Plant symbols mark communities, not facility gates.",
@@ -76,5 +77,55 @@
     "source": "U.S. Agricultural Commodities in Drought, USDA/NDMC; Lookout West. Retrieved September 9, 2026.",
     "image": "/images/research/cattle-herd/drought-exposure.png",
     "alt": "Area chart of estimated U.S. cattle inventory exposed to drought. On September 1, 2026, 60 percent is exposed to moderate-or-worse drought, including 34 percent exposed to severe-or-worse drought."
+  },
+  {
+    "id": "energy-price-pulse",
+    "article": "west-energy-bill",
+    "kind": "chart",
+    "title": "Western energy prices since February",
+    "caption": "West-region CPI-U, February 2026 = 100. Monthly indexes are not seasonally adjusted.",
+    "source": "U.S. Bureau of Labor Statistics, February–August 2026; Lookout West calculations.",
+    "image": "/images/research/west-energy-bill/energy-price-pulse.png",
+    "alt": "Monthly line chart, February 2026 = 100. Gasoline jumps 22.6% in March and reaches 128.8 in August; utility gas reaches 106.2 and electricity 101.8."
+  },
+  {
+    "id": "energy-gasoline",
+    "article": "west-energy-bill",
+    "kind": "chart",
+    "title": "Regular gasoline across the West",
+    "caption": "Regular gasoline, dollars per gallon. AAA daily state averages, September 19, 2026. Bills also depend on gallons purchased.",
+    "source": "AAA, September 19, 2026; Lookout West.",
+    "image": "/images/research/west-energy-bill/energy-gasoline.png",
+    "alt": "Zero-based bars rank 13 Western states by regular gasoline prices. California is highest at $6.14 per gallon and Colorado lowest at $4.36."
+  },
+  {
+    "id": "energy-diesel",
+    "article": "west-energy-bill",
+    "kind": "chart",
+    "title": "Diesel across the West",
+    "caption": "Retail diesel, dollars per gallon. AAA daily state averages, September 19, 2026. Farm taxes and contract prices can differ.",
+    "source": "AAA, September 19, 2026; Lookout West.",
+    "image": "/images/research/west-energy-bill/energy-diesel.png",
+    "alt": "Zero-based bars rank 13 Western states by diesel prices. California is highest at $8.42 per gallon and Wyoming lowest at $6.12."
+  },
+  {
+    "id": "energy-electricity",
+    "article": "west-energy-bill",
+    "kind": "chart",
+    "title": "Residential electricity across the West",
+    "caption": "Cents per kilowatt-hour, June 2026. Preliminary residential revenue per unit sold; average prices, not household bills.",
+    "source": "EIA, Electric Power Monthly, Table 5.6.A, released August 26, 2026; Lookout West.",
+    "image": "/images/research/west-energy-bill/energy-electricity.png",
+    "alt": "Zero-based bars rank 13 states by average residential electricity price. Hawaii is highest at 52.72 cents per kilowatt-hour and Nevada lowest at 13.11 cents."
+  },
+  {
+    "id": "energy-nm-revenue",
+    "article": "west-energy-bill",
+    "kind": "chart",
+    "title": "New Mexico: the annual average matters",
+    "caption": "Illustrative FY2027 direct-revenue changes when the full-year average oil price is $10 below, unchanged from, or $10 above the August forecast. Other assumptions held constant.",
+    "source": "New Mexico August 2026 revenue forecast, pages 16 and 41; Lookout West calculations.",
+    "image": "/images/research/west-energy-bill/energy-nm-revenue.png",
+    "alt": "Three illustrative annual revenue changes for New Mexico: about $565 million less, no change, or about $565 million more. These are not collected receipts, spendable budget money or residents’ net benefit."
   }
 ]

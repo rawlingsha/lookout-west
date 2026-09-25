@@ -1,0 +1,85 @@
+---
+interface Props { id?: string; stage?: number; compact?: boolean; }
+const { id = "supply-live", stage = 0, compact = false } = Astro.props;
+const state = (introduced: number) => introduced > stage ? "future" : introduced === stage ? "current" : "context";
+const descriptions = [
+  "Disrupted Middle Eastern routes allow fewer shipments to move onward.",
+  "Stored oil helps bridge missing shipments in the connected global crude market. Observed global inventories fell by 507 million barrels through August.",
+  "Global crude must be converted into gasoline and diesel. U.S. refinery utilization was 96.8 percent in the week ending September 11. Inventories temporarily help bridge disrupted shipments.",
+  "Disrupted shipments and falling inventories put pressure on the global crude market. Refineries convert crude into gasoline and diesel. Western specifications and replacement routes slow delivery: overseas gasoline typically takes three to four weeks to reach California. This is a causal schematic, not an exact physical route or a measure of quantities.",
+];
+const arrow = `url(#${id}-arrow)`;
+const height = compact ? [150, 425, 650, 910][stage] : 560;
+---
+
+<svg class:list={["energy-route", { "energy-route--compact": compact }]} viewBox={`0 0 ${compact ? 340 : 620} ${height}`} role="img" aria-labelledby={`${id}-title ${id}-desc`} data-route-canvas>
+  <title id={`${id}-title`}>The route to your pump · stage {stage + 1} of 4</title>
+  <desc id={`${id}-desc`} data-route-description>{descriptions[stage]}</desc>
+  <defs>
+    <marker id={`${id}-arrow`} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" class="energy-route-arrow" /></marker>
+  </defs>
+
+  <g class="energy-route-object energy-route-shock" data-introduced="0" data-state={state(0)} transform={compact ? "translate(20 36)" : "translate(20 46)"}>
+    <text class="energy-route-label" x="0" y="-19">Disrupted shipments</text>
+    <path class="energy-route-flow" d="M0 14H80M0 34H80M0 54H80" />
+    <path class="energy-route-break" d="M95 0l-8 26 16 16-8 27" />
+    <path class="energy-route-line energy-route-trace" pathLength="1" d="M110 34H170" marker-end={arrow} />
+    <text class="energy-route-small" x="0" y="93">Middle Eastern routes</text>
+    <text class="energy-route-small energy-route-clay" x="0" y="115">{compact ? "Less moves" : "Fewer barrels can move"}</text>
+  </g>
+
+  <g class="energy-route-connection" data-introduced="1" data-state={state(1)}>
+    <path class="energy-route-line energy-route-trace" pathLength="1" d={compact ? "M190 70H330V390H125V346H118" : "M190 80H492"} marker-end={arrow} />
+    <path class="energy-route-line energy-route-trace" pathLength="1" d={compact ? "M85 270V280H326" : "M350 155H416V85"} marker-end={arrow} />
+  </g>
+  <g class="energy-route-object energy-route-stocks" data-introduced="1" data-state={state(1)} transform={compact ? "translate(30 194)" : "translate(240 118)"}>
+    <text class="energy-route-label" x="0" y="-17">Global inventories</text>
+    <path class="energy-route-tank" d="M0 6Q55-6 110 6V66Q55 80 0 66Z" />
+    <path class="energy-route-stock-level" d="M5 13Q55 3 105 13V62Q55 74 5 62Z" />
+    <path class="energy-route-tank-rim" d="M0 6Q55 20 110 6M0 66Q55 54 110 66" />
+    <text class="energy-route-fact" x={compact ? 125 : 0} y={compact ? 8 : 101}>−507m <tspan class="energy-route-unit">barrels</tspan></text>
+    <text class="energy-route-small" x={compact ? 125 : 0} y={compact ? 31 : 122}>observed stock draw</text>
+    <text class="energy-route-small" x={compact ? 125 : 0} y={compact ? 51 : 141}>through August</text>
+    {compact && <text class="energy-route-small" x="0" y="102">Stored oil</text>}
+  </g>
+  <g class="energy-route-object energy-route-crude" data-introduced="1" data-state={state(1)} transform={compact ? "translate(30 310)" : "translate(492 44)"}>
+    <circle class="energy-route-market" cx="44" cy="36" r="35" />
+    <path class="energy-route-clearing" d="M24 29H62m-8-8 8 8-8 8M64 45H26m8-8-8 8 8 8" />
+    <text class="energy-route-label" x={compact ? 125 : 44} y={compact ? 21 : -17} text-anchor={compact ? "start" : "middle"}>Global crude</text>
+    <text class="energy-route-small" x={compact ? 125 : 56} y={compact ? 44 : 104}>{compact ? "Connected market" : <><tspan x="56">Connected</tspan><tspan x="56" dy="18">market</tspan></>}</text>
+  </g>
+
+  <g class="energy-route-connection" data-introduced="2" data-state={state(2)}>
+    <path class="energy-route-line energy-route-trace" pathLength="1" d={compact ? "M74 382V431" : "M536 115V310H530"} marker-end={arrow} />
+    <text class="energy-route-small" x={compact ? 88 : 548} y={compact ? 414 : 225}>Crude</text>
+    <path class="energy-route-line energy-route-trace" pathLength="1" d={compact ? "M140 470H158V590H172" : "M410 311H291M291 311V293H263M291 311V332H263"} marker-end={arrow} />
+  </g>
+  <g class="energy-route-object energy-route-refinery" data-introduced="2" data-state={state(2)} transform={compact ? "translate(30 435)" : "translate(410 278)"}>
+    <text class="energy-route-label" x={compact ? 143 : 0} y="-17">Refinery</text>
+    <path class="energy-route-converter" d="M0 0H112V67H0Z" />
+    <path class="energy-route-conversion" d="M25 16V50M43 16V50M61 16V50M79 16V50" />
+    <text class="energy-route-fact" x={compact ? 143 : 0} y={compact ? 8 : 106}>96.8%</text>
+    <text class="energy-route-small" x={compact ? 143 : 0} y={compact ? 31 : 129}>U.S. refinery utilization</text>
+    <text class="energy-route-small" x={compact ? 143 : 0} y={compact ? 51 : 149}>week ending Sept. 11</text>
+  </g>
+  <g class="energy-route-object energy-route-products" data-introduced="2" data-state={state(2)} transform={compact ? "translate(180 570)" : "translate(156 284)"}>
+    <text class="energy-route-label" x="0" y="11">Gasoline</text>
+    <text class="energy-route-label" x="0" y="50">Diesel</text>
+    <path class="energy-route-product-rule" d="M0 23H84" />
+  </g>
+
+  <g class="energy-route-connection energy-route-west" data-introduced="3" data-state={state(3)}>
+    {!compact && <path class="energy-route-contour" d="M40 417C146 386 178 503 293 479S491 419 610 454M30 440C148 409 184 526 293 502S493 442 610 477" />}
+    <path class="energy-route-line energy-route-trace energy-route-trace--west" pathLength="1" d={compact ? "M168 611H80V776Q80 810 110 810H158" : "M146 309H84Q64 309 64 331V458Q64 484 91 484H518"} marker-end={arrow} />
+    <text class="energy-route-fact" x={compact ? 132 : 211} y={compact ? 707 : 434}>3–4 weeks</text>
+    <text class="energy-route-small" x={compact ? 132 : 211} y={compact ? 731 : 456}>typical overseas gasoline</text>
+    <text class="energy-route-small" x={compact ? 132 : 211} y={compact ? 752 : 476}>arrival to California</text>
+    <path class="energy-route-leader" d={compact ? "M117 735H84" : "M198 454H165V480"} />
+  </g>
+  <g class="energy-route-object energy-route-pump" data-introduced="3" data-state={state(3)} transform={compact ? "translate(176 781)" : "translate(534 445)"}>
+    <path class="energy-route-pump-shape" d="M0 54H40M5 53V0H34V53M10 7H29V24H10ZM34 16H42L48 23V43Q48 51 42 51T36 43V34M42 16V9l8 9" />
+  </g>
+  <g class="energy-route-object" data-introduced="3" data-state={state(3)}>
+    <text class="energy-route-endpoint" x={compact ? 20 : 620} y={compact ? 888 : 544} text-anchor={compact ? "start" : "end"}>PRICE REACHES THE PUMP</text>
+  </g>
+</svg>

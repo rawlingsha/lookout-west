@@ -1,0 +1,14 @@
+state_code,state,regular_gasoline_usd_per_gallon,diesel_usd_per_gallon,pump_price_date,residential_electricity_cents_per_kwh,electricity_month,electricity_status,pump_source,electricity_source
+AK,Alaska,5.0572,6.6206,2026-09-19,28.21,2026-06,preliminary,AAA,EIA Table 5.6.A
+AZ,Arizona,4.6651,6.4409,2026-09-19,15.18,2026-06,preliminary,AAA,EIA Table 5.6.A
+CA,California,6.1372,8.4161,2026-09-19,34.74,2026-06,preliminary,AAA,EIA Table 5.6.A
+CO,Colorado,4.3567,6.1430,2026-09-19,17.13,2026-06,preliminary,AAA,EIA Table 5.6.A
+HI,Hawaii,5.5179,7.1361,2026-09-19,52.72,2026-06,preliminary,AAA,EIA Table 5.6.A
+ID,Idaho,4.8589,6.4633,2026-09-19,14.37,2026-06,preliminary,AAA,EIA Table 5.6.A
+MT,Montana,4.5828,6.2705,2026-09-19,15.14,2026-06,preliminary,AAA,EIA Table 5.6.A
+NV,Nevada,5.2633,6.7968,2026-09-19,13.11,2026-06,preliminary,AAA,EIA Table 5.6.A
+NM,New Mexico,4.4555,6.3597,2026-09-19,15.06,2026-06,preliminary,AAA,EIA Table 5.6.A
+OR,Oregon,5.1031,6.8625,2026-09-19,16.32,2026-06,preliminary,AAA,EIA Table 5.6.A
+UT,Utah,4.8065,6.3808,2026-09-19,13.37,2026-06,preliminary,AAA,EIA Table 5.6.A
+WA,Washington,5.5621,7.4367,2026-09-19,14.91,2026-06,preliminary,AAA,EIA Table 5.6.A
+WY,Wyoming,4.4969,6.1236,2026-09-19,15.24,2026-06,preliminary,AAA,EIA Table 5.6.A

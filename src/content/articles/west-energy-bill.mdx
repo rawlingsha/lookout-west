@@ -1,0 +1,129 @@
+---
+title: "Paying the Pump Price of War"
+deck: "Seven months of Iran conflict is causing pain at Western gas pumps. An explainer of how the price travels, why oil-producing states still feel it, and what would have to change for relief."
+publishDate: 2026-09-25
+topic: "Energy"
+topics: ["Energy", "Growth"]
+author: "Lookout West"
+featured: true
+draft: false
+format: interactive
+cardImage: "/images/research/west-energy-bill/ansel-adams-oil-derricks.jpg"
+cardImageAlt: "A cemetery statue stands in the foreground with oil derricks behind it in Long Beach, California, photographed by Ansel Adams in 1939."
+showCardImage: true
+seoTitle: "Why the Middle East Oil Shock Is Raising Western Gas Prices | Lookout West"
+seoDescription: "Follow the oil shock from disrupted Middle Eastern shipments to Western gas pumps, see why producing states still pay more, and explore what could happen next."
+---
+
+import EnergyStory from "../../components/interactive/energy/EnergyStory.astro";
+import PricePulse from "../../components/interactive/energy/PricePulse.astro";
+import SupplyStory from "../../components/interactive/energy/SupplyStory.astro";
+import PersonalFuel from "../../components/interactive/energy/PersonalFuel.astro";
+import RegionalPrices from "../../components/interactive/energy/RegionalPrices.astro";
+import FiscalSensitivity from "../../components/interactive/energy/FiscalSensitivity.astro";
+import Outlook from "../../components/interactive/energy/Outlook.astro";
+import Methodology from "../../components/interactive/energy/Methodology.astro";
+
+<EnergyStory>
+
+<section className="energy-question energy-question--shock" id="what-happened" tabIndex={-1} aria-labelledby="shock-heading">
+  <div className="energy-question__heading">
+    <p className="energy-kicker">01 / What happened?</p>
+    <h2 id="shock-heading">The world is spending its oil cushion.</h2>
+  </div>
+  <div className="energy-question__body">
+    <p className="energy-lede">The war involving the United States and Iran disrupted oil movement through the Strait of Hormuz—a route that normally carries roughly one-fifth of the oil the world consumes—and other Middle Eastern routes. As governments and businesses tried to cushion the disruption, they drew on emergency reserves and commercial inventories. By the end of August, observed global oil stocks were 507 million barrels lower than at the start of the war. That's a historic drawdown: about one-sixteenth of the observed global oil inventories consumed in six months.</p>
+    <div className="energy-shock-fact" aria-label="Observed global oil stocks fell by 507 million barrels through August">
+      <strong>507m</strong>
+      <span>barrels drawn from observed global stocks through August--a record pace according to the IEA.</span>
+    </div>
+    <p>Inventories are the bridge between a disrupted shipment and an empty tank. They can soften a shock, but every barrel drawn from storage leaves less protection against the next delay. That's why markets typically react before a Western gas station actually runs short of fuel. <a href="https://www.iea.org/reports/oil-market-report-september-2026">IEA September oil report</a></p>
+  </div>
+</section>
+
+<SupplyStory />
+
+<section className="energy-arrival" aria-labelledby="arrival-heading">
+  <header className="energy-chapter-heading">
+    <p className="energy-kicker">The result so far</p>
+    <h2 id="arrival-heading">For Western energy, gas has moved the most.</h2>
+    <p className="energy-intro">In March 2026, when the conflict begin, Western gasoline prices jumped 22.6% from February, while electricity and utility gas dipped but have since started kreeping up. By August, gasoline remained 24.4% above a year earlier.</p>
+  </header>
+  <PricePulse />
+</section>
+
+<section className="energy-passage energy-passage--diesel" aria-labelledby="diesel-heading">
+  <h2 id="diesel-heading">Diesel has another problem.</h2>
+
+Middle Eastern fuel exports have been disrupted, while damage to Russian refineries has reduced another source of diesel. Other refineries can produce more, but there is only so much extra capacity available.
+Diesel prices also rose much faster than crude oil in early September, a sign that the squeeze was hitting refined fuel as well as the oil going into it. [IEA refining assessment](https://www.iea.org/reports/oil-market-report-september-2026)
+
+On September 14, on-road diesel averaged $7.25 a gallon on the West Coast and $6.07 in the Rockies. Farmers may pay different prices because agricultural diesel can face different taxes and contracts. [EIA diesel prices](https://www.eia.gov/petroleum/gasdiesel/)
+
+For farms, trucking firms and builders, a fuel spike can eat into the profit on jobs priced before diesel went up. Some businesses pass on the increase; others absorb it or cut activity. Higher diesel prices do not translate dollar-for-dollar into higher grocery prices because transportation is only one part of the cost.
+
+</section>
+
+<FiscalSensitivity />
+
+<section className="energy-passage energy-passage--revenue" aria-labelledby="oil-money-heading">
+  <h2 id="oil-money-heading">Where the extra oil money goes</h2>
+
+New Mexico’s August forecast directs substantial excess oil revenue into trust and permanent funds. That can support services over years, while limiting how much of today’s windfall immediately enters the operating budget. A larger state balance sheet is not a direct payment to residents. [New Mexico forecast](https://www.nmlegis.gov/Handouts/ALFC%20082526%20Item%206%20Preliminary%20FY26%20General%20Fund%20Revenues%20FY27-FY30%20Revenue%20Outlook%20and%20General%20Fund%20Financial%20Summary.pdf)
+
+Alaska’s spring forecast raised its fiscal 2027 unrestricted revenue estimate $510 million from the previous December because of higher expected oil prices and slightly higher production. It was a forecast revision, not cash collected or an estimate of the September disruption. [Alaska Department of Revenue](https://dor.alaska.gov/docs/default-source/press-releases/2026-003-dor-press-release-spring-2026-revenue-forecast.pdf?sfvrsn=ff0ad4e9_1)
+
+Wyoming, Colorado, Utah, Montana and California also produce oil. [EIA state production data](https://www.eia.gov/dnav/pet/pet_crd_crpdn_adc_mbblpd_m.htm) Private gains depend on ownership and contracts. Current-price sellers and royalty owners can benefit; some earnings leave the state, and previously locked sale prices mute the immediate upside.
+
+Producing oil nearby does not guarantee cheap gasoline: sellers face wider market prices, and crude still needs refining and delivery. Local production can reduce some transport costs but cannot remove global competition. [EIA oil pricing](https://www.eia.gov/energyexplained/oil-and-petroleum-products/prices-and-outlook.php) · [EIA regional fuel costs](https://www.eia.gov/energyexplained/gasoline/regional-price-differences.php)
+</section>
+
+<section className="energy-module energy-futures" id="outlook" aria-labelledby="outlook-heading">
+  <header className="energy-chapter-heading">
+    <p className="energy-kicker">04 / What happens next?</p>
+    <h2 id="outlook-heading">What would have to change for prices to come back down?</h2>
+    <p className="energy-intro">Some supply is beginning to return. That is not the same as a repaired market. For lasting relief, more oil has to move reliably, depleted inventories have to stop falling, and refineries have to rebuild product supply—especially diesel.</p>
+  </header>
+  <Outlook />
+</section>
+
+<section className="energy-passage energy-passage--outlook" aria-labelledby="price-risks-heading">
+  <h2 id="price-risks-heading">What could still keep prices high</h2>
+
+EIA’s September outlook used assumptions finalized September 3. Its projection of improving oil flows preceded the subsequent attacks and September 22 partial restart of Saudi Arabia’s East–West pipeline. The current-state visual above includes that later reporting; the earlier forecast is a dated conditional outlook. [EIA forecast and cutoff](https://www.eia.gov/outlooks/steo/) · [Reuters, September 22](https://www.gulf-times.com/article/733893/region/saudi-arabia-restarts-east-west-oil-pipeline-sources-say)
+
+Autumn usually eases gasoline demand and permits cheaper seasonal formulations. That helps if routes stabilize; another refinery or shipping outage could outweigh it. [EIA gasoline seasonality](https://www.eia.gov/energyexplained/gasoline/price-fluctuations.php)
+
+Diesel faces harvest demand, refinery maintenance, low distillate stocks and unusually wide refining spreads through November. Lower crude alone would not repair a product shortage. [EIA petroleum-products outlook](https://www.eia.gov/outlooks/steo/report/petro_prod.php)
+
+Several weeks of better supply would strengthen the case for relief; another outage would weaken it. Cheaper oil caused by a broader slowdown could arrive with weaker business income. 
+</section>
+
+<PersonalFuel />
+
+<section className="energy-passage energy-passage--regional" aria-labelledby="pump-geography-heading">
+
+  <details className="energy-data">
+    <summary>State prices, sources and downloads</summary>
+    <RegionalPrices />
+  </details>
+</section>
+
+<figure className="energy-closing-art">
+  <img
+    src="/images/research/west-energy-bill/ansel-adams-oil-derricks.jpg"
+    alt="A cemetery statue stands in the foreground with oil derricks behind it in Long Beach, California."
+    width={2560}
+    height={2190}
+    loading="lazy"
+    decoding="async"
+  />
+  <figcaption>
+    Ansel Adams, <em>Cemetery Statue and Oil Derricks, Long Beach, California</em>, 1939.
+    <br />© The Ansel Adams Publishing Rights Trust. Image: SFMOMA.
+  </figcaption>
+</figure>
+
+<Methodology />
+
+</EnergyStory>

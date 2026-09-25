@@ -1,0 +1,77 @@
+/* Oil-state mechanism: semantic content first, connectors carry no unique information. */
+.energy-fiscal { color: var(--color-text); }
+.energy-fiscal__legacy-anchor { display: block; scroll-margin-top: 7rem; }
+.energy-fiscal__flow {
+  scroll-margin-top: 7rem;
+  --fiscal-rail: 2rem;
+  max-width: 58rem;
+  margin: 3rem 0 2.75rem;
+}
+.energy-story .energy-fiscal__flow h3 {
+  font: 650 .8rem/1.5 var(--font-sans);
+  letter-spacing: .065em;
+  text-transform: uppercase;
+  margin: 0 0 .65rem;
+  color: var(--color-accent);
+}
+.energy-story .energy-fiscal__flow :where(p) { font: 400 .94rem/1.6 var(--font-sans); margin: 0; }
+.energy-fiscal__pricing { margin-left: var(--fiscal-rail); max-width: 46rem; }
+.energy-fiscal__origin { padding-top: .7rem; }
+.energy-story .energy-fiscal__price-link { display: flex; flex-direction: column; align-items: flex-start; gap: .3rem; margin: .75rem 0; font-size: .75rem; color: var(--color-accent); }
+.energy-fiscal__price-link span { font-size: 1.5rem; line-height: 1; }
+.energy-story .energy-fiscal__hinge { margin: .85rem 0 1.4rem var(--fiscal-rail); color: var(--color-accent); font: 650 .75rem/1.5 var(--font-sans); letter-spacing: .065em; text-transform: uppercase; }
+.energy-fiscal__hinge span { display: block; margin-bottom: .85rem; font-size: 1.5rem; line-height: 1; }
+.energy-fiscal__outcomes { display: grid; gap: 2.5rem; }
+.energy-fiscal__route { position: relative; padding-left: var(--fiscal-rail); min-width: 0; }
+/* Both short branches belong to the market spine; neither outcome points to the other. */
+.energy-fiscal__route::before { content: ''; position: absolute; left: 0; border-left: 1px solid var(--color-accent); }
+.energy-fiscal__route::after { content: ''; position: absolute; left: 0; top: .6rem; width: calc(var(--fiscal-rail) - .65rem); border-top: 1px solid var(--color-accent); }
+.energy-fiscal__route--fuel::before { top: -1.4rem; bottom: -2.5rem; }
+.energy-fiscal__route--revenue::before { top: 0; height: .6rem; }
+.energy-story .energy-fiscal__stages { list-style: none; margin: 1rem 0; padding: 0; }
+.energy-story .energy-fiscal__stages li { position: relative; margin: 0; padding: 0; font: 600 .75rem/1.4 var(--font-sans); letter-spacing: .035em; text-transform: uppercase; }
+.energy-fiscal__stages li:not(:last-child)::after { content: '↓'; display: block; margin: .25rem 0; color: var(--color-accent); font-size: 1rem; line-height: 1; }
+.energy-story .energy-fiscal__endpoint { max-width: 44rem; }
+.energy-story .energy-fiscal__route--revenue .energy-fiscal__stages { margin: 1.4rem 0 0; }
+.energy-story .energy-fiscal__route--revenue .energy-fiscal__stages li { border-left: 2px solid var(--color-accent-2); padding-left: .8rem; font-size: .85rem; }
+.energy-fiscal__route--revenue .energy-fiscal__stages li:not(:last-child)::after { margin: .6rem 0 .6rem -.8rem; color: var(--color-accent-2); }
+.energy-fiscal__nm-case { position: relative; margin-top: 2rem; padding: 1.25rem 1.5rem .7rem; border-top: 3px solid var(--color-accent-2); background: color-mix(in srgb, var(--color-accent-2) 12%, var(--color-bg)); }
+.energy-fiscal__nm-case::before { content: ''; position: absolute; bottom: 100%; left: .35rem; height: 2rem; border-left: 1px solid var(--color-accent-2); }
+.energy-fiscal__nm-case::after { content: ''; position: absolute; left: calc(.35rem - 3px); top: -9px; width: 6px; height: 6px; border-right: 1px solid var(--color-accent-2); border-bottom: 1px solid var(--color-accent-2); transform: rotate(45deg); }
+.energy-fiscal__sensitivity { display: grid; grid-template-columns: 1fr auto 1.15fr; align-items: center; gap: 1rem; margin: .9rem 0 1.2rem; }
+.energy-story .energy-fiscal__sensitivity p { display: grid; gap: .4rem; }
+.energy-fiscal__sensitivity strong { font: 400 clamp(1.65rem, 2.6vw, 2.3rem)/1.15 var(--font-serif); white-space: nowrap; }
+.energy-fiscal__sensitivity strong span { font: 400 .95rem/1.4 var(--font-sans); }
+.energy-fiscal__sensitivity p > span { font-size: .8rem; line-height: 1.5; max-width: 24ch; }
+.energy-fiscal__equals-arrow { font-size: 1.6rem; }
+.energy-story .energy-fiscal__qualification { font-size: .84rem; line-height: 1.6; }
+.energy-fiscal__source { display: inline-flex; align-items: center; min-height: 44px; font-size: .78rem; text-underline-offset: .2em; }
+.energy-fiscal__takeaway { max-width: 48rem; margin: 0 0 2rem; }
+.energy-story .energy-fiscal__takeaway p { font: 400 1rem/1.7 var(--font-sans); margin: 0 0 1.2rem; }
+.energy-story .energy-fiscal__takeaway p:last-child { max-width: 42rem; font: 400 1.35rem/1.45 var(--font-serif); }
+.energy-fiscal__takeaway strong { font-weight: 400; }
+.energy-fiscal .energy-data { max-width: 58rem; }
+.energy-fiscal .energy-table-scroll { overflow-x: auto; }
+.energy-fiscal[data-fiscal-state='pending'] [data-fiscal-reveal] { opacity: 0; }
+.energy-fiscal[data-fiscal-state='revealing'] [data-fiscal-reveal] { animation: fiscal-enter 220ms ease-out both; }
+.energy-fiscal[data-fiscal-state='revealing'] [data-fiscal-reveal='fuel'] { animation-delay: 180ms; }
+.energy-fiscal[data-fiscal-state='revealing'] [data-fiscal-reveal='revenue'] { animation-delay: 400ms; }
+.energy-fiscal[data-fiscal-state='revealing'] [data-fiscal-reveal='evidence'] { animation-delay: 600ms; }
+@keyframes fiscal-enter { from { opacity: 0; } to { opacity: 1; } }
+@media (max-width: 45rem) {
+  .energy-fiscal__flow { --fiscal-rail: 1.4rem; margin-block: 2.5rem; }
+  .energy-fiscal__nm-case { padding: 1.1rem 1.1rem .6rem; }
+  .energy-fiscal__sensitivity { grid-template-columns: minmax(0,1fr); gap: .65rem; }
+  .energy-fiscal__equals-arrow { transform: rotate(90deg); justify-self: start; }
+  .energy-fiscal__sensitivity p > span { max-width: none; }
+  .energy-fiscal__sensitivity strong { font-size: 2rem; white-space: normal; }
+  .energy-story .energy-fiscal__takeaway p:last-child { font-size: 1.3rem; }
+}
+@media (prefers-reduced-motion: reduce), print {
+  .energy-fiscal [data-fiscal-reveal] { opacity: 1 !important; animation: none !important; }
+}
+@media print {
+  .energy-fiscal__flow { display: block; }
+  .energy-fiscal__route::before, .energy-fiscal__route::after, .energy-fiscal__nm-case::before, .energy-fiscal__nm-case::after { display: none; }
+  .energy-fiscal__route, .energy-fiscal__nm-case { margin-block: 1.5rem; break-inside: avoid; }
+}

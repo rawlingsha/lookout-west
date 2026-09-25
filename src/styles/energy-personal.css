@@ -1,0 +1,388 @@
+/* Final act: one open composition, observed prices then an editable equation. */
+.energy-personal {
+  --personal-fuel: var(--energy-gasoline);
+  max-width: 64rem;
+  margin: 6rem 0 2.5rem;
+  border-top: 1px solid var(--energy-green);
+  padding-top: 1.5rem;
+}
+.energy-personal[data-fuel="diesel"] {
+  --personal-fuel: var(--energy-diesel);
+}
+.energy-story .energy-personal h2 {
+  font: 400 clamp(2rem, 3.4vw, 3rem)/1.12 var(--font-display);
+  margin: 0.5rem 0 2.8rem;
+  max-width: 26ch;
+  color: var(--energy-ink);
+}
+.personal-observed {
+  max-width: 52rem;
+}
+.personal-selection {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+}
+.personal-selection label,
+.personal-answer > span {
+  font: 500 0.8rem/1.4 var(--font-sans);
+}
+.personal-selection [data-state-control] > label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.personal-selection select {
+  min-height: 44px;
+  max-width: 100%;
+  border: 0;
+  border-bottom: 1px solid #7b8b7f;
+  border-radius: 0;
+  background: transparent;
+  color: var(--energy-ink);
+  font: 400 1.4rem var(--font-display);
+  padding: 0.35rem 1.8rem 0.35rem 0;
+}
+.personal-selection fieldset {
+  display: flex;
+  gap: 1.4rem;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.personal-selection fieldset label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+.personal-selection input {
+  accent-color: var(--personal-fuel);
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+.personal-price {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.4rem 0 1.5rem;
+  min-height: 6.5rem;
+}
+.energy-story .personal-price p {
+  margin: 0;
+}
+.personal-price strong {
+  display: block;
+  color: var(--personal-fuel);
+  font: 400 clamp(3.5rem, 6vw, 4.5rem)/1.05 var(--font-display);
+  font-variant-numeric: tabular-nums;
+}
+.personal-price p > span {
+  font: 400 0.8rem/1.5 var(--font-sans);
+}
+.personal-position {
+  text-align: right;
+}
+.personal-position [data-selected-name] {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.personal-distribution {
+  padding: 1.2rem 7px 0;
+}
+.personal-dots {
+  position: relative;
+  height: 76px;
+  border-bottom: 1px solid #9daaa1;
+}
+.personal-dots i,
+.personal-dots b {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #7d8e84;
+  transform: translateX(-50%);
+  transition:
+    left 360ms ease,
+    top 360ms ease;
+}
+.personal-dots b {
+  width: 13px;
+  height: 13px;
+  margin-top: -2px;
+  background: var(--personal-fuel);
+  border: 2px solid var(--color-bg, #f5f5ef);
+  outline: 1px solid var(--personal-fuel);
+}
+.personal-axis {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  font: 400 0.75rem var(--font-sans);
+  color: #56635b;
+}
+.personal-range {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0 0.75rem;
+  font: 500 0.8rem/1.5 var(--font-sans);
+}
+.personal-range span:last-child {
+  text-align: right;
+}
+.energy-story .personal-source,
+.energy-story .personal-caveat,
+.energy-story .personal-privacy {
+  font: 400 0.75rem/1.6 var(--font-sans);
+  color: #56635b;
+  margin: 0.35rem 0;
+}
+.personal-caveat {
+  min-height: 2.4rem;
+}
+.personal-household {
+  border-top: 1px solid var(--energy-rule);
+  margin-top: 1.4rem;
+  padding-top: 1.6rem;
+}
+.energy-story .personal-household h3 {
+  font: 400 1.7rem/1.25 var(--font-display);
+  margin: 0 0 0.6rem;
+}
+.energy-story .personal-assumption {
+  font: 0.875rem/1.5 var(--font-sans);
+  margin: 0 0 1.8rem;
+}
+.personal-equation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2rem minmax(0, 1fr) 2rem minmax(
+      0,
+      1.3fr
+    );
+  gap: 1rem;
+  align-items: start;
+  font-variant-numeric: tabular-nums;
+}
+.personal-term label {
+  display: block;
+  font: 500 0.8rem/1.4 var(--font-sans);
+  margin-bottom: 0.6rem;
+}
+.personal-term input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: 74px;
+  padding: 0 0.3rem;
+  border: 0;
+  border-bottom: 1px solid #819386;
+  border-radius: 0;
+  color: var(--energy-ink);
+  background: transparent;
+  font: 400 clamp(2rem, 4vw, 3rem)/1.1 var(--font-display);
+}
+.personal-term input[aria-invalid="true"] {
+  border-bottom-color: #942f20;
+}
+.personal-operator,
+.personal-equals {
+  padding-top: 2.5rem;
+  font: 400 2rem var(--font-display);
+  color: #64756a;
+  text-align: center;
+}
+.personal-answer strong {
+  display: block;
+  height: 74px;
+  white-space: nowrap;
+  font: 400 clamp(2.7rem, 4.4vw, 3.7rem)/1.25 var(--font-display);
+  color: var(--energy-ink);
+}
+.energy-story .personal-input-help {
+  font: 400 0.75rem/1.5 var(--font-sans);
+  color: #56635b;
+  margin: 0.6rem 0 0;
+}
+
+.energy-story .personal-duration {
+  font: 400 0.875rem/1.5 var(--font-sans);
+  margin: 0.4rem 0;
+  min-height: 2.7rem;
+}
+.personal-examples {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.15rem 1rem;
+  font: 0.8rem var(--font-sans);
+}
+.personal-examples button {
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  color: var(--energy-green);
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.4rem 0.2rem;
+  font: 600 0.8rem var(--font-sans);
+  cursor: pointer;
+}
+.personal-examples button:hover {
+  border-bottom-color: currentColor;
+}
+.personal-examples [data-budget-reset] {
+  margin-left: auto;
+  font-weight: 400;
+}
+.energy-story .personal-privacy {
+  margin-top: 0.6rem;
+}
+.energy-story .personal-data p {
+  font: 0.875rem/1.65 var(--font-sans);
+}
+.energy-story .personal-data .energy-plot {
+  padding: 0;
+  background: transparent;
+}
+.energy-story .personal-data .figure-block__media {
+  border: 0;
+}
+.energy-epilogue {
+  max-width: 40rem;
+  margin: 5rem 0 0;
+}
+.energy-story .energy-epilogue p {
+  font: 400 1.18rem/1.8 var(--font-display);
+  margin: 0 0 1.4rem;
+}
+.energy-story .energy-methodology {
+  margin-top: 6rem;
+  padding-top: 1.5rem;
+  max-width: 44rem;
+}
+.energy-story .energy-methodology h2 {
+  font: 500 1.1rem/1.4 var(--font-sans);
+  margin: 0.5rem 0 1.4rem;
+}
+@media (max-width: 40rem) {
+  .energy-personal {
+    margin-top: 4rem;
+  }
+  .energy-story .energy-personal h2 {
+    max-width: 20ch;
+    margin-bottom: 2rem;
+  }
+  .personal-equation {
+    grid-template-columns: minmax(0, 1fr) 1rem minmax(0, 1fr);
+    gap: 0.6rem;
+  }
+  .personal-equals {
+    grid-row: 2;
+    grid-column: 2;
+    padding: 1.2rem 0 0;
+  }
+  .personal-answer {
+    grid-row: 3;
+    grid-column: 1/-1;
+    text-align: center;
+    border-bottom: 1px solid var(--energy-rule);
+    padding-bottom: 0.7rem;
+  }
+  .personal-answer strong {
+    height: 70px;
+    font-size: 3.5rem;
+  }
+  .personal-selection {
+    align-items: start;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .personal-selection fieldset {
+    gap: 1.5rem;
+  }
+  .personal-price {
+    gap: 0.5rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .personal-position {
+    max-width: 10rem;
+  }
+  .personal-price strong {
+    font-size: 3.5rem;
+  }
+  .personal-range {
+    font-size: 0.75rem;
+  }
+  .personal-range span {
+    max-width: 48%;
+  }
+  .personal-examples {
+    gap: 0.1rem 0.8rem;
+  }
+  .personal-examples > span {
+    flex-basis: 100%;
+  }
+  .energy-epilogue {
+    margin-top: 4rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .personal-dots i,
+  .personal-dots b {
+    transition: none !important;
+  }
+}
+@media print {
+  .personal-selection fieldset,
+  .personal-examples {
+    display: none;
+  }
+}
+
+.personal-pin {
+  position: absolute;
+  top: -28px;
+  transform: translateX(-50%);
+  color: var(--personal-fuel);
+  font: 600 0.7rem/1 var(--font-sans);
+  transition: left 360ms ease;
+}
+.personal-pin::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 14px;
+  width: 1px;
+  height: var(--stem);
+  background: var(--personal-fuel);
+  opacity: 0.5;
+}
+@media (prefers-reduced-motion: reduce) {
+  .personal-pin {
+    transition: none !important;
+  }
+}
+
+.energy-personal :is(#compare-states, #fuel-budget),
+#energy-epilogue {
+  scroll-margin-top: 7rem;
+}
+
+.personal-field-note {
+  display: grid;
+  min-height: 4.5rem;
+}
+.energy-story .personal-field-note p {
+  grid-area: 1/1;
+  margin: 0.6rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+.personal-term:has(input[aria-invalid="true"]) .personal-input-help {
+  visibility: hidden;
+}

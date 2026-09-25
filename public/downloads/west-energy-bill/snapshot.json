@@ -1,0 +1,274 @@
+{
+  "version": "2026-09-19",
+  "researchDate": "September 19, 2026",
+  "outlook": "October–November 2026",
+  "metrics": [
+    {
+      "id": "gasoline",
+      "label": "Regular gasoline",
+      "sourceId": "aaa",
+      "observationPeriod": "September 19, 2026",
+      "unit": "dollars per gallon",
+      "axisMax": 7,
+      "caveat": "AAA daily state averages. Prices include taxes; a household’s bill also depends on gallons purchased.",
+      "rows": [
+        {
+          "code": "AK",
+          "name": "Alaska",
+          "value": 5.0572
+        },
+        {
+          "code": "AZ",
+          "name": "Arizona",
+          "value": 4.6651
+        },
+        {
+          "code": "CA",
+          "name": "California",
+          "value": 6.1372
+        },
+        {
+          "code": "CO",
+          "name": "Colorado",
+          "value": 4.3567
+        },
+        {
+          "code": "HI",
+          "name": "Hawaii",
+          "value": 5.5179
+        },
+        {
+          "code": "ID",
+          "name": "Idaho",
+          "value": 4.8589
+        },
+        {
+          "code": "MT",
+          "name": "Montana",
+          "value": 4.5828
+        },
+        {
+          "code": "NV",
+          "name": "Nevada",
+          "value": 5.2633
+        },
+        {
+          "code": "NM",
+          "name": "New Mexico",
+          "value": 4.4555
+        },
+        {
+          "code": "OR",
+          "name": "Oregon",
+          "value": 5.1031
+        },
+        {
+          "code": "UT",
+          "name": "Utah",
+          "value": 4.8065
+        },
+        {
+          "code": "WA",
+          "name": "Washington",
+          "value": 5.5621
+        },
+        {
+          "code": "WY",
+          "name": "Wyoming",
+          "value": 4.4969
+        }
+      ]
+    },
+    {
+      "id": "diesel",
+      "label": "Diesel",
+      "sourceId": "aaa",
+      "observationPeriod": "September 19, 2026",
+      "unit": "dollars per gallon",
+      "axisMax": 9,
+      "caveat": "AAA daily retail diesel averages. Farm purchases can have different taxes and contract prices.",
+      "rows": [
+        {
+          "code": "AK",
+          "name": "Alaska",
+          "value": 6.6206
+        },
+        {
+          "code": "AZ",
+          "name": "Arizona",
+          "value": 6.4409
+        },
+        {
+          "code": "CA",
+          "name": "California",
+          "value": 8.4161
+        },
+        {
+          "code": "CO",
+          "name": "Colorado",
+          "value": 6.143
+        },
+        {
+          "code": "HI",
+          "name": "Hawaii",
+          "value": 7.1361
+        },
+        {
+          "code": "ID",
+          "name": "Idaho",
+          "value": 6.4633
+        },
+        {
+          "code": "MT",
+          "name": "Montana",
+          "value": 6.2705
+        },
+        {
+          "code": "NV",
+          "name": "Nevada",
+          "value": 6.7968
+        },
+        {
+          "code": "NM",
+          "name": "New Mexico",
+          "value": 6.3597
+        },
+        {
+          "code": "OR",
+          "name": "Oregon",
+          "value": 6.8625
+        },
+        {
+          "code": "UT",
+          "name": "Utah",
+          "value": 6.3808
+        },
+        {
+          "code": "WA",
+          "name": "Washington",
+          "value": 7.4367
+        },
+        {
+          "code": "WY",
+          "name": "Wyoming",
+          "value": 6.1236
+        }
+      ]
+    },
+    {
+      "id": "electricity",
+      "label": "Residential electricity",
+      "sourceId": "eia-electricity",
+      "observationPeriod": "June 2026",
+      "unit": "cents per kilowatt-hour",
+      "axisMax": 60,
+      "caveat": "Preliminary EIA residential revenue per kilowatt-hour sold. These are average prices, not household bills; June is the latest available month in this snapshot.",
+      "rows": [
+        {
+          "code": "AK",
+          "name": "Alaska",
+          "value": 28.21
+        },
+        {
+          "code": "AZ",
+          "name": "Arizona",
+          "value": 15.18
+        },
+        {
+          "code": "CA",
+          "name": "California",
+          "value": 34.74
+        },
+        {
+          "code": "CO",
+          "name": "Colorado",
+          "value": 17.13
+        },
+        {
+          "code": "HI",
+          "name": "Hawaii",
+          "value": 52.72
+        },
+        {
+          "code": "ID",
+          "name": "Idaho",
+          "value": 14.37
+        },
+        {
+          "code": "MT",
+          "name": "Montana",
+          "value": 15.14
+        },
+        {
+          "code": "NV",
+          "name": "Nevada",
+          "value": 13.11
+        },
+        {
+          "code": "NM",
+          "name": "New Mexico",
+          "value": 15.06
+        },
+        {
+          "code": "OR",
+          "name": "Oregon",
+          "value": 16.32
+        },
+        {
+          "code": "UT",
+          "name": "Utah",
+          "value": 13.37
+        },
+        {
+          "code": "WA",
+          "name": "Washington",
+          "value": 14.91
+        },
+        {
+          "code": "WY",
+          "name": "Wyoming",
+          "value": 15.24
+        }
+      ]
+    }
+  ],
+  "cpi": {
+    "sourceId": "bls-west",
+    "observationPeriod": "August 2025–August 2026",
+    "unit": "percent change from a year earlier",
+    "rows": [
+      {
+        "name": "Gasoline",
+        "value": 24.4
+      },
+      {
+        "name": "Electricity",
+        "value": 3.8
+      },
+      {
+        "name": "Utility gas",
+        "value": 0.4
+      }
+    ]
+  },
+  "fiscal": {
+    "sourceId": "nm-forecast",
+    "annualMillionsPerDollar": 56.45,
+    "fiscalYear": 2027,
+    "changes": [
+      -10,
+      0,
+      10
+    ]
+  },
+  "editorial": {
+    "refineryUtilization": 96.8,
+    "distillateBelowAverage": 13,
+    "weekEnding": "September 11, 2026",
+    "globalStockDrawMillions": 507,
+    "westernGasoline": 5.467,
+    "nationalGasoline": 4.319,
+    "westernAnnualIncrease": 1.194,
+    "nationalAnnualIncrease": 1.151
+  }
+}

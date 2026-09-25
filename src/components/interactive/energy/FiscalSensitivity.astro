@@ -1,0 +1,80 @@
+---
+import { energyData, energySource } from "../../../lib/interactive/energy/data";
+import { fiscalSensitivity, roundedFiscalMagnitude } from "../../../lib/interactive/energy/model";
+import EnergyFigure from "./EnergyFigure.astro";
+import "../../../styles/energy-fiscal.css";
+const { fiscal } = energyData;
+const high = roundedFiscalMagnitude(fiscalSensitivity(10, fiscal.annualMillionsPerDollar));
+---
+
+<section class="energy-module energy-fiscal" id="oil-state-paradox" aria-labelledby="fiscal-heading" data-energy-fiscal>
+  <span id="two-ledgers" class="energy-fiscal__legacy-anchor" aria-hidden="true"></span>
+  <header class="energy-chapter-heading">
+    <p class="energy-kicker">03 / The oil-state paradox</p>
+    <h2 id="fiscal-heading">If my state produces oil, why do I still pay more?</h2>
+    <p class="energy-intro">Just 'cause a barrel is produced in New Mexico or Wyoming does not mean it's reserved for drivers in New Mexico or Wyoming. Producers sell crude against broader market prices. The gasoline at a local station still needed to be refined, run through pipelines, transported, taxes paid, and regional fuel supply.</p>
+  </header>
+
+  <div class="energy-fiscal__flow" id="fiscal-mechanism" data-fiscal-flow>
+    <div class="energy-fiscal__pricing" data-fiscal-reveal="pricing">
+      <div class="energy-fiscal__origin">
+        <h3>Crude produced in-state</h3>
+        <p>The actual oil well is local.</p>
+      </div>
+      <p class="energy-fiscal__price-link">Then it goes to market. <span aria-hidden="true">↓</span></p>
+      <div class="energy-fiscal__market">
+        <h3>Broader crude market</h3>
+        <p>A producer is not limited to nearby buyers. Oil can be sold into a wider market, so local crude prices tend to follow broader crude prices rather than staying low just because the oil was produced nearby.</p>
+      </div>
+    </div>
+
+    <p class="energy-fiscal__hinge" data-fiscal-reveal="pricing"><span aria-hidden="true">↓</span>One price, two local effects</p>
+    <div class="energy-fiscal__outcomes">
+      <section class="energy-fiscal__route energy-fiscal__route--fuel" aria-labelledby="fiscal-fuel-heading" data-fiscal-reveal="fuel">
+        <h3 id="fiscal-fuel-heading">01 / What the driver pays</h3>
+        <ol class="energy-fiscal__stages" aria-label="Fuel-market process">
+          <li>Refinery</li>
+          <li>Regional fuel system</li>
+          <li>Local station</li>
+        </ol>
+        <p class="energy-fiscal__endpoint">Local production can reduce some transport costs. It does not bypass refining, distribution or the wider fuel market.</p>
+      </section>
+
+      <section class="energy-fiscal__route energy-fiscal__route--revenue" aria-labelledby="fiscal-revenue-heading" data-fiscal-reveal="revenue">
+        <h3 id="fiscal-revenue-heading">02 / What producing states collect</h3>
+        <p class="energy-fiscal__endpoint">Higher oil prices can increase the value of production and the taxes and royalties tied to it. How much reaches the state depends on its tax, royalty, budget and savings rules.</p>
+        <ol class="energy-fiscal__stages" aria-label="Public-revenue process">
+          <li>Producer value</li>
+          <li>Taxes + royalties</li>
+          <li>State budget / funds</li>
+        </ol>
+
+        <section class="energy-fiscal__nm-case" aria-labelledby="fiscal-nm-heading" data-fiscal-reveal="evidence">
+          <h3 id="fiscal-nm-heading">New Mexico / FY2027</h3>
+          <div class="energy-fiscal__sensitivity">
+            <p><strong>$10 <span>/ barrel higher</span></strong><span>full-year average oil price vs. August forecast</span></p>
+            <span class="energy-fiscal__equals-arrow" aria-hidden="true">→</span>
+            <p><strong>About +${high}m</strong><span>direct FY2027 revenue sensitivity</span></p>
+          </div>
+          <p class="energy-fiscal__qualification">All other forecast assumptions held constant. This is annual revenue sensitivity—not cash already collected, a household rebate, or a measure of New Mexico's net economic gain.</p>
+          <a class="energy-fiscal__source" href={energySource(fiscal.sourceId).url}>New Mexico forecast, pages 16 and 41</a>
+        </section>
+      </section>
+    </div>
+  </div>
+
+  <div class="energy-fiscal__takeaway">
+    <p>A higher oil price can therefore raise a New Mexico driver's fuel bill and New Mexico's state revenue tied to oil production in the same year. Those dollars do not meet at the pump: gasoline is priced through the fuel market, while taxes and royalties move through the state's budget and permanent funds. One does not cancel the other.</p>
+  </div>
+
+  <details class="energy-data">
+    <summary>See the New Mexico sensitivity cases</summary>
+    <EnergyFigure id="energy-nm-revenue">
+      <div class="energy-table-scroll" role="region" tabindex="0" aria-label="New Mexico annual sensitivity cases">
+        <table><caption>Direct FY2027 revenue sensitivity; all other forecast assumptions held constant.</caption><thead><tr><th scope="col">Full-year average oil price vs. August forecast</th><th scope="col">Illustrated direct revenue change</th></tr></thead><tbody>
+          {fiscal.changes.map((change) => <tr><th scope="row">{change < 0 ? "$10 lower" : change > 0 ? "$10 higher" : "At forecast"}</th><td>{change === 0 ? "$0" : `About $${roundedFiscalMagnitude(fiscalSensitivity(change, fiscal.annualMillionsPerDollar))}m ${change < 0 ? "less" : "more"}`}</td></tr>)}
+        </tbody></table>
+      </div>
+    </EnergyFigure>
+  </details>
+</section>

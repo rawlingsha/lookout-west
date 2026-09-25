@@ -1,0 +1,77 @@
+---
+import { outlookToday, outlookCases, outlookStates, outlookDimensions, outlookSources, outlookGeometry } from '../../../lib/interactive/energy/outlook-data';
+import OutlookGlyph from './OutlookGlyph.astro';
+import '../../../styles/energy-outlook.css';
+const geometry = Object.entries(outlookGeometry(outlookToday)).map(([key,value])=>`${key}:${value}`).join(';');
+---
+<div class="energy-outlook" id="outlook-conditions" data-energy-outlook data-outlook-state="today" style={geometry}>
+  <header class="outlook-date">
+    <p class="energy-kicker"><span data-outlook-mode>Current conditions</span> <span data-outlook-vintage>(<time datetime="2026-09-25">Sep. 25</time>)</span></p>
+    <div class="outlook-state-stack outlook-summary">
+      {outlookStates.map(s=><p data-outlook-copy={s.id} aria-hidden={s.id === 'today' ? undefined : 'true'}>{s.summary}</p>)}
+    </div>
+  </header>
+  <fieldset class="outlook-controls" aria-describedby="outlook-instruction" data-outlook-controls hidden>
+    <legend class="energy-kicker">Change the conditions</legend>
+    <p class="outlook-instruction" id="outlook-instruction">Choose a case to see how shipments, stocks, refining and Western pump pressure change.</p>
+    <div class="outlook-choices">
+      {outlookStates.map(s=><label class="outlook-choice">
+        <input type="radio" name="outlook-condition" value={s.id} data-outlook-select={s.id} checked={s.id === 'today'} aria-controls="outlook-system" />
+        <span>{s.title}{s.id === 'today' && <small class="outlook-current">Current</small>}</span>
+      </label>)}
+    </div>
+  </fieldset>
+  <p class="outlook-key">Schematic: widths and stock levels show conditions, not quantities. Arrows at Western pumps show pressure relative to current conditions, not price targets.</p>
+
+  <div class="outlook-system" id="outlook-system">
+    {outlookDimensions.slice(0,3).map(d=><section class:list={['outlook-stage',`outlook-stage--${d.key}`]} aria-labelledby={`outlook-${d.key}`}>
+      <h3 id={`outlook-${d.key}`}>{d.title}</h3>
+      <OutlookGlyph kind={d.key} />
+      <div class="outlook-state-stack outlook-condition">
+        {outlookStates.map(s=><div data-outlook-copy={s.id} aria-hidden={s.id === 'today' ? undefined : 'true'}>
+          <h4>{s[d.key].label}</h4><p>{s[d.key].detail}</p>
+        </div>)}
+      </div>
+    </section>)}
+    <section class="outlook-stage outlook-stage--pumps" aria-labelledby="outlook-pumps">
+      <h3 id="outlook-pumps">Western pumps</h3>
+      {(['gasoline','diesel'] as const).map(key=><div class:list={['outlook-fuel',`outlook-fuel--${key}`]}>
+        <OutlookGlyph kind={key} />
+        <div>
+          <h4>{key === 'gasoline' ? 'Gasoline' : 'Diesel'}</h4>
+          <div class="outlook-state-stack outlook-condition">
+            {outlookStates.map(s=><div data-outlook-copy={s.id} aria-hidden={s.id === 'today' ? undefined : 'true'}>
+              <strong>{s[key].label}</strong><p>{s[key].detail}</p>
+            </div>)}
+          </div>
+        </div>
+      </div>)}
+    </section>
+  </div>
+
+  <div class="outlook-evidence">
+    <h3>Evidence to watch</h3>
+    <div class="outlook-state-stack">
+      {outlookStates.map(s=><p data-outlook-copy={s.id} aria-hidden={s.id === 'today' ? undefined : 'true'}>{s.evidence}</p>)}
+    </div>
+  </div>
+  <p class="energy-sr-only" role="status" aria-live="polite" aria-atomic="true" data-outlook-status></p>
+
+  <details class="energy-data outlook-comparison">
+    <summary>Compare the evidence</summary>
+    <div class="energy-table-scroll" role="region" tabindex="0" aria-label="Conditional oil-system cases">
+      <table>
+        <caption>Conditional cases for the oil system. No probabilities or price targets are assigned.</caption>
+        <thead><tr><th scope="col">Observable condition</th>{outlookCases.map(s=><th scope="col">{s.title}</th>)}</tr></thead>
+        <tbody>
+          {outlookDimensions.map(d=><tr><th scope="row">{d.title}</th>{outlookCases.map(s=><td><strong>{s[d.key].label}</strong> {s[d.key].detail}</td>)}</tr>)}
+          <tr><th scope="row">Evidence that would confirm the case</th>{outlookCases.map(s=><td>{s.evidence}</td>)}</tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+  <p class="outlook-method">These are conditional cases, not assigned probabilities or price targets. The current baseline incorporates later observations than EIA’s September outlook, whose assumptions were finalized September 3, before subsequent disruptions and the East–West pipeline restart.</p>
+  <ul class="outlook-sources" aria-label="Sources for the current baseline">
+    {outlookSources.map(s=><li><a href={s.url}>{s.label}</a></li>)}
+  </ul>
+</div>

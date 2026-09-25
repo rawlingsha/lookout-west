@@ -147,14 +147,18 @@ test("all built articles have distinct, valid previews and downloads", async (t)
   );
 });
 
-test("chart pages have their own metadata and return to real article anchors", async (t) => {
+test("chart pages have their own metadata and return to an article or a real figure anchor", async (t) => {
   const figures = JSON.parse(
     await readFile("src/data/share-figures.json", "utf8"),
   );
-  for (const { article, id: figure, image: sourceImage } of figures.filter(
-    (entry) => entry.image,
-  )) {
+  for (const {
+    article,
+    id: figure,
+    image: sourceImage,
+    standalone,
+  } of figures.filter((entry) => entry.image)) {
     const url = `/visualizations/${article}/${figure}/`;
+    const articleUrl = `${origin}/research/${article}/${standalone ? "" : `#figure-${figure}`}`;
     const { doc } = fixture(t, {
       markup: await readFile(`dist${url}index.html`, "utf8"),
       enhance: false,
@@ -172,22 +176,31 @@ test("chart pages have their own metadata and return to real article anchors", a
         .querySelector('meta[property="og:image"]')
         .content.includes(`/figures/${figure}-preview.jpg`),
     );
-    assert.ok(
-      doc.querySelector(
-        `a[href="${origin}/research/${article}/#figure-${figure}"]`,
-      ),
-    );
+    assert.ok(doc.querySelector(`a[href="${articleUrl}"]`));
+    if (standalone)
+      assert.equal(
+        doc.querySelectorAll(`a[href*="#figure-${figure}"]`).length,
+        0,
+      );
     const articleDoc = fixture(t, {
       markup: await readFile(`dist/research/${article}/index.html`, "utf8"),
       enhance: false,
     }).doc;
-    const block = articleDoc.getElementById(`figure-${figure}`);
-    assert.ok(block);
+    assert.ok(articleDoc.querySelector("h1"), "The parent article exists");
+    const block = standalone
+      ? doc.querySelector(".visualization")
+      : articleDoc.getElementById(`figure-${figure}`);
+    assert.ok(block, `Missing article anchor: ${article}/#figure-${figure}`);
     assert.ok(
       block.querySelector(`[data-share-actions][data-url="${origin}${url}"]`),
     );
     assert.ok(block.querySelector("[data-copy-link]"));
-    assert.ok(block.querySelector(`a[href="${sourceImage}"] img`));
+    assert.ok(
+      (standalone && block.querySelector(`img[src="${sourceImage}"]`)) ||
+        block.querySelector(`a[href="${sourceImage}"] img`) ||
+        (block.querySelector("[data-energy-plot]") &&
+          block.querySelector(`a[href="${sourceImage}"]`)),
+    );
     assert.ok(
       block.querySelector(
         `a[download][href="/social/generated/figures/${figure}.png"]`,

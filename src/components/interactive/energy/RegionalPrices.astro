@@ -1,0 +1,68 @@
+---
+import { energyData } from "../../../lib/interactive/energy/data";
+import { statePriceRows } from "../../../lib/interactive/energy/personal-model";
+import EnergyFigure from "./EnergyFigure.astro";
+const states = statePriceRows(energyData.metrics);
+---
+
+<div class="personal-data" data-regional-prices>
+  <h3>All 13 states, at the same dates</h3>
+  <p>
+    AAA pump prices: September 19, 2026. EIA residential electricity: June 2026,
+    preliminary. Electricity averages are revenue per kilowatt-hour sold, not
+    household bills or quoted tariffs.
+  </p>
+  <div
+    class="energy-table-scroll"
+    tabindex="0"
+    role="region"
+    aria-label="State energy prices; scroll horizontally if needed"
+  >
+    <table>
+      <caption>Dated state averages</caption><thead
+        ><tr
+          ><th scope="col">State</th><th scope="col">Gasoline<br />$/gallon</th
+          ><th scope="col">Diesel<br />$/gallon</th><th scope="col"
+            >Electricity<br />¢/kWh</th
+          ></tr
+        ></thead
+      ><tbody
+        >{
+          states.map((s) => (
+            <tr>
+              <>
+                <th scope="row">{s.name}</th>
+                <td>{s.gasoline.toFixed(2)}</td>
+                <td>{s.diesel.toFixed(2)}</td>
+                <td>{s.electricity.toFixed(2)}</td>
+              </>
+            </tr>
+          ))
+        }</tbody>
+    </table>
+  </div>
+  <p>
+    <a href="/downloads/west-energy-bill/state-prices.csv" download
+      >Download state-price CSV</a
+    > · <a href="/downloads/west-energy-bill/snapshot.json" download
+      >Full snapshot JSON</a>
+  </p>
+  <details class="energy-data">
+    <summary>Share the dated state charts</summary>{
+      energyData.metrics.map((m) => (
+        <EnergyFigure id={`energy-${m.id}`}>
+          <>
+            <p>
+              {m.label} · {m.observationPeriod}.{" "}
+              <a href={`/visualizations/west-energy-bill/energy-${m.id}/`}>
+                Open the full 13-state chart and sources
+              </a>
+              .
+            </p>
+            <p>{m.caveat}</p>
+          </>
+        </EnergyFigure>
+      ))
+    }
+  </details>
+</div>

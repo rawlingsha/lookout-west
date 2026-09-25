@@ -8,15 +8,17 @@
   "scripts": {
     "images:share": "node scripts/generate-share-images.mjs",
     "test:sharing": "npm run build && node --experimental-strip-types --test tests/sharing.test.mjs",
-    "predev": "npm run images:share",
-    "prebuild": "npm run images:share",
+    "predev": "npm run assets:energy && npm run images:share",
+    "prebuild": "npm run assets:energy && npm run images:share",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "astro": "astro"
+    "astro": "astro",
+    "assets:energy": "node --experimental-strip-types scripts/generate-energy-assets.mjs",
+    "test:energy": "npm run build && node --experimental-strip-types --test tests/energy.test.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",

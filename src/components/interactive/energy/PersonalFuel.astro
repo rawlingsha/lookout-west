@@ -1,0 +1,112 @@
+---
+import { energyData, energySource } from "../../../lib/interactive/energy/data";
+import {
+  fuelDistribution,
+  statePriceRows,
+} from "../../../lib/interactive/energy/personal-model";
+import "../../../styles/energy-personal.css";
+const states = statePriceRows(energyData.metrics);
+const d = fuelDistribution(energyData.metrics, "gasoline", "NM");
+---
+
+<section
+  id="your-bill"
+  class="energy-personal"
+  data-energy-personal
+  data-fuel="gasoline"
+  data-price-data={JSON.stringify(
+    energyData.metrics.filter((m) => m.id !== "electricity"),
+  )}
+  aria-labelledby="personal-heading"
+>
+  <header>
+    <p class="energy-kicker">At Western pumps</p><h2 id="personal-heading">
+      What a pump change means for a month of driving.
+    </h2>
+  </header>
+  <div class="personal-observed" id="compare-states">
+    <div class="personal-selection">
+      <div data-state-control hidden>
+        <label for="energy-state" data-selection-label>Example state</label
+        ><select id="energy-state" data-state-select
+          >{
+            states.map((s) => (
+              <option value={s.code} selected={s.code === "NM"}>
+                {s.name}
+              </option>
+            ))
+          }</select
+        >
+      </div>
+      <p class="personal-static" data-state-fallback>Example · New Mexico</p>
+      <fieldset data-metric-controls hidden>
+        <legend class="energy-sr-only">Pump fuel</legend><label
+          ><input
+            type="radio"
+            name="energy-metric"
+            value="gasoline"
+            checked
+          />Regular gasoline</label
+        ><label
+          ><input
+            type="radio"
+            name="energy-metric"
+            value="diesel"
+          />Diesel</label
+        >
+      </fieldset>
+    </div>
+    <div class="personal-price">
+      <p>
+        <strong data-selected-value>${d.selected.value.toFixed(2)}</strong><span
+          >per gallon · <span data-fuel-label>regular gasoline</span></span
+        >
+      </p>
+      <p class="personal-position">
+        <span data-selected-name>New Mexico</span><br /><span data-position
+          >{d.rank} of 13, from lowest price</span
+        >
+      </p>
+    </div>
+    <div class="personal-distribution" aria-hidden="true">
+      <div class="personal-dots">
+        {
+          d.dots.map((dot) => (
+            <i
+              data-state-dot={dot.code}
+              style={`left:${dot.x}%;top:${dot.lane * 14}px`}
+            />
+          ))
+        }<span
+          class="personal-pin"
+          data-selected-code
+          style={`left:${d.selected.x}%;--stem:${d.selected.lane * 14 + 20}px`}
+          >NM</span
+        ><b
+          data-selected-marker
+          style={`left:${d.selected.x}%;top:${d.selected.lane * 14}px`}></b>
+      </div>
+      <div class="personal-axis">
+        <span>${d.min.toFixed(2)}</span><span
+          >${((d.min + d.max) / 2).toFixed(2)}</span
+        ><span>${d.max.toFixed(2)}</span>
+      </div>
+    </div>
+    <div class="personal-range">
+      <span data-range-low>Lowest · {d.low.name} ${d.low.value.toFixed(2)}</span
+      ><span data-range-high
+        >Highest · {d.high.name} ${d.high.value.toFixed(2)}</span
+      >
+    </div>
+    <p class="personal-source">
+      13 dots, one per state · <time datetime="2026-09-19"
+        >September 19, 2026</time
+      > · <a href={energySource("aaa").url}>AAA daily averages</a>
+    </p>
+    <p class="personal-caveat" data-fuel-caveat>
+      Regular gasoline includes taxes. State averages vary from individual
+      stations.
+    </p>
+    <p class="energy-sr-only" role="status" data-metric-status></p>
+  </div>
+</section>

@@ -555,6 +555,24 @@ html.has-overlay-open body {
   }
 }
 
+@media (max-width: 22.5rem) {
+  .site-header__brand {
+    font-size: 0.84rem;
+    letter-spacing: 0.025em;
+  }
+
+  .site-header__subscribe-button--mobile,
+  .mobile-menu__toggle {
+    padding-inline: 0.45rem;
+  }
+
+  .site-header__subscribe-button--mobile,
+  .mobile-menu__label {
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+  }
+}
+
 
 .skip-link {
   position: absolute;

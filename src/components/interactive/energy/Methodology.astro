@@ -1,0 +1,74 @@
+---
+import {
+  energySources,
+  energyData,
+} from "../../../lib/interactive/energy/data";
+---
+
+<section
+  id="sources"
+  class="energy-methodology"
+  aria-labelledby="energy-sources-heading"
+>
+  <p class="energy-kicker">Sources and notes</p><h2 id="energy-sources-heading">
+    What these figures measure
+  </h2>
+  <p>
+    The state pump-price comparison uses AAA’s September 19, 2026 daily averages
+    for regular gasoline and diesel. EIA’s September 14 weekly prices appear
+    separately in the essay. The two sources use different observation dates and
+    methods; they are not combined into a single series.
+  </p>
+  <p>
+    Residential electricity prices are EIA’s preliminary June 2026 averages,
+    released August 26. They divide revenue by kilowatt-hours sold in the
+    residential sector. They are not quoted tariffs or typical household bills.
+    BLS inflation figures describe the 13-state West’s urban consumers and
+    measure changes from August 2025 to August 2026.
+  </p>
+  <p>
+    The fuel-budget calculation multiplies monthly gallons by a selected price
+    change and holds use constant for two months. It does not estimate how
+    driving, wages or other prices respond. The New Mexico illustration
+    separately applies the August 2026 forecast’s $56.45 million annual
+    direct-revenue sensitivity per $1-per-barrel price change, holding other
+    assumptions constant. It is not a prediction of cash receipts, a household
+    rebate or a net-benefit estimate.
+  </p>
+  <p>
+    The supply diagram and step relationships show economic connections, not proportional flows. The
+    outlook cases are conditional descriptions, without assigned probabilities
+    or price bands. Research is current through September 19, 2026; EIA’s
+    September outlook used assumptions finalized on September 3. Later market
+    news is identified separately in the essay.
+  </p>
+  <details class="energy-data">
+    <summary>Data sources, dates and downloads</summary>
+    <ul>
+      {
+        energySources.map((source) => (
+          <li>
+            <a href={source.url}>{source.title}</a> — {source.publisher}.{" "}
+            <span>
+              {source.observationPeriod}; released {source.releaseDate}.{" "}
+              {source.definition} {source.revisionStatus}.
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+    <p>
+      Snapshot version: {energyData.version}. Values were manually transcribed
+      and checked against the linked sources. Frozen downloads remain dated even
+      when source pages update.
+    </p>
+    <p>
+      <a href="/downloads/west-energy-bill/state-prices.csv" download
+        >State-price CSV</a
+      > · <a href="/downloads/west-energy-bill/snapshot.json" download
+        >Full snapshot JSON</a
+      > · <a href="/downloads/west-energy-bill/sources.json" download
+        >Source manifest</a>
+    </p>
+  </details>
+</section>

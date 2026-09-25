@@ -1,0 +1,73 @@
+---
+import SupplyDiagram from "./SupplyDiagram.astro";
+import "../../../styles/energy-supply.css";
+
+const steps = [
+  {
+    id: "world-supply",
+    eyebrow: "The disruption",
+    title: "Fewer shipments leave the region.",
+    text: "The war involving the United States and Iran has disrupted oil movement through the Strait of Hormuz and alternative Middle Eastern routes. Buyers still need fuel, so they compete for the barrels that remain available.",
+    source: "IEA September oil report",
+    url: "https://www.iea.org/reports/oil-market-report-september-2026",
+    note: "The size and duration of the disruption matter more than any single day of trading.",
+  },
+  {
+    id: "inventory-buffer",
+    eyebrow: "The buffer",
+    title: "Inventories, not immunity.",
+    text: "Stored oil can replace missing shipments for a while. But observed global stocks fell by 507 million barrels through August. As that cushion thins, the market pays more attention to every outage and delay.",
+    source: "IEA September oil report",
+    url: "https://www.iea.org/reports/oil-market-report-september-2026",
+    note: "The IEA also expects high prices and unavailable supply to reduce global demand this year.",
+  },
+  {
+    id: "refining",
+    eyebrow: "The conversion",
+    title: "Crude oil is not gasoline.",
+    text: "A barrel still has to become gasoline or diesel. U.S. refineries ran at 96.8% of capacity in the week ending September 11—above the roughly 90–92% utilization typical over a full year—while distillate stocks were 13% below their five-year average. That left relatively little room to increase output, especially for diesel.",
+    source: "EIA weekly petroleum report",
+    url: "https://www.eia.gov/petroleum/supply/weekly/pdf/highlights.pdf",
+    note: "These are one-week measures for the whole U.S., not just Western refineries",
+  },
+  {
+    id: "western-delivery",
+    eyebrow: "The last mile",
+    title: "The West cannot replace supply overnight.",
+    text: "Western fuel markets depend on a patchwork of refineries, pipelines, ports and long transport routes. When one part of that system tightens, replacement supply can take time to reach another. California is the clearest case: its specialized gasoline can take three to four weeks to replace from overseas, and disruptions there can spill into Nevada and Arizona.",
+    source: "California Energy Commission",
+    url: "https://www.energy.ca.gov/data-reports/energy-almanac/californias-petroleum-market",
+    note: "The diagram is schematic; it does not map exact infrastructure or every supply route.",
+  },
+];
+---
+
+<section id="supply" class="energy-module energy-supply" data-energy-supply aria-labelledby="supply-heading">
+  <header class="energy-chapter-heading">
+    <p class="energy-kicker">02 / How the impact travels West</p>
+    <h2 id="supply-heading">How does a shock over there reach a pump here?</h2>
+    <p class="energy-intro">The price moves through a chain, and each link can either absorb the shock or amplify it.</p>
+  </header>
+  <div class="energy-supply-grid">
+    <div class="energy-supply-steps">
+      {steps.map((step, index) => <section class="energy-step" data-supply-step id={step.id}>
+        <p class="energy-step-number">0{index + 1} / 04 · {step.eyebrow}</p>
+        <h3>{step.title}</h3>
+        <p>{step.text}</p>
+        <div class="energy-supply-static">
+          <SupplyDiagram id={`supply-static-${index}`} stage={index} compact />
+          <p class="energy-route-caption">Schematic relationships · not quantities or exact routes</p>
+        </div>
+        <p class="energy-note">{step.note} <a href={step.url}>{step.source}</a>.</p>
+      </section>)}
+    </div>
+    <div class="energy-supply-sticky" data-supply-sticky hidden aria-hidden="true">
+      <div class="energy-supply-stage-header">
+        <p class="energy-kicker">The route to your pump</p>
+        <span data-supply-progress>01 / 04</span>
+      </div>
+      <div data-supply-diagram><SupplyDiagram /></div>
+      <p class="energy-route-caption">Schematic relationships · not quantities or exact routes</p>
+    </div>
+  </div>
+</section>

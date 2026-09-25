@@ -11,11 +11,13 @@ export interface ShareFigure {
   source: string;
   image?: string;
   alt?: string;
+  /** Keep an existing chart URL when its figure is no longer embedded. */
+  standalone?: boolean;
 }
 export const shareFigures: ShareFigure[] = registry;
 export const figureArticleUrl = (figure: ShareFigure) =>
   contentUrl(`/research/${figure.article}/`, {
-    fragment: `figure-${figure.id}`,
+    fragment: figure.standalone ? undefined : `figure-${figure.id}`,
   });
 export const figurePagePath = (figure: ShareFigure) =>
   `/visualizations/${figure.article}/${figure.id}/`;

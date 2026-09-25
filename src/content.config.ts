@@ -22,6 +22,7 @@ const articles = defineCollection({
     author: z.string(),
     featured: z.boolean().optional().default(false),
     draft: z.boolean().optional().default(false),
+    format: z.enum(["essay", "interactive"]).default("essay"),
     seoTitle: z.string().optional(),
     seoDescription: z.string().optional(),
     cardImage: z.string().optional(),

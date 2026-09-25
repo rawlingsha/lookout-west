@@ -1,0 +1,41 @@
+---
+import FigureBlock from "../../article/FigureBlock.astro";
+import ShareActions from "../../sharing/ShareActions.astro";
+import {
+  shareFigures,
+  figurePagePath,
+  figureShareImages,
+} from "../../../lib/figures";
+import { contentUrl } from "../../../lib/urls";
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+const figure = shareFigures.find((entry) => entry.id === id);
+if (!figure?.image) throw new Error(`Missing energy figure: ${id}`);
+---
+
+<FigureBlock
+  id={`figure-${id}`}
+  label={figure.title}
+  caption={figure.caption}
+  note={`Source: ${figure.source}`}
+>
+  <div class="energy-plot" data-energy-plot><slot /></div>
+  <div slot="actions">
+    <ShareActions
+      id={`share-${id}`}
+      title={figure.title}
+      text={figure.caption}
+      url={contentUrl(figurePagePath(figure))}
+      kind="chart"
+      images={figureShareImages(figure)}
+      download={`/social/generated/figures/${id}.png`}
+    />
+    <a class="energy-full-size" href={figure.image}>View full-size chart</a>
+    <span aria-hidden="true"> · </span>
+    <a class="energy-full-size" href={figurePagePath(figure)}
+      >Chart and source details</a
+    >
+  </div>
+</FigureBlock>

@@ -1,0 +1,54 @@
+/* Local to the observed-price section. Georgia is the site's registered serif. */
+.energy-story .energy-arrival { margin: 3.5rem 0 4rem; padding-top: 2.25rem; border-top: 1px solid var(--energy-rule); }
+.energy-story .energy-arrival .energy-pulse { max-width: 68rem; margin-top: 2.5rem; }
+.energy-story .energy-pulse .figure-block__media { border: 0; border-radius: 0; background: transparent; }
+.energy-story .energy-pulse .energy-plot { padding: 0; background: transparent; }
+.energy-story .energy-pulse .figure-block__label { display: none; }
+.energy-story .energy-pulse .figure-block__caption { max-width: 58rem; font-size: .8rem; line-height: 1.65; margin-top: .25rem; }
+.energy-story .energy-pulse .figure-block__caption > span:not(.figure-block__label) { display: block; }
+.energy-story .pulse-orientation .energy-kicker { font-family: var(--font-serif); font-size: .68rem; margin-bottom: .45rem; }
+.energy-story .pulse-context { margin: 0; font: 400 .88rem/1.6 var(--font-serif); color: var(--color-muted); }
+.pulse-visual { margin-top: 1.4rem; }
+.energy-story .energy-pulse .pulse-chart { display: block; width: 100%; height: auto; overflow: visible; }
+.energy-story .energy-pulse .pulse-chart--mobile, .pulse-mobile-labels { display: none; }
+.energy-pulse .pulse-reveal { transform-origin: var(--pulse-origin) 0; }
+.energy-pulse[data-pulse-state="pending"] .pulse-reveal { transform: scaleX(0); }
+.energy-pulse[data-pulse-state="pending"] :is(.pulse-end,.pulse-end-label,.pulse-annotation,.pulse-mobile-labels) { opacity: 0; }
+.energy-pulse[data-pulse-state="revealing"] .pulse-reveal { animation: pulse-sweep 1000ms linear 125ms both; }
+.energy-pulse[data-pulse-state="revealing"] .pulse-end { animation: pulse-appear 150ms ease-out 1050ms both; }
+.energy-pulse[data-pulse-state="revealing"] :is(.pulse-end-label,.pulse-annotation,.pulse-mobile-labels) { animation: pulse-appear 200ms ease-out 1150ms both; }
+@keyframes pulse-sweep { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes pulse-appear { from { opacity: 0; } to { opacity: 1; } }
+.energy-pulse .share-actions { margin-top: .9rem; }
+.energy-pulse .share-actions__controls { gap: .4rem; flex-wrap: wrap; }
+.energy-pulse .share-control { min-height: 44px; padding: .45rem .7rem; font-size: .75rem; border-radius: .2rem; border-color: var(--energy-rule); background: transparent; }
+.energy-pulse .share-control svg { width: 15px; height: 15px; }
+.energy-pulse .energy-full-size { font-size: .72rem; }
+.pulse-table-scroll { max-width: 100%; overflow-x: auto; }
+.pulse-table-scroll table { min-width: 31rem; font-variant-numeric: tabular-nums; }
+.pulse-table-scroll td span { color: var(--color-muted); font-size: .8em; }
+.energy-story .energy-pulse .energy-data { max-width: 58rem; }
+@media (max-width: 40rem) {
+  .energy-story .energy-arrival { margin-top: 2.5rem; }
+  .energy-story .energy-pulse .pulse-chart--desktop { display: none; }
+  .energy-story .energy-pulse .pulse-chart--mobile { display: block; }
+  .pulse-mobile-labels { display: block; margin: .1rem 0 1.5rem; font: 400 .92rem/1.6 var(--font-serif); }
+  .energy-story .pulse-mobile-labels > p { font: 400 .72rem/1.5 var(--font-serif); color: var(--color-muted); margin: 0 0 .65rem; }
+  .pulse-mobile-labels > div { display: flex; justify-content: space-between; gap: 1rem; margin: .35rem 0; }
+  .pulse-mobile-labels span { display: inline-flex; align-items: center; gap: .65rem; }
+  .pulse-mobile-labels i { width: 1.1rem; border-top: 3px solid var(--series-color); }
+  .pulse-mobile-labels strong { font-weight: 700; color: var(--color-text); }
+  .pulse-mobile-labels > div:first-of-type { color: #252824; }
+  .energy-story .energy-pulse .figure-block__caption { font-size: .78rem; }
+}
+@media (prefers-reduced-motion: reduce), print {
+  .energy-pulse .pulse-reveal { transform: none !important; animation: none !important; }
+  .energy-pulse :is(.pulse-end,.pulse-end-label,.pulse-annotation,.pulse-mobile-labels) { opacity: 1 !important; animation: none !important; }
+}
+
+@media (min-width: 60rem) {
+  .energy-story .energy-arrival .energy-chapter-heading { display: grid; grid-template-columns: 1fr 1fr; column-gap: 3rem; align-items: end; }
+  .energy-story .energy-arrival .energy-chapter-heading > .energy-kicker { grid-column: 1 / -1; }
+  .energy-story .energy-arrival .energy-chapter-heading > h2 { margin-bottom: 0; }
+  .energy-story .energy-arrival .energy-chapter-heading > .energy-intro { margin: 0 0 .15rem; font-size: 1.08rem; max-width: 29rem; }
+}

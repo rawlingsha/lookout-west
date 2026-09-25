@@ -1,0 +1,21 @@
+{
+  "baseMonth": "2026-02",
+  "geography": "BLS West region: AK, AZ, CA, CO, HI, ID, MT, NV, NM, OR, UT, WA, WY",
+  "seasonalAdjustment": "Not seasonally adjusted",
+  "rawUnit": "CPI-U index, 1982–84 = 100",
+  "retrievedAt": "2026-09-22",
+  "sources": [
+    { "id": "march", "url": "https://www.bls.gov/regions/west/news-release/2026/consumerpriceindex_west_20260410.htm", "releaseDate": "2026-04-10", "table": "Table 1", "months": ["2026-02", "2026-03"] },
+    { "id": "june", "url": "https://www.bls.gov/regions/west/news-release/2026/consumerpriceindex_west_20260714.htm", "releaseDate": "2026-07-14", "table": "Table 1", "months": ["2026-04", "2026-05", "2026-06"] },
+    { "id": "august", "url": "https://www.bls.gov/regions/west/news-release/2026/consumerpriceindex_west_20260911.htm", "releaseDate": "2026-09-11", "table": "Table 1", "months": ["2026-07", "2026-08"] }
+  ],
+  "rows": [
+    { "month": "2026-02", "gasoline": 319.745, "electricity": 429.679, "utilityGas": 293.758 },
+    { "month": "2026-03", "gasoline": 391.961, "electricity": 425.255, "utilityGas": 287.242 },
+    { "month": "2026-04", "gasoline": 430.020, "electricity": 435.090, "utilityGas": 287.381 },
+    { "month": "2026-05", "gasoline": 450.208, "electricity": 441.907, "utilityGas": 299.494 },
+    { "month": "2026-06", "gasoline": 418.720, "electricity": 439.202, "utilityGas": 308.034 },
+    { "month": "2026-07", "gasoline": 398.950, "electricity": 442.960, "utilityGas": 312.953 },
+    { "month": "2026-08", "gasoline": 411.918, "electricity": 437.225, "utilityGas": 311.895 }
+  ]
+}

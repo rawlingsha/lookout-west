@@ -1,0 +1,39 @@
+---
+import EnergyFigure from "./EnergyFigure.astro";
+import monthly from "../../../data/interactive/west-energy-bill/monthly-cpi.json";
+import { pulseSvg, pulseSeries, rebaseCpi, pulseChange, monthNames } from "../../../lib/interactive/energy/pulse-model";
+import "../../../styles/energy-pulse.css";
+const rebased = rebaseCpi(monthly.rows);
+---
+
+<aside class="energy-pulse" aria-label="Western consumer energy prices" data-energy-pulse>
+  <EnergyFigure id="energy-price-pulse">
+    <div class="pulse-orientation">
+      <p class="energy-kicker">Since the disruption</p>
+      <p class="pulse-context">West-region CPI-U · February 2026 = 100</p>
+    </div>
+    <div class="pulse-visual" data-pulse-visual>
+      <Fragment set:html={pulseSvg(monthly.rows, "pulse-wide")} />
+      <Fragment set:html={pulseSvg(monthly.rows, "pulse-narrow", true)} />
+    </div>
+    <div class="pulse-mobile-labels" aria-label="Change from February to August 2026">
+      <p>Change since February · August 2026</p>
+      {pulseSeries.map(series => <div style={`--series-color:${series.color}`}>
+        <span><i aria-hidden="true"></i>{series.name}</span>
+        <strong>{pulseChange(rebased[6][series.key])}</strong>
+      </div>)}
+    </div>
+  </EnergyFigure>
+  <details class="energy-data">
+    <summary>See monthly data and method</summary>
+    <p>Each series divides its monthly BLS index by its February 2026 index and multiplies by 100. Monthly observations cover the whole month, not a specific day. The event marker falls between February and March. The West comprises Alaska, Arizona, California, Colorado, Hawaii, Idaho, Montana, Nevada, New Mexico, Oregon, Utah, Washington, and Wyoming.</p>
+    <div class="pulse-table-scroll" tabindex="0" role="region" aria-label="Monthly CPI data; scroll horizontally if needed">
+      <table>
+        <caption>February 2026 = 100 · raw BLS indexes in parentheses</caption>
+        <thead><tr><th scope="col">2026</th>{pulseSeries.map(s => <th scope="col">{s.name}</th>)}</tr></thead>
+        <tbody>{rebased.map((row, i) => <tr><th scope="row">{monthNames[i]}</th>{pulseSeries.map(s => <td>{row[s.key].toFixed(1)} <span>({monthly.rows[i][s.key].toFixed(3)})</span></td>)}</tr>)}</tbody>
+      </table>
+    </div>
+    <p>Raw indexes use the BLS 1982–84=100 base. Sources: {monthly.sources.map((source, i) => <><a href={source.url}>BLS {source.id} release</a>{i < monthly.sources.length - 1 ? " · " : ""}</>)}. <a href="/downloads/west-energy-bill/monthly-cpi.csv" download>Download monthly data (CSV)</a>.</p>
+  </details>
+</aside>

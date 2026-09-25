@@ -1,0 +1,41 @@
+---
+interface Props { kind: 'routes' | 'inventories' | 'refining' | 'gasoline' | 'diesel'; }
+const { kind } = Astro.props;
+const pressure = kind === 'gasoline' || kind === 'diesel';
+---
+<svg class:list={['outlook-glyph', `outlook-glyph--${kind}`]} viewBox={pressure ? '0 0 90 100' : '0 0 220 160'} aria-hidden="true" focusable="false">
+  {kind === 'routes' && <>
+    <text x="3" y="24">Hormuz</text>
+    <text x="3" y="96">East–West</text>
+    <path class="outlook-reference" d="M4 48H166M4 116H166" />
+    <path class="outlook-route outlook-route--hormuz" d="M4 48H166" />
+    <path class="outlook-route outlook-route--bypass" d="M4 116H166" />
+    <path class="outlook-line outlook-direction--wide" d="M166 48H188V80H220M166 116H188V80" />
+    <path class="outlook-arrow outlook-direction--wide" d="M211 75l7 5-7 5" />
+    <path class="outlook-line outlook-direction--vertical" d="M166 48H188V140H110V160M166 116H188" />
+  </>}
+  {kind === 'inventories' && <>
+    <path class="outlook-line outlook-direction--wide" d="M0 80H49M170 80H220" />
+    <path class="outlook-line outlook-direction--vertical" d="M110 0V34M110 134V160" />
+    <path class="outlook-tank" d="M50 43Q110 24 170 43V120Q110 141 50 120Z" />
+    <path class="outlook-stock" d="M55 47Q110 32 165 47V117Q110 135 55 117Z" />
+    <path class="outlook-line outlook-fine" d="M50 43Q110 62 170 43M50 120Q110 102 170 120" />
+    <path class="outlook-arrow outlook-direction--wide" d="M211 75l7 5-7 5" />
+  </>}
+  {kind === 'refining' && <>
+    <path class="outlook-line outlook-direction--wide" d="M0 80H35M151 60H220M151 105H220" />
+    <path class="outlook-line outlook-direction--vertical" d="M110 0V30M151 60H195V145H121V160M151 105H180V138H99V160" />
+    <path class="outlook-converter" d="M35 30H151V130H35Z" />
+    <path class="outlook-line outlook-fine" d="M52 44V116M69 44V116M86 44V116" />
+    <path class="outlook-product-guide" d="M102 60H182M102 105H182" />
+    <rect class="outlook-channel outlook-channel--gas" x="101" y="42" width="67" height="36" />
+    <rect class="outlook-channel outlook-channel--diesel" x="101" y="87" width="67" height="36" />
+    <path class="outlook-arrow outlook-direction--wide" d="M211 55l7 5-7 5M211 100l7 5-7 5" />
+  </>}
+  {pressure && <>
+    <path class="outlook-reference" d="M5 50H83" />
+    <g class="outlook-pressure">
+      <path d="M8 50H75m-9-7 9 7-9 7" />
+    </g>
+  </>}
+</svg>

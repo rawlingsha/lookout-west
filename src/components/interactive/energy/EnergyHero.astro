@@ -1,0 +1,191 @@
+---
+import desertShipPoster from "../../../assets/energy/desert_ship-video-poster.webp?url";
+import desertShipFilm from "../../../assets/energy/desert_ship_painted.mp4?url";
+
+interface Props {
+  title: string;
+  deck: string;
+  topic: string;
+  topicHref?: string;
+  author: string;
+  publishDate: Date;
+  publishedLabel: string;
+  updatedDate?: Date;
+  updatedLabel?: string | null;
+  draft?: boolean;
+}
+
+const { title, deck, topic, topicHref, author, publishDate, publishedLabel,
+  updatedDate, updatedLabel, draft = false } = Astro.props;
+---
+
+<header class="energy-split-hero" aria-labelledby="energy-article-title">
+  <div class="energy-split-hero__copy">
+    {draft && <p class="energy-split-hero__draft">Draft preview · Not published</p>}
+    <p class="energy-split-hero__eyebrow">
+      {topicHref ? <a href={topicHref}>{topic}</a> : topic}
+    </p>
+    <h1 id="energy-article-title">{title}</h1>
+    <p class="energy-split-hero__deck">{deck}</p>
+    <div class="energy-split-hero__meta" aria-label="Article metadata">
+      <span class="energy-split-hero__byline">By {author}</span>
+      <span>
+        <span class="visually-hidden">{draft ? "Draft dated" : "Published"} </span>
+        <time datetime={publishDate.toISOString()}>{publishedLabel}</time>
+      </span>
+      {updatedLabel && <span>Updated <time datetime={updatedDate?.toISOString()}>{updatedLabel}</time></span>}
+    </div>
+    <slot name="sharing" />
+  </div>
+  <div class="energy-split-hero__art" data-energy-film>
+    <img
+      data-film-still
+      src={desertShipPoster}
+      alt="An oil tanker beside the City Fuel gas station among desert cacti, connecting global oil shipments with a Western gas pump."
+      width="1408"
+      height="768"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <video
+      data-film-video
+      data-src={desertShipFilm}
+      poster={desertShipPoster}
+      width="1408"
+      height="768"
+      preload="none"
+      muted
+      playsinline
+      aria-hidden="true"
+      hidden
+    ></video>
+  </div>
+  <a class="energy-split-hero__scroll" href="#what-happened" aria-label="Continue to What happened?">
+    <svg width="20" height="28" viewBox="0 0 20 28" fill="none" aria-hidden="true" focusable="false">
+      <path d="M10 3v21m-6-6 6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </a>
+</header>
+
+
+
+<style>
+  .energy-split-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+    grid-template-rows: 1fr auto;
+    column-gap: 5rem;
+    row-gap: 1.5rem;
+    align-items: center;
+    min-height: clamp(29rem, calc(100svh - 11rem), 43rem);
+    padding-block: clamp(3rem, 6vh, 5rem) 1.5rem;
+  }
+  .energy-split-hero__copy { min-width: 0; }
+  .energy-split-hero__eyebrow {
+    margin: 0 0 1.15rem;
+    color: var(--color-accent);
+    font: 650 0.75rem/1.4 var(--font-sans);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  h1 {
+    max-width: 12ch;
+    margin: 0 0 1.5rem;
+    font: 700 clamp(3.2rem, 4.5vw, 4.35rem)/1.01 var(--font-display);
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+  .energy-split-hero__deck {
+    max-width: 37ch;
+    margin: 0;
+    color: var(--color-muted);
+    font: 400 1.0625rem/1.6 var(--font-sans);
+  }
+  .energy-split-hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.2rem;
+    margin-top: 1.6rem;
+    color: var(--color-muted);
+    font: 400 0.75rem/1.5 var(--font-sans);
+  }
+  .energy-split-hero__byline { color: var(--color-text); }
+  .energy-split-hero__art {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 1408 / 768;
+  }
+  .energy-split-hero__art img,
+  .energy-split-hero__art video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1408 / 768;
+  }
+  .energy-split-hero__art video { position: absolute; inset: 0; }
+  @media (prefers-reduced-motion: reduce), print {
+    .energy-split-hero__art video { display: none; }
+  }
+  .energy-split-hero__scroll {
+    display: grid;
+    grid-column: 1;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-left: -12px;
+    color: var(--color-accent);
+  }
+  .energy-split-hero__scroll:hover { color: var(--color-text); }
+  .energy-split-hero :global(:is(a, button, summary):focus-visible) {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+  .energy-split-hero :global(.share-actions) { margin-top: 0.65rem; }
+  .energy-split-hero :global(.share-actions__controls) { gap: 1.35rem; }
+  .energy-split-hero :global(.share-control) {
+    padding: 0.4rem 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--color-muted);
+    font-size: 0.75rem;
+  }
+  .energy-split-hero :global(.share-control svg) { width: 15px; height: 15px; }
+  .energy-split-hero :global(.share-control:hover) {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+  @media (max-width: 64rem) {
+    .energy-split-hero { column-gap: 3rem; }
+  }
+  @media (min-width: 56.001rem) and (max-height: 700px) {
+    .energy-split-hero { padding-block: 1.5rem 1rem; row-gap: 0.75rem; }
+    h1 { margin-bottom: 1.1rem; }
+    .energy-split-hero__meta { margin-top: 1.25rem; }
+  }
+  @media (max-width: 56rem) {
+    .energy-split-hero {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: auto;
+      gap: 2rem;
+      min-height: 0;
+      padding-block: 3rem 1.75rem;
+    }
+    h1 { max-width: none; font-size: clamp(2.75rem, 7vw, 3.8rem); }
+    .energy-split-hero__deck { max-width: 43ch; }
+    .energy-split-hero__scroll { margin-top: 0.25rem; }
+  }
+  @media (max-width: 35rem) {
+    .energy-split-hero { gap: 1.5rem; padding-top: 2.25rem; }
+    .energy-split-hero__eyebrow { margin-bottom: 0.85rem; }
+    h1 { max-width: 12ch; margin-bottom: 1.15rem; }
+    .energy-split-hero__meta { margin-top: 1.25rem; font-size: 0.72rem; }
+  }
+  @media print {
+    .energy-split-hero { min-height: 0; padding-block: 1rem 2rem; break-inside: avoid; }
+    .energy-split-hero__scroll { display: none; }
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import EnergyHero from "../components/interactive/energy/EnergyHero.astro";
 import Container from "../components/base/Container.astro";
 import Prose from "../components/base/Prose.astro";
 import ShareActions from "../components/sharing/ShareActions.astro";
@@ -15,6 +16,7 @@ interface Props {
   author: string;
   publishDate: Date;
   draft?: boolean;
+  format?: "essay" | "interactive";
   updatedDate?: Date;
   hasSources?: boolean;
   seoTitle?: string;
@@ -34,6 +36,7 @@ const {
   author,
   publishDate,
   draft = false,
+  format = "essay",
   updatedDate,
   hasSources = false,
   seoTitle,
@@ -75,8 +78,23 @@ const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
   author={author}
   robots={draft ? "noindex,nofollow" : undefined}
 >
-  <article class="article-layout">
+  <article
+    class:list={[
+      "article-layout",
+      { "article-layout--interactive": format === "interactive", "article-layout--energy": id === "west-energy-bill" },
+    ]}
+  >
     <Container>
+      {id === "west-energy-bill" ? (
+        <EnergyHero
+          {title} {deck} {topic} {topicHref} {author} {publishDate}
+          {publishedLabel} {updatedDate} {updatedLabel} {draft}
+        >
+          <Fragment slot="sharing">
+            {!draft && <ShareActions id="article-share-top" title={title} text={description} url={url} images={images} />}
+          </Fragment>
+        </EnergyHero>
+      ) : (
       <header class="article-layout__header">
         {
           draft && (
@@ -139,6 +157,7 @@ const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
           )
         }
       </header>
+      )}
     </Container>
 
     {
@@ -189,6 +208,15 @@ const updatedLabel = updatedDate ? formatDate(updatedDate) : null;
 </BaseLayout>
 
 <style>
+  .article-layout--interactive :global(.lw-prose) {
+    width: 100%;
+  }
+  .article-layout--interactive .article-layout__header {
+    width: min(100%, 62rem);
+  }
+  .article-layout--interactive .article-layout__title {
+    max-width: 18ch;
+  }
   .article-layout__draft {
     margin: 0 0 var(--space-4);
     padding: var(--space-3);

@@ -1,0 +1,99 @@
+/* SupplyStory owns these rules; no other article section uses this layout. */
+.energy-supply { --supply-pin-top: max(var(--supply-header-clearance, 6rem), 14svh); }
+.energy-supply-grid { display: grid; gap: 2.5rem; margin-top: 3rem; }
+.energy-supply-steps { min-width: 0; }
+.energy-story .energy-supply .energy-step {
+  position: relative;
+  margin: 0;
+  padding: 2.5rem 0 3rem;
+  border-top: 1px solid var(--energy-rule);
+}
+.energy-story .energy-supply .energy-step-number {
+  margin: 0 0 1rem;
+  color: var(--energy-green);
+  font: 700 .72rem/1.4 var(--font-sans);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.energy-story .energy-supply .energy-step h3 {
+  max-width: 20ch;
+  margin: 0 0 1.25rem;
+  font: 400 clamp(1.9rem, 2.65vw, 2.45rem)/1.09 var(--font-display);
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+.energy-story .energy-supply .energy-step > p:not(.energy-step-number):not(.energy-note) {
+  max-width: 40rem;
+  margin: 0 0 1.4rem;
+  font: 400 1rem/1.7 var(--font-sans);
+}
+.energy-story .energy-supply .energy-note {
+  max-width: 38rem;
+  margin: 1.4rem 0 0;
+  font: 400 .82rem/1.65 var(--font-sans);
+  color: var(--color-muted);
+}
+.energy-supply-static { max-width: 27rem; margin: 2rem 0; }
+.energy-supply-sticky {
+  position: sticky;
+  align-self: start;
+  top: var(--supply-pin-top);
+  padding-top: 1rem;
+  border-top: 2px solid var(--energy-green);
+}
+.energy-supply-stage-header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1.4rem; }
+.energy-story .energy-supply-stage-header .energy-kicker { margin: 0; }
+.energy-supply-stage-header > span { color: var(--energy-green); font: 600 .75rem/1.4 var(--font-sans); font-variant-numeric: tabular-nums; }
+.energy-route { display: block; width: 100%; height: auto; overflow: visible; color: var(--energy-green); }
+.energy-route [data-state="future"] { display: none; }
+.energy-route-label { fill: var(--energy-ink); font: 650 17px var(--font-sans); }
+.energy-route-small { fill: var(--color-muted); font: 400 14px var(--font-sans); }
+.energy-route-fact { fill: var(--energy-green); font: 400 29px var(--font-serif); }
+.energy-route-unit { font: 450 15px var(--font-sans); }
+.energy-route-clay { fill: var(--energy-red); }
+.energy-route-line, .energy-route-flow, .energy-route-clearing, .energy-route-conversion, .energy-route-pump-shape {
+  fill: none; stroke: var(--energy-green); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+.energy-route-line { stroke-width: 2.5; }
+.energy-route-arrow { fill: none; stroke: var(--energy-green); stroke-width: 1.6; }
+.energy-route-break { fill: none; stroke: var(--energy-red); stroke-width: 4; }
+.energy-route-tank, .energy-route-converter, .energy-route-market { fill: var(--energy-canvas); stroke: var(--energy-green); stroke-width: 2; }
+.energy-route-tank-rim { fill: none; stroke: var(--energy-green); stroke-width: 1; }
+.energy-route-stock-level { fill: var(--energy-green); opacity: .28; transform-box: fill-box; transform-origin: bottom; transform: scaleY(.35); }
+.energy-route-product-rule, .energy-route-leader { fill: none; stroke: var(--energy-rule); stroke-width: 1; }
+.energy-route-contour { fill: none; stroke: var(--energy-rule); stroke-width: 1; opacity: .5; }
+.energy-route-endpoint { fill: var(--energy-ink); font: 700 17px var(--font-sans); letter-spacing: .6px; }
+.energy-route [data-state="current"] .energy-route-label { font-weight: 750; }
+.energy-route [data-state="current"] :is(.energy-route-tank, .energy-route-converter, .energy-route-market, .energy-route-pump-shape) { stroke-width: 3; }
+.energy-route [data-state="context"] .energy-route-flow { opacity: .6; }
+.energy-route [data-state="context"] .energy-route-break { stroke-width: 2.5; }
+.energy-story .energy-route-caption {
+  max-width: none; margin: .7rem 0 0; color: var(--color-muted);
+  font: 500 .62rem/1.5 var(--font-sans); letter-spacing: .035em; text-transform: uppercase;
+}
+.energy-supply.is-sticky .energy-supply-grid { grid-template-columns: minmax(19rem, .76fr) minmax(0, 1.24fr); gap: clamp(2.5rem, 4vw, 3.5rem); align-items: start; }
+.energy-story .energy-supply.is-sticky .energy-step { min-height: 82svh; padding: 3.25rem 0 4rem; border-top: 0; }
+.energy-story .energy-supply.is-sticky .energy-step:first-child { padding-top: 1rem; }
+.energy-story .energy-supply.is-sticky .energy-step:last-child { min-height: 85svh; }
+.energy-supply.is-sticky .energy-supply-static { display: none; }
+.energy-supply.is-sticky .energy-supply-sticky .energy-route { max-height: calc(100svh - var(--supply-pin-top) - 6rem); }
+.energy-supply.is-sticky[data-entering] [data-state="current"] .energy-route-trace { stroke-dasharray: 1; animation: supply-draw 400ms ease-out both; }
+.energy-supply.is-sticky[data-entering] [data-state="current"] .energy-route-trace--west { animation-duration: 750ms; }
+.energy-supply.is-sticky[data-entering] [data-state="current"] .energy-route-stock-level { animation: supply-drain 450ms ease-out both; }
+.energy-supply.is-sticky[data-entering] [data-state="current"] .energy-route-fact { animation: supply-label 300ms ease-out both; }
+@keyframes supply-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes supply-drain { from { transform: scaleY(1); } to { transform: scaleY(.35); } }
+@keyframes supply-label { from { opacity: .25; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .energy-supply *, .energy-supply *::before { animation: none !important; transition: none !important; }
+}
+@media print {
+  .energy-supply .energy-supply-sticky { display: none !important; }
+  .energy-supply .energy-supply-grid { display: block !important; }
+  .energy-supply .energy-supply-static { display: block !important; max-width: 19rem; }
+  .energy-story .energy-supply .energy-step { min-height: 0 !important; padding: 1.5rem 0 !important; break-inside: avoid; }
+}
+/* Visible only when explicitly enabled in a development build. */
+.energy-supply-debug { position: fixed; z-index: 100; top: 45vh; inset-inline: 0; border-top: 1px dashed var(--energy-red); pointer-events: none; }
+.energy-supply-debug output { position: absolute; right: 1rem; top: .4rem; max-width: 27rem; background: var(--energy-canvas); color: var(--energy-ink); font: 12px/1.5 var(--font-sans); padding: .35rem .5rem; }
+.energy-supply[data-debug] .energy-supply-grid { outline: 1px dashed var(--energy-red); outline-offset: 6px; }
