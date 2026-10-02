@@ -4,6 +4,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Container from "../components/base/Container.astro";
 import SignupBlock from "../components/home/SignupBlock.astro";
 
+import CurrentPreview from "../components/current/CurrentPreview.astro";
+import { getCurrentEditions } from "../lib/current";
+const [currentEdition] = await getCurrentEditions(import.meta.env.DEV);
+
 const pageTitle = "Lookout West";
 const pageDescription =
   "Independent research, data, and economic analysis on the American West.";
@@ -39,7 +43,7 @@ const formatDate = (date: Date) =>
   }).format(date);
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout title={pageTitle} description={pageDescription} robots={currentEdition?.draft ? "noindex,nofollow" : undefined}>
   <Container>
     <section class="hero">
       <div class="hero__content">
@@ -92,6 +96,7 @@ const formatDate = (date: Date) =>
         </article>
       )}
     </section>
+    <CurrentPreview edition={currentEdition} />
     {latestArticles.length > 0 && (
       <section class="front-section">
         <div class="front-section__header">

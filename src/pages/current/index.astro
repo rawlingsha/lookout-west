@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Container from "../../components/base/Container.astro";
+import Edition from "../../components/current/Edition.astro";
+import {
+  getCurrentEditions,
+  currentDate,
+  editionHref,
+} from "../../lib/current";
+import "../../styles/current.css";
+const [latest, ...previous] = await getCurrentEditions(import.meta.env.DEV);
+const past = previous.filter((edition) => !edition.draft);
+---
+
+<BaseLayout
+  title="The Current | Lookout West"
+  robots={latest?.draft ? "noindex,nofollow" : undefined}
+  description={latest?.deck ??
+    latest?.signals[0].headline ??
+    "Concise economic briefings on the American West. The first edition of The Current is forthcoming."}
+>
+  <Container
+    ><div class="current-page">
+      {
+        latest ? (
+          <Edition edition={latest} latest />
+        ) : (
+          <>
+            <>
+              <h1>The Current</h1>
+              <div class="current-empty">
+                <>
+                  <p class="current-label">Forthcoming</p>
+                  <p>
+                    The first edition is on its way. No editions have been
+                    published yet.
+                  </p>
+                  <button
+                    class="current-link"
+                    type="button"
+                    data-subscribe-open
+                    aria-haspopup="dialog"
+                    aria-controls="subscribe-modal"
+                  >
+                    Subscribe to Lookout West
+                  </button>
+                </>
+              </div>
+            </>
+          </>
+        )
+      }
+      <section
+        id="past-editions"
+        class="current-archive"
+        aria-labelledby="past-editions-heading"
+      >
+        <h2 id="past-editions-heading">Past editions</h2>
+        {
+          past.length ? (
+            <ul>
+              {past.map((edition) => (
+                <li>
+                  <a href={editionHref(edition)}>
+                    <time datetime={edition.date}>
+                      {currentDate(edition.date)}
+                    </time>
+                    {edition.signals[0].headline}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p class="current-meta">
+              {latest && !latest.draft
+                ? "You’re reading the first edition."
+                : "Published editions will be collected here."}
+            </p>
+          )
+        }
+      </section>
+    </div></Container
+  >
+</BaseLayout>

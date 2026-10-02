@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-02",
+  "draft": true,
+  "deck": "Development fixture only. This preview tests concise context and a seven-signal edition; it is not published journalism.",
+  "signals": [
+    {
+      "id": "layout-signal-1",
+      "topic": "energy",
+      "geography": "New Mexico",
+      "headline": "Reading an energy release",
+      "body": "This is development copy for layout testing, not a report of an economic event. A production signal would explain a sourced change and its significance in a few sentences.",
+      "source": {
+        "label": "Development fixture \u2014 not a published source",
+        "date": "2026-10-02"
+      }
+    },
+    {
+      "id": "layout-signal-2",
+      "topic": "water",
+      "geography": "Arizona \u00b7 California \u00b7 Colorado \u00b7 Nevada \u00b7 New Mexico \u00b7 Utah \u00b7 Wyoming",
+      "headline": "A longer headline tests how the briefing handles water planning across several states without narrowing the reading column",
+      "body": "A regional story can touch several jurisdictions while still needing one clear conclusion. This fixture tests a long headline and geographic label; it makes no claim about actual water conditions or policy changes.",
+      "source": {
+        "label": "Development fixture \u2014 not a published source",
+        "date": "2026-10-02"
+      }
+    },
+    {
+      "id": "layout-signal-3",
+      "topic": "housing",
+      "geography": "Colorado",
+      "headline": "Housing costs need a local comparison",
+      "body": "A short signal should still give the reader a complete thought. This placeholder tests a compact paragraph beside an optional evidence image.",
+      "source": {
+        "label": "Development fixture \u2014 not a published source",
+        "date": "2026-10-02"
+      },
+      "visual": {
+        "src": "/images/research/cost-of-the-west-card.png",
+        "alt": "Existing Cost of the West editorial artwork, reused only to test evidence-image layout.",
+        "width": 620,
+        "height": 465,
+        "caption": "Layout test only: existing Research artwork. No new data or claims are represented."
+      },
+      "relatedResearch": "/research/cost-of-the-west/"
+    },
+    {
+      "id": "layout-signal-4",
+      "topic": "labor",
+      "geography": "American West",
+      "headline": "A labor signal with a longer explanation and an unusually long source label",
+      "body": "This longer development paragraph tests the reading rhythm of a signal that needs more context. In production, the first sentence would identify the development, the next would explain its regional importance, and the final sentence would identify a limit or uncertainty. There should be enough information to orient the reader without making a source click compulsory.\n\nA second short paragraph can clarify a distinction where necessary. If the argument needs much more space, it belongs in Research. This text is a layout fixture, not an account of a labor-market development.",
+      "source": {
+        "label": "Development fixture with an intentionally long institutional source label to test wrapping on narrow mobile screens",
+        "date": "2026-10-02"
+      }
+    },
+    {
+      "id": "layout-signal-5",
+      "topic": "land",
+      "geography": "Nevada",
+      "headline": "Land and infrastructure",
+      "body": "This short development signal has no illustration. It tests how an edition returns to a quiet typographic rhythm after a more substantial item.",
+      "source": {
+        "label": "Development fixture \u2014 not a published source",
+        "date": "2026-10-02"
+      }
+    },
+    {
+      "id": "layout-signal-6",
+      "topic": "growth",
+      "geography": "Arizona \u00b7 Utah \u00b7 Idaho",
+      "headline": "Growth across state lines",
+      "body": "A multi-state label should wrap naturally on narrow screens. This development text also checks that the source and optional Research link stay subordinate to the headline and explanation.",
+      "source": {
+        "label": "Development fixture \u2014 not a published source",
+        "date": "2026-10-02"
+      },
+      "relatedResearch": "/research/west-growth-drivers/"
+    },
+    {
+      "id": "layout-signal-7",
+      "topic": "energy",
+      "geography": "Wyoming",
+      "headline": "The final signal closes the edition",
+      "body": "This final fixture tests the transition from the seventh signal into a deliberate completion state. No more briefing items follow it.",
+      "source": {
+        "label": "Development fixture \u2014 not a published source",
+        "date": "2026-10-02"
+      }
+    }
+  ]
+}

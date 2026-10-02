@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Container from "../../components/base/Container.astro";
+import Edition from "../../components/current/Edition.astro";
+import {
+  getCurrentEditions,
+  currentDate,
+  editionHref,
+} from "../../lib/current";
+import "../../styles/current.css";
+export async function getStaticPaths() {
+  return (await getCurrentEditions(import.meta.env.DEV)).map((edition) => ({
+    params: { date: edition.date },
+    props: { edition },
+  }));
+}
+const { edition } = Astro.props;
+---
+
+<BaseLayout
+  title={`The Current — ${currentDate(edition.date)} | Lookout West`}
+  description={edition.deck ?? edition.signals[0].headline}
+  canonicalPath={editionHref(edition)}
+  robots={edition.draft ? "noindex,nofollow" : undefined}
+  ogType="article"
+  publishDate={new globalThis.Date(edition.date)}
+>
+  <Container
+    ><div class="current-page"><Edition edition={edition} /></div></Container
+  >
+</BaseLayout>

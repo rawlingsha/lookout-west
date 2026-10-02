@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Container from "../../components/base/Container.astro";
+import Edition from "../../components/current/Edition.astro";
+import CurrentPreview from "../../components/current/CurrentPreview.astro";
+import { currentSchema } from "../../lib/current-schema";
+import fixture from "../../../tests/fixtures/current.json";
+import "../../styles/current.css";
+export function getStaticPaths() {
+  return import.meta.env.DEV ? [{ params: { preview: "preview" } }] : [];
+}
+const edition = currentSchema.parse(fixture);
+---
+
+<BaseLayout
+  title="Development fixture | The Current"
+  robots="noindex,nofollow"
+  description="Layout test only. Not published journalism."
+>
+  <Container
+    ><div class="current-page"><Edition edition={edition} preview /></div>
+    <p class="current-notice">
+      Development fixture — homepage preview below.
+    </p><CurrentPreview edition={edition} preview />
+  </Container>
+</BaseLayout>

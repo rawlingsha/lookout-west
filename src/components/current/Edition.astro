@@ -1,0 +1,119 @@
+---
+import type { CurrentEdition } from "../../lib/current-schema";
+import { currentDate, editionHref, readingMinutes } from "../../lib/current";
+import FigureBlock from "../article/FigureBlock.astro";
+interface Props {
+  edition: CurrentEdition;
+  latest?: boolean;
+  preview?: boolean;
+}
+const { edition, latest = false, preview = false } = Astro.props;
+---
+
+<article class="current-edition">
+  <header>
+    {
+      preview && (
+        <p class="current-notice">
+          Development fixture — layout testing only. Not published journalism.
+        </p>
+      )
+    }
+    {latest && !edition.draft && <p class="current-label">Latest edition</p>}
+    <h1>The Current</h1>
+    <p class="current-meta">
+      <time datetime={edition.date}>{currentDate(edition.date)}</time><span
+        aria-hidden="true"
+      >
+        ·
+      </span>{edition.signals.length} signals · {readingMinutes(edition)} min
+    </p>
+    {
+      latest && !preview && (
+        <a class="current-link" href={editionHref(edition)}>
+          Edition permalink <span aria-hidden="true">↗</span>
+        </a>
+      )
+    }
+  </header>
+  <ol class="current-signals" role="list">
+    {
+      edition.signals.map((signal, index) => (
+        <li id={signal.id}>
+          <p class="current-label current-signal-meta">
+            <>
+              <span
+                class="current-number"
+                aria-label={`Signal ${index + 1} of ${edition.signals.length}`}
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span>
+                {signal.topic}
+                {signal.geography && ` · ${signal.geography}`}
+              </span>
+            </>
+          </p>
+          <h2>{signal.headline}</h2>
+          <div class="current-body">
+            {signal.body.split(/\n\s*\n/).map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+          {signal.visual && (
+            <FigureBlock caption={signal.visual.caption}>
+              <img
+                src={signal.visual.src}
+                alt={signal.visual.alt}
+                width={signal.visual.width}
+                height={signal.visual.height}
+                loading="lazy"
+                decoding="async"
+              />
+            </FigureBlock>
+          )}
+          {[signal.source, ...(signal.additionalSources ?? [])].map(
+            (source) => (
+              <p class="current-source">
+                {source.url ? (
+                  <a href={source.url}>{source.label}</a>
+                ) : (
+                  source.label
+                )}
+                {source.date && (
+                  <>
+                    <span aria-hidden="true"> · </span>
+                    <time datetime={source.date}>
+                      {currentDate(source.date)}
+                    </time>
+                  </>
+                )}
+              </p>
+            ),
+          )}
+          {signal.relatedResearch && (
+            <a class="current-link" href={signal.relatedResearch}>
+              Related Research <span aria-hidden="true">→</span>
+              <span class="visually-hidden">: {signal.headline}</span>
+            </a>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+  <footer class="current-completion">
+    <p>
+      That’s The Current for {currentDate(edition.date).split(",")[0]}.
+    </p>
+    <div class="current-actions">
+      <a class="current-link" href="/current/#past-editions">Past editions</a
+      ><button
+        class="current-link"
+        type="button"
+        data-subscribe-open
+        aria-haspopup="dialog"
+        aria-controls="subscribe-modal">Subscribe</button
+      >
+    </div>
+  </footer>
+</article>

@@ -8,7 +8,8 @@ interface Props {
 const { currentPath = "/" } = Astro.props;
 
 const normalizePath = (value: string) => value.replace(/\/+$/, "") || "/";
-const isActive = (href: string) => normalizePath(currentPath) === normalizePath(href);
+const isActive = (href: string) => normalizePath(currentPath) === normalizePath(href) ||
+  (normalizePath(href) === "/current" && currentPath.startsWith("/current/"));
 
 const panelId = "mobile-menu-panel";
 ---
