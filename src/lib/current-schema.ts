@@ -31,6 +31,8 @@ export const currentSchema = z
           id: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
           topic: z.enum([
             "energy",
+            "finance",
+            "policy",
             "growth",
             "housing",
             "labor",
@@ -58,7 +60,7 @@ export const currentSchema = z
         }),
       )
       .min(5)
-      .max(7),
+      .max(10),
   })
   .refine(
     (edition) =>

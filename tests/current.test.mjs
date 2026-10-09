@@ -7,14 +7,27 @@ const fixture = JSON.parse(
   await readFile("tests/fixtures/current.json", "utf8"),
 );
 
-test("edition schema accepts five to seven signals and rejects broken dates, fragments and unsafe links", () => {
+test("edition schema accepts five to ten signals and rejects broken dates, fragments and unsafe links", () => {
   assert.equal(currentSchema.parse(fixture).signals.length, 7);
   assert.equal(
     currentSchema.parse({ ...fixture, signals: fixture.signals.slice(0, 5) })
       .signals.length,
     5,
   );
+  const tenSignals = Array.from({ length: 10 }, (_, i) => ({
+    ...fixture.signals[i % fixture.signals.length],
+    id: `signal-${i}`,
+    topic: i === 8 ? "finance" : i === 9 ? "policy" : "energy",
+  }));
+  assert.equal(
+    currentSchema.parse({ ...fixture, signals: tenSignals }).signals.length,
+    10,
+  );
   for (const value of [
+    {
+      ...fixture,
+      signals: [...tenSignals, { ...tenSignals[0], id: "signal-10" }],
+    },
     { ...fixture, date: "2026-02-30" },
     { ...fixture, signals: fixture.signals.slice(0, 4) },
     { ...fixture, signals: [...fixture.signals, fixture.signals[0]] },

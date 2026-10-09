@@ -2,12 +2,12 @@
 
 Add one JSON file per edition in `src/content/current/`, conventionally `YYYY-MM-DD.json`. The `date` field determines its permanent `/current/YYYY-MM-DD/` URL. Duplicate dates fail the build. Set `draft: true` while writing; drafts are available at their dated URL in `npm run dev`, with noindex, and also populate the local homepage and Current landing page for review. They are excluded from all production surfaces and the published archive. Set `draft: false` only when editorially ready. As with Research, publication happens on the next site build (dates do not schedule publication).
 
-Each edition needs `date`, `draft`, and 5–7 ordered `signals`. Array order determines numbering. Optional `deck` supplies the concise homepage preview and metadata; keep it to one or two sentences. Without it the homepage uses the first paragraph of the lead signal. Optional `readTime` is a positive number of minutes; otherwise calculated at 220 words/minute.
+Each edition needs `date`, `draft`, and 5–10 ordered `signals`. Array order determines numbering. Optional `deck` supplies the concise homepage preview and metadata; keep it to one or two sentences. Without it the homepage uses the first paragraph of the lead signal. Optional `readTime` is a positive number of minutes; otherwise calculated at 220 words/minute.
 
 Each signal needs:
 
 - `id`: unique, stable lowercase hyphenated fragment, retained when editing a headline.
-- `topic`: an existing topic slug (`energy`, `growth`, `housing`, `labor`, `land`, `water`).
+- `topic`: an existing topic slug (`energy`, `finance`, `growth`, `housing`, `labor`, `land`, `policy`, `water`).
 - `headline` and `body`: plain text; separate body paragraphs with `\n\n`.
 - `source`: `label`, optionally an HTTP(S) `url` and `date` in YYYY-MM-DD format.
 
