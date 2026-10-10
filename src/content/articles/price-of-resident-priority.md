@@ -1,6 +1,6 @@
 ---
 title: "Fair Shot: How Colorado Affords Resident Priority"
-deck: "Visitors supply most of Colorado’s elk-license revenue. Giving residents priority means deciding who pays for it."
+deck: "Visitors supply most of Colorado’s elk-license revenue. Looking at what it costs to give  residents priority."
 publishDate: "2026-10-09"
 topic: "Land"
 topics: ["Land"]
@@ -11,7 +11,7 @@ cardImage: "/images/research/resident-priority/hunting_card_image.jpg"
 cardImageAlt: "Black-and-white photograph of two people outside a log cabin surrounded by mounted elk heads."
 showCardImage: true
 seoTitle: "Fair Shot: How Colorado Affords Resident Priority | Lookout West"
-seoDescription: "Visitors supply most of Colorado’s elk-license revenue. Looking at what it costs to give give residents priority."
+seoDescription: "Visitors supply most of Colorado’s elk-license revenue. Looking at what it costs to give  residents priority."
 ---
 
 <figure>
