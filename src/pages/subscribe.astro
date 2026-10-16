@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SubscribeForm from "../components/navigation/SubscribeForm.astro";
+---
+
+<BaseLayout
+  title="Subscribe | Lookout West"
+  description="New essays, research, and notes from Lookout West. Occasional emails. Unsubscribe anytime."
+>
+  <section class="subscribe-page" aria-labelledby="subscribe-title">
+    <h1 id="subscribe-title">The West, in your inbox.</h1>
+    <p>New essays, research, and notes from Lookout West.</p>
+    <SubscribeForm id="page-subscribe" />
+  </section>
+</BaseLayout>
+
+<style>
+  .subscribe-page {
+    width: min(100% - 2rem, 32rem);
+    margin: clamp(3rem, 10vw, 7rem) auto;
+  }
+  h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    letter-spacing: -0.03em;
+  }
+  .subscribe-page > p {
+    color: var(--color-muted);
+    margin-bottom: var(--space-6);
+  }
+</style>

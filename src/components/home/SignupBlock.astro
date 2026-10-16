@@ -1,29 +1,27 @@
 ---
+import SubscribeForm from "../navigation/SubscribeForm.astro";
+
 interface Props {
   secondaryHref?: string;
   secondaryLabel?: string;
 }
 
-const {
-  secondaryHref = "/research",
-  secondaryLabel = "Browse research",
-} = Astro.props;
+const { secondaryHref = "/research", secondaryLabel = "Browse research" } =
+  Astro.props;
 ---
 
 <section class="signup-block" aria-labelledby="signup-block-title">
   <p class="signup-block__label">Subscribe</p>
   <h2 id="signup-block-title" class="signup-block__title">
-    Get new essays and regional signals as they publish.
+    The West, in your inbox.
   </h2>
   <p class="signup-block__deck">
-    Subscribe for flagship essays, new research, and selective notes on the changing West.
+    New essays, research, and notes from Lookout West.
   </p>
 
   <div class="signup-block__actions">
-    <button type="button" class="button button--primary" data-subscribe-open>
-      Subscribe
-    </button>
-    <a class="button" href={secondaryHref}>{secondaryLabel}</a>
+    <SubscribeForm id="home-subscribe" />
+    <a class="signup-block__browse" href={secondaryHref}>{secondaryLabel} →</a>
   </div>
 </section>
 
@@ -62,10 +60,16 @@ const {
   }
 
   .signup-block__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
+    max-width: 32rem;
     margin-top: var(--space-5);
+  }
+
+  .signup-block__browse {
+    display: inline-block;
+    margin-top: var(--space-5);
+    font-size: var(--step--1);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
 
   @media (max-width: 56rem) {

@@ -1,0 +1,49 @@
+---
+interface Props {
+  id: string;
+  autofocus?: boolean;
+}
+const { id, autofocus = false } = Astro.props;
+---
+
+<form
+  class="subscribe-form"
+  action="https://buttondown.com/api/emails/embed-subscribe/lookoutwest"
+  method="post"
+  data-subscribe-form
+>
+  <label for={`${id}-email`}>Email address</label>
+  <div class="subscribe-form__row">
+    <input
+      id={`${id}-email`}
+      name="email"
+      type="email"
+      autocomplete="email"
+      inputmode="email"
+      autocapitalize="none"
+      spellcheck="false"
+      placeholder="you@example.com"
+      aria-describedby={`${id}-note ${id}-status`}
+      required
+      autofocus={autofocus}
+    />
+    <input type="hidden" name="embed" value="1" />
+    <button type="submit">Subscribe</button>
+  </div>
+  <p id={`${id}-note`} class="subscribe-form__note">
+    Occasional emails. Unsubscribe anytime.
+  </p>
+  <p
+    id={`${id}-status`}
+    class="subscribe-form__status"
+    role="status"
+    aria-live="polite"
+    data-subscribe-status
+  >
+  </p>
+  <p class="subscribe-form__recovery" data-subscribe-recovery hidden>
+    Taking longer than expected. Try again, or <a
+      href="https://buttondown.com/lookoutwest">use the signup page</a
+    >.
+  </p>
+</form>

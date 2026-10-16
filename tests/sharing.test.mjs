@@ -29,7 +29,7 @@ function fixture(t, { mobile = false, markup = html, enhance = true } = {}) {
   if (enhance) initializeShareActions(win.document);
   const group = win.document.querySelector("[data-share-actions]");
   const trigger = group.querySelector("summary");
-  const dialog = win.document.querySelector("dialog");
+  const dialog = win.document.querySelector("dialog.share-dialog");
   return { win, doc: win.document, group, trigger, dialog };
 }
 
@@ -246,7 +246,7 @@ test("no-JavaScript markup retains destination links and a selectable address", 
     `${origin}${articlePath}`,
   );
   assert.ok(group.querySelector("[data-copy-link]").hidden);
-  assert.equal(doc.querySelectorAll("dialog").length, 0);
+  assert.equal(doc.querySelectorAll("dialog.share-dialog").length, 0);
   assert.ok(doc.querySelector('script[src*="_astro/"]'));
   for (const link of group.querySelectorAll('a[target="_blank"]'))
     assert.ok(link.rel.includes("noopener"));
@@ -264,7 +264,7 @@ test("copy uses the canonical payload and initialization is idempotent", async (
   });
   initializeShareActions(doc);
   assert.equal(
-    doc.querySelectorAll("dialog").length,
+    doc.querySelectorAll("dialog.share-dialog").length,
     doc.querySelectorAll("[data-share-actions]").length,
   );
   group.querySelector("[data-copy-link]").click();
@@ -295,7 +295,7 @@ test("desktop panel closes on Escape, outside pointer, and another trigger", (t)
   const end = doc.querySelectorAll("[data-share-disclosure] > summary")[2];
   end.click();
   assert.equal(dialog.open, false);
-  assert.equal(doc.querySelectorAll("dialog[open]").length, 1);
+  assert.equal(doc.querySelectorAll("dialog.share-dialog[open]").length, 1);
 });
 
 test("mobile sheet releases its scroll lock and restores focus", (t) => {
@@ -353,25 +353,25 @@ test("native sharing hides when absent and handles cancellation/failure", async 
     if (failure) throw failure;
   };
   initializeShareActions(doc);
-  const button = doc.querySelector("dialog [data-native-share]");
+  const button = doc.querySelector("dialog.share-dialog [data-native-share]");
   group.querySelector("summary").click();
   button.click();
   await settle();
   assert.equal(button.hidden, false);
   assert.equal(calls[0].url, `${origin}${articlePath}`);
-  assert.equal(doc.querySelector("dialog [data-panel-status]").textContent, "");
+  assert.equal(doc.querySelector("dialog.share-dialog [data-panel-status]").textContent, "");
   failure = new Error("Not allowed");
   button.click();
   await settle();
   assert.match(
-    doc.querySelector("dialog [data-panel-status]").textContent,
+    doc.querySelector("dialog.share-dialog [data-panel-status]").textContent,
     /copy the link/,
   );
   assert.equal(button.disabled, false);
   failure = null;
   button.click();
   await settle();
-  assert.equal(doc.querySelector("dialog [data-panel-status]").textContent, "");
+  assert.equal(doc.querySelector("dialog.share-dialog [data-panel-status]").textContent, "");
 });
 
 test("image files are prepared before the final native share click", async (t) => {
@@ -387,7 +387,7 @@ test("image files are prepared before the final native share click", async (t) =
     });
   initializeShareActions(doc);
   group.querySelector("summary").click();
-  const helper = doc.querySelector("dialog [data-image-helper]");
+  const helper = doc.querySelector("dialog.share-dialog [data-image-helper]");
   helper.open = true;
   helper.dispatchEvent(new win.Event("toggle"));
   await settle();

@@ -16,9 +16,10 @@ const description =
         <h1 id="welcome-title">Welcome to Lookout West.</h1>
 
         <p class="welcome-page__dek">
-          You’re on the dispatch list. New essays, research notes, and regional analysis 
-          will arrive when there is something worth sending.
+          You’re on the dispatch list. New essays, research notes, and regional
+          analysis will arrive when there is something worth sending.
         </p>
+      </div>
 
       <div class="welcome-page__cards" aria-label="Suggested pages">
         <a class="welcome-card" href="/research/topics">
@@ -29,8 +30,6 @@ const description =
         <a class="welcome-card" href="/services">
           <span>Understand services</span>
           <strong>Briefings, custom research, and decision support.</strong>
-        </a>
-
         </a>
       </div>
     </section>
@@ -73,37 +72,6 @@ const description =
     line-height: 1.65;
   }
 
-  .welcome-page__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-    margin-top: var(--space-5);
-  }
-
-  .welcome-page__next {
-    max-width: 46rem;
-    margin-top: var(--space-7);
-    padding-top: var(--space-6);
-    border-top: var(--border-subtle);
-  }
-
-  .welcome-page__next h2 {
-    margin: 0 0 var(--space-4);
-    font-family: var(--font-display);
-    font-size: var(--step-2);
-    line-height: 1.15;
-    letter-spacing: -0.025em;
-  }
-
-  .welcome-page__next ul {
-    display: grid;
-    gap: var(--space-3);
-    margin: 0;
-    padding-left: 1.15rem;
-    color: var(--color-muted);
-    line-height: 1.65;
-  }
-
   .welcome-page__cards {
     display: grid;
     gap: var(--space-4);
@@ -126,7 +94,11 @@ const description =
 
   .welcome-card:hover,
   .welcome-card:focus-visible {
-    border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
+    border-color: color-mix(
+      in srgb,
+      var(--color-accent) 55%,
+      var(--color-border)
+    );
     transform: translateY(-1px);
   }
 
@@ -153,7 +125,7 @@ const description =
     }
 
     .welcome-page__cards {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 

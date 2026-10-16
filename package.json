@@ -7,6 +7,7 @@
   },
   "scripts": {
     "images:share": "node scripts/generate-share-images.mjs",
+    "test:subscribe": "npm run build && node --test tests/subscribe.test.mjs",
     "test:sharing": "npm run build && node --experimental-strip-types --test tests/sharing.test.mjs",
     "predev": "npm run assets:energy && npm run images:share",
     "prebuild": "npm run assets:energy && npm run images:share",

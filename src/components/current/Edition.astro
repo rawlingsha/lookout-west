@@ -106,13 +106,10 @@ const { edition, latest = false, preview = false } = Astro.props;
       That’s The Current for {currentDate(edition.date).split(",")[0]}.
     </p>
     <div class="current-actions">
-      <a class="current-link" href="/current/#past-editions">Past editions</a
-      ><button
+      <a class="current-link" href="/current/#past-editions">Past editions</a><a
         class="current-link"
-        type="button"
-        data-subscribe-open
-        aria-haspopup="dialog"
-        aria-controls="subscribe-modal">Subscribe</button
+        href="/subscribe/"
+        data-subscribe-open>Subscribe</a
       >
     </div>
   </footer>

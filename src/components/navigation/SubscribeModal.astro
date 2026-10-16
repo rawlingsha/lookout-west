@@ -1,67 +1,29 @@
 ---
-const headline = "Stay up to date with indispensable analysis of the American West.";
-const blurb =
-  "New essays, research notes, and publication updates from Lookout West.";
-const embedSrc = "https://buttondown.com/lookoutwest?as_embed=true";
-const hostedSrc = "https://buttondown.com/lookoutwest";
+import SubscribeForm from "./SubscribeForm.astro";
 ---
 
-<div
+<dialog
   id="subscribe-modal"
   class="subscribe-modal"
   data-subscribe-modal
-  hidden
-  aria-hidden="true"
+  aria-labelledby="subscribe-modal-title"
+  aria-describedby="subscribe-modal-description"
 >
-  <button
-    type="button"
-    class="subscribe-modal__backdrop"
-    data-subscribe-close
-    aria-label="Close subscription dialog"
-    tabindex="-1"
-  ></button>
-
-  <div
-    class="subscribe-modal__dialog"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="subscribe-modal-title"
-    aria-describedby="subscribe-modal-description"
-  >
+  <div class="subscribe-modal__dialog">
     <button
       type="button"
       class="subscribe-modal__close"
       data-subscribe-close
-      aria-label="Close subscription dialog"
+      aria-label="Close subscription dialog">×</button
     >
-      ×
-    </button>
-
-    <div class="subscribe-modal__content">
-      <p class="subscribe-modal__eyebrow">Subscribe</p>
-      <h2 id="subscribe-modal-title" class="subscribe-modal__title">
-        {headline}
-      </h2>
-      <p id="subscribe-modal-description" class="subscribe-modal__description">
-        {blurb}
-      </p>
-
-      <iframe
-        class="subscribe-modal__iframe"
-        src={embedSrc}
-        title="Subscribe to Lookout West through Buttondown"
-        loading="lazy"
-        tabindex="0"
-      ></iframe>
-
-      <p class="subscribe-modal__note">
-        Having trouble with the embedded form?
-        <a href={hostedSrc} target="_blank" rel="noopener noreferrer">
-          Open the hosted signup page.
-        </a>
-      </p>
-    </div>
+    <h2 id="subscribe-modal-title" class="subscribe-modal__title">
+      The West, in your inbox.
+    </h2>
+    <p id="subscribe-modal-description" class="subscribe-modal__description">
+      New essays, research, and notes from Lookout West.
+    </p>
+    <SubscribeForm id="modal-subscribe" autofocus />
   </div>
-</div>
+</dialog>
 
 <script is:inline src="/scripts/subscribe-modal.js"></script>

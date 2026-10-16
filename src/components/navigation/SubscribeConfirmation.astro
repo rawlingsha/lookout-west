@@ -1,0 +1,85 @@
+<aside class="subscribe-confirmation" data-subscribe-confirmation hidden>
+  <svg
+    class="subscribe-confirmation__icon"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"
+    ></circle>
+    <path
+      d="m7.5 12 3 3 6-6"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path>
+  </svg>
+  <p role="status" aria-live="polite" aria-atomic="true">
+    <strong data-confirmation-title></strong>
+    <span data-confirmation-description></span>
+  </p>
+  <button
+    type="button"
+    data-confirmation-dismiss
+    aria-label="Dismiss subscription confirmation">×</button
+  >
+</aside>
+
+<style>
+  .subscribe-confirmation {
+    position: fixed;
+    z-index: 50;
+    right: max(1rem, env(safe-area-inset-right));
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    width: min(25rem, calc(100% - 2rem));
+    padding: 1.1rem 3rem 1.1rem 1.1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: 0 8px 30px rgba(23, 23, 23, 0.1);
+  }
+  .subscribe-confirmation__icon {
+    flex: 0 0 1.25rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.15rem;
+    color: var(--color-accent);
+  }
+  p {
+    margin: 0;
+    font-size: var(--step--1);
+    line-height: 1.5;
+  }
+  strong {
+    display: block;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  span {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--color-muted);
+  }
+  button {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-muted);
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+  button:hover {
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
+</style>
