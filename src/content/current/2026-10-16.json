@@ -1,0 +1,141 @@
+{
+  "date": "2026-10-16",
+  "draft": false,
+  "deck": "A $4 billion power project in Wyoming and record California port volumes highlight Western investment and trade. Inflation, farm surpluses and expensive mortgages continue to pressure households and businesses.",
+  "signals": [
+    {
+      "id": "google-wyoming-fuel-cell-project",
+      "topic": "energy",
+      "geography": "Wyoming",
+      "headline": "Wyoming secures a $4 billion Google power project",
+      "body": "American Electric Power announced plans to invest approximately $4 billion in a 702-megawatt fuel-cell facility near Cheyenne, backed by a 20-year power purchase agreement with Google. Construction is planned to begin this year, with full operations expected by the end of 2028. The project follows a separate agreement between Google and Black Hills Corp.\n\nWyoming's emerging data-center economy is increasingly being built around dedicated electricity infrastructure, with billions required to supply it.",
+      "source": {
+        "label": "American Electric Power",
+        "url": "https://www.aep.com/news/stories/view/12314/",
+        "date": "2026-10-14"
+      }
+    },
+    {
+      "id": "california-ports-record-cargo",
+      "topic": "growth",
+      "geography": "California",
+      "headline": "California’s two largest ports break cargo records",
+      "body": "The ports of Los Angeles and Long Beach handled a combined 2.04 million twenty-foot equivalent units (TEUs) in September, approximately 21% more than a year earlier. Both set all-time monthly records. Los Angeles handled 1.04 million TEUs; Long Beach nearly 997,000.\n\nImporters are responding to lower tariffs, high shipping costs, and disruptions to alternative routes. Some of the surge reflects cargo being redirected to California rather than an equivalent increase in underlying U.S. demand. Either way, West Coast ports are capturing the business.",
+      "source": {
+        "label": "Port of Los Angeles",
+        "url": "https://portoflosangeles.org/references/2026-news-releases/news_100926_sept_cargo",
+        "date": "2026-10-09"
+      },
+      "additionalSources": [
+        {
+          "label": "MyNewsLA · Port of Long Beach",
+          "url": "https://mynewsla.com/business/2026/10/15/port-of-long-beach-sets-all-time-monthly-cargo-record-in-september/",
+          "date": "2026-10-15"
+        }
+      ]
+    },
+    {
+      "id": "corn-harvest-surplus-grows",
+      "topic": "land",
+      "geography": "Plains",
+      "headline": "A bigger corn harvest brings a bigger surplus",
+      "body": "USDA's October outlook raised projected U.S. corn ending stocks for 2026–27 from 1.57 billion to 1.85 billion bushels, an 18% increase from September's forecast. Expected production climbed to 16.03 billion bushels, while the projected season-average farm price fell from $4.80 to $4.70 per bushel.\n\nMore grain is welcome for livestock feeders and ethanol producers purchasing corn. For growers already contending with high input and borrowing costs, however, the larger prospective surplus puts additional pressure on expected revenue.",
+      "source": {
+        "label": "USDA · World Agricultural Supply and Demand Estimates",
+        "url": "https://www.usda.gov/oce/commodity/wasde/wasde1026.txt",
+        "date": "2026-10-09"
+      }
+    },
+    {
+      "id": "denver-inflation-reaches-four-percent",
+      "topic": "finance",
+      "geography": "Colorado",
+      "headline": "Denver inflation ticks up to 4%",
+      "body": "Consumer prices in the Denver metropolitan area rose 4.0% over the year through September, according to the Bureau of Labor Statistics, up slightly from 3.9% in July. Energy prices increased 18.9%, including a 29% jump in gasoline, while prices excluding food and energy rose 3.6%. The overall index increased 1.2% over the two months since July, with shelter and groceries also contributing.\n\nThe figures complicate the story of easing inflation: even where some prices have stabilized, energy and everyday necessities are keeping pressure on household budgets.",
+      "source": {
+        "label": "U.S. Bureau of Labor Statistics",
+        "url": "https://www.bls.gov/regions/mountain-plains/news-release/2026/consumerpriceindex_denver_20261014.htm",
+        "date": "2026-10-14"
+      }
+    },
+    {
+      "id": "western-home-sales-improve",
+      "topic": "housing",
+      "geography": "Western states",
+      "headline": "Western home sales improve, but trail last year",
+      "body": "Existing-home sales in the West rose 2.8% in September, but remained 5.2% below a year earlier, a steeper annual decline than the nation's 2.2% drop. The West was also the only major region where the median sale price fell from a year earlier, slipping 0.3% to $613,600. Meanwhile, Freddie Mac reported the average 30-year mortgage rate remained at 7.40%, versus 6.27% a year ago.\n\nSeptember closings largely reflect earlier purchasing decisions. Today's borrowing costs remain a formidable obstacle to a sustained recovery.",
+      "source": {
+        "label": "National Association of REALTORS",
+        "url": "https://www.nar.realtor/newsroom/existing-home-sales-increased-1-5-in-september-according-to-nar-report",
+        "date": "2026-10-13"
+      },
+      "additionalSources": [
+        {
+          "label": "Freddie Mac",
+          "url": "https://freddiemac.gcs-web.com/news-releases/news-release-details/mortgage-rates-hold-steady-740",
+          "date": "2026-10-15"
+        }
+      ]
+    },
+    {
+      "id": "ai-defense-manufacturing-capacity",
+      "topic": "growth",
+      "geography": "Plains · Mountain West",
+      "headline": "AI and defense orders crowd out other manufacturing",
+      "body": "The Kansas City Federal Reserve reported that demand from data centers and military contracts is strong enough to crowd out other manufacturing production, according to business contacts in its district. Firms are extending shifts and adding overtime amid labor shortages, while diesel and shipping costs squeeze margins.\n\nThe reports offer an important qualification to the regional investment boom: large technology and defense projects generate substantial business, but scarce workers and production capacity can leave other customers competing for the same resources.",
+      "source": {
+        "label": "Federal Reserve Bank of Kansas City · Beige Book",
+        "url": "https://www.kansascityfed.org/surveys/beige-book/tenth-district-beige-book/",
+        "date": "2026-10-14"
+      }
+    },
+    {
+      "id": "chip-stocks-ai-investment-repricing",
+      "topic": "finance",
+      "geography": "Western technology sector",
+      "headline": "The AI investment boom meets a market reckoning",
+      "body": "U.S. semiconductor stocks had lost approximately $1.64 trillion in market value over six trading sessions, according to Reuters' October 15 reporting, as investors reassessed the cost of building AI infrastructure amid expectations of higher interest rates.\n\nFor technology companies and chipmakers with major operations across the West, the selloff exposes a growing tension between extraordinary capital spending and the returns needed to justify it. The decline is a financial-market repricing, not evidence that announced factories and data centers have been canceled.",
+      "source": {
+        "label": "Reuters",
+        "url": "https://www.reuters.com/business/us-chip-stocks-set-wipe-out-2-trillion-after-latest-selloff-2026-10-15/",
+        "date": "2026-10-15"
+      }
+    },
+    {
+      "id": "kansas-planting-harvest-delays",
+      "topic": "land",
+      "geography": "Kansas",
+      "headline": "Kansas farmers fall behind on planting and harvest",
+      "body": "Only 44% of Kansas winter wheat had been planted by October 11, compared with a five-year average of 56%, USDA reported this week. Sorghum harvesting was further behind: 23% completed versus a typical 40%. Soybean harvesting also lagged, at 27% compared with 37%.\n\nThose gaps matter because the autumn fieldwork window is limited. Delays can raise operating costs, compress planting opportunities, and increase exposure to unfavorable late-season weather, although they do not by themselves establish a loss in final yields.",
+      "source": {
+        "label": "USDA National Agricultural Statistics Service · Crop Progress",
+        "url": "https://esmis.nal.usda.gov/sites/default/release-files/796104/prog4126.txt",
+        "date": "2026-10-13"
+      }
+    },
+    {
+      "id": "montana-solar-washington-demand",
+      "topic": "energy",
+      "geography": "Montana · Washington",
+      "headline": "Washington’s clean energy law drives Montana investment",
+      "body": "Puget Sound Energy announced groundbreaking on a 130-megawatt solar project near Rapelje, Montana, expected to support approximately 250 construction jobs and reach completion in mid-2028. The facility will occupy roughly 1,400 acres of ranchland and use transmission infrastructure near the company's existing Beaver Creek wind project. Its electricity will help meet Washington's clean-energy requirements.\n\nThe arrangement illustrates a growing economic connection across the Northwest: Montana supplies the land and generation capacity, while policy and electricity demand in Washington help make the investment viable.",
+      "source": {
+        "label": "Puget Sound Energy",
+        "url": "https://www.globenewswire.com/news-release/2026/10/15/3381894/0/en/puget-sound-energy-announces-development-of-new-solar-project.html",
+        "date": "2026-10-15"
+      }
+    },
+    {
+      "id": "colorado-gasoline-prices-rise",
+      "topic": "energy",
+      "geography": "Colorado · California",
+      "headline": "Colorado gasoline prices rise against the national trend",
+      "body": "The latest federal fuel-price survey found regular gasoline in Colorado averaging $4.18 per gallon, up 15.5 cents in a week. Denver's increase was sharper, at 17.4 cents. California, meanwhile, saw a 12.3-cent decline to $6.10, and the national average slipped 2.3 cents to $4.33.\n\nGasoline remains considerably more expensive than a year ago, but weekly movements are diverging sharply across states. The uneven relief matters for household spending and transportation-dependent businesses, particularly in rural communities where driving distances are long.",
+      "source": {
+        "label": "U.S. Energy Information Administration",
+        "url": "https://www.eia.gov/petroleum/gasdiesel/",
+        "date": "2026-10-14"
+      }
+    }
+  ]
+}
