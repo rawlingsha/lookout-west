@@ -2,12 +2,17 @@
 import type { CurrentEdition } from "../../lib/current-schema";
 import { currentDate, editionHref, readingMinutes } from "../../lib/current";
 import FigureBlock from "../article/FigureBlock.astro";
+import ShareActions from "../sharing/ShareActions.astro";
 interface Props {
   edition: CurrentEdition;
   latest?: boolean;
   preview?: boolean;
 }
 const { edition, latest = false, preview = false } = Astro.props;
+const shareTitle = `The Current — ${currentDate(edition.date)}`;
+const shareUrl = new URL(editionHref(edition), Astro.site).href;
+const shareText = edition.deck ?? edition.signals[0].headline;
+const canShare = !preview && !edition.draft;
 ---
 
 <article class="current-edition">
@@ -33,6 +38,16 @@ const { edition, latest = false, preview = false } = Astro.props;
         <a class="current-link" href={editionHref(edition)}>
           Edition permalink <span aria-hidden="true">↗</span>
         </a>
+      )
+    }
+    {
+      canShare && (
+        <ShareActions
+          id="current-share-top"
+          title={shareTitle}
+          text={shareText}
+          url={shareUrl}
+        />
       )
     }
   </header>
@@ -105,6 +120,17 @@ const { edition, latest = false, preview = false } = Astro.props;
     <p>
       That’s The Current for {currentDate(edition.date).split(",")[0]}.
     </p>
+    {
+      canShare && (
+        <ShareActions
+          id="current-share-end"
+          title={shareTitle}
+          text={shareText}
+          url={shareUrl}
+          label="Share this edition"
+        />
+      )
+    }
     <div class="current-actions">
       <a class="current-link" href="/current/#past-editions">Past editions</a><a
         class="current-link"
