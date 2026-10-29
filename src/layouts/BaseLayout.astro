@@ -6,6 +6,7 @@ import SubscribeModal from "../components/navigation/SubscribeModal.astro";
 import SubscribeConfirmation from "../components/navigation/SubscribeConfirmation.astro";
 import { site } from "../data/site";
 import { contentUrl } from "../lib/urls";
+import { defaultShareImage } from "../lib/share";
 
 interface Props {
   title?: string;
@@ -26,7 +27,7 @@ interface Props {
 const {
   title = site.title,
   description = site.description,
-  ogImage = "/social/og-default.jpg",
+  ogImage = defaultShareImage,
   ogImageAlt = "Lookout West — research, data, and decisions in the American West.",
   ogImageWidth = 1200,
   ogImageHeight = 630,
@@ -36,7 +37,7 @@ const {
   publishDate,
   updatedDate,
   author,
-  robots = "index,follow,max-image-preview:none",
+  robots = "index,follow,max-image-preview:large",
 } = Astro.props;
 
 const canonical = contentUrl(canonicalPath);

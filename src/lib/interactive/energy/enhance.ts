@@ -27,6 +27,8 @@ export function enhanceBudget(root: HTMLElement) {
   const fallback = get("[data-budget-fallback]");
   const gallonsError = get("#gallons-error");
   const priceError = get("#price-error");
+  const invalidResult = get("[data-invalid-result]");
+  const duration = get(".personal-duration");
   const controller = new view.AbortController();
   let timer: number | undefined;
   const showError = (
@@ -48,10 +50,8 @@ export function enhanceBudget(root: HTMLElement) {
     );
     showError(price, priceError, parsed.valid ? undefined : parsed.priceError);
     result.hidden = !parsed.valid;
-    root.querySelector<HTMLElement>("[data-invalid-result]")!.hidden =
-      parsed.valid;
-    root.querySelector<HTMLElement>(".personal-duration")!.style.visibility =
-      parsed.valid ? "visible" : "hidden";
+    invalidResult.hidden = parsed.valid;
+    duration.style.visibility = parsed.valid ? "visible" : "hidden";
     let message: string;
     if (parsed.valid) {
       const values = fuelBudget(parsed.gallons, parsed.deltaCents);
@@ -73,6 +73,8 @@ export function enhanceBudget(root: HTMLElement) {
         status.textContent = message;
       }, 250);
   };
+  // Keep the static fallback intact and avoid leaked listeners on failure.
+  render(false);
   controls.addEventListener("input", () => render(), {
     signal: controller.signal,
   });
@@ -96,7 +98,6 @@ export function enhanceBudget(root: HTMLElement) {
   view.addEventListener("pageshow", () => render(false), {
     signal: controller.signal,
   });
-  render(false);
   controls.hidden = false;
   fallback.hidden = true;
   return () => {

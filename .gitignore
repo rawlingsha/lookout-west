@@ -3,6 +3,7 @@ dist/
 # generated types
 .astro/
 public/social/generated/
+src/data/social-images.json
 
 # dependencies
 node_modules/

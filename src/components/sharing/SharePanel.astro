@@ -23,14 +23,10 @@ const { id, title, url, text, kind, images } = Astro.props;
       hidden>×</button
     >
   </div>
-  <p class="share-panel__title">{title}</p>
-  <button
-    class="share-control share-control--wide"
-    type="button"
-    data-native-share
-    hidden>Share via your device… <span aria-hidden="true">↗</span></button
-  >
   <div class="share-destinations" aria-label="Sharing destinations">
+    <button class="share-destination" type="button" data-copy-link hidden
+      ><span data-copy-label>Copy link</span></button
+    >
     {
       shareDestinations({ title, url, text }).map(({ name, href }) => (
         <a
@@ -45,6 +41,37 @@ const { id, title, url, text, kind, images } = Astro.props;
       ))
     }
   </div>
+  <details class="share-helper" data-image-helper>
+    <summary>Instagram images <span aria-hidden="true">+</span></summary>
+    <p>
+      Save an image, then add it in Instagram. Copy the link and add it yourself
+      using a Story link sticker or a message. If Safari opens the image, touch
+      and hold it to save it to Photos.
+    </p>
+    {
+      images && (
+        <div class="share-helper__actions">
+          <button
+            class="share-control"
+            type="button"
+            data-share-image={images.story}
+            hidden
+          >
+            Share Story image
+          </button>
+          <a class="share-control" href={images.story} download>
+            Download Story image ↓
+          </a>
+          <a class="share-control" href={images.portrait} download>
+            Download Post image ↓
+          </a>
+        </div>
+      )
+    }
+    <button class="share-control" type="button" data-copy-link hidden
+      ><span data-copy-label>Copy {kind} link</span></button
+    >
+  </details>
   <details class="share-helper">
     <summary>Substack Notes <span aria-hidden="true">+</span></summary>
     <p>Copy this link, then paste it into a new note on Substack.</p>
@@ -60,56 +87,24 @@ const { id, title, url, text, kind, images } = Astro.props;
       >
     </div>
   </details>
-  <details class="share-helper" data-image-helper>
-    <summary>Instagram <span aria-hidden="true">+</span></summary>
-    <p>
-      {
-        images
-          ? "Save an image and add it in Instagram. Paste the link in a message or a Story link sticker."
-          : "Copy the link and paste it in an Instagram message or a Story link sticker."
-      }
-    </p>
-    {
-      images && (
-        <>
-          <img
-            class="share-image-preview"
-            src={images.portrait}
-            alt={images.alt}
-            width="1080"
-            height="1350"
-            loading="lazy"
-          />
-          <div class="share-helper__actions">
-            <a class="share-control" href={images.portrait} download>
-              Download post image ↓
-            </a>
-            <a class="share-control" href={images.story} download>
-              Download Story image ↓
-            </a>
-            <button
-              class="share-control"
-              type="button"
-              data-share-image={images.story}
-              hidden
-            >
-              Share Story image…
-            </button>
-          </div>
-        </>
-      )
-    }
-    <button class="share-control" type="button" data-copy-link hidden
-      ><span data-copy-label>Copy link</span></button
-    >
-  </details>
-  <div class="share-link-field">
+  <div class="share-link-field" data-manual-copy>
     <label for={`${id}-url`}>Link to this {kind}</label>
-    <input id={`${id}-url`} type="text" inputmode="url" value={url} readonly data-share-url />
-    <button class="share-control" type="button" data-copy-link hidden
-      ><span data-copy-label>Copy link</span></button
-    >
+    <input
+      id={`${id}-url`}
+      type="text"
+      inputmode="url"
+      value={url}
+      readonly
+      data-share-url
+      aria-describedby={`${id}-status`}
+    />
   </div>
-  <p class="share-status" role="status" aria-live="polite" data-panel-status>
+  <p
+    id={`${id}-status`}
+    class="share-status"
+    role="status"
+    aria-live="polite"
+    data-panel-status
+  >
   </p>
 </div>

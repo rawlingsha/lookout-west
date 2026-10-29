@@ -8,6 +8,7 @@ import {
   editionHref,
 } from "../../lib/current";
 import "../../styles/current.css";
+import { currentShareImages } from "../../lib/share";
 export async function getStaticPaths() {
   return (await getCurrentEditions(import.meta.env.DEV)).map((edition) => ({
     params: { date: edition.date },
@@ -15,6 +16,7 @@ export async function getStaticPaths() {
   }));
 }
 const { edition } = Astro.props;
+const images = currentShareImages(edition.draft ? undefined : edition.date);
 ---
 
 <BaseLayout
@@ -23,6 +25,14 @@ const { edition } = Astro.props;
   canonicalPath={editionHref(edition)}
   robots={edition.draft ? "noindex,nofollow" : undefined}
   ogType="article"
+  ogTitle={edition.socialTitle ?? `The Current — ${currentDate(edition.date)}`}
+  ogImage={images.preview}
+  ogImageAlt={images.alt}
+  ogImageWidth={images.width}
+  ogImageHeight={images.height}
+  updatedDate={edition.updatedDate
+    ? new globalThis.Date(edition.updatedDate)
+    : undefined}
   publishDate={new globalThis.Date(edition.date)}
 >
   <Container

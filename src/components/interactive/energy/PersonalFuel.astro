@@ -109,4 +109,82 @@ const d = fuelDistribution(energyData.metrics, "gasoline", "NM");
     </p>
     <p class="energy-sr-only" role="status" data-metric-status></p>
   </div>
+  <section
+    id="fuel-budget"
+    class="personal-household"
+    data-energy-budget
+    aria-labelledby="fuel-budget-heading"
+  >
+    <h3 id="fuel-budget-heading">Put a price change in your monthly budget.</h3>
+    <p class="personal-assumption">
+      An illustration, not a forecast. Choose a change in the price of
+      <span data-equation-fuel>gasoline</span>, holding your fuel use constant.
+      The state average above does not set this price change.
+    </p>
+    <p data-budget-fallback>
+      At 60 gallons a month, a $1 increase per gallon adds $60 a month.
+      If the same difference held for two months: $120.
+    </p>
+    <div data-budget-controls hidden>
+      <div class="personal-equation">
+        <div class="personal-term">
+          <label for="energy-gallons">Gallons per month</label>
+          <input
+            id="energy-gallons"
+            type="number"
+            inputmode="numeric"
+            min="0"
+            max="500"
+            step="1"
+            value="60"
+            required
+            aria-describedby="gallons-help gallons-error"
+          />
+          <div class="personal-field-note">
+            <p id="gallons-help" class="personal-input-help">0–500 gallons, in whole numbers.</p>
+            <p id="gallons-error" hidden></p>
+          </div>
+        </div>
+        <span class="personal-operator" aria-hidden="true">×</span>
+        <div class="personal-term">
+          <label for="energy-price">Price change ($ per gallon)</label>
+          <input
+            id="energy-price"
+            type="number"
+            inputmode="decimal"
+            min="-2"
+            max="2"
+            step="0.05"
+            value="1.00"
+            required
+            aria-describedby="price-help price-error"
+          />
+          <div class="personal-field-note">
+            <p id="price-help" class="personal-input-help">−$2 to +$2, in 5-cent steps. Negative means a price drop.</p>
+            <p id="price-error" hidden></p>
+          </div>
+        </div>
+        <span class="personal-equals" aria-hidden="true">=</span>
+        <div class="personal-answer">
+          <span>Monthly spending change</span>
+          <strong data-budget-result><span data-monthly>+$60</span></strong>
+          <strong data-invalid-result hidden aria-hidden="true">—</strong>
+          <p class="personal-duration">
+            If the same difference held for two months:
+            <span data-two-month>+$120</span>
+          </p>
+        </div>
+      </div>
+      <div class="personal-examples">
+        <span>Try a price change:</span>
+        <button type="button" data-price-preset="-0.50">−50¢</button>
+        <button type="button" data-price-preset="0.50">+50¢</button>
+        <button type="button" data-price-preset="1.00">+$1</button>
+        <button type="button" data-budget-reset>Reset example</button>
+      </div>
+      <p class="energy-sr-only" data-budget-description></p>
+      <p class="personal-privacy">Calculated in your browser. Your entries are not stored or sent anywhere.</p>
+    </div>
+    <p class="energy-sr-only" role="status" aria-atomic="true" data-budget-status></p>
+  </section>
 </section>

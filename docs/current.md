@@ -28,3 +28,16 @@ Run `npm run check`, `npm run build`, then `node --experimental-strip-types --te
 `src/content/current/2026-10-02.json` is marked `draft: false` and will publish with the next deployment. It populates `/`, `/current/`, and `/current/2026-10-02/` in production and is included in the sitemap. No past editions were added.
 
 The edition is text-led, with a calculated four-minute reading time. Energy leads and links to existing Research; agriculture uses Land and industrial investment uses Growth, preserving the existing topic vocabulary. The seven-signal synthetic fixture remains separately available at `/current/preview/` for stress testing.
+
+## Edition sharing and social artwork (October 29, 2026)
+
+Each published edition now gets date-specific link-preview artwork and Instagram
+Post/Story downloads at build time. `/current/` keeps evergreen publication
+metadata, while its two **Share this edition** controls always share the newest
+published edition's dated URL. Archives use only their own date and artwork.
+
+Use the existing `deck` as the issue description. Optional edition fields are
+`socialTitle`, `socialImage`, `socialImageAlt`, `shareText`,
+`instagramPostImage`, `instagramStoryImage`, and `updatedDate`. The complete
+[editorial workflow and image requirements](sharing-implementation.md) apply.
+No sharing-component edits are needed when a new issue is added.

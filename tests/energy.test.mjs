@@ -269,6 +269,25 @@ test("chart return links open the regional disclosure on initial load and hash n
   }
 });
 
+test("the state-price comparison works without the household calculator", (t) => {
+  const { win, doc } = fixture(t);
+  doc.querySelector("[data-energy-budget]").remove();
+  const root = doc.querySelector("[data-energy-personal]");
+  const cleanup = enhancePersonal(root);
+  const select = root.querySelector("[data-state-select]");
+  select.value = "CA";
+  select.dispatchEvent(new win.Event("change", { bubbles: true }));
+  const diesel = root.querySelector('[value="diesel"]');
+  diesel.checked = true;
+  diesel.dispatchEvent(new win.Event("change", { bubbles: true }));
+  const expected = fuelDistribution(snapshot.metrics, "diesel", "CA");
+  assert.equal(root.querySelector("[data-metric-controls]").hidden, false);
+  assert.equal(root.querySelector("[data-selected-value]").textContent, `$${expected.selected.value.toFixed(2)}`);
+  assert.equal(root.querySelector("[data-selected-marker]").style.left, `${expected.selected.x}%`);
+  cleanup();
+  assert.equal(root.querySelector("[data-state-fallback]").hidden, false);
+});
+
 test("calculator updates, rejects invalid input, restores values, and resets", async (t) => {
   const { win, doc } = fixture(t);
   initializeEnergy(doc);
@@ -515,7 +534,13 @@ test("all five energy figures have downloads, dedicated share pages and real ret
     assert.equal(metadata.width, 1200);
     const page = await readFile(`dist${url}index.html`, "utf8");
     assert.ok(page.includes(`#figure-${figure.id}`));
-    assert.ok(page.includes(`/figures/${figure.id}-preview.jpg`));
+    const preview = page.match(/property="og:image" content="([^"]+)"/)?.[1];
+    assert.ok(preview, "chart page includes its social preview");
+    assert.equal(new URL(preview).origin, "https://lookoutwest.us");
+    assert.match(new URL(preview).pathname, new RegExp(`/versioned/${figure.id}-preview-[a-f0-9]+\\.jpg$`));
+    const previewMetadata = await sharp(`dist${new URL(preview).pathname}`).metadata();
+    assert.equal(previewMetadata.width, 1200);
+    assert.equal(previewMetadata.height, 630);
   }
 });
 
@@ -709,7 +734,7 @@ test('fiscal mechanism keeps model evidence distinct from household spending and
   assert.match(section.textContent,/not cash already collected, a household rebate/);
   const high=roundedFiscalMagnitude(fiscalSensitivity(10,snapshot.fiscal.annualMillionsPerDollar));
   assert.ok(section.querySelector('.energy-fiscal__sensitivity').textContent.includes(`About +$${high}m`));
-  assert.match(section.querySelector('.energy-fiscal__takeaway strong').textContent,/net economic gain/);
+  assert.match(section.querySelector('.energy-fiscal__qualification').textContent,/not cash already collected, a household rebate, or a measure of New Mexico's net economic gain/);
   assert.equal(section.querySelectorAll('tbody tr').length,3);
   assert.match(section.querySelector('tbody').textContent,/At forecast/);
   assert.ok(section.querySelector('#two-ledgers'), 'legacy incoming anchor remains available');
@@ -823,13 +848,16 @@ test("state joins and distribution survive independently reordered source rows",
   }
 });
 
-test("final act descends from state and gallons to regional depth and quiet prose", (t) => {
+test("final act keeps the budget, optional regional data, and a quiet closing image", (t) => {
   const { doc }=fixture(t);
   const personal=doc.querySelector('[data-energy-personal]');
   assert.ok(personal.querySelector('#compare-states'));
   assert.ok(personal.querySelector('#fuel-budget'));
   assert.equal(doc.querySelector('.energy-actions,.energy-resolution,.energy-toolbox'),null);
-  assert.equal(doc.querySelector('#energy-epilogue').querySelector('button,input,h2'),null);
+  const closing = doc.querySelector('.energy-closing-art');
+  assert.ok(closing.querySelector('img[alt]'));
+  assert.match(closing.querySelector('figcaption').textContent, /Ansel Adams/);
+  assert.equal(closing.querySelector('button,input,h2'),null);
   assert.ok(doc.querySelector('[data-regional-prices]').closest('details'));
   assert.match(personal.textContent,/not a forecast/);
   assert.match(personal.textContent,/If the same difference held for two months/);

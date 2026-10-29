@@ -6,7 +6,10 @@ import sharp from "sharp";
 import { parse } from "yaml";
 import { contentUrl } from "../src/lib/urls.ts";
 import { shareDestinations } from "../src/lib/share.ts";
-import { initializeShareActions } from "../src/scripts/share-actions.ts";
+import {
+  initializeShareActions,
+  cleanupShareActions,
+} from "../src/scripts/share-actions.ts";
 
 const origin = "https://lookoutwest.us";
 const articlePath = "/research/data-centers/";
@@ -28,7 +31,7 @@ function fixture(t, { mobile = false, markup = html, enhance = true } = {}) {
   t.after(() => win.happyDOM.close());
   if (enhance) initializeShareActions(win.document);
   const group = win.document.querySelector("[data-share-actions]");
-  const trigger = group.querySelector("summary");
+  const trigger = group.querySelector("[data-share-trigger]");
   const dialog = win.document.querySelector("dialog.share-dialog");
   return { win, doc: win.document, group, trigger, dialog };
 }
@@ -67,7 +70,7 @@ test("destinations preserve encoded URLs and punctuation without extra parameter
     new URL(links.find((link) => link.name === "X").href).searchParams.get(
       "text",
     ),
-    payload.title,
+    payload.text,
   );
   assert.equal(
     new URL(
@@ -93,9 +96,9 @@ test("all built articles have distinct, valid previews and downloads", async (t)
   const previews = new Set();
   let publishedCount = 0;
   for (const file of (await readdir("src/content/articles")).filter((name) =>
-    name.endsWith(".mdx"),
+    /\.mdx?$/.test(name),
   )) {
-    const id = file.replace(/\.mdx$/, "");
+    const id = file.replace(/\.mdx?$/, "");
     const source = await readFile(`src/content/articles/${file}`, "utf8");
     const data = parse(source.match(/^---\r?\n([\s\S]*?)\r?\n---/)[1]);
     if (data.draft) {
@@ -118,14 +121,17 @@ test("all built articles have distinct, valid previews and downloads", async (t)
     const meta = (name) =>
       doc.querySelector(`meta[property="${name}"]`)?.content;
     assert.equal(meta("og:type"), "article");
-    assert.equal(meta("og:title"), doc.querySelector("h1").textContent);
+    assert.equal(
+      meta("og:title"),
+      data.socialTitle ?? doc.querySelector("h1").textContent,
+    );
     assert.equal(meta("og:url"), `${origin}/research/${id}/`);
     assert.equal(doc.querySelector("link[rel=canonical]").href, meta("og:url"));
     assert.ok(meta("og:image:alt"));
     assert.ok(meta("article:published_time"));
     const image = new URL(meta("og:image"));
     previews.add(image.pathname);
-    const imageData = await sharp(`dist${image.pathname}`).metadata();
+    const imageData = await sharp(`dist${decodeURIComponent(image.pathname)}`).metadata();
     assert.equal(imageData.width, Number(meta("og:image:width")));
     assert.equal(imageData.height, Number(meta("og:image:height")));
     assert.equal(imageData.format, "jpeg");
@@ -174,7 +180,9 @@ test("chart pages have their own metadata and return to an article or a real fig
     assert.ok(
       doc
         .querySelector('meta[property="og:image"]')
-        .content.includes(`/figures/${figure}-preview.jpg`),
+        .content.match(
+          new RegExp(`/versioned/${figure}-preview-[a-f0-9]{12}\\.jpg$`),
+        ),
     );
     assert.ok(doc.querySelector(`a[href="${articleUrl}"]`));
     if (standalone)
@@ -292,7 +300,7 @@ test("desktop panel closes on Escape, outside pointer, and another trigger", (t)
   );
   assert.equal(dialog.open, false);
   trigger.click();
-  const end = doc.querySelectorAll("[data-share-disclosure] > summary")[2];
+  const end = doc.querySelectorAll("[data-share-trigger]")[2];
   end.click();
   assert.equal(dialog.open, false);
   assert.equal(doc.querySelectorAll("dialog.share-dialog[open]").length, 1);
@@ -339,39 +347,48 @@ test("clipboard denial opens a manual-copy fallback without claiming success", a
   );
 });
 
-test("native sharing hides when absent and handles cancellation/failure", async (t) => {
-  const missing = fixture(t);
-  assert.equal(
-    missing.dialog.querySelector("[data-native-share]").hidden,
-    true,
-  );
+test("native share is called directly from the primary click; cancellation is quiet and failures offer alternatives", async (t) => {
   const { win, doc, group } = fixture(t, { enhance: false });
   const calls = [];
-  let failure = Object.assign(new Error("Canceled"), { name: "AbortError" });
-  win.navigator.share = async (payload) => {
+  let failure = { name: "AbortError" }; // Browser errors need not share the module's Error realm.
+  win.navigator.share = (payload) => {
     calls.push(payload);
-    if (failure) throw failure;
+    return failure ? Promise.reject(failure) : Promise.resolve();
   };
   initializeShareActions(doc);
-  const button = doc.querySelector("dialog.share-dialog [data-native-share]");
-  group.querySelector("summary").click();
-  button.click();
-  await settle();
-  assert.equal(button.hidden, false);
+  const trigger = group.querySelector("[data-share-trigger]");
+  const dialog = doc.querySelector("dialog.share-dialog");
+  trigger.click();
+  assert.equal(
+    calls.length,
+    1,
+    "No await or fetch may consume activation before share()",
+  );
   assert.equal(calls[0].url, `${origin}${articlePath}`);
-  assert.equal(doc.querySelector("dialog.share-dialog [data-panel-status]").textContent, "");
-  failure = new Error("Not allowed");
-  button.click();
+  assert.equal(calls[0].text, undefined);
   await settle();
+  assert.equal(dialog.open, false);
+  assert.equal(group.querySelector("[data-share-status]").textContent, "");
+  failure = new Error("Not allowed");
+  trigger.click();
+  await settle();
+  assert.equal(dialog.open, true);
   assert.match(
-    doc.querySelector("dialog.share-dialog [data-panel-status]").textContent,
+    dialog.querySelector("[data-panel-status]").textContent,
     /copy the link/,
   );
-  assert.equal(button.disabled, false);
+  dialog.querySelector("[data-share-close]").click();
   failure = null;
-  button.click();
+  trigger.click();
   await settle();
-  assert.equal(doc.querySelector("dialog.share-dialog [data-panel-status]").textContent, "");
+  assert.equal(dialog.open, false);
+  assert.equal(group.querySelector("[data-share-status]").textContent, "");
+  group.querySelector("[data-share-options]").click();
+  assert.equal(
+    dialog.open,
+    true,
+    "Native share browsers must retain platform and Instagram options",
+  );
 });
 
 test("image files are prepared before the final native share click", async (t) => {
@@ -386,7 +403,7 @@ test("image files are prepared before the final native share click", async (t) =
       headers: { "Content-Type": "image/jpeg" },
     });
   initializeShareActions(doc);
-  group.querySelector("summary").click();
+  group.querySelector("[data-share-options]").click();
   const helper = doc.querySelector("dialog.share-dialog [data-image-helper]");
   helper.open = true;
   helper.dispatchEvent(new win.Event("toggle"));
@@ -398,4 +415,185 @@ test("image files are prepared before the final native share click", async (t) =
   assert.equal(calls[0].files[0].type, "image/jpeg");
   assert.match(calls[0].files[0].name, /-story\.jpg$/);
   assert.equal(calls[0].url, undefined);
+});
+
+test("URL-only X intents do not duplicate headlines, including long punctuation-heavy titles", () => {
+  const title = "Who's paying? Water & land #West — ".repeat(100);
+  const links = shareDestinations({
+    title,
+    url: `${origin}/research/cattle-herd/`,
+  });
+  assert.deepEqual(
+    links.map(({ name }) => name),
+    ["X", "LinkedIn", "Facebook", "Email"],
+  );
+  const x = new URL(links[0].href);
+  assert.equal(x.searchParams.has("text"), false);
+  assert.equal(x.searchParams.get("url"), `${origin}/research/cattle-herd/`);
+  assert.equal(
+    new URL(links[3].href).searchParams.get("subject"),
+    `${title} — Lookout West`,
+  );
+  for (const link of links.slice(0, 3))
+    assert.equal([...new URL(link.href).searchParams].length, 1);
+});
+
+test("every editorial page has one complete server-rendered metadata set and public image", async (t) => {
+  const articles = (await readdir("dist/research", { withFileTypes: true }))
+    .filter((x) => x.isDirectory() && x.name !== "topics")
+    .map((x) => `/research/${x.name}/`);
+  const editions = (await readdir("dist/current", { withFileTypes: true }))
+    .filter((x) => x.isDirectory())
+    .map((x) => `/current/${x.name}/`);
+  const previews = new Set();
+  for (const path of [...articles, ...editions, "/current/"]) {
+    const { doc } = fixture(t, {
+      markup: await readFile(`dist${path}index.html`, "utf8"),
+      enhance: false,
+    });
+    const meta = (key, attr = "property") => {
+      const tags = doc.querySelectorAll(`meta[${attr}="${key}"]`);
+      assert.equal(tags.length, 1, `${path}: ${key}`);
+      assert.ok(tags[0].content.trim(), `${path}: nonempty ${key}`);
+      return tags[0].content;
+    };
+    assert.equal(doc.querySelectorAll("link[rel=canonical]").length, 1);
+    assert.equal(
+      doc.querySelector("link[rel=canonical]").href,
+      `${origin}${path}`,
+    );
+    assert.equal(meta("og:url"), `${origin}${path}`);
+    assert.equal(meta("og:site_name"), "Lookout West");
+    assert.equal(meta("og:type"), path === "/current/" ? "website" : "article");
+    assert.equal(meta("twitter:card", "name"), "summary_large_image");
+    for (const key of ["title", "description", "image", "image:alt"])
+      assert.equal(meta(`og:${key}`), meta(`twitter:${key}`, "name"));
+    assert.ok(meta("og:description").length > 30);
+    assert.doesNotMatch(meta("robots", "name"), /noindex/);
+    const url = new URL(meta("og:image"));
+    assert.equal(url.protocol, "https:");
+    assert.equal(url.origin, origin);
+    assert.match(url.pathname, /-[a-f0-9]{12}\.(jpg|png|webp)$/);
+    assert.ok(
+      !previews.has(url.href),
+      `${path} must not inherit another page's image`,
+    );
+    previews.add(url.href);
+    const data = await sharp(`dist${decodeURIComponent(url.pathname)}`).metadata();
+    assert.equal(meta("og:image:width"), "1200");
+    assert.equal(meta("og:image:height"), "630");
+    assert.equal(data.width, 1200);
+    assert.equal(data.height, 630);
+    if (path.startsWith("/current/") && path !== "/current/") {
+      const date = path.split("/")[2];
+      assert.equal(meta("article:published_time"), `${date}T00:00:00.000Z`);
+      assert.match(url.pathname, new RegExp(date));
+      assert.ok(
+        meta("og:title").includes(
+          new Intl.DateTimeFormat("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+            timeZone: "UTC",
+          }).format(new Date(date)),
+        ),
+      );
+    }
+    assert.equal(
+      doc.querySelectorAll(".share-image-preview, [data-image-helper] img")
+        .length,
+      0,
+      "Large Instagram assets must not preload",
+    );
+  }
+});
+
+test("latest and archived Current copies always use their edition permalink at both placements", async (t) => {
+  const dates = (await readdir("dist/current", { withFileTypes: true }))
+    .filter((x) => x.isDirectory())
+    .map((x) => x.name)
+    .sort()
+    .reverse();
+  for (const [path, date] of [
+    ["/current/", dates[0]],
+    ...dates.map((d) => [`/current/${d}/`, d]),
+  ]) {
+    const { win, doc } = fixture(t, {
+      markup: await readFile(`dist${path}index.html`, "utf8"),
+    });
+    const copied = [];
+    Object.defineProperty(win.navigator, "clipboard", {
+      value: { writeText: async (value) => copied.push(value) },
+    });
+    const groups = [...doc.querySelectorAll("[data-share-actions]")];
+    assert.equal(groups.length, 2);
+    for (const group of groups) {
+      assert.equal(
+        group.querySelector("[data-share-trigger]").textContent,
+        "Share this edition",
+      );
+      group.querySelector("[data-copy-link]").click();
+      await settle();
+    }
+    assert.deepEqual(copied, Array(2).fill(`${origin}/current/${date}/`));
+    for (const link of doc.querySelectorAll("[data-image-helper] a[download]"))
+      assert.ok(
+        (await readFile(`dist${link.getAttribute("href")}`)).length > 0,
+      );
+  }
+});
+
+test("unsupported payloads fall back and file assets load only after expanding Instagram", async (t) => {
+  const { win, doc, group } = fixture(t, { enhance: false });
+  let fetches = 0;
+  let shares = 0;
+  win.navigator.share = () => {
+    shares++;
+    return Promise.resolve();
+  };
+  win.navigator.canShare = () => false;
+  win.fetch = async () => {
+    fetches++;
+    return new win.Response("unavailable", { status: 404 });
+  };
+  initializeShareActions(doc);
+  group.querySelector("[data-share-trigger]").click();
+  const dialog = doc.querySelector(".share-dialog");
+  assert.equal(dialog.open, true);
+  assert.equal(shares, 0);
+  assert.equal(fetches, 0);
+  const helper = dialog.querySelector("[data-image-helper]");
+  helper.open = true;
+  helper.dispatchEvent(new win.Event("toggle"));
+  await settle();
+  assert.ok(fetches > 0);
+  assert.equal(helper.querySelector("[data-share-image]").hidden, true);
+  assert.equal(helper.querySelectorAll("a[download]").length, 2);
+});
+
+test("navigation cleanup removes dialogs and duplicate handlers before reinitialization", async (t) => {
+  const { win, doc, group, trigger } = fixture(t, { mobile: true });
+  trigger.click();
+  cleanupShareActions(doc);
+  assert.equal(doc.querySelectorAll("dialog.share-dialog").length, 0);
+  assert.equal(
+    doc.documentElement.classList.contains("has-share-dialog"),
+    false,
+  );
+  let copies = 0;
+  Object.defineProperty(win.navigator, "clipboard", {
+    value: {
+      writeText: async () => {
+        copies++;
+      },
+    },
+  });
+  initializeShareActions(doc);
+  group.querySelector("[data-copy-link]").click();
+  await settle();
+  assert.equal(copies, 1);
+  assert.equal(
+    doc.querySelectorAll("dialog.share-dialog").length,
+    doc.querySelectorAll("[data-share-actions]").length,
+  );
 });

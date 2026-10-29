@@ -1,4 +1,5 @@
 import { z } from "astro/zod";
+import { socialFields } from "./social-schema.ts";
 
 const localPath = z.string().regex(/^\/(?!\/)/);
 const date = z
@@ -22,6 +23,8 @@ const sourceSchema = z.object({
 export const currentSchema = z
   .object({
     date,
+    updatedDate: date.optional(),
+    ...socialFields,
     draft: z.boolean().default(false),
     deck: z.string().optional(),
     readTime: z.number().int().positive().optional(),

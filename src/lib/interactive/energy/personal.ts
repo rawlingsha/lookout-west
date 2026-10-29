@@ -15,6 +15,8 @@ export function enhancePersonal(root: HTMLElement) {
   const radios = [...controls.querySelectorAll<HTMLInputElement>("input")];
   const marker = get("[data-selected-marker]");
   const status = get("[data-metric-status]");
+  // The price comparison also works when the separate budget module is absent.
+  const equationFuel = root.querySelector<HTMLElement>("[data-equation-fuel]");
   const controller = new view.AbortController();
   let explicit = false;
   const render = (announce = true) => {
@@ -31,7 +33,7 @@ export function enhancePersonal(root: HTMLElement) {
     get("[data-position]").textContent = `${d.rank} of 13, from lowest price`;
     get("[data-fuel-label]").textContent =
       id === "gasoline" ? "regular gasoline" : "diesel";
-    get("[data-equation-fuel]").textContent = id;
+    if (equationFuel) equationFuel.textContent = id;
     get("[data-range-low]").textContent =
       `Lowest · ${d.low.name} $${d.low.value.toFixed(2)}`;
     get("[data-range-high]").textContent =
@@ -54,6 +56,8 @@ export function enhancePersonal(root: HTMLElement) {
     if (announce)
       status.textContent = `${d.selected.name}: $${d.selected.value.toFixed(2)} per gallon, ${d.metric.label}, ${d.metric.observationPeriod}. ${d.rank} of 13 from lowest price. Lowest ${d.low.name}, $${d.low.value.toFixed(2)}; highest ${d.high.name}, $${d.high.value.toFixed(2)}.`;
   };
+  // Do not leave active listeners behind if the initial render fails.
+  render(false);
   select.addEventListener(
     "change",
     () => {
@@ -68,7 +72,6 @@ export function enhancePersonal(root: HTMLElement) {
   view.addEventListener("pageshow", () => render(false), {
     signal: controller.signal,
   });
-  render(false);
   controls.hidden = false;
   stateControl.hidden = false;
   fallback.hidden = true;

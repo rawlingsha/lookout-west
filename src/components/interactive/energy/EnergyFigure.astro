@@ -26,7 +26,6 @@ if (!figure?.image) throw new Error(`Missing energy figure: ${id}`);
     <ShareActions
       id={`share-${id}`}
       title={figure.title}
-      text={figure.caption}
       url={contentUrl(figurePagePath(figure))}
       kind="chart"
       images={figureShareImages(figure)}

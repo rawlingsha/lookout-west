@@ -3,6 +3,7 @@ import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
 import { currentSchema } from "./lib/current-schema";
+import { socialFields } from "./lib/social-schema";
 
 const current = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/current" }),
@@ -36,8 +37,14 @@ const articles = defineCollection({
     cardImageAlt: z.string().optional(),
     cardImagePosition: z.string().optional(),
     cardImageWidePosition: z.string().optional(),
-    socialImage: z.string().startsWith("/").optional(),
-    socialImageAlt: z.string().optional(),
+    ...socialFields,
+    // null explicitly selects the typography template instead of cardImage.
+    socialImageSource: z
+      .string()
+      .regex(/^\/(?!\/)/)
+      .nullable()
+      .optional(),
+    socialCardTitle: z.string().min(1).optional(),
     showCardImage: z.boolean().optional().default(false),
     sources: z.array(articleSourceSchema).optional(),
   }),

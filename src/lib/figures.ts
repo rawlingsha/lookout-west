@@ -1,6 +1,6 @@
 import registry from "../data/share-figures.json";
 import { contentUrl } from "./urls";
-import type { ShareImages } from "./share";
+import { generatedShareImages, type ShareImages } from "./share";
 
 export interface ShareFigure {
   id: string;
@@ -25,6 +25,8 @@ export function figureShareImages(
   figure: ShareFigure,
 ): ShareImages | undefined {
   if (!figure.image) return undefined;
+  const generated = generatedShareImages(`figures/${figure.id}`);
+  if (generated) return generated;
   const base = `/social/generated/figures/${figure.id}`;
   return {
     preview: `${base}-preview.jpg`,

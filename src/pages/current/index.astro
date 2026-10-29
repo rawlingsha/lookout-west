@@ -8,6 +8,8 @@ import {
   editionHref,
 } from "../../lib/current";
 import "../../styles/current.css";
+import { currentShareImages } from "../../lib/share";
+const images = currentShareImages();
 const [latest, ...previous] = await getCurrentEditions(import.meta.env.DEV);
 const past = previous.filter((edition) => !edition.draft);
 ---
@@ -15,9 +17,13 @@ const past = previous.filter((edition) => !edition.draft);
 <BaseLayout
   title="The Current | Lookout West"
   robots={latest?.draft ? "noindex,nofollow" : undefined}
-  description={latest?.deck ??
-    latest?.signals[0].headline ??
-    "Concise economic briefings on the American West. The first edition of The Current is forthcoming."}
+  description="The Current is Lookout West’s weekly briefing on the economic signals shaping the West and Plains."
+  ogTitle="The Current"
+  canonicalPath="/current/"
+  ogImage={images.preview}
+  ogImageAlt={images.alt}
+  ogImageWidth={images.width}
+  ogImageHeight={images.height}
 >
   <Container
     ><div class="current-page">

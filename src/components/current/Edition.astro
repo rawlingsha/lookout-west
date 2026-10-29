@@ -3,16 +3,19 @@ import type { CurrentEdition } from "../../lib/current-schema";
 import { currentDate, editionHref, readingMinutes } from "../../lib/current";
 import FigureBlock from "../article/FigureBlock.astro";
 import ShareActions from "../sharing/ShareActions.astro";
+import { currentShareImages } from "../../lib/share";
 interface Props {
   edition: CurrentEdition;
   latest?: boolean;
   preview?: boolean;
 }
 const { edition, latest = false, preview = false } = Astro.props;
-const shareTitle = `The Current — ${currentDate(edition.date)}`;
+const shareTitle =
+  edition.socialTitle ?? `The Current — ${currentDate(edition.date)}`;
 const shareUrl = new URL(editionHref(edition), Astro.site).href;
-const shareText = edition.deck ?? edition.signals[0].headline;
+const shareText = edition.shareText;
 const canShare = !preview && !edition.draft;
+const images = canShare ? currentShareImages(edition.date) : undefined;
 ---
 
 <article class="current-edition">
@@ -47,6 +50,8 @@ const canShare = !preview && !edition.draft;
           title={shareTitle}
           text={shareText}
           url={shareUrl}
+          kind="edition"
+          images={images}
         />
       )
     }
@@ -127,7 +132,8 @@ const canShare = !preview && !edition.draft;
           title={shareTitle}
           text={shareText}
           url={shareUrl}
-          label="Share this edition"
+          kind="edition"
+          images={images}
         />
       )
     }

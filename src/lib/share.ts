@@ -1,3 +1,8 @@
+import manifest from "../data/social-images.json" with { type: "json" };
+
+const { defaultImage: defaultShareImage, ...imageManifest } = manifest;
+export { defaultShareImage };
+
 export interface SharePayload {
   title: string;
   url: string;
@@ -9,6 +14,8 @@ export interface ShareImages {
   portrait: string;
   story: string;
   alt: string;
+  width?: number;
+  height?: number;
 }
 
 export function shareDestinations({ title, url, text = "" }: SharePayload) {
@@ -20,14 +27,17 @@ export function shareDestinations({ title, url, text = "" }: SharePayload) {
   };
   return [
     {
+      name: "X",
+      href: destination(
+        "https://x.com/intent/tweet",
+        text ? { text, url } : { url },
+      ),
+    },
+    {
       name: "LinkedIn",
       href: destination("https://www.linkedin.com/sharing/share-offsite/", {
         url,
       }),
-    },
-    {
-      name: "X",
-      href: destination("https://x.com/intent/tweet", { text: title, url }),
     },
     {
       name: "Facebook",
@@ -42,7 +52,12 @@ export function shareDestinations({ title, url, text = "" }: SharePayload) {
   ];
 }
 
+export const generatedShareImages = (key: string) =>
+  (imageManifest as Record<string, ShareImages>)[key];
+
 export function articleShareImages(id: string, title: string): ShareImages {
+  const generated = generatedShareImages(`articles/${id}`);
+  if (generated) return generated;
   const base = `/social/generated/articles/${id}`;
   return {
     preview: `${base}-preview.jpg`,
@@ -50,4 +65,14 @@ export function articleShareImages(id: string, title: string): ShareImages {
     story: `${base}-story.jpg`,
     alt: `${title} — Lookout West`,
   };
+}
+
+export function currentShareImages(date?: string): ShareImages {
+  const key = date ? `current/${date}` : "current/publication";
+  const images = generatedShareImages(key);
+  if (!images)
+    throw new Error(
+      `Missing social images for ${key}. Run npm run images:share.`,
+    );
+  return images;
 }
