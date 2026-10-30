@@ -1,0 +1,176 @@
+{
+  "date": "2026-10-30",
+  "draft": false,
+  "deck": "New Mexico receives record federal energy revenue as a $5.1 billion power loan backs new generation and storage. Port labor uncertainty, energy projects and harvest delays shape the week across the West and Plains.",
+  "signals": [
+    {
+      "id": "new-mexico-federal-energy-revenue",
+      "topic": "finance",
+      "geography": "New Mexico",
+      "headline": "New Mexico receives a record $5.26 billion in federal energy revenue",
+      "body": "New Mexico received more than $5.26 billion in federal energy and mineral revenue during fiscal year 2026, according to figures released by the Interior Department on October 28. That's the largest annual disbursement to any state on record, accounting for nearly four-fifths of the $6.68 billion distributed among 34 states. A major contributor was May's unusually large federal oil and gas lease sale in New Mexico and Texas, which generated more than $4 billion. Wyoming received another $485 million, followed by $132 million for Texas and $124 million for Utah. These receipts help finance state services, but the size of New Mexico's windfall deserves caution: lease bonuses are not recurring production royalties. A strong year for federal energy revenue does not necessarily establish a sustainable level of future spending.",
+      "source": {
+        "label": "U.S. Department of the Interior",
+        "url": "https://edit.doi.gov/pressreleases/interior-delivers-second-largest-energy-revenue-disbursement",
+        "date": "2026-10-28"
+      }
+    },
+    {
+      "id": "alliant-energy-power-loan",
+      "topic": "energy",
+      "geography": "Iowa · Wisconsin",
+      "headline": "Washington closes $5.1 billion power loan for Iowa and Wisconsin",
+      "body": "The Energy Department finalized a $5.1 billion loan package for Alliant Energy on October 28, supporting new power generation and storage across Iowa and Wisconsin. The financing covers approximately 1,500 megawatts of new natural gas generation, upgrades to existing plants, around 1,000 megawatts of battery storage, and liquefied natural gas storage capacity. Alliant estimates the financing could save customers as much as $1.2 billion over the life of the loans, largely through lower borrowing costs. That is a projection, not a reduction already appearing on electricity bills. The agreement also marks a notable shift in federal energy lending: an earlier $3 billion conditional commitment has become a larger, finalized package supporting both gas-fired generation and storage. The projects address growing electricity demand, although their eventual costs will depend on construction and operating conditions.",
+      "source": {
+        "label": "U.S. Department of Energy",
+        "url": "https://www.energy.gov/articles/energy-department-closes-51-billion-loan-lower-electricity-costs-and-strengthen-grid",
+        "date": "2026-10-28"
+      },
+      "additionalSources": [
+        {
+          "label": "Reuters",
+          "url": "https://www.reuters.com/world/us-closes-51-billion-loan-alliant-energy-new-gas-power-generation-energy-storage-2026-10-28/",
+          "date": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "southern-california-port-strike-threat",
+      "topic": "growth",
+      "geography": "California",
+      "headline": "Strike threat puts Southern California's busiest cargo terminals at risk",
+      "body": "About 250 unionized security watchmen at the ports of Los Angeles and Long Beach authorized a potential strike beginning November 1, threatening operations at terminals handling more than half the complex's cargo. Their contract expired in July 2025, and negotiations have continued under extensions. The watchmen represent a small share of the workforce, but a walkout could prevent other dockworkers from crossing picket lines, interrupting vessel unloading and cargo movements during the holiday shipping season. The two ports are the country's principal gateway for imports from Asia, so a prolonged stoppage would affect distribution networks far beyond California. There is an important late-week development: employers said Thursday they were close to extending the agreement through Wednesday. No strike had begun by this edition's cutoff.",
+      "source": {
+        "label": "The Wall Street Journal",
+        "url": "https://www.wsj.com/logistics-report/strike-vote-by-250-watchmen-puts-nations-busiest-port-complex-at-risk-3b3fb629",
+        "date": "2026-10-28"
+      },
+      "additionalSources": [
+        {
+          "label": "The Wall Street Journal",
+          "url": "https://www.wsj.com/logistics-report/employers-near-deal-to-delay-strike-threat-at-los-angeles-long-beach-ports-e44a1734",
+          "date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "id": "epa-methane-rule-proposal",
+      "topic": "energy",
+      "geography": "Texas · Great Plains",
+      "headline": "EPA proposes sweeping rollback of oil and gas methane rules",
+      "body": "The Environmental Protection Agency proposed substantial revisions to federal methane regulations on October 27, with President Trump announcing the changes in Lubbock, Texas. The proposal would ease monitoring and equipment requirements for oil and gas producers, including smaller wells, and modify restrictions on routine flaring. EPA estimates that the revisions could save $45 billion in compliance costs and permit additional oil and gas production. Those are the agency's modeled estimates, not realized savings. The consequences would be especially significant in the Permian Basin, where methane controls affect drilling operations, equipment investment, and production costs. Looser requirements could reduce expenses for producers while increasing methane emissions and associated environmental costs. The changes remain proposed regulations subject to public comment and further administrative review.",
+      "source": {
+        "label": "U.S. Environmental Protection Agency",
+        "url": "https://www.epa.gov/newsreleases/epa-proposes-major-new-revisions-burdensome-unworkable-biden-era-oil-and-natural-gas",
+        "date": "2026-10-27"
+      },
+      "additionalSources": [
+        {
+          "label": "Reuters",
+          "url": "https://in.marketscreener.com/news/trump-to-roll-back-methane-rules-in-latest-texas-campaign-push-ce785cdddf8bf420",
+          "date": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "id": "texas-offshore-lng-license",
+      "topic": "energy",
+      "geography": "Texas",
+      "headline": "Texas offshore LNG project clears major federal permitting hurdle",
+      "body": "Federal regulators approved the deepwater-port license application for an $8.2 billion liquefied natural gas export project off Matagorda, Texas, on October 28. ST LNG proposes four liquefaction units with combined annual capacity of 8.4 million metric tons, potentially adding roughly 8% to current U.S. LNG export capacity. The Maritime Administration completed its review in 410 days, considerably faster than the historical average. The approval is consequential for Texas gas producers and the Gulf Coast's export infrastructure, but construction is not assured. The developer said Thursday it expects to make a final investment decision in mid-to-late 2027 and still needs binding customer commitments. Commercial operations are targeted around 2030. Regulatory approval has advanced the project; the financing and sales agreements needed to build it remain outstanding.",
+      "source": {
+        "label": "U.S. Maritime Administration",
+        "url": "https://www.maritime.dot.gov/newsroom/trumps-transportation-secretary-sean-p-duffy-approves-82-billion-deepwater-port-license",
+        "date": "2026-10-28"
+      },
+      "additionalSources": [
+        {
+          "label": "Reuters",
+          "url": "https://www.reuters.com/business/energy/st-lng-decide-us-offshore-lng-facility-by-late-2027-company-says-2026-10-29/",
+          "date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "id": "california-large-load-grid-connections",
+      "topic": "energy",
+      "geography": "California",
+      "headline": "California grid operator approves faster connections for data centers",
+      "body": "California's grid operator approved a proposal on October 28 to accelerate electricity connections for large industrial customers, including data centers and manufacturing facilities. The California Independent System Operator would allow qualifying large loads to connect with operational flexibility while necessary transmission upgrades are completed. The proposal also strengthens coordination with utilities and introduces safeguards intended to prevent infrastructure costs from being shifted to existing customers. For developers, connection delays can determine whether a project proceeds on schedule or sits idle despite substantial capital commitments. For utilities, serving large new customers without sufficient network capacity creates reliability and cost-allocation risks. CAISO plans to submit the proposal to federal regulators by November 16. The board's approval establishes a proposed framework, not an immediately effective change in interconnection rules.",
+      "source": {
+        "label": "Reuters",
+        "url": "https://www.reuters.com/legal/litigation/caiso-approves-proposal-speed-grid-connections-large-loads-2026-10-28/",
+        "date": "2026-10-28"
+      }
+    },
+    {
+      "id": "honeywell-arizona-aerospace-factory",
+      "topic": "growth",
+      "geography": "Arizona",
+      "headline": "Honeywell announces $500 million aerospace factory in Arizona",
+      "body": "Honeywell Aerospace announced plans October 28 for a $500 million manufacturing facility in Tempe, Arizona, expanding its production of components for commercial and military aircraft. The proposed 300,000-square-foot plant is expected to open in late 2028 and eventually employ approximately 600 people, with more than 1,000 additional jobs supported during construction. Honeywell says the investment will bring complex machining work in-house, addressing bottlenecks among existing suppliers. The factory will incorporate automated inspection, robotics, and digital production systems. The announcement reinforces Arizona's position in advanced manufacturing beyond its semiconductor industry. Its economic importance lies partly in supply-chain integration: producing more specialized components locally could reduce delays and increase the value of work performed in the state. The jobs and production capacity remain future commitments rather than current output.",
+      "source": {
+        "label": "Honeywell Aerospace announcement",
+        "url": "https://www.nasdaq.com/press-release/honeywell-aerospace-build-new-state-art-manufacturing-facility-arizona-support",
+        "date": "2026-10-28"
+      },
+      "additionalSources": [
+        {
+          "label": "KTAR",
+          "url": "https://ktar.com/arizona-business/honeywell-tempe-aerospace-factory",
+          "date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "id": "strategic-petroleum-reserve-exchange",
+      "topic": "energy",
+      "geography": "Texas · Gulf Coast",
+      "headline": "Washington completes emergency oil reserve release contracts",
+      "body": "The Energy Department announced October 29 that it had awarded contracts covering the remaining roughly 40 million barrels of its emergency Strategic Petroleum Reserve exchange program. Approximately 16.8 million barrels were awarded on October 28, following another 23.8 million earlier in the month. The awards complete the United States' commitment to release 172 million barrels as part of an international effort to stabilize oil markets disrupted by the war with Iran. Crude will come from storage sites at Big Hill and Bryan Mound in Texas, supplying refiners and trading companies. The contracts require borrowers to return additional barrels beginning next year. The immediate benefit is additional market supply, but the reserve has already fallen to its lowest inventory since 1982, leaving less protection against another major disruption.",
+      "source": {
+        "label": "U.S. Department of Energy",
+        "url": "https://www.energy.gov/hgeo/opr/articles/energy-department-awards-contracts-strategic-petroleum-reserve-part-president",
+        "date": "2026-10-29"
+      },
+      "additionalSources": [
+        {
+          "label": "Reuters",
+          "url": "https://www.reuters.com/business/energy/us-loans-40-million-barrels-oil-spr-last-share-global-agreement-2026-10-29/",
+          "date": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "id": "laramie-range-wind-permit",
+      "topic": "energy",
+      "geography": "Wyoming",
+      "headline": "Wyoming approves 650-megawatt wind project with strict conditions",
+      "body": "Wyoming's Industrial Siting Council issued its final permit October 26 for the 650-megawatt Laramie Range Wind Project northwest of Cheyenne. The proposed development would install 139 turbines across approximately 41,000 acres, but the state imposed 26 binding conditions, including a 2.5-mile setback from residences and requirements addressing roads and wildlife. The council also allocated up to $11.7 million in impact assistance for local governments. Developer Repsol has withdrawn its county permit applications and intends to submit revised plans in 2027. That leaves a substantial distinction between state approval and permission to begin construction. The project illustrates how local land-use restrictions can alter the economics of large renewable investments, even in states with extensive wind resources. The developer's current schedule anticipates operation by the end of 2029.",
+      "source": {
+        "label": "Wyoming Department of Environmental Quality",
+        "url": "https://politicalemails.org/messages/2483835",
+        "date": "2026-10-26"
+      },
+      "additionalSources": [
+        {
+          "label": "Cowboy State Daily",
+          "url": "https://cowboystatedaily.com/2026/10/27/laramie-wind-project-gets-state-permit-right-after-pulling-county-applications/",
+          "date": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "id": "plains-harvest-planting-delays",
+      "topic": "land",
+      "geography": "Great Plains",
+      "headline": "Plains harvest advances, but corn and wheat remain behind schedule",
+      "body": "USDA's October 26 crop report showed substantial harvesting progress across the Plains, although several important crops remained behind their normal pace. Iowa had harvested 47% of its corn, compared with a five-year average of 67%; Nebraska reached 55%, against 64% normally, and South Dakota stood at 44%, against 62%. Winter wheat planting in Oklahoma was 51% complete, well below the usual 69%, while Kansas had recovered to 80%, slightly ahead of normal. The delays matter because late harvesting can increase drying, equipment, and labor expenses, especially with diesel prices already elevated. Delayed wheat emergence can also affect fall grazing opportunities for cattle producers. The figures establish operational pressure, not necessarily lower final crop production. Weather and remaining fieldwork will determine how much of the delay becomes an economic loss.",
+      "source": {
+        "label": "USDA National Agricultural Statistics Service, Crop Progress",
+        "url": "https://esmis.nal.usda.gov/publication/crop-progress/2026-10-26",
+        "date": "2026-10-26"
+      }
+    }
+  ]
+}
