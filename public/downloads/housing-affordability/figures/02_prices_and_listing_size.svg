@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="648pt" height="648pt" viewBox="0 0 648 648" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-04T10:21:56.195980</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 648 
+L 648 648 
+L 648 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 187.92 395.28 
+L 583.2 395.28 
+L 583.2 194.4 
+L 187.92 194.4 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 187.92 395.28 
+L 187.92 194.4 
+" clip-path="url(#p22b8423e94)" style="fill: none; stroke: #e6e8e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2"/>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'Libre Baskerville'; text-anchor: middle; fill: #646a63" x="187.92" y="414.41" transform="rotate(-0 187.92 414.41)">0%</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 286.74 395.28 
+L 286.74 194.4 
+" clip-path="url(#p22b8423e94)" style="fill: none; stroke: #e6e8e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4"/>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'Libre Baskerville'; text-anchor: middle; fill: #646a63" x="286.74" y="414.41" transform="rotate(-0 286.74 414.41)">25%</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 385.56 395.28 
+L 385.56 194.4 
+" clip-path="url(#p22b8423e94)" style="fill: none; stroke: #e6e8e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'Libre Baskerville'; text-anchor: middle; fill: #646a63" x="385.56" y="414.41" transform="rotate(-0 385.56 414.41)">50%</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 484.38 395.28 
+L 484.38 194.4 
+" clip-path="url(#p22b8423e94)" style="fill: none; stroke: #e6e8e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'Libre Baskerville'; text-anchor: middle; fill: #646a63" x="484.38" y="414.41" transform="rotate(-0 484.38 414.41)">75%</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 583.2 395.28 
+L 583.2 194.4 
+" clip-path="url(#p22b8423e94)" style="fill: none; stroke: #e6e8e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: 'Libre Baskerville'; text-anchor: middle; fill: #646a63" x="583.2" y="414.41" transform="rotate(-0 583.2 414.41)">100%</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_11"/>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: 'Libre Baskerville'; fill: #20251f" transform="translate(105.98 245.581429)">Asking-price</text>
+      <text style="font-size: 11px; font-family: 'Libre Baskerville'; fill: #20251f" transform="translate(134.965 259.397429)">median</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_12"/>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: 'Libre Baskerville'; fill: #20251f" transform="translate(74.72625 341.293571)">FHFA repeat-sales</text>
+      <text style="font-size: 11px; font-family: 'Libre Baskerville'; fill: #20251f" transform="translate(146.162656 354.999571)">index</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 187.92 220.227429 
+L 237.165243 220.227429 
+L 237.165243 243.185143 
+L 187.92 243.185143 
+z
+" clip-path="url(#p22b8423e94)" style="fill: #4a5d44"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 187.92 250.837714 
+L 495.626084 250.837714 
+L 495.626084 273.795429 
+L 187.92 273.795429 
+z
+" clip-path="url(#p22b8423e94)" style="fill: #d94e3d"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 187.92 315.884571 
+L 357.416804 315.884571 
+L 357.416804 338.842286 
+L 187.92 338.842286 
+z
+" clip-path="url(#p22b8423e94)" style="fill: #4a5d44"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 187.92 346.494857 
+L 519.737478 346.494857 
+L 519.737478 369.452571 
+L 187.92 369.452571 
+z
+" clip-path="url(#p22b8423e94)" style="fill: #d94e3d"/>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Libre Baskerville'; text-anchor: start; fill: #4a5d44" x="245.070843" y="235.186286" transform="rotate(-0 245.070843 235.186286)">+12%</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Libre Baskerville'; text-anchor: start; fill: #d94e3d" x="503.531684" y="265.796571" transform="rotate(-0 503.531684 265.796571)">+78%</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Libre Baskerville'; text-anchor: start; fill: #4a5d44" x="365.322404" y="330.843429" transform="rotate(-0 365.322404 330.843429)">+43%</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Libre Baskerville'; text-anchor: start; fill: #d94e3d" x="527.643078" y="361.453714" transform="rotate(-0 527.643078 361.453714)">+84%</text>
+   </g>
+  </g>
+  <g id="text_12">
+   <text style="font-weight: 700; font-size: 11px; font-family: 'Libre Baskerville'; text-anchor: start; fill: #4a5d44" x="48.6" y="32.4" transform="rotate(-0 48.6 32.4)">LOOKOUT WEST</text>
+  </g>
+  <g id="text_13">
+   <text style="font-size: 22px; font-family: 'Libre Baskerville'; text-anchor: start; fill: #20251f" x="48.6" y="71.28" transform="rotate(-0 48.6 71.28)">A different picture of price growth</text>
+  </g>
+  <g id="text_14">
+   <text style="font-size: 11px; font-family: 'Libre Baskerville'; fill: #646a63" transform="translate(48.6 105.652)">Change from Q1 2019 to Q1 2026</text>
+   <text style="font-size: 11px; font-family: 'Libre Baskerville'; fill: #646a63" transform="translate(48.6 123.12)">Listing medians and comparable-property prices cover different homes</text>
+  </g>
+  <g id="text_15">
+   <text style="font-size: 12px; font-family: 'Libre Baskerville'; text-anchor: start; fill: #4a5d44" x="187.92" y="174.96" transform="rotate(-0 187.92 174.96)">Denver</text>
+  </g>
+  <g id="text_16">
+   <text style="font-size: 12px; font-family: 'Libre Baskerville'; text-anchor: start; fill: #d94e3d" x="330.48" y="174.96" transform="rotate(-0 330.48 174.96)">Boise</text>
+  </g>
+  <g id="text_17">
+   <text style="font-weight: 700; font-size: 15px; font-family: 'Libre Baskerville'; text-anchor: start; fill: #20251f" x="48.6" y="479.52" transform="rotate(-0 48.6 479.52)">Denver’s median listing became smaller</text>
+  </g>
+  <g id="text_18">
+   <text style="font-size: 18px; font-family: 'Libre Baskerville'; text-anchor: start; fill: #4a5d44" x="48.6" y="518.4" transform="rotate(-0 48.6 518.4)">2,488 to 1,941 sq ft  (−22%)</text>
+  </g>
+  <g id="text_19">
+   <text style="font-size: 12px; font-family: 'Libre Baskerville'; text-anchor: start; fill: #646a63" x="48.6" y="557.28" transform="rotate(-0 48.6 557.28)">Boise: 2,121 to 2,200 sq ft  (+4%)</text>
+  </g>
+  <g id="text_20">
+   <text style="font-size: 7.8px; font-family: 'Libre Baskerville'; fill: #646a63" transform="translate(48.6 594.1452)">Sources: Realtor.com Economic Research; FHFA; Lookout West calculations.</text>
+   <text style="font-size: 7.8px; font-family: 'Libre Baskerville'; fill: #646a63" transform="translate(48.6 606.4536)">Listing prices and sizes: means of Jan–Mar monthly medians. FHFA: seasonally</text>
+   <text style="font-size: 7.8px; font-family: 'Libre Baskerville'; fill: #646a63" transform="translate(48.6 618.84)">adjusted purchase-only single-family index. The gap is not a decomposition.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p22b8423e94">
+   <rect x="187.92" y="194.4" width="395.28" height="200.88"/>
+  </clipPath>
+ </defs>
+</svg>

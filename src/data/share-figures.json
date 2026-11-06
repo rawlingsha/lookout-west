@@ -127,5 +127,15 @@
     "source": "New Mexico August 2026 revenue forecast, pages 16 and 41; Lookout West calculations.",
     "image": "/images/research/west-energy-bill/energy-nm-revenue.png",
     "alt": "Three illustrative annual revenue changes for New Mexico: about $565 million less, no change, or about $565 million more. These are not collected receipts, spendable budget money or residents’ net benefit."
+  },
+  {
+    "id": "housing-affordable-share",
+    "article": "housing-affordability",
+    "kind": "chart",
+    "title": "Where buying options open up",
+    "caption": "Share of active listings affordable at published household incomes in Denver and Boise, March 2026. Shares include all listings below each income’s modeled buying limit. Connectors guide the eye; cumulative shares overlap.",
+    "source": "NAR/Realtor.com, Metro Area Affordability Listings, May 2026; Lookout West calculations.",
+    "image": "/images/research/housing-affordability/01_affordable_share_by_income.png",
+    "alt": "Denver leads Boise at $75,000 and $100,000 household income. At $100,000, 19.6% of Denver listings and 11.7% of Boise listings are affordable; at $125,000, the shares rise to 33.3% and 35.2%."
   }
 ]

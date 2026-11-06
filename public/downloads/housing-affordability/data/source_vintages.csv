@@ -1,0 +1,5 @@
+source,url,download_date,download_sha256
+nar_affordability,https://www.nar.realtor/sites/default/files/2026-05/Metro-Area-Affordability-Listings-2026-05-20.pdf,2026-11-04,c0eb1cf2cdca3850b7c6ab700d2df05ada0e36459fa9c7a1f54aeb98c877c9a2
+nar_scores,https://www.nar.realtor/sites/default/files/2026-05/Metro-Area-Income-Alignment-Scores-2026-05-20.pdf,2026-11-04,223329b1c1715a0da21dda7025c5d2d8c231d1b8d33e3697a8fdc79952bbc606
+realtor_history,https://econdata.s3-us-west-2.amazonaws.com/Reports/Core/RDC_Inventory_Core_Metrics_Metro_History.csv,2026-11-04,153584397fa5e167e421f7f46a763631b4929668e2080ff99c9d55750f5a6348
+fhfa_purchase_only,https://www.fhfa.gov/hpi/download/quarterly_datasets/hpi_po_metro.txt,2026-11-04,d664a8e2e92f64aa17201b3bdd84d0ab4d1a4d00e9c6c15d5b34fb400c10d842

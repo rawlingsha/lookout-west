@@ -1,0 +1,19 @@
+month_date_yyyymm,cbsa_code,cbsa_title,median_listing_price,median_listing_price_per_square_foot,median_square_feet,active_listing_count,new_listing_count,quality_flag
+201901,14260,"Boise City, ID",339000.0,164.0,2127.0,2305,1168,0.0
+201902,14260,"Boise City, ID",339945.0,165.0,2117.0,2233,1380,0.0
+201903,14260,"Boise City, ID",346575.0,168.0,2120.0,2259,1652,0.0
+202501,14260,"Boise City, ID",570000.0,289.0,2147.0,1922,1264,0.0
+202502,14260,"Boise City, ID",579999.0,291.0,2160.0,1904,1298,0.0
+202503,14260,"Boise City, ID",591700.0,293.0,2191.0,2155,1864,0.0
+202601,14260,"Boise City, ID",599900.0,295.0,2202.0,2062,1356,0.0
+202602,14260,"Boise City, ID",598950.0,296.0,2176.0,2138,1584,0.0
+202603,14260,"Boise City, ID",624987.0,299.0,2221.0,2282,1814,0.0
+201901,19740,"Denver-Aurora-Centennial, CO",487500.0,205.0,2465.0,5452,3996,0.0
+201902,19740,"Denver-Aurora-Centennial, CO",499750.0,208.0,2477.0,5495,4392,0.0
+201903,19740,"Denver-Aurora-Centennial, CO",515529.0,210.0,2523.0,5922,5176,0.0
+202501,19740,"Denver-Aurora-Centennial, CO",569950.0,298.0,1950.0,6498,3742,0.0
+202502,19740,"Denver-Aurora-Centennial, CO",572500.0,300.0,1955.0,7052,4390,0.0
+202503,19740,"Denver-Aurora-Centennial, CO",585000.0,302.0,1983.0,8493,5856,0.0
+202601,19740,"Denver-Aurora-Centennial, CO",550000.0,287.0,1928.0,7220,4144,0.0
+202602,19740,"Denver-Aurora-Centennial, CO",565000.0,291.0,1932.0,8170,4782,0.0
+202603,19740,"Denver-Aurora-Centennial, CO",575000.0,292.0,1963.0,9144,5426,0.0
