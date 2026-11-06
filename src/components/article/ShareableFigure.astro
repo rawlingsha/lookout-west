@@ -12,8 +12,9 @@ import {
 import { contentUrl } from "../../lib/urls";
 interface Props {
   id: string;
+  showTitle?: boolean;
 }
-const { id } = Astro.props;
+const { id, showTitle = true } = Astro.props;
 const figure = shareFigures.find((entry) => entry.id === id);
 if (!figure) throw new Error(`Unknown share figure: ${id}`);
 const metadata = figure.image
@@ -27,7 +28,7 @@ const url = figure.image
 <FigureBlock
   id={`figure-${id}`}
   kind={figure.kind === "table" ? "table" : "chart"}
-  label={figure.title}
+  label={showTitle ? figure.title : undefined}
   caption={figure.caption}
   note={`Source: ${figure.source}`}
 >
