@@ -83,6 +83,10 @@ Denver's gain at $100,000 was 3.3 percentage points. Four of every five listings
 
 October brought more room to negotiate in Denver, including widespread seller concessions. But its median asking price was still $564,900. For a $100,000 household, NAR's modeled buying limit had been about $386,000 back in March, when mortgage rates were lower. A modest discount on a home priced in the mid-$500,000s is unlikely to open that search. The buyers still renewing leases need more homes priced where their paychecks can reach.
 
+![A family lays rolls of sod in the front yard between suburban houses, photographed by Bill Owens.](figures/bill-owens-suburbia-lawn.jpg)
+
+*Bill Owens, I bought the lawn in 6ft rolls…, from Suburbia, 1972. Photograph © Bill Owens. [Artwork details: Etherton Gallery](https://ethertongallery.com/artists/86-bill-owens/works/10247-bill-owens-i-bought-the-lawn-in-6ft-rolls.-it-s-1972/).*
+
 ---
 
 ### Endnotes
