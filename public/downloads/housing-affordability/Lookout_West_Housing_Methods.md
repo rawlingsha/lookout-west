@@ -1,6 +1,10 @@
 # Housing access: methods and source checks
 
-*Lookout West | November 4, 2026*
+*Lookout West | Original analysis: November 4, 2026; publication update: November 6, 2026*
+
+## November 6 publication update
+
+The revised feature adds October asking-price and local sales observations and the November 5 mortgage rate. The March affordability comparisons and their unresolved cross-source discrepancy remain unchanged. The sections below document the original March analysis. The opening payment illustrations are separate from NAR’s model: they assume 20% down, a 30-year fixed mortgage, and principal and interest only. Their inputs, sources, formula and exclusions are documented in endnote 1 of the updated article. The original replication script reproduces the March comparisons and supplementary figures, not the new payment illustrations.
 
 ## Scope
 

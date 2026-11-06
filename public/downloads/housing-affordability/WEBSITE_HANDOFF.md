@@ -1,9 +1,7 @@
 # Website handoff
 
-Use Lookout_West_Housing_Feature_For_Publication.md as the final article.
+The publication article was replaced with the editor’s November 6 version, “What $100k Buys in the West.”
 
-The article uses standard Markdown tables and plain numbered endnote references. Host the included figure, methods note, CSV and Python files and map their relative links to the site's asset routes. Preserve source captions and make wide tables horizontally scrollable on mobile. Keep source URL targets intact and display their linked labels.
+It retains March NAR affordability observations and adds October listing and local sales observations and the November 5 mortgage rate. The opening payment illustrations are distinct from NAR’s affordability model. Source limitations remain in the visible endnotes. The methods note identifies the scope of the original replication code.
 
-The article describes March 2026 observations and is dated November 6, 2026. Its endnotes explicitly disclose the unresolved cross-dataset discrepancy. All affordability comparisons use the NAR tables.
-
-This package is publication material for integration into the website. It does not deploy or publish a page.
+The website uses the existing article layout, four horizontally scrollable tables, linked endnotes, and the March affordability chart. The price-and-size figure remains supplementary.
