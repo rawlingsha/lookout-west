@@ -1,6 +1,6 @@
 ---
 title: "What $100k Buys in the West"
-deck: "Mortgage rates have more than erased the relief from lower asking prices in Denver and Boise. The homes available at a particular income tell a more revealing story than the market's median price."
+deck: "Mortgage rates have more than erased the relief from lower asking prices in Denver and Boise. Looking beyond the housing market's median price."
 publishDate: 2026-11-06
 updatedDate: 2026-11-06
 topic: "Housing"
@@ -19,12 +19,13 @@ seoDescription: "Higher mortgage rates offset lower asking prices in Denver and 
 ---
 
 import ShareableFigure from "../../components/article/ShareableFigure.astro";
+import "../../styles/research-tables.css";
 
 When you shop for a home, the monthly payment you can live with becomes a number in a search box. Everything above that price disappears from the map. Depending on what's left, you might start booking showings or you might just renew your rental lease.
 
 By October, the median asking price around Denver was $10,100 below its March level. Around Boise, it was $15,537 lower. Yet financing either median-priced listing had become more expensive. Freddie Mac's average 30-year fixed mortgage rate stood at 7.18% on November 5, down for three consecutive weeks but still above the 6.38% recorded on March 26.<sup><a href="#housing-note-1" aria-label="Endnote 1">1</a></sup>
 
-<div className="table-scroll" role="region" aria-label="Median asking prices and illustrative monthly mortgage payments" tabIndex={0}>
+<div className="table-scroll research-table research-table--payments" role="region" aria-label="Median asking prices and illustrative monthly mortgage payments" tabIndex={0}>
 
 | Metro | Median asking price, March → October | Monthly principal and interest, March → November |
 |---|---:|---:|
@@ -33,7 +34,11 @@ By October, the median asking price around Denver was $10,100 below its March le
 
 </div>
 
-*Source: Realtor.com and Freddie Mac; Lookout West calculations. Each payment assumes 20% down and a 30-year fixed mortgage. March uses March's median asking price and mortgage rate; November uses October's median asking price and the November 5 rate. The medians describe different sets of listings, not the change in price of an individual home. The Boise asking-price series does not reconcile with NAR's separate March affordability distribution.<sup><a href="#housing-note-6" aria-label="Endnote 6">6</a></sup>*
+<div className="research-table-note">
+
+Source: Realtor.com and Freddie Mac; Lookout West calculations. Each payment assumes 20% down and a 30-year fixed mortgage. March uses March's median asking price and mortgage rate; November uses October's median asking price and the November 5 rate. The medians describe different sets of listings, not the change in price of an individual home. The Boise asking-price series does not reconcile with NAR's separate March affordability distribution.<sup><a href="#housing-note-6" aria-label="Endnote 6">6</a></sup>
+
+</div>
 
 At March asking prices, the rate increase alone would have added about $245 a month in Denver and $266 in Boise. Lower October asking prices offset just $55 and $84 of those increases, respectively.
 
@@ -65,9 +70,9 @@ A $100,000 income also occupies a different place in the two local economies. NA
 
 The same calculation across 33 metropolitan areas in the West and Plains shows why a large gain in affordable listings needs to be read alongside the starting point. Boise had the smallest affordable share at $100,000 among the six metros with the largest gains from a $25,000 increase in income.<sup><a href="#housing-note-7" aria-label="Endnote 7">7</a></sup>
 
-*Six largest gains between $100,000 and $125,000 household incomes — March 2026*
+<p className="research-table-title">Six largest gains between $100,000 and $125,000 household incomes — March 2026</p>
 
-<div className="table-scroll" role="region" aria-label="Six largest gains in affordable listing share" tabIndex={0}>
+<div className="table-scroll research-table research-table--comparison" role="region" aria-label="Six largest gains in affordable listing share" tabIndex={0}>
 
 | Metro | Affordable at $100,000 | Affordable at $125,000 | Gain, percentage points |
 |---|---:|---:|---:|
@@ -80,9 +85,9 @@ The same calculation across 33 metropolitan areas in the West and Plains shows w
 
 </div>
 
-*Three comparison metros — March 2026*
+<p className="research-table-title">Three comparison metros — March 2026</p>
 
-<div className="table-scroll" role="region" aria-label="Three comparison metros" tabIndex={0}>
+<div className="table-scroll research-table research-table--comparison" role="region" aria-label="Three comparison metros" tabIndex={0}>
 
 | Metro | Affordable at $100,000 | Affordable at $125,000 | Gain, percentage points |
 |---|---:|---:|---:|
@@ -92,7 +97,11 @@ The same calculation across 33 metropolitan areas in the West and Plains shows w
 
 </div>
 
-*Source: NAR/Realtor.com; Lookout West calculations. The income amounts are the same, but NAR's modeled buying limits vary by metro.*
+<div className="research-table-note">
+
+Source: NAR/Realtor.com; Lookout West calculations. The income amounts are the same, but NAR's modeled buying limits vary by metro.
+
+</div>
 
 Fresno and El Paso each gained 25.9 percentage points between the two incomes. At $125,000, however, a household could shop fewer than half of Fresno's listings and more than three-quarters of El Paso's. The gain tells us how many homes sit in the next price bracket; the starting share tells us how much choice a household already has.
 
@@ -102,7 +111,7 @@ Wichita offered a $100,000 household access to most listings. Seattle offered a 
 
 Between March 2025 and March 2026, Denver's affordable share increased at every income level below. Boise barely changed at $100,000, and its shares declined at the higher incomes.<sup><a href="#housing-note-8" aria-label="Endnote 8">8</a></sup>
 
-<div className="table-scroll" role="region" aria-label="Affordable listing shares in March 2025 and March 2026" tabIndex={0}>
+<div className="table-scroll research-table research-table--history" role="region" aria-label="Affordable listing shares in March 2025 and March 2026" tabIndex={0}>
 
 | Household income | Denver, March 2025 → 2026 | Boise, March 2025 → 2026 |
 |---|---:|---:|
@@ -113,7 +122,11 @@ Between March 2025 and March 2026, Denver's affordable share increased at every 
 
 </div>
 
-*Source: NAR/Realtor.com. Shares of active listings within each income's modeled buying limit in March of each year.*
+<div className="research-table-note">
+
+Source: NAR/Realtor.com. Shares of active listings within each income's modeled buying limit in March of each year.
+
+</div>
 
 Denver's gain at $100,000 was 3.3 percentage points. Four of every five listings still sat above that household's buying limit. Boise's share scarcely moved. A year of easier borrowing conditions and changing inventory had done little to widen the search for buyers earning $100,000 in either market.
 

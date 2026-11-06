@@ -1,0 +1,145 @@
+/* Editorial data tables: opt-in, keeping the surrounding article typography. */
+.lw-prose .research-table {
+  margin-top: 1.75rem;
+  border: 0;
+  border-top: 2px solid var(--color-accent);
+  border-bottom: 1px solid rgba(74, 93, 68, 0.3);
+  background: rgba(255, 255, 255, 0.45);
+  scrollbar-color: #a5aca0 transparent;
+  scrollbar-width: thin;
+}
+
+.lw-prose .research-table table {
+  min-width: 34rem;
+  table-layout: fixed;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.lw-prose .research-table th,
+.lw-prose .research-table td {
+  padding: 1rem 1.125rem;
+  border-left: 0;
+  border-bottom: 1px solid rgba(74, 93, 68, 0.12);
+  vertical-align: middle;
+}
+
+.lw-prose .research-table thead th {
+  padding-top: 1.125rem;
+  padding-bottom: 1.125rem;
+  background: rgba(74, 93, 68, 0.055);
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-wrap: balance;
+  vertical-align: bottom;
+  border-bottom-color: rgba(74, 93, 68, 0.3);
+}
+
+.lw-prose .research-table th:first-child,
+.lw-prose .research-table td:first-child {
+  text-align: left;
+  width: 25%;
+}
+
+.lw-prose .research-table tbody td:first-child {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.lw-prose .research-table th:not(:first-child),
+.lw-prose .research-table td:not(:first-child) {
+  text-align: right;
+}
+
+.lw-prose .research-table tbody td:not(:first-child) {
+  white-space: nowrap;
+}
+
+.lw-prose .research-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.lw-prose .research-table--comparison tbody td:last-child {
+  color: var(--color-accent);
+  background: rgba(74, 93, 68, 0.035);
+  font-weight: 600;
+}
+
+.lw-prose .research-table--payments table {
+  min-width: 36rem;
+}
+
+.lw-prose .research-table--payments th:first-child,
+.lw-prose .research-table--payments td:first-child {
+  width: 18%;
+}
+
+.lw-prose .research-table--payments td strong {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--color-accent);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.lw-prose .research-table-title {
+  margin-top: 2rem;
+  margin-bottom: 0;
+  font-family: var(--font-serif);
+  color: var(--color-text);
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.45;
+  text-wrap: balance;
+}
+
+.lw-prose .research-table-title + .research-table {
+  margin-top: 0.75rem;
+}
+
+.lw-prose .research-table-note {
+  margin-top: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.lw-prose .research-table-note p {
+  margin: 0;
+  color: var(--color-muted);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-style: normal;
+  line-height: 1.65;
+}
+
+@media (max-width: 40rem) {
+  .lw-prose .research-table th,
+  .lw-prose .research-table td {
+    padding: 0.875rem;
+  }
+
+  .lw-prose .research-table-title {
+    font-size: 1.0625rem;
+  }
+}
+
+@media print {
+  .lw-prose .research-table {
+    overflow: visible;
+  }
+
+  .lw-prose .research-table table {
+    min-width: 0;
+  }
+
+  .lw-prose .research-table tbody td:not(:first-child) {
+    white-space: normal;
+  }
+
+  .lw-prose .research-table tr {
+    break-inside: avoid;
+  }
+}
