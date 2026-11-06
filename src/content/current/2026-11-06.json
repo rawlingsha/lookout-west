@@ -1,0 +1,201 @@
+{
+  "date": "2026-11-06",
+  "draft": false,
+  "deck": "Oil prices fall sharply as election results reshape energy, housing, and tax policy. Data-center restrictions and delayed corn harvests add pressure across the West and Plains.",
+  "signals": [
+    {
+      "id": "oil-prices-election-iran",
+      "topic": "energy",
+      "geography": "West & Plains",
+      "headline": "Oil prices tumble 12% as election shifts Iran war expectations",
+      "body": "Oil markets recorded a sharp reversal this week as traders reassessed the prospects for the war with Iran following Tuesday's midterm elections. By early Friday, West Texas Intermediate futures were trading near $92 a barrel, on course for a weekly decline of approximately 12%. Brent crude was heading for a similar fall. The selloff accelerated Wednesday, when prices dropped 8% following Democratic victories in Congress. Markets appear to be pricing in greater prospects for de-escalation and the eventual restoration of Middle Eastern oil supplies, although tanker attacks near the Strait of Hormuz continued through Thursday. For Texas, New Mexico, Wyoming, and Alaska, sustained lower prices would weigh on producers and future petroleum revenue. Western households and businesses stand to benefit from lower fuel costs, though retail prices typically respond more slowly.",
+      "source": {
+        "label": "Reuters",
+        "url": "https://www.reuters.com/business/energy/oil-set-sharp-weekly-drop-middle-east-supply-concerns-provide-floor-2026-11-06/",
+        "date": "2026-11-06"
+      }
+    },
+    {
+      "id": "data-center-election-restrictions",
+      "topic": "growth",
+      "geography": "Texas · West & Plains",
+      "headline": "Data-center backlash spreads from Texas to the Plains",
+      "body": "Voters delivered a setback to data-center developers on November 3. In Texas, Gina Hinojosa defeated Governor Greg Abbott after promising to suspend new approvals until lawmakers establish stronger protections for communities and electricity customers. Abbott had already frozen certain permits and grid connections, so the election raises the possibility of extending restrictions rather than introducing them from scratch. The opposition extended well beyond Texas. Of 41 local measures tracked by Ballotpedia, 40 favored limits on development or rejected proposals supporting it. Kansas communities approved restrictions on large facilities, while nearly 71% of voters in Boulder City, Nevada, rejected allowing data centers on designated municipal land. These were not 40 outright bans; their legal consequences vary. But the results create a more difficult permitting environment for an industry underpinning substantial U.S. construction and equipment investment.",
+      "source": {
+        "label": "The Texas Tribune",
+        "url": "https://www.texastribune.org/2026/11/04/data-center-texas-pause-gina-hinojosa-governor-policies/",
+        "date": "2026-11-04"
+      },
+      "additionalSources": [
+        {
+          "label": "Reuters",
+          "url": "https://www.reuters.com/world/us/google-plans-17-billion-wyoming-data-center-amid-rising-threats-curbs-2026-11-05/",
+          "date": "2026-11-05"
+        },
+        {
+          "label": "Las Vegas Review-Journal",
+          "url": "https://www.reviewjournal.com/news/politics-and-government/boulder-city-rejects-data-centers-in-ballot-question-vote-3909851/",
+          "date": "2026-11-04"
+        }
+      ]
+    },
+    {
+      "id": "california-housing-finance",
+      "topic": "housing",
+      "geography": "California",
+      "headline": "California voters authorize $36 billion in housing finance",
+      "body": "California voters approved two large housing-finance measures Tuesday, authorizing a combined $36.25 billion in potential borrowing. Proposition 1 permits $11.25 billion in general obligation bonds, mostly for affordable rental housing, rehabilitation, and homeownership assistance. Proposition 37 establishes a separate program authorizing up to $25 billion in revenue bonds to help qualifying middle-income buyers purchase newly built homes. Unlike Proposition 1, those bonds are intended to be repaid through borrowers' mortgage payments. The Legislative Analyst estimates that Proposition 1 will cost the state $500 million to $600 million annually for roughly 25 years. The measures could support construction and help households enter California's expensive housing market. Their success depends on how effectively financing translates into additional homes: greater purchasing power alone can raise prices where supply remains constrained.",
+      "source": {
+        "label": "CalMatters",
+        "url": "https://calmatters.org/politics/2026/11/california-election-2026-props-1-37/",
+        "date": "2026-11-03"
+      },
+      "additionalSources": [
+        {
+          "label": "California Secretary of State, Proposition 1",
+          "url": "https://voterguide.sos.ca.gov/propositions/1/title-summary.htm"
+        },
+        {
+          "label": "Proposition 37",
+          "url": "https://voterguide.sos.ca.gov/propositions/37/title-summary.htm"
+        }
+      ]
+    },
+    {
+      "id": "colorado-graduated-income-tax",
+      "topic": "finance",
+      "geography": "Colorado",
+      "headline": "Colorado narrowly backs a graduated income tax",
+      "body": "Colorado's decades-old flat income tax appears headed for replacement after Amendment 87 secured a narrow lead in Tuesday's election. With roughly 92% of precincts reporting Thursday evening, the measure had approximately 51.2% support. It would replace the current 4.4% rate with six graduated rates ranging from 3.7% to 8.4%, reducing liabilities for many taxpayers while raising them for higher earners and businesses. State estimates put the additional annual revenue at approximately $2.7 billion, earmarked for education, healthcare, and early childhood programs. Although Colorado ordinarily requires 55% approval for constitutional changes, Amendment 87 qualifies for the simple-majority exception because its constitutional component repeals existing language. The remaining vote count matters given the narrow margin. If confirmed, the result would represent one of Colorado's most consequential tax-policy changes in decades.",
+      "source": {
+        "label": "Colorado Legislative Council, 2026 Blue Book",
+        "url": "https://content.leg.colorado.gov/sites/default/files/2026-bluebook-english-accessible_1.pdf",
+        "date": "2026-09-10"
+      },
+      "additionalSources": [
+        {
+          "label": "Axios Denver",
+          "url": "https://www.axios.com/local/denver/2026/11/05/colorado-voters-approve-amendment-87-graduated-income-tax",
+          "date": "2026-11-05"
+        }
+      ]
+    },
+    {
+      "id": "front-range-rail-tax",
+      "topic": "growth",
+      "geography": "Colorado",
+      "headline": "Front Range voters approve $295 million annual rail tax",
+      "body": "Voters along Colorado's Front Range approved Ballot Issue 7A on November 3, authorizing a permanent 0.333% sales and use tax expected to raise approximately $295 million annually. The measure also permits up to $580 million in borrowing to develop passenger rail service between Fort Collins and Pueblo. The northern segment, connecting Denver and Fort Collins, is already funded separately and targeted for initial service in 2029. The new revenue primarily supports extending the route south through Colorado Springs, with service currently targeted for 2032, along with greater train frequency and station improvements. The investment could improve commuting options and expand access to regional employment markets along Interstate 25. Those benefits remain contingent on ridership and project delivery. The tax creates a lasting local funding commitment well before the full line begins operating.",
+      "source": {
+        "label": "The Denver Gazette",
+        "url": "https://www.denvergazette.com/2026/11/05/permanent-sales-tax-for-coco-passenger-rail-service-approved/",
+        "date": "2026-11-05"
+      },
+      "additionalSources": [
+        {
+          "label": "Colorado Public Radio",
+          "url": "https://www.cpr.org/2026/09/25/vg-2026-ballot-measure-7a-front-range-rail/",
+          "date": "2026-09-25"
+        }
+      ]
+    },
+    {
+      "id": "california-billionaire-tax",
+      "topic": "finance",
+      "geography": "California",
+      "headline": "California's billionaire tax trails as competing restrictions lead",
+      "body": "California voters appear unlikely to adopt a proposed one-time tax on billionaire wealth. As of Thursday evening, Proposition 40 trailed with approximately 45% support, while Proposition 42, which would constitutionally prohibit new state taxes on financial and other personal assets and restrict retroactive taxation, led with roughly 53%. The results remain unofficial. Proposition 40 would have imposed a 5% levy on covered wealth above $1 billion, with proceeds supporting healthcare and other public services. Its opponents argued that the tax would encourage wealthy residents to relocate and undermine California's investment climate, although the scale of that response remains uncertain. Passage of Proposition 42 would constrain future efforts to tax asset ownership, including proposals designed to raise revenue without increasing income tax rates. The vote has substantial implications for California's future fiscal options.",
+      "source": {
+        "label": "CalMatters",
+        "url": "https://calmatters.org/health/2026/11/california-election-2026-prop-40-41-42/"
+      },
+      "additionalSources": [
+        {
+          "label": "KQED election results",
+          "url": "https://www.kqed.org/elections/results/california/proposition-42/",
+          "date": "2026-11-05"
+        },
+        {
+          "label": "California Secretary of State",
+          "url": "https://voterguide.sos.ca.gov/propositions/42/title-summary.htm"
+        }
+      ]
+    },
+    {
+      "id": "texas-railroad-commission-election",
+      "topic": "energy",
+      "geography": "Texas",
+      "headline": "Texas elects its first Democratic oil regulator since 1990",
+      "body": "Texas voters elected Democrat Jon Rosenthal to the Railroad Commission on November 3, ending 36 years without Democratic representation on the state's oil and gas regulatory body. Rosenthal, a former oilfield engineer and state legislator, defeated Republican Bo French with approximately 52% of the vote. The commission oversees drilling regulations, pipelines, abandoned wells, and oilfield wastewater disposal across the nation's largest petroleum-producing state. Rosenthal has called for stronger enforcement and greater attention to problems associated with wastewater injection and orphaned wells. Republicans will retain two of the commission's three seats, limiting his ability to change regulations independently. Nevertheless, the election places a new voice inside an agency whose decisions influence production costs, environmental liabilities, and the pace of energy development throughout Texas. No immediate regulatory change follows automatically from the result.",
+      "source": {
+        "label": "The Texas Tribune",
+        "url": "https://www.texastribune.org/2026/11/03/texas-jon-rosenthal-bo-french-railroad-commission-elections-2026/",
+        "date": "2026-11-03"
+      },
+      "additionalSources": [
+        {
+          "label": "Texas Secretary of State",
+          "url": "https://electionresults.sos.state.tx.us/results.html",
+          "date": "2026-11-05"
+        }
+      ]
+    },
+    {
+      "id": "colorado-tax-refunds",
+      "topic": "finance",
+      "geography": "Colorado",
+      "headline": "Colorado voters redirect hundreds of millions in tax refunds",
+      "body": "Colorado voters approved Proposition NN on November 3, allowing the state to retain more revenue that would otherwise be returned to taxpayers under the Taxpayer's Bill of Rights. The state's nonpartisan fiscal analysis estimates that TABOR refunds will fall by approximately $330 million in fiscal year 2026–27 and $521 million the following year. The retained funds initially support property-tax reimbursements, K–12 education, and programs serving children. The measure does not increase statutory tax rates. Its economic effect comes from redirecting revenue already collected, increasing resources available for public services while reducing money that would otherwise return to households. The distinction matters for evaluating its consequences: additional government spending is partly offset by smaller taxpayer refunds. How effectively the retained funds improve educational outcomes and services will determine whether the change produces lasting economic benefits.",
+      "source": {
+        "label": "Colorado Legislative Council, Fiscal Impact Statement",
+        "url": "https://content.leg.colorado.gov/sites/default/files/2026-fiscal-impact-statements-english-accessible.pdf",
+        "date": "2026-09-10"
+      },
+      "additionalSources": [
+        {
+          "label": "Axios Denver",
+          "url": "https://www.axios.com/local/denver/2026/11/05/colorado-ballot-measure-results",
+          "date": "2026-11-05"
+        }
+      ]
+    },
+    {
+      "id": "south-dakota-medicaid-expansion",
+      "topic": "policy",
+      "geography": "South Dakota",
+      "headline": "South Dakota voters preserve Medicaid expansion's constitutional guarantee",
+      "body": "South Dakota voters rejected Amendment I on November 3, preserving the state's constitutional obligation to maintain expanded Medicaid eligibility even if the federal contribution falls below 90%. Unofficial results showed approximately 56% voting against the amendment. The state adopted Medicaid expansion through a 2022 referendum, and the program has since extended coverage to thousands of lower-income residents. Amendment I would have allowed the state to repeal its expansion requirement if Washington reduced the federal funding share. Its defeat preserves the existing coverage guarantee but also leaves South Dakota exposed to potentially higher state expenditures if federal support declines. For rural hospitals, continued Medicaid eligibility can help reduce uncompensated care and protect an important revenue stream. The vote maintains an existing program; it does not create a new expansion or eliminate the possibility of future federal funding changes.",
+      "source": {
+        "label": "South Dakota Secretary of State",
+        "url": "https://electionresults.sd.gov/resultsSW.aspx?lv=true&type=BQ",
+        "date": "2026-11-05"
+      },
+      "additionalSources": [
+        {
+          "label": "South Dakota Association of Healthcare Organizations",
+          "url": "https://sdaho.org/2026/11/04/south-dakota-election-results-a-positive-outlook-for-health-care/",
+          "date": "2026-11-04"
+        }
+      ]
+    },
+    {
+      "id": "plains-corn-harvest",
+      "topic": "land",
+      "geography": "Great Plains",
+      "headline": "Corn harvests lag across the Western Corn Belt",
+      "body": "USDA's November 2 Crop Progress report showed that corn harvesting remained behind its normal pace in several major Plains producing states. Iowa had harvested 66% of its crop by November 1, compared with a five-year average of 79%. Nebraska stood at 66% against 75% normally, while South Dakota reached 63% against 75%. Nationally, harvesting advanced 14 percentage points in one week to 74%, narrowing the gap with the five-year average to three points. Soybean harvesting, by contrast, was running ahead of normal. Delayed corn harvesting can increase drying, machinery, and labor expenses, particularly when energy prices are already elevated. Additional fieldwork can also postpone preparations for next season. The figures establish increased operational pressure in affected states, though they do not demonstrate that final production or farm receipts will necessarily decline.",
+      "source": {
+        "label": "USDA National Agricultural Statistics Service, Crop Progress",
+        "url": "https://www.nass.usda.gov/Publications/Todays_Reports/reports/prog4426.pdf",
+        "date": "2026-11-02"
+      },
+      "additionalSources": [
+        {
+          "label": "Iowa Department of Agriculture",
+          "url": "https://iowaagriculture.gov/news/crop-progress-report-11-2-2026",
+          "date": "2026-11-02"
+        }
+      ]
+    }
+  ]
+}
