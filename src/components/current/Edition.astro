@@ -121,6 +121,14 @@ const images = canShare ? currentShareImages(edition.date) : undefined;
       ))
     }
   </ol>
+  {
+    edition.researchCutoff && (
+      <p class="current-source">
+        The Current is published weekly by Lookout West. Research cutoff:{" "}
+        {edition.researchCutoff}.
+      </p>
+    )
+  }
   <footer class="current-completion">
     <p>
       That’s The Current for {currentDate(edition.date).split(",")[0]}.

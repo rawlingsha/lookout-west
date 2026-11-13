@@ -1,0 +1,156 @@
+{
+  "date": "2026-11-13",
+  "draft": false,
+  "deck": "Inflation adds pressure on borrowing costs as SpaceX proposes more than $74 billion in Western AI campuses. Record port traffic, weaker home sales, and autumn water relief round out the week.",
+  "researchCutoff": "November 13, 2026, 5:00 a.m. Mountain Time",
+  "signals": [
+    {
+      "id": "october-inflation-pressure",
+      "topic": "finance",
+      "geography": "American West",
+      "headline": "Consumer prices rise 0.4%, adding pressure on borrowing costs",
+      "body": "Consumer prices rose 0.4% in October, according to Tuesday’s Bureau of Labor Statistics report, exceeding expectations and extending a difficult stretch for inflation. Core prices increased 0.3% for the third consecutive month. Shelter accounted for more than 30% of the overall monthly increase, while food prices rose 0.5% and energy prices increased 0.7%. The agency could not calculate its usual year-over-year inflation rate because comparable October 2025 data were unavailable following last year’s government shutdown. Private estimates put annual inflation near 4%, though those are not official figures. The report strengthened expectations of another Federal Reserve rate increase in December. For Western households and businesses, the consequences extend beyond higher consumer prices: tighter monetary policy would prolong pressure on mortgage affordability, commercial development, and other interest-sensitive investment.",
+      "source": {
+        "label": "Bureau of Labor Statistics",
+        "url": "https://www.bls.gov/news.release/archives/cpi_11102026.htm",
+        "date": "2026-11-10"
+      },
+      "additionalSources": [
+        {
+          "label": "Reuters",
+          "url": "https://www.reuters.com/business/view-hot-october-inflation-report-rattles-markets-2026-11-10/",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    {
+      "id": "spacex-texas-arizona-computing",
+      "topic": "growth",
+      "geography": "Texas · Arizona",
+      "headline": "SpaceX proposes more than $74 billion in AI computing campuses",
+      "body": "SpaceX announced Thursday that it plans to invest more than $74 billion in two large AI computing campuses: over $24 billion at Starbase in South Texas and approximately $50 billion in Cochise County, Arizona. The Texas development would generate its own electricity, including through a proposed natural-gas power plant, rather than depend on the public grid. The Arizona proposal could support 5,500 construction jobs and 1,000 permanent positions, according to the company, but still requires county approval. Local opposition is substantial: roughly 2,400 people have signed a petition against the project. SpaceX says it would use dry cooling and avoid industrial groundwater withdrawals. The announcement illustrates both the scale of prospective AI investment and its dependence on local permitting, electricity, and water arrangements. The figures are proposed multiyear spending, not capital already deployed.",
+      "source": {
+        "label": "Reuters",
+        "url": "https://www.reuters.com/business/media-telecom/spacex-invest-over-74-billion-supercompute-facilities-texas-arizona-2026-11-12/",
+        "date": "2026-11-12"
+      }
+    },
+    {
+      "id": "los-angeles-record-october-cargo",
+      "topic": "growth",
+      "geography": "Southern California",
+      "headline": "Port of Los Angeles records its busiest October",
+      "body": "The Port of Los Angeles handled 1,026,872 twenty-foot equivalent units in October, its busiest October on record and second-largest month ever. The November 12 release marked the first time the nation’s busiest container port has processed more than one million units in consecutive months, following September’s all-time record of 1,042,652. From June through October, nearly five million containers moved through the port, the strongest five-month stretch in its history. The volumes suggest that importers and logistics networks have continued moving substantial quantities of merchandise despite tariffs, geopolitical disruptions, and uncertainty about consumer demand. Strong throughput supports Southern California’s transportation, warehousing, and distribution industries. But container traffic measures physical trade activity, not necessarily final domestic spending, and some shipments may reflect inventory rebuilding or changing trade routes.",
+      "source": {
+        "label": "Port of Los Angeles",
+        "url": "https://portoflosangeles.org/references/2026-news-releases/news_111226_oct_cargo",
+        "date": "2026-11-12"
+      },
+      "additionalSources": [
+        {
+          "label": "gCaptain",
+          "url": "https://gcaptain.com/port-of-los-angeles-sets-october-cargo-record-as-strike-threat-and-rail-delays-loom/",
+          "date": "2026-11-12"
+        }
+      ]
+    },
+    {
+      "id": "senate-energy-permitting",
+      "topic": "policy",
+      "geography": "American West",
+      "headline": "Senate advances energy permitting legislation in 73–25 vote",
+      "body": "The Senate voted 73–25 this week to advance bipartisan legislation intended to accelerate federal approvals for energy and infrastructure projects. The proposal would change permitting procedures affecting electricity generation, transmission, fossil-fuel infrastructure, and large industrial developments, including data centers. Supporters argue that lengthy reviews and litigation delay investment and constrain electricity supply. Environmental groups and some lawmakers warn that the legislation could weaken oversight and restrict opportunities to challenge projects. The stakes are particularly high in Western states, where extensive federal land ownership and major energy resources make federal authorization central to development. Faster permitting could shorten project timelines and reduce financing uncertainty, but it would not resolve shortages of equipment, labor, or transmission capacity. The Senate vote advances the legislation; it does not enact the proposed changes.",
+      "source": {
+        "label": "Associated Press",
+        "url": "https://apnews.com/article/c6290598e26a7b01622e5c4eec571516",
+        "date": "2026-11-10"
+      }
+    },
+    {
+      "id": "home-sales-sixteen-year-low",
+      "topic": "housing",
+      "geography": "American West",
+      "headline": "Existing-home sales fall to their weakest pace since 2010",
+      "body": "Existing-home sales fell 5.5% in October to a seasonally adjusted annual rate of 3.75 million, the National Association of Realtors reported Thursday. That was the weakest pace since August 2010 and below economists’ expectations. Sales declined across the West, South, and Midwest, while remaining unchanged in the Northeast. Inventory increased to 1.59 million homes, equivalent to 5.1 months of supply, its highest level in nearly eleven years. The national median existing-home price still rose 0.4% from a year earlier to $421,900, a record for October. Mortgage rates averaging above 7% continue to limit purchasing power and discourage existing owners from moving. For expensive Western markets, the combination of weak transactions and rising inventory may create additional negotiating room for buyers, though local conditions vary considerably.",
+      "source": {
+        "label": "Reuters",
+        "url": "https://www.reuters.com/business/us-existing-home-sales-slump-more-than-16-year-low-october-2026-11-12/",
+        "date": "2026-11-12"
+      }
+    },
+    {
+      "id": "interior-federal-land-transfers",
+      "topic": "land",
+      "geography": "American West",
+      "headline": "Interior plan calls for expanded federal land transfers and sales",
+      "body": "The Interior Department’s new five-year strategic plan proposes expanding transfers and sales of federally managed land to states, tribes, and local governments. Released this week, the 2026–2030 plan calls for reducing the federal estate while concentrating resources on lands considered nationally significant. Interior manages more than 750,000 square miles, overwhelmingly concentrated in Western states, making even limited changes potentially consequential for development, recreation, grazing, and resource extraction. The proposal does not identify specific parcels for sale or establish an immediate disposal program. Federal law restricts which lands may be sold and under what conditions, while similar proposals have encountered bipartisan opposition. The economic consequences would depend heavily on location and future use: land transfers could create development opportunities but also alter public access, conservation arrangements, and revenue streams tied to federal ownership.",
+      "source": {
+        "label": "Associated Press",
+        "url": "https://apnews.com/article/9c6078b69f8525ab1b220e5aa321d62f",
+        "date": "2026-11-12"
+      }
+    },
+    {
+      "id": "arena-energy-offshore-loan",
+      "topic": "energy",
+      "geography": "Texas · Gulf Coast",
+      "headline": "Energy Department finalizes $480 million offshore oil and gas loan",
+      "body": "The Energy Department finalized a $480 million loan Tuesday to Texas-based Arena Energy for modernization of 22 offshore oil and gas platforms in the Gulf of Mexico. It is the department’s first completed loan specifically supporting domestic petroleum production. The administration estimates that the project could eventually add up to 38,600 barrels of oil and 77 million cubic feet of natural gas per day at peak output, while generating an additional $1.6 billion in federal royalties over ten years. Those figures are projections rather than realized production or receipts. The loan is notable because federal energy financing has historically focused more heavily on emerging technologies and other projects facing commercial financing barriers. The agreement extends government-backed capital into conventional oil and gas, potentially affecting investment opportunities for Gulf Coast producers and service companies.",
+      "source": {
+        "label": "Reuters",
+        "url": "https://www.reuters.com/business/energy/trump-admin-pouring-480-million-loan-into-gulf-mexico-oil-gas-project-fox-2026-11-10/",
+        "date": "2026-11-10"
+      }
+    },
+    {
+      "id": "southwest-rainfall-reservoir-relief",
+      "topic": "water",
+      "geography": "Colorado River Basin",
+      "headline": "Autumn storms lift Lake Powell more than 20 feet",
+      "body": "Heavy rainfall and flooding across the Southwest have delivered an unusual autumn boost to regional water supplies. Lake Powell rose more than 20 feet from its September low following storms in late October and early November, according to reporting published this week. Additional runoff could contribute more than 1.2 million acre-feet to the reservoir system, although the eventual volume remains uncertain. Flagstaff’s Upper Lake Mary also gained more than three billion gallons, while Pagosa Springs lifted water restrictions following the rainfall. The improvement matters for municipal water systems, agriculture, and hydropower generation across the Colorado River Basin. But Lake Powell remains only slightly more than one-quarter full, and the storms do not reverse decades of structural water scarcity. Planned federal reductions to Lower Basin water deliveries remain in place.",
+      "source": {
+        "label": "Associated Press",
+        "url": "https://apnews.com/article/a71ee754e28e2bb12a9687420ea1d5fb",
+        "date": "2026-11-09"
+      }
+    },
+    {
+      "id": "colorado-population-growth-slows",
+      "topic": "growth",
+      "geography": "Colorado",
+      "headline": "Colorado population growth slows as net migration dwindles",
+      "body": "New state demographic estimates highlighted a substantial slowdown in Colorado’s population growth this week. The state added approximately 23,725 residents during the year ending July 2025, less than one-third of the previous year’s revised gain of 75,892. Natural population growth accounted for most of the increase, while net migration contributed only about 3,000 residents. The figures accompany a striking housing affordability gap: approximately 34% of households spend more than 30% of their income on housing, and analysts estimate that a household needs about $153,700 annually to afford a median-priced home. Colorado added 36,456 housing units over the reporting year, but that construction does not eliminate the accumulated affordability problem. Slower migration could ease some demand pressures while also limiting labor-force growth, business expansion, and the state’s longer-run economic momentum.",
+      "source": {
+        "label": "Colorado State Demography Office",
+        "url": "https://demography.dola.colorado.gov/",
+        "date": "2026-11-06"
+      },
+      "additionalSources": [
+        {
+          "label": "Axios Denver",
+          "url": "https://www.axios.com/local/denver/2026/11/12/colorado-population-growth-housing-costs-economic-job-losses",
+          "date": "2026-11-12"
+        }
+      ]
+    },
+    {
+      "id": "plains-harvest-wheat-divergence",
+      "topic": "land",
+      "geography": "Great Plains",
+      "headline": "Corn harvest lags as Southern Plains wheat conditions improve",
+      "body": "USDA’s November 9 Crop Progress report showed an increasingly uneven end to the growing season. National corn harvesting reached 81% as of November 8, compared with a five-year average of 86%. Iowa remained particularly far behind, at 72% against its normal 89%. Soybean harvesting, by contrast, reached 92%, slightly ahead of average. Conditions improved for newly planted winter wheat: 49% of the crop was rated good or excellent, up five percentage points in a week and well above the five-year average of 37%. Recent rainfall across Kansas, Oklahoma, and Texas helped improve crop prospects in the Southern Plains. The contrast matters for farm finances. Delayed corn harvesting can increase drying and equipment expenses, while better wheat conditions may support future production. Neither development alone establishes final yields or farm profitability.",
+      "source": {
+        "label": "USDA National Agricultural Statistics Service",
+        "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+        "date": "2026-11-09"
+      },
+      "additionalSources": [
+        {
+          "label": "DTN",
+          "url": "https://www.dtnpf.com/agriculture/web/AG/news/article/2026/11/09/usda-crop-progress-corn-81-harvested",
+          "date": "2026-11-09"
+        }
+      ]
+    }
+  ]
+}

@@ -27,6 +27,7 @@ export const currentSchema = z
     ...socialFields,
     draft: z.boolean().default(false),
     deck: z.string().optional(),
+    researchCutoff: z.string().min(1).optional(),
     readTime: z.number().int().positive().optional(),
     signals: z
       .array(
