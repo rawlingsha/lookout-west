@@ -137,5 +137,15 @@
     "source": "NAR/Realtor.com, Metro Area Affordability Listings, May 2026; Lookout West calculations.",
     "image": "/images/research/housing-affordability/01_buying_options_web.png",
     "alt": "Denver leads Boise at $75,000 and $100,000 household income. At $100,000, 19.6% of Denver listings and 11.7% of Boise listings are affordable; at $125,000, the shares rise to 33.3% and 35.2%."
+  },
+  {
+    "id": "washington-winter-outlook",
+    "article": "el-nino-winter",
+    "kind": "chart",
+    "title": "Higher odds of a warm winter in the Northwest",
+    "caption": "October 15 and November 19 outlooks for average temperatures in December 2026–February 2027. Above-normal means the warmest third of winters; normal refers to 1991–2020.",
+    "source": "NOAA Climate Prediction Center seasonal outlook GIS files, issued October 15 and November 19, 2026; Lookout West.",
+    "image": "/images/research/el-nino-winter/washington-winter-outlook.png",
+    "alt": "Two Northwest maps compare winter temperature outlooks. Washington is in the 50–59% above-normal probability band in October; by November, most of the state is in the 60–69% band. Equal chances means above-, near- and below-normal temperatures are equally likely."
   }
 ]
