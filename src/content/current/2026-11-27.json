@@ -1,0 +1,141 @@
+{
+  "date": "2026-11-27",
+  "draft": false,
+  "deck": "Proposed tariffs renew trade uncertainty as cattle placements fall and Pacific Coast home prices soften. Data-center investment, inflation, drought relief, and consumer confidence round out the week.",
+  "signals": [
+    {
+      "id": "proposed-trading-partner-tariffs",
+      "topic": "policy",
+      "geography": "American West & Plains",
+      "headline": "The U.S. proposes new tariffs on 14 trading partners",
+      "body": "The Trump administration proposed new tariffs of up to 20% on imports from 14 economies Wednesday, following investigations into industrial overcapacity and unfair trade practices. China faces a proposed rate of 20%, while rates for the European Union, South Korea and Taiwan would generally be capped at 15%. Several of the proposed duties would replace existing tariffs rather than add to them. The distinction matters for Western manufacturers purchasing imported machinery and electronics, as well as agricultural producers vulnerable to retaliatory trade measures. California's ports and distribution networks would also be exposed to changes in import volumes and sourcing decisions. The proposals remain subject to consultation, with implementation possible in early 2027. For Plains exporters, the immediate concern is renewed uncertainty over foreign market access rather than an enacted increase in tariffs.",
+      "source": {
+        "label": "The Guardian",
+        "url": "https://www.theguardian.com/business/live/2026/nov/25/rise-energy-bills-britain-2166-impossible-high-millions-households-stocks-tumble-as-ai-rally-fizzles-live-updates",
+        "date": "2026-11-25"
+      }
+    },
+    {
+      "id": "october-cattle-placements",
+      "topic": "land",
+      "geography": "Great Plains",
+      "headline": "October cattle placements fall to a 30-year low",
+      "body": "American feedlots placed 1.89 million cattle in October, 7% fewer than a year earlier and the lowest October total since USDA began its comparable series in 1996. The November cattle-on-feed report also showed that October marketings fell 5% to 1.62 million head, another record low for the month. Approximately 11.6 million cattle remained on feed at the beginning of November, down 1% from a year earlier. The figures are particularly consequential for Texas, Nebraska, Kansas and Colorado, where feedlots and meatpacking plants form an important part of the agricultural economy. Fewer cattle entering feedlots today constrain the number available for slaughter in subsequent months. That can support cattle prices while leaving processors with fewer animals over which to spread their substantial operating costs.",
+      "source": {
+        "label": "Successful Farming, reporting USDA cattle-on-feed figures",
+        "url": "https://www.agriculture.com/3-big-things-today-nov-23-2026-12274164",
+        "date": "2026-11-23"
+      }
+    },
+    {
+      "id": "pacific-coast-home-prices",
+      "topic": "housing",
+      "geography": "Pacific Coast",
+      "headline": "Pacific Coast home prices fall as national prices rise",
+      "body": "The Federal Housing Finance Agency reported Tuesday that American single-family home prices were unchanged in September and remained 2.5% above their level a year earlier. The Pacific division, however, recorded a 0.8% monthly decline and was the only one of the country's nine census divisions where prices fell over the preceding year, down 0.4%. The division encompasses California, Oregon, Washington, Alaska and Hawaii. With average 30-year mortgage rates above 7%, even modest price declines offer limited relief to prospective buyers in expensive coastal markets. Existing homeowners with substantially cheaper mortgages also have little incentive to move. The result is a housing market in which weaker demand can depress prices and transactions without necessarily bringing enough additional homes onto the market to materially improve affordability.",
+      "source": {
+        "label": "Reuters, reporting FHFA house price figures",
+        "url": "https://www.reuters.com/business/us-single-family-home-prices-flat-september-fhfa-says-2026-11-24/",
+        "date": "2026-11-24"
+      }
+    },
+    {
+      "id": "microsoft-wyoming-grid-financing",
+      "topic": "energy",
+      "geography": "Wyoming",
+      "headline": "Microsoft agrees to finance grid infrastructure for three Wyoming data centers",
+      "body": "Cheyenne Light, Fuel and Power filed three infrastructure agreements with federal electricity regulators Tuesday covering planned Microsoft data centers in Wyoming. Under the agreements, Microsoft would finance grid infrastructure needed to serve its facilities. The utility's existing peak electricity demand is approximately 439 megawatts, while its prospective data-center pipeline is measured in gigawatts. That disparity helps explain why the allocation of infrastructure costs has become such an important question for Wyoming's electricity customers. Requiring developers to finance facilities built specifically for their operations could reduce the risk that households and existing businesses subsidize the expansion. The filings concern the financing arrangements for previously planned developments, not three newly announced data-center investments. They also do not establish that every future generation and transmission expense will be borne by Microsoft.",
+      "source": {
+        "label": "Voltgrid News, reporting federal regulatory filings",
+        "url": "https://voltgridnews.com/story/cheyenne-light-files-3-microsoft-data-center-agreements-at-ferc",
+        "date": "2026-11-25"
+      }
+    },
+    {
+      "id": "growth-inflation-revisions",
+      "topic": "finance",
+      "geography": "American West & Plains",
+      "headline": "Economic growth revised sharply higher as inflation accelerates",
+      "body": "The federal government's revised estimate of third-quarter economic growth rose Wednesday to an annualized 4.3%, considerably above the initial estimate of 3.4%. Consumer spending grew at a 4.2% annualized rate, while business equipment investment expanded 21.8%. Separate figures showed annual inflation, measured by the personal consumption expenditures price index, reaching 3.8% in October. Core inflation rose to 3.3%. The combination is important for the West, where technology investment is supporting demand for construction, electricity and industrial equipment even as expensive borrowing restrains residential development. Stronger national growth offers little assurance of relief from high mortgage rates if inflation remains elevated. The figures strengthen the case for further monetary tightening, although the Federal Reserve's December decision remains uncertain.",
+      "source": {
+        "label": "Reuters, reporting federal GDP and inflation releases",
+        "url": "https://www.reuters.com/business/us-inflation-rises-further-october-2026-11-25/",
+        "date": "2026-11-25"
+      }
+    },
+    {
+      "id": "goldman-data-center-capacity-forecast",
+      "topic": "energy",
+      "geography": "American West & Plains",
+      "headline": "Goldman projects another 52 gigawatts of data-center capacity in 2028",
+      "body": "Goldman Sachs published a new assessment Tuesday estimating that an additional 52 gigawatts of American data-center power capacity could come online in 2028 alone. The bank estimates that data-center electricity demand and capacity have increased nearly 30% this year, accounting for more than one-third of national electricity demand growth. The forecast has particular relevance for the natural gas fields of Texas, New Mexico and Wyoming, where producers could benefit from additional demand for gas-fired electricity generation. It also points to potentially greater competition for fuel between industrial customers, electricity generators and households. The estimate is a forecast rather than a tally of financed or permitted facilities. Its realization depends on the ability of developers to secure capital, equipment, electricity connections and local approval on an unusually compressed timetable.",
+      "source": {
+        "label": "Reuters",
+        "url": "https://www.reuters.com/business/energy/goldman-says-us-data-center-boom-through-2028-will-lift-power-gas-demand-2026-11-25/",
+        "date": "2026-11-25"
+      }
+    },
+    {
+      "id": "gridai-pronghorn-acquisition",
+      "topic": "energy",
+      "geography": "Wyoming",
+      "headline": "GridAI completes acquisition of Wyoming natural gas producer",
+      "body": "GridAI completed its acquisition of Wyoming natural gas producer Pronghorn Resources, according to reporting Monday. The acquired operations include approximately 100 million cubic feet of daily natural gas production and more than 450 miles of pipelines. GridAI is targeting 300 megawatts of dedicated electricity capacity for data centers in 2027. Unlike many of the prospective computing investments announced in Wyoming this year, the acquisition involves existing producing assets and transportation infrastructure. The strategy would bring fuel production and electricity supply under closer common ownership, potentially reducing dependence on outside gas suppliers and public electricity networks. Whether that translates into lower computing costs depends on generation expenses, gas production economics and the company's ability to secure customers. The acquisition is complete; the proposed electricity capacity has yet to enter service.",
+      "source": {
+        "label": "Wyoming Business Journal",
+        "url": "https://www.wyomingbusinessjournal.com/executive-report",
+        "date": "2026-11-23"
+      }
+    },
+    {
+      "id": "western-drought-relief",
+      "topic": "water",
+      "geography": "American West",
+      "headline": "California and the Mountain West receive substantial drought relief",
+      "body": "The November 25 federal drought assessment documented further improvements across California, Nevada, Utah and New Mexico following a series of Pacific storms. Some locations in the Sierra Nevada received more than three feet of snow, with substantial accumulations also reported in parts of the Rockies and Great Basin. Drought conditions improved across portions of southern and eastern Texas as well. The precipitation arrives early enough in the winter accumulation season to begin rebuilding mountain snow reserves that supply Western farms, cities and hydroelectric facilities. Its economic value will depend partly on whether that snow remains in place through spring. Severe drought persists in several Western states, including parts of the Colorado River Basin. This week's improvements are encouraging for water users, but they are not yet a basis for increasing next summer's expected water allocations.",
+      "source": {
+        "label": "National Integrated Drought Information System",
+        "url": "https://www.drought.gov/national",
+        "date": "2026-11-25"
+      },
+      "additionalSources": [
+        {
+          "label": "U.S. Drought Monitor assessment reproduced by Coyote Gulch",
+          "url": "https://coyotegulch.blog/2026/11/25/drought-news-november-25-2026-moderate-to-heavy-snowfall-was-observed-across-mountain-ranges-in-utah-wyoming-and-colorado/",
+          "date": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "id": "western-october-employment",
+      "topic": "growth",
+      "geography": "American West",
+      "headline": "October employment figures reveal uneven Western job growth",
+      "body": "October state employment figures released last Friday showed considerable differences in labor-market conditions across the West. California's unemployment rate stood at 5%, compared with 4.9% in Oregon, 4.7% in Washington and Nevada, and 4.4% in Colorado. Utah recorded 3.5%, while Montana and Wyoming both stood at 3.1%. Western payroll employment was approximately 0.9% higher than a year earlier, although growth varied substantially across states. California and Utah recorded increases, while Oregon's employment was broadly unchanged. The differences matter for businesses deciding where to expand and for communities attempting to attract new investment. In states with relatively few available workers, large construction and industrial projects could compete with existing employers for labor. Unemployment rates alone, however, do not establish shortages in particular occupations or industries.",
+      "source": {
+        "label": "Bureau of Labor Statistics, State Employment and Unemployment",
+        "url": "https://www.bls.gov/sae/",
+        "date": "2026-11-20"
+      },
+      "additionalSources": [
+        {
+          "label": "NESO, regional employment data compiled from BLS figures",
+          "url": "https://now.nesohq.com/2026-11-20/",
+          "date": "2026-11-20"
+        }
+      ]
+    },
+    {
+      "id": "november-consumer-confidence",
+      "topic": "growth",
+      "geography": "American West & Plains",
+      "headline": "Consumer confidence reaches its highest level since January 2025",
+      "body": "The Conference Board's consumer confidence index climbed to 103.3 in November, up from 91.9 in October and its highest reading in nearly two years. Tuesday's release also showed a marked improvement in households' perceptions of employment opportunities: 30.8% of respondents described jobs as plentiful, while 18.4% said they were difficult to find. Much of the improvement in confidence came from Democrats and independent voters following the midterm elections. More households reported plans to purchase vehicles, appliances and homes. The timing is favorable for Western retailers, automobile dealers and tourism businesses entering the holiday season, particularly after months of elevated borrowing and fuel costs. But the political composition of the improvement warrants caution. Greater optimism does not necessarily translate into additional spending, especially while inflation continues to erode purchasing power.",
+      "source": {
+        "label": "Reuters, reporting Conference Board survey results",
+        "url": "https://www.reuters.com/world/us/us-consumer-confidence-surges-highest-level-nearly-two-years-2026-11-24/",
+        "date": "2026-11-24"
+      }
+    }
+  ]
+}
